@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glycemic Variability — Origin Symmetrics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0c0c10; --card: #141418; --card2: #1a1a20; --border: #28283a;
+    --text: #f0ede6; --muted: #8a8880; --dim: #5a5860;
+    --green: #3dba5f; --green-dim: rgba(61,186,95,0.14);
+    --red: #e05252; --red-dim: rgba(224,82,82,0.14);
+    --orange: #e8890a; --orange-dim: rgba(232,137,10,0.14);
+    --blue: #4d9ef0; --blue-dim: rgba(77,158,240,0.14);
+  }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; padding:40px 18px 60px; max-width:860px; margin:0 auto; line-height:1.5; }
+
+  .top-label { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .top-label::after { content:''; flex:1; height:1px; background:var(--border); }
+  h1 { font-size:clamp(1.4rem,4vw,2.1rem); font-weight:900; line-height:1.15; margin-bottom:10px; letter-spacing:-0.02em; color:var(--text); }
+  .cr{color:#ff8080;} .cg{color:#5de07a;} .co{color:#ffaa50;} .cb{color:#7dbcff;}
+  .subtitle { font-size:0.86rem; color:var(--muted); margin-bottom:28px; line-height:1.6; }
+
+  /* ── THREE POINTS ── */
+  .three-points { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:28px; }
+  .point { display:flex; gap:10px; align-items:flex-start; }
+  .point-num { width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:800; flex-shrink:0; margin-top:1px; color:#fff; }
+  .point p { font-size:0.78rem; line-height:1.45; color:rgba(240,237,230,0.8); }
+  .point p strong { color:var(--text); font-weight:700; }
+
+  /* ── SECTION ── */
+  .sec-hdr { display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:28px; flex-wrap:wrap; }
+  .sec-num { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; font-weight:600; padding:3px 9px; border-radius:3px; letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; flex-shrink:0; }
+  .sn-g{background:var(--green-dim);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .sn-r{background:var(--red-dim);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .sn-b{background:var(--blue-dim);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .sn-o{background:var(--orange-dim);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .sec-title{font-size:1.0rem;font-weight:700;color:var(--text);}
+  .sec-sub{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--muted);margin-left:auto;letter-spacing:0.07em;text-align:right;line-height:1.4;flex-shrink:0;max-width:160px;}
+
+  /* ── CARD ── */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:18px 16px;margin-bottom:12px;position:relative;overflow:hidden;}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+  .c-g::before{background:linear-gradient(90deg,var(--green),transparent);}
+  .c-r::before{background:linear-gradient(90deg,var(--red),transparent);}
+  .c-b::before{background:linear-gradient(90deg,var(--blue),transparent);}
+  .c-o::before{background:linear-gradient(90deg,var(--orange),transparent);}
+  .card-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+  .card-src{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--muted);margin-bottom:16px;letter-spacing:0.05em;}
+
+  /* ── HbA1c U-CURVE (CSS) ── */
+  .a1c-curve { display:flex; flex-direction:column; gap:6px; }
+  .a1c-row { display:flex; align-items:center; gap:10px; }
+  .a1c-label { font-size:0.72rem; font-weight:600; width:80px; flex-shrink:0; text-align:right; font-family:'IBM Plex Mono',monospace; }
+  .a1c-bar-wrap { flex:1; height:18px; background:rgba(255,255,255,0.06); border-radius:3px; overflow:hidden; position:relative; }
+  .a1c-bar { height:100%; border-radius:3px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; }
+  .a1c-bar-label { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; font-weight:600; color:rgba(255,255,255,0.85); }
+  .a1c-risk { font-size:0.68rem; width:90px; flex-shrink:0; font-family:'IBM Plex Mono',monospace; }
+
+  /* ── PPG VISUAL (CSS) ── */
+  .ppg-wrap { position:relative; padding:8px 0 0; }
+  .ppg-thresholds { position:relative; margin-bottom:8px; }
+  .ppg-zone { padding:8px 12px; border-radius:3px; margin-bottom:4px; font-size:0.72rem; display:flex; justify-content:space-between; align-items:center; }
+  .ppg-zone-label { font-weight:600; }
+  .ppg-zone-val { font-family:'IBM Plex Mono',monospace; font-size:0.68rem; font-weight:700; }
+
+  /* ── STAT STRIP ── */
+  .stat-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:12px;}
+  .stat-box{background:var(--card2);border:1px solid var(--border);border-radius:4px;padding:12px 14px;}
+  .stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+  .stat-val{font-size:1.3rem;font-weight:900;letter-spacing:-0.02em;line-height:1;}
+  .stat-sub{font-size:0.68rem;color:rgba(240,237,230,0.45);margin-top:3px;line-height:1.3;}
+
+  /* ── FINDING ── */
+  .finding{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:4px;margin-bottom:5px;font-size:0.77rem;line-height:1.5;color:var(--text);}
+  .ftag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;font-weight:600;padding:2px 7px;border-radius:2px;white-space:nowrap;flex-shrink:0;letter-spacing:0.06em;margin-top:1px;}
+  .ft-g{background:var(--green-dim);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .ft-r{background:var(--red-dim);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .ft-b{background:var(--blue-dim);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .ft-o{background:var(--orange-dim);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .ft-y{background:rgba(232,192,74,0.12);color:#f0d060;border:1px solid rgba(232,192,74,0.3);}
+
+  /* ── CALLOUT ── */
+  .callout{border-radius:4px;padding:14px 16px;margin-bottom:12px;font-size:0.78rem;line-height:1.55;color:var(--text);}
+  .callout strong{font-weight:700;}
+  .co-g{background:var(--green-dim);border-left:3px solid var(--green);}
+  .co-r{background:var(--red-dim);border-left:3px solid var(--red);}
+  .co-b{background:var(--blue-dim);border-left:3px solid var(--blue);}
+  .co-o{background:var(--orange-dim);border-left:3px solid var(--orange);}
+  .callout-head{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+  .co-g .callout-head{color:#5de07a;} .co-r .callout-head{color:#ff8080;}
+  .co-b .callout-head{color:#7dbcff;} .co-o .callout-head{color:#ffaa50;}
+
+  /* ── TABLE ── */
+  .gen-table{width:100%;border-collapse:collapse;font-size:0.74rem;margin-bottom:12px;}
+  .gen-table th{background:#1e1e28;color:var(--muted);padding:7px 10px;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;text-align:left;border-bottom:1px solid var(--border);}
+  .gen-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);line-height:1.4;}
+  .gen-table tr:last-child td{border-bottom:none;}
+
+  /* ── BADGE ── */
+  .badge{display:inline-block;padding:2px 8px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;white-space:nowrap;}
+  .bg-g{background:var(--green-dim);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .bg-r{background:var(--red-dim);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .bg-o{background:var(--orange-dim);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+
+  /* ── DIVIDER ── */
+  .div{border:none;border-top:1px solid var(--border);margin:24px 0;}
+
+  /* ── BOTTOM ── */
+  .bottom{background:#1a1a24;border:1px solid var(--border);border-radius:6px;padding:22px;margin-bottom:24px;}
+  .bottom-tag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .bottom-text{font-size:0.86rem;line-height:1.65;color:rgba(240,237,230,0.85);}
+  .bottom-text strong{color:var(--text);font-weight:700;}
+
+  /* ── FOOTER ── */
+  .footer{display:flex;justify-content:space-between;align-items:flex-end;padding-top:18px;border-top:1px solid var(--border);flex-wrap:wrap;gap:8px;}
+  .footer-brand{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
+  .footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:var(--muted);text-align:right;line-height:1.7;}
+
+  @media(max-width:560px){
+    .three-points{grid-template-columns:1fr;}
+    .stat-strip{grid-template-columns:1fr;}
+    .sec-sub{display:none;}
+    .footer-refs{text-align:left;}
+    .a1c-risk{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-label">Evidence Review · Glycemic Variability · Origin Symmetrics</div>
+
+<h1>Postprandial glucose <span class="cg">"spikes" in healthy people are adaptive physiology</span>, not pathology. The true metabolic threat is <span class="cr">chronic energy surplus → lipotoxicity</span>. Obsessing over acute excursions is a <span class="co">red herring</span>.</h1>
+<p class="subtitle">What the evidence actually shows about blood glucose, insulin resistance, and why CGMs mislead healthy people.</p>
+
+<!-- Three points -->
+<div class="three-points">
+  <div class="point">
+    <div class="point-num" style="background:var(--green)">1</div>
+    <p>Normal PPG peaks of <strong>140–160 mg/dL</strong> sit well below the 200 mg/dL IGT threshold. ADA/WHO define normal tolerance by the 2-hour OGTT — healthy spikes are inside that range.</p>
+  </div>
+  <div class="point">
+    <div class="point-num" style="background:var(--red)">2</div>
+    <p>Insulin resistance is caused by <strong>DAG and ceramide lipid intermediates</strong> from chronic caloric surplus — not glucose speed. PKC-θ activation blocks IRS-1 signaling. The structural failure is lipid-driven.</p>
+  </div>
+  <div class="point">
+    <div class="point-num" style="background:var(--orange)">3</div>
+    <p>CGMs in non-diabetics <strong>systematically overestimate glucose by ~15 mg/dL</strong> and overstate time-above-threshold by ~27%. They misclassify whole fruits as high-GI.</p>
+  </div>
+</div>
+
+<!-- ════════════════
+     SECTION 1: HbA1c
+════════════════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-g">01</div>
+  <div class="sec-title">HbA1c & Mortality — The U-Shaped Curve</div>
+  <div class="sec-sub">Lu et al., 2019 · J Clin Endocrinol Metab</div>
+</div>
+
+<div class="card c-g">
+  <div class="card-title">HbA1c and All-Cause Mortality Risk in Non-Diabetic Adults</div>
+  <div class="card-src">Lu et al., 2019 · Systematic review & meta-analysis · Non-diabetic populations</div>
+
+  <div class="a1c-curve">
+    <div class="a1c-row">
+      <div class="a1c-label" style="color:#ff8080">&lt; 5.0%</div>
+      <div class="a1c-bar-wrap">
+        <div class="a1c-bar" style="width:75%;background:linear-gradient(90deg,var(--red),#c05050);">
+          <span class="a1c-bar-label">↑ High Risk</span>
+        </div>
+      </div>
+      <div class="a1c-risk" style="color:#ff8080;font-size:0.68rem;">Frailty / illness</div>
+    </div>
+    <div class="a1c-row">
+      <div class="a1c-label" style="color:var(--muted)">5.0%</div>
+      <div class="a1c-bar-wrap">
+        <div class="a1c-bar" style="width:38%;background:#3a3a52;">
+          <span class="a1c-bar-label" style="color:var(--muted)">Elevated</span>
+        </div>
+      </div>
+      <div class="a1c-risk" style="color:var(--muted);">Risk rising</div>
+    </div>
+    <div class="a1c-row">
+      <div class="a1c-label" style="color:#5de07a">5.0–6.0%</div>
+      <div class="a1c-bar-wrap">
+        <div class="a1c-bar" style="width:20%;background:var(--green);opacity:0.8;">
+          <span class="a1c-bar-label">✓ Lowest</span>
+        </div>
+      </div>
+      <div class="a1c-risk" style="color:#5de07a;">Optimal zone</div>
+    </div>
+    <div class="a1c-row">
+      <div class="a1c-label" style="color:var(--muted)">6.0%</div>
+      <div class="a1c-bar-wrap">
+        <div class="a1c-bar" style="width:35%;background:#3a3a52;">
+          <span class="a1c-bar-label" style="color:var(--muted)">Elevated</span>
+        </div>
+      </div>
+      <div class="a1c-risk" style="color:var(--muted);">Risk rising</div>
+    </div>
+    <div class="a1c-row">
+      <div class="a1c-label" style="color:#ffaa50">6.5%+</div>
+      <div class="a1c-bar-wrap">
+        <div class="a1c-bar" style="width:70%;background:linear-gradient(90deg,var(--orange),#c06010);">
+          <span class="a1c-bar-label">↑ High Risk</span>
+        </div>
+      </div>
+      <div class="a1c-risk" style="color:#ffaa50;">Prediabetes+</div>
+    </div>
+  </div>
+  <div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:var(--muted);">Bar height = relative mortality risk · Bars represent direction only, not exact values</div>
+</div>
+
+<div class="finding"><span class="ftag ft-g">The U-Curve</span><span>A systematic review and meta-analysis confirmed a U-shaped association between HbA1c and all-cause mortality in non-diabetics. <strong>Optimal survival range: 5.0–6.0%.</strong> Risk increases significantly both below 5.0% AND above 6.0%. Both extremes carry elevated mortality.</span></div>
+<div class="finding"><span class="ftag ft-r">Low HbA1c Risk</span><span>Chronically low HbA1c (&lt;5.0%) often reflects poor nutritional status, frailty, or serious non-metabolic disease — not optimal glucose control. This directly contradicts aggressive glucose minimization as a health strategy.</span></div>
+<div class="finding"><span class="ftag ft-g">Key Insight</span><span>Achieving the optimal 5.0–6.0% range <strong>requires robust glucose flux</strong> — meaning the system must efficiently process dietary carbohydrates including their transient postprandial excursions. You cannot maintain a healthy HbA1c while avoiding all carbohydrate processing.</span></div>
+
+<div class="callout co-g">
+  <div class="callout-head">Metabolic Resilience = Efficient Clearance, Not Spike Avoidance</div>
+  A healthy metabolic system is defined by <strong>rapid return to baseline after a glucose load</strong> — not by minimizing the peak itself. High insulin sensitivity means the system clears glucose efficiently. The peak is the signal; clearance speed is the health marker.
+</div>
+
+<div class="div"></div>
+
+<!-- ════════════════
+     SECTION 2: LIPOTOXICITY
+════════════════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-r">02</div>
+  <div class="sec-title">The Real Mechanism — IR Is Lipid-Driven, Not Glucose-Driven</div>
+  <div class="sec-sub">Lipotoxicity hypothesis</div>
+</div>
+
+<div class="card c-r">
+  <div class="card-title">How Insulin Resistance Actually Develops</div>
+  <div class="card-src">Hotamisligil, 2005 · Wang & Eckel, 2014 · Wondmkun, 2020</div>
+  <div style="display:flex;flex-direction:column;gap:6px;">
+    <div style="background:rgba(224,82,82,0.08);border:1px solid rgba(224,82,82,0.2);border-radius:4px;padding:10px 12px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#ff8080;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Step 1 — Chronic Surplus</div>
+      <div style="font-size:0.77rem;color:var(--text);">Adipose storage capacity exceeded → adipocyte hypertrophy → ectopic fat deposits in liver, muscle, pancreas</div>
+    </div>
+    <div style="text-align:center;font-size:0.8rem;color:var(--dim);">↓</div>
+    <div style="background:rgba(224,82,82,0.08);border:1px solid rgba(224,82,82,0.2);border-radius:4px;padding:10px 12px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#ff8080;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Step 2 — Lipotoxicity</div>
+      <div style="font-size:0.77rem;color:var(--text);">Triglyceride overflow → <strong>DAG and ceramide generation</strong> in non-adipose tissue — driven by fatty acid flux, not glucose speed</div>
+    </div>
+    <div style="text-align:center;font-size:0.8rem;color:var(--dim);">↓</div>
+    <div style="background:rgba(224,82,82,0.1);border:1px solid rgba(224,82,82,0.25);border-radius:4px;padding:10px 12px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#ff8080;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Step 3 — PKC-θ Activation</div>
+      <div style="font-size:0.77rem;color:var(--text);">DAG activates Protein Kinase C-theta → serine phosphorylation of IRS-1 at Ser312 → blocks tyrosine phosphorylation cascade</div>
+    </div>
+    <div style="text-align:center;font-size:0.8rem;color:var(--dim);">↓</div>
+    <div style="background:rgba(224,82,82,0.12);border:1px solid rgba(224,82,82,0.3);border-radius:4px;padding:10px 12px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#ff8080;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Step 4 — IR Established</div>
+      <div style="font-size:0.77rem;color:var(--text);">GLUT4 translocation impaired → glucose clearance fails → T2D pathway. <strong>A structural signaling failure — not a glucose-speed problem.</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="finding"><span class="ftag ft-r">GI/GL Null Result</span><span>A systematic review and meta-analysis of randomized clinical trials found <strong>no significant effect of dietary GI or GL on hs-CRP, leptin, IL-6, or TNF-α</strong> — the chronic inflammatory markers that actually drive insulin resistance. (Milajerdi et al., 2018 · Am J Clin Nutr)</span></div>
+<div class="finding"><span class="ftag ft-o">Why High-Fiber Diets Work</span><span>Where high-fiber, low-GI foods DO help — it's through <strong>satiety and reduced total caloric intake</strong>, not through blunting the acute spike. The benefit is caloric management. GI/GL manipulation is largely a nutritional red herring for IR prevention.</span></div>
+
+<div class="callout co-r">
+  <div class="callout-head">The Primary Target</div>
+  <strong>Preventing chronic caloric surplus is the primary therapeutic lever for IR prevention.</strong> This prevents adipose overflow, DAG/ceramide accumulation, PKC-θ activation, and IRS-1 blockade. Targeting the acute glucose spike addresses a downstream symptom while the upstream structural cause goes untreated.
+</div>
+
+<div class="div"></div>
+
+<!-- ════════════════
+     SECTION 3: PPG THRESHOLDS
+════════════════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-b">03</div>
+  <div class="sec-title">Postprandial Glucose — What Normal Actually Looks Like</div>
+  <div class="sec-sub">ADA/WHO OGTT Criteria</div>
+</div>
+
+<div class="card c-b">
+  <div class="card-title">Glycemic Thresholds — Where the Clinical Lines Are</div>
+  <div class="card-src">ADA/WHO Oral Glucose Tolerance Test criteria · 2-hour plasma glucose</div>
+
+  <div style="display:flex;flex-direction:column;gap:6px;">
+    <div style="background:var(--green-dim);border:1px solid rgba(61,186,95,0.25);border-radius:4px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="font-size:0.78rem;font-weight:700;color:#5de07a;">Normal — Non-Diabetic</div>
+        <div style="font-size:0.72rem;color:var(--muted);">2-hour OGTT · Typical PPG peak</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:#5de07a;">&lt; 140 mg/dL</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--muted);">~120–140 mg/dL typical peak</div>
+      </div>
+    </div>
+    <div style="background:var(--orange-dim);border:1px solid rgba(232,137,10,0.25);border-radius:4px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="font-size:0.78rem;font-weight:700;color:#ffaa50;">Impaired — Prediabetes</div>
+        <div style="font-size:0.72rem;color:var(--muted);">Impaired Glucose Tolerance (IGT)</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:#ffaa50;">140–199 mg/dL</div>
+      </div>
+    </div>
+    <div style="background:var(--red-dim);border:1px solid rgba(224,82,82,0.25);border-radius:4px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="font-size:0.78rem;font-weight:700;color:#ff8080;">Pathological — Diabetes</div>
+        <div style="font-size:0.72rem;color:var(--muted);">2-hour OGTT diagnostic threshold</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:#ff8080;">≥ 200 mg/dL</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px;background:rgba(255,255,255,0.04);border-radius:4px;padding:10px 12px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:var(--muted);margin-bottom:6px;letter-spacing:0.1em;text-transform:uppercase;">Optimal HbA1c Range (Non-Diabetic)</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span class="badge bg-g">5.0–6.0% → Optimal survival</span>
+      <span class="badge bg-o">5.7–6.4% → Prediabetes</span>
+      <span class="badge bg-r">&lt;5.0% or ≥6.5% → Elevated risk</span>
+    </div>
+  </div>
+</div>
+
+<div class="finding"><span class="ftag ft-b">Context-Dependent Vascular Risk</span><span>Postprandial glucose elevation is an independent CVD risk factor primarily in <strong>Type 2 Diabetics with impaired clearance</strong> — not in insulin-sensitive individuals. Serious complications arise when hyperglycemia persists, not from transient physiological excursions. Metabolic memory studies are predominantly in diabetic cell cultures, not healthy humans.</span></div>
+
+<div class="callout co-b">
+  <div class="callout-head">The Core Argument</div>
+  When diagnostic criteria define values below 140 mg/dL as normal, focusing anxiously on postprandial excursions that peak at 130 mg/dL is alarmist. <strong>The optimal goal for a healthy person is rapid return to baseline — demonstrating high insulin sensitivity — not maximum suppression of the postprandial peak.</strong>
+</div>
+
+<div class="div"></div>
+
+<!-- ════════════════
+     SECTION 4: CGM
+════════════════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-o">04</div>
+  <div class="sec-title">The CGM Problem — Biased Data Driving Unnecessary Restriction</div>
+  <div class="sec-sub">Gonzalez et al., 2025</div>
+</div>
+
+<div class="stat-strip">
+  <div class="stat-box">
+    <div class="stat-label">Blood glucose overestimation</div>
+    <div class="stat-val" style="color:#ffaa50">~+15</div>
+    <div class="stat-sub">mg/dL vs capillary blood. Measures interstitial fluid with 5–15 min lag.</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-label">Time-above-threshold overstatement</div>
+    <div class="stat-val" style="color:#ffaa50">~27%</div>
+    <div class="stat-sub">Systematic overestimation of glycemic response duration in healthy subjects.</div>
+  </div>
+</div>
+
+<table class="gen-table">
+  <thead><tr><th>CGM Error</th><th>Mechanism</th><th>Consequence</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:#ffaa50">Overestimation of BG</strong></td>
+      <td>Measures interstitial fluid — 5–15 min lag, different compartment</td>
+      <td>Euglycemic individuals flagged as hyperglycemic</td>
+    </tr>
+    <tr>
+      <td><strong style="color:#ffaa50">Time-above overstatement</strong></td>
+      <td>Systematic overestimation of response magnitude and duration</td>
+      <td>Normal excursions reported as pathological</td>
+    </tr>
+    <tr>
+      <td><strong style="color:#ffaa50">GI misclassification</strong></td>
+      <td>Interstitial dynamics distort rate-of-change calculations</td>
+      <td>Whole fruit and smoothies reported as higher GI than objectively measured</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="finding"><span class="ftag ft-o">The Anxiety Loop</span><span>Non-diabetic uses CGM → overestimates by ~15 mg/dL → normal 130 mg/dL peak reported as 145 mg/dL → restricts fruit, rice, potatoes → total caloric intake drops → HbA1c falls below 5.0% → <strong>increased all-cause mortality risk.</strong> The device designed to help diabetics actively misguides healthy people.</span></div>
+
+<div class="callout co-o">
+  <div class="callout-head">For Non-Diabetics: CGMs Are Not Necessary</div>
+  CGMs are designed for metabolic conditions. For healthy individuals, the gold standard metric remains <strong>HbA1c maintained at 5.0–6.0%</strong> — a validated chronic marker reflecting integrated glucose handling over 2–3 months, not acute device noise from physiological non-events.
+</div>
+
+<div class="div"></div>
+
+<div class="bottom">
+  <div class="bottom-tag">Synthesis · The Strategic Reframe</div>
+  <div class="bottom-text">
+    Transient postprandial glucose excursions in non-diabetic individuals are <strong>adaptive physiological signals</strong> — not pathological events. The healthy metabolic system handles them efficiently. The structural failure that leads to insulin resistance is caused by <strong>chronic caloric surplus → ectopic lipid deposition → DAG/ceramide-mediated PKC-θ activation → IRS-1 blockade</strong>. That pathway is entirely decoupled from carbohydrate absorption speed.<br><br>
+    A healthy HbA1c of 5.0–6.0% requires robust glucose flux — meaning the system must process dietary carbohydrates including their transient excursions. Metabolic resilience is defined by <strong>clearance efficiency, not spike elimination.</strong>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics · originsymmetrics.com</div>
+  <div class="footer-refs">
+    Lu et al., 2019 · J Clin Endocrinol Metab<br>
+    Milajerdi et al., 2018 · Am J Clin Nutr<br>
+    ADA/WHO OGTT Criteria<br>
+    Gonzalez et al., 2025 · Pharmacy Times
+  </div>
+</div>
+
+</body>
+</html>

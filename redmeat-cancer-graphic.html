@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Meat & Cancer Risk — Origin Symmetrics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0c0c10; --card: #141418; --card2: #1a1a20; --border: #28283a;
+    --text: #f0ede6; --muted: #8a8880; --dim: #5a5860;
+    --green: #3dba5f; --green-dim: rgba(61,186,95,0.14);
+    --red: #e05252; --red-dim: rgba(224,82,82,0.14);
+    --orange: #e8890a; --orange-dim: rgba(232,137,10,0.14);
+    --blue: #4d9ef0; --blue-dim: rgba(77,158,240,0.14);
+  }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; padding:40px 18px 60px; max-width:860px; margin:0 auto; line-height:1.5; }
+  .top-label { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .top-label::after { content:''; flex:1; height:1px; background:var(--border); }
+  h1 { font-size:clamp(1.4rem,4vw,2.1rem); font-weight:900; line-height:1.15; margin-bottom:10px; letter-spacing:-0.02em; color:var(--text); }
+  .cr{color:#ff8080;} .cg{color:#5de07a;} .co{color:#ffaa50;} .cb{color:#7dbcff;}
+  .subtitle { font-size:0.86rem; color:var(--muted); margin-bottom:28px; line-height:1.6; }
+  /* Reveal */
+  .reveal-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:28px; border-radius:6px; overflow:hidden; border:1px solid var(--border); }
+  .reveal-cell { padding:18px 16px; display:flex; flex-direction:column; gap:8px; }
+  .rc-left { background:var(--red-dim); border-right:1px solid var(--border); }
+  .rc-right { background:var(--green-dim); }
+  .rc-tag { font-family:'IBM Plex Mono',monospace; font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; font-weight:600; }
+  .rc-left .rc-tag{color:#ff8080;} .rc-right .rc-tag{color:#5de07a;}
+  .rc-head { font-size:0.95rem; font-weight:800; line-height:1.2; }
+  .rc-left .rc-head{color:#ff8080;} .rc-right .rc-head{color:#5de07a;}
+  .rc-body { font-size:0.76rem; line-height:1.5; color:rgba(240,237,230,0.75); }
+  .rc-body strong{color:var(--text);font-weight:700;}
+  /* Section */
+  .sec-hdr { display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:28px; flex-wrap:wrap; }
+  .sec-num { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; font-weight:600; padding:3px 9px; border-radius:3px; letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; flex-shrink:0; }
+  .sn-r{background:var(--red-dim);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .sn-g{background:var(--green-dim);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .sn-b{background:var(--blue-dim);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .sec-title{font-size:1.0rem;font-weight:700;color:var(--text);}
+  .sec-sub{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--muted);margin-left:auto;letter-spacing:0.07em;text-align:right;line-height:1.4;flex-shrink:0;max-width:160px;}
+  /* Card */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:18px 16px;margin-bottom:12px;position:relative;overflow:hidden;}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+  .c-r::before{background:linear-gradient(90deg,var(--red),transparent);}
+  .c-g::before{background:linear-gradient(90deg,var(--green),transparent);}
+  .c-b::before{background:linear-gradient(90deg,var(--blue),transparent);}
+  .card-title{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+  .card-src{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--muted);margin-bottom:16px;letter-spacing:0.05em;}
+  /* Bar chart CSS */
+  .bar-chart{display:flex;flex-direction:column;gap:14px;}
+  .bar-row{display:flex;flex-direction:column;gap:5px;}
+  .bar-lbl-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .bl-main{font-size:0.78rem;font-weight:600;color:var(--text);}
+  .bl-sub{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);}
+  .bl-val{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;font-weight:700;white-space:nowrap;flex-shrink:0;}
+  .bar-track{height:22px;background:rgba(255,255,255,0.06);border-radius:3px;position:relative;}
+  .bar-fill{height:100%;border-radius:3px;position:absolute;top:0;left:0;}
+  .bar-overlay{height:100%;border-radius:0 3px 3px 0;position:absolute;top:0;}
+  .bar-axis{display:flex;justify-content:space-between;margin-top:6px;}
+  .bar-axis span{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;color:var(--dim);}
+  .bar-axis-label{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:var(--muted);text-align:center;margin-top:4px;}
+  /* Dots */
+  .dot-section{margin-bottom:14px;}
+  .dot-section:last-of-type{margin-bottom:0;}
+  .dot-lbl{font-size:0.76rem;font-weight:600;margin-bottom:2px;}
+  .dot-sub{font-family:'IBM Plex Mono',monospace;font-size:0.57rem;color:var(--muted);margin-bottom:6px;}
+  .dot-right{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;font-weight:700;}
+  .dot-hdr{display:flex;justify-content:space-between;align-items:flex-end;}
+  .dot-grid{display:flex;flex-wrap:wrap;gap:3px;max-width:320px;}
+  .dot{width:10px;height:10px;border-radius:50%;}
+  .d-none{background:#252530;} .d-base{background:#7a7880;} .d-extra{background:var(--red);}
+  .dot-legend{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap;}
+  .dot-legend-item{display:flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:0.57rem;color:var(--muted);}
+  .dot-legend-item .dot{width:9px;height:9px;flex-shrink:0;}
+  /* Findings */
+  .finding{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:4px;margin-bottom:5px;font-size:0.77rem;line-height:1.5;color:var(--text);}
+  .ftag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;font-weight:600;padding:2px 7px;border-radius:2px;white-space:nowrap;flex-shrink:0;letter-spacing:0.06em;margin-top:1px;}
+  .ft-r{background:var(--red-dim);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .ft-g{background:var(--green-dim);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .ft-b{background:var(--blue-dim);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .ft-o{background:var(--orange-dim);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  /* Callout */
+  .callout{border-radius:4px;padding:14px 16px;margin-bottom:12px;font-size:0.78rem;line-height:1.55;color:var(--text);}
+  .callout strong{font-weight:700;}
+  .co-r{background:var(--red-dim);border-left:3px solid var(--red);}
+  .co-g{background:var(--green-dim);border-left:3px solid var(--green);}
+  .co-b{background:var(--blue-dim);border-left:3px solid var(--blue);}
+  .callout-head{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+  .co-r .callout-head{color:#ff8080;} .co-g .callout-head{color:#5de07a;} .co-b .callout-head{color:#7dbcff;}
+  /* Table */
+  .hr-table{width:100%;border-collapse:collapse;font-size:0.75rem;margin-bottom:12px;}
+  .hr-table th{background:#1e1e28;color:var(--muted);padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;text-align:left;border-bottom:1px solid var(--border);}
+  .hr-table td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text);}
+  .hr-table tr:last-child td{border-bottom:none;}
+  /* Divider */
+  .div{border:none;border-top:1px solid var(--border);margin:24px 0;}
+  /* Bottom */
+  .bottom{background:#1a1a24;border:1px solid var(--border);border-radius:6px;padding:22px;margin-bottom:24px;}
+  .bottom-tag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .bottom-text{font-size:0.86rem;line-height:1.65;color:rgba(240,237,230,0.85);}
+  .bottom-text strong{color:var(--text);font-weight:700;}
+  /* Footer */
+  .footer{display:flex;justify-content:space-between;align-items:flex-end;padding-top:18px;border-top:1px solid var(--border);flex-wrap:wrap;gap:8px;}
+  .footer-brand{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
+  .footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:var(--muted);text-align:right;line-height:1.7;}
+  @media(max-width:500px){
+    .reveal-grid{grid-template-columns:1fr;}
+    .rc-left{border-right:none;border-bottom:1px solid var(--border);}
+    .sec-sub{display:none;}
+    .footer-refs{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-label">Evidence Review · Dietary Oncology · Origin Symmetrics</div>
+
+<h1>The WHO's <span class="cr">18% increased risk</span> from processed meat is real — but it's <span class="co">relative</span>, not absolute. That distinction <span class="cg">changes everything.</span></h1>
+<p class="subtitle">What the headlines imply vs what the data actually shows — with the exact numbers from the papers.</p>
+
+<div class="reveal-grid">
+  <div class="reveal-cell rc-left">
+    <div class="rc-tag">What People Hear</div>
+    <div class="rc-head">Processed meat raises cancer risk 18%</div>
+    <div class="rc-body">Most people interpret this as: <strong>4% becomes 22%.</strong> An 18 percentage-point jump. That is not what the study found.</div>
+  </div>
+  <div class="reveal-cell rc-right">
+    <div class="rc-tag">What the Data Shows</div>
+    <div class="rc-head">4.3% becomes 5.07%</div>
+    <div class="rc-body">HR = 1.18 is a <strong>proportional multiplier.</strong> 4.3% × 1.18 = 5.07%. Absolute increase: <strong>0.77 percentage points.</strong></div>
+  </div>
+</div>
+
+<div class="sec-hdr">
+  <div class="sec-num sn-r">01</div>
+  <div class="sec-title">The WHO Study — What It Found</div>
+  <div class="sec-sub">Chan et al., 2011 · PLOS ONE · 28 studies</div>
+</div>
+
+<div class="finding"><span class="ftag ft-r">The Paper</span><span>Chan DSM et al. (2011). <em>Red and Processed Meat and Colorectal Cancer Incidence: Meta-Analysis of Prospective Studies.</em> PLoS ONE. 42 articles, 28 prospective studies, 11,358 CRC cases. The primary meta-analysis behind the WHO IARC Group 1 classification of processed meat.</span></div>
+<div class="finding"><span class="ftag ft-r">Key Result</span><span>Processed meat: <strong>RR = 1.18 per 50g/day</strong> (95% CI 1.10–1.28). Combined red + processed: RR = 1.14 per 100g/day (95% CI 1.04–1.24). These are relative risk multipliers — not percentage-point increases.</span></div>
+<div class="finding"><span class="ftag ft-o">HR = 1.18 Explained</span><span>A hazard ratio of 1.18 is an 18% <em>proportional</em> increase over your baseline — not 18 percentage points added. Baseline lifetime CRC risk for men is 4.3%. Apply HR 1.18: 4.3% × 1.18 = <strong>5.07%</strong>. Absolute difference: <strong>0.77%</strong>. For comparison, smoking raises lung cancer risk with an HR of ~20 in heavy smokers. Group 1 classification describes evidence quality, not magnitude of harm.</span></div>
+
+<div class="sec-hdr">
+  <div class="sec-num sn-b">02</div>
+  <div class="sec-title">The Actual Numbers — Out of 100 People</div>
+  <div class="sec-sub">SEER baseline data · HR 1.18 applied</div>
+</div>
+
+<div class="card c-b">
+  <div class="card-title">Lifetime Colorectal Cancer Risk — Absolute Numbers</div>
+  <div class="card-src">Baseline: men 4.3%, women 4.0% (ACS/SEER) · HR 1.18 per 50g/day processed meat · Chan et al., 2011</div>
+
+  <div class="dot-section">
+    <div class="dot-hdr"><div><div class="dot-lbl">Average man — no extra risk</div><div class="dot-sub">Baseline 4.3% lifetime risk</div></div><div class="dot-right" style="color:var(--muted)">~4 of 100</div></div>
+    <div class="dot-grid" id="d1"></div>
+  </div>
+  <div class="dot-section">
+    <div class="dot-hdr"><div><div class="dot-lbl" style="color:#ff8080">Man + 50g/day processed meat</div><div class="dot-sub">HR 1.18 applied → 5.07%</div></div><div class="dot-right" style="color:var(--red)">~5 of 100</div></div>
+    <div class="dot-grid" id="d2"></div>
+  </div>
+  <div class="dot-section">
+    <div class="dot-hdr"><div><div class="dot-lbl">Average woman — no extra risk</div><div class="dot-sub">Baseline 4.0% lifetime risk</div></div><div class="dot-right" style="color:var(--muted)">~4 of 100</div></div>
+    <div class="dot-grid" id="d3"></div>
+  </div>
+  <div class="dot-section">
+    <div class="dot-hdr"><div><div class="dot-lbl" style="color:#ff8080">Woman + 50g/day processed meat</div><div class="dot-sub">HR 1.18 applied → 4.72%</div></div><div class="dot-right" style="color:var(--red)">~5 of 100</div></div>
+    <div class="dot-grid" id="d4"></div>
+  </div>
+
+  <div class="dot-legend">
+    <div class="dot-legend-item"><div class="dot d-none"></div>No cancer</div>
+    <div class="dot-legend-item"><div class="dot d-base"></div>Cancer at baseline</div>
+    <div class="dot-legend-item"><div class="dot d-extra"></div>Additional risk from meat</div>
+  </div>
+</div>
+
+<div class="card c-b">
+  <div class="card-title">Baseline vs With 50g/day Processed Meat</div>
+  <div class="card-src">Less than 1 percentage point absolute difference</div>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row"><span class="bl-main">Men — baseline</span><span class="bl-val" style="color:var(--muted)">4.30%</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:71.7%;background:#3a3a52"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row"><span class="bl-main" style="color:#ff8080">Men + processed meat</span><span class="bl-val" style="color:var(--red)">5.07% <span style="font-size:0.58rem;color:var(--muted);font-weight:400">(+0.77%)</span></span></div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:71.7%;background:#3a3a52"></div>
+        <div class="bar-overlay" style="left:71.7%;width:12.8%;background:var(--red);opacity:0.85"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row"><span class="bl-main">Women — baseline</span><span class="bl-val" style="color:var(--muted)">4.00%</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:66.7%;background:#3a3a52"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row"><span class="bl-main" style="color:#ff8080">Women + processed meat</span><span class="bl-val" style="color:var(--red)">4.72% <span style="font-size:0.58rem;color:var(--muted);font-weight:400">(+0.72%)</span></span></div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:66.7%;background:#3a3a52"></div>
+        <div class="bar-overlay" style="left:66.7%;width:12%;background:var(--red);opacity:0.85"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bar-axis"><span>0%</span><span>1%</span><span>2%</span><span>3%</span><span>4%</span><span>5%</span><span>6%</span></div>
+  <div class="bar-axis-label">Lifetime Colorectal Cancer Risk (Absolute)</div>
+</div>
+
+<div class="callout co-r">
+  <div class="callout-head">Why This Matters</div>
+  A minimum HR of 2.0–4.0 is generally considered necessary to suggest meaningful causal magnitude in epidemiology. <strong>HR = 1.18 is statistically significant — but small in effect size.</strong> The same Group 1 classification covers tobacco (HR ~20 for lung cancer) and processed meat. Classification describes evidence quality, not dose of harm.
+</div>
+
+<div class="div"></div>
+
+<div class="sec-hdr">
+  <div class="sec-num sn-g">03</div>
+  <div class="sec-title">Vegetables Change Everything</div>
+  <div class="sec-sub">Maximova et al., 2020 · Alberta's Tomorrow Project · n=26,218</div>
+</div>
+
+<div class="card c-g">
+  <div class="card-title">Cancer Risk by Meat + Vegetable/Fruit Combination (Men)</div>
+  <div class="card-src">Maximova et al., 2020 · Nutrients · 26,218 adults · 13.5-year follow-up · Alberta Cancer Registry</div>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row"><div><span class="bl-main" style="color:var(--muted)">Low meat </span><span class="bl-main" style="color:var(--green)">+ High veg/fruit</span></div><span class="bl-val" style="color:var(--green)">HR 1.00 <span style="font-size:0.58rem;color:var(--muted);font-weight:400">Reference</span></span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:45.5%;background:var(--green);opacity:0.75"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row"><div><span class="bl-main" style="color:var(--muted)">Low meat </span><span class="bl-main" style="color:#ff8080">+ Low veg/fruit</span></div><span class="bl-val" style="color:var(--orange)">HR 1.56</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:70.9%;background:var(--orange);opacity:0.8"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row"><div><span class="bl-main">High meat </span><span class="bl-main" style="color:var(--green)">+ High veg/fruit</span></div><span class="bl-val" style="color:var(--orange)">HR 1.66</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:75.5%;background:var(--orange);opacity:0.8"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row"><div><span class="bl-main">High meat </span><span class="bl-main" style="color:#ff8080">+ Low veg/fruit</span></div><span class="bl-val" style="color:var(--red)">HR 1.85</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:84%;background:var(--red);opacity:0.85"></div></div>
+    </div>
+  </div>
+  <div class="bar-axis"><span>0</span><span>0.5</span><span>1.0</span><span>1.5</span><span>2.0</span><span>2.2</span></div>
+  <div class="bar-axis-label">Hazard Ratio vs Reference Group</div>
+</div>
+
+<table class="hr-table">
+  <thead><tr><th>Dietary Combination</th><th>HR Men All</th><th>HR Men 15</th><th>HR Women</th></tr></thead>
+  <tbody>
+    <tr><td><strong style="color:#5de07a">Low meat + High veg/fruit</strong><br><span style="font-size:0.67rem;color:var(--muted)">Reference</span></td><td><strong>1.00</strong></td><td><strong>1.00</strong></td><td><strong>1.00</strong></td></tr>
+    <tr><td><strong style="color:var(--orange)">High meat + High veg/fruit</strong></td><td style="color:var(--orange)"><strong>1.66</strong></td><td style="color:var(--orange)"><strong>1.65</strong></td><td style="color:var(--muted)">—</td></tr>
+    <tr><td><strong style="color:var(--orange)">Low meat + Low veg/fruit</strong></td><td style="color:var(--orange)"><strong>1.56</strong></td><td style="color:var(--orange)"><strong>1.47</strong></td><td style="color:var(--muted)">—</td></tr>
+    <tr><td><strong style="color:var(--red)">High meat + Low veg/fruit</strong></td><td style="color:var(--red)"><strong>1.85</strong></td><td style="color:var(--red)"><strong>1.91</strong></td><td style="color:var(--red)"><strong>1.44</strong></td></tr>
+  </tbody>
+</table>
+
+<div class="finding"><span class="ftag ft-g">Key Observation</span><span><strong>High processed meat + high vegetables (HR 1.66) has nearly the same risk as low processed meat + low vegetables (HR 1.56).</strong> The vegetable signal is stronger and more consistent than the meat signal.</span></div>
+<div class="finding"><span class="ftag ft-g">Vegetable Effect</span><span>Across all combinations, the average cancer risk reduction between high vs low vegetable/fruit groups was approximately <strong>~46%</strong>. That dwarfs the 18% relative increase from processed meat.</span></div>
+<div class="finding"><span class="ftag ft-b">Missing Confounder</span><span>The Chan 2011 meta-analysis does not consistently control for vegetable, fruit, and fiber intake. People who eat more processed meat tend to eat fewer vegetables — making it difficult to isolate meat from the overall dietary pattern.</span></div>
+
+<div class="callout co-g">
+  <div class="callout-head">The Real Takeaway</div>
+  <strong>High vegetables + high meat (HR 1.66) nearly matches low vegetables alone (HR 1.56).</strong> Vegetables are the dominant protective variable. This is why every longitudinal study controlling for vegetable intake shows greater risk in low-vegetable consumers — the meat and vegetable stories are inseparable.
+</div>
+
+<div class="div"></div>
+
+<div class="bottom">
+  <div class="bottom-tag">Synthesis · What Education Looks Like</div>
+  <div class="bottom-text">
+    The WHO Group 1 classification for processed meat is based on <strong>real evidence</strong> — consistent across 28 prospective studies. But HR 1.18 per 50g/day translates to a <span class="cr">0.77 percentage-point absolute increase in lifetime colorectal cancer risk</span> — not 18 percentage points. 4.3% becoming 5.07%.<br><br>
+    More importantly: <span class="cg">the vegetable and fruit signal is larger and more consistent.</span> In 26,218 adults followed 13.5 years, high vegetables offset most of the meat risk (HR 1.66 with high meat + vegetables vs HR 1.56 with low meat and no vegetables). <span class="co">Diet quality as a whole drives cancer risk — not individual foods in isolation.</span>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics · originsymmetrics.com</div>
+  <div class="footer-refs">Chan et al., 2011 · PLoS ONE<br>Maximova et al., 2020 · Nutrients<br>SEER Lifetime Risk Data · WHO IARC Vol.114</div>
+</div>
+
+<script>
+function buildDots(id,total,base,extra){
+  const el=document.getElementById(id);
+  if(!el)return;
+  for(let i=0;i<total;i++){
+    const d=document.createElement('div');
+    d.className='dot';
+    if(i<base)d.classList.add('d-base');
+    else if(i<base+extra)d.classList.add('d-extra');
+    else d.classList.add('d-none');
+    el.appendChild(d);
+  }
+}
+buildDots('d1',100,4,0);
+buildDots('d2',100,4,1);
+buildDots('d3',100,4,0);
+buildDots('d4',100,4,1);
+</script>
+</body>
+</html>
