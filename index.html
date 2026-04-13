@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080810;
+  --bg2: #0e0e18;
+  --card: #111120;
+  --card-h: #161628;
+  --border: #1e1e35;
+  --border-h: #2a2a48;
+  --text: #e8e6ff;
+  --text2: #9896b8;
+  --text3: #5a5878;
+  --accent: #6c63ff;
+  --accent2: #ff6b6b;
+  --accent3: #63ffda;
+  --accent4: #ffd166;
+  --glow: rgba(108,99,255,0.15);
+}
+
+html { background: var(--bg); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ── AMBIENT ORBS ── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 12s ease-in-out infinite;
+}
+.orb-1 { width: 400px; height: 400px; background: rgba(108,99,255,0.08); top: -100px; left: -100px; animation-delay: 0s; }
+.orb-2 { width: 300px; height: 300px; background: rgba(99,255,218,0.06); bottom: 20%; right: -80px; animation-delay: -4s; }
+.orb-3 { width: 250px; height: 250px; background: rgba(255,107,107,0.05); top: 50%; left: 30%; animation-delay: -8s; }
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -30px) scale(1.05); }
+  66% { transform: translate(-15px, 20px) scale(0.95); }
+}
+
+/* ── MAIN LAYOUT ── */
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 60px 0 48px;
+  position: relative;
+}
+
+.header-eyebrow {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.1s;
+}
+
+.header-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.2s;
+}
+
+.header-title span {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-sub {
+  font-size: 0.95rem;
+  color: var(--text2);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 480px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.3s;
+}
+
+.header-line {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent 60%);
+  opacity: 0.3;
+}
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: flex;
+  gap: 0;
+  margin-bottom: 40px;
+  padding-top: 32px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.4s;
+}
+
+.stat {
+  flex: 1;
+  padding: 0 20px 0 0;
+  border-right: 1px solid var(--border);
+}
+.stat:first-child { padding-left: 0; }
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-num.acc1 { color: var(--accent); }
+.stat-num.acc2 { color: var(--accent3); }
+.stat-num.acc3 { color: var(--accent4); }
+
+.stat-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.5s;
+}
+
+.filter-btn {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+  opacity: 0.08;
+}
+
+.filter-btn:hover {
+  color: var(--text);
+  border-color: var(--border-h);
+}
+.filter-btn:hover::before { transform: scaleX(1); }
+
+.filter-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(108,99,255,0.08);
+}
+
+/* ── ARTICLE GRID ── */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── ARTICLE CARD ── */
+.article-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px 22px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  text-decoration: none;
+  display: block;
+}
+
+.article-card.visible {
+  animation: cardIn 0.4s ease forwards;
+}
+
+.article-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.25s ease;
+}
+
+.article-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(108,99,255,0.04), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.article-card:hover {
+  background: var(--card-h);
+  border-color: var(--border-h);
+  transform: translateX(3px);
+}
+.article-card:hover::before { transform: scaleY(1); }
+.article-card:hover::after { opacity: 1; }
+
+/* Coming soon */
+.article-card.soon {
+  opacity: 0.45 !important;
+  cursor: default;
+}
+.article-card.soon:hover {
+  transform: none;
+  background: var(--card);
+  border-color: var(--border);
+}
+.article-card.soon::before { display: none; }
+.article-card.soon::after { display: none; }
+
+.card-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-num {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text3);
+  padding-top: 4px;
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.card-body { flex: 1; min-width: 0; }
+
+.card-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.tag {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+
+.tag-protein  { background: rgba(108,99,255,0.15); color: #a89fff; border: 1px solid rgba(108,99,255,0.25); }
+.tag-fasting  { background: rgba(99,255,218,0.1);  color: #63ffda; border: 1px solid rgba(99,255,218,0.2); }
+.tag-glucose  { background: rgba(255,209,102,0.1); color: #ffd166; border: 1px solid rgba(255,209,102,0.2); }
+.tag-dairy    { background: rgba(255,107,107,0.1); color: #ff9e9e; border: 1px solid rgba(255,107,107,0.2); }
+.tag-sweeteners { background: rgba(180,99,255,0.12); color: #d4a0ff; border: 1px solid rgba(180,99,255,0.25); }
+.tag-cancer   { background: rgba(255,107,107,0.12); color: #ff8080; border: 1px solid rgba(255,107,107,0.25); }
+.tag-soon     { background: rgba(90,88,120,0.2); color: var(--text3); border: 1px solid rgba(90,88,120,0.3); }
+
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.0rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.card-studies {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.56rem;
+  color: var(--text3);
+  letter-spacing: 0.08em;
+}
+
+.card-arrow {
+  font-size: 0.8rem;
+  color: var(--text3);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.article-card:hover .card-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+/* ── COMING SOON BADGE ── */
+.soon-badge {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  border: 1px solid var(--border);
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0 16px;
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards;
+}
+.section-divider-line { flex: 1; height: 1px; background: var(--border); }
+.section-divider-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  display: none;
+}
+.empty-state.show { display: block; }
+.empty-icon { font-size: 2rem; margin-bottom: 12px; opacity: 0.3; }
+.empty-text { font-size: 0.85rem; color: var(--text3); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── FOOTER ── */
+footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-text {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+@media (max-width: 500px) {
+  .header-title { font-size: 2.6rem; }
+  .stats-row { gap: 0; }
+  .stat { padding: 0 14px 0 0; }
+  .stat-num { font-size: 1.4rem; }
+  .card-num { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="wrap">
+  <header>
+    <div class="header-eyebrow">Evidence-Based Nutrition</div>
+    <h1 class="header-title">The<br><span>Research</span></h1>
+    <p class="header-sub">Meta-analyses, RCTs, and mechanistic data — translated into what actually matters for your health.</p>
+    <div class="header-line"></div>
+  </header>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num acc1">6</div>
+      <div class="stat-label">Published</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num acc2">60+</div>
+      <div class="stat-label">Studies Cited</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num acc3">5</div>
+      <div class="stat-label">Coming Soon</div>
+    </div>
+  </div>
+
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all">All Topics</button>
+    <button class="filter-btn" data-filter="protein">Protein</button>
+    <button class="filter-btn" data-filter="fasting">Fasting</button>
+    <button class="filter-btn" data-filter="glucose">Glucose</button>
+    <button class="filter-btn" data-filter="dairy">Dairy</button>
+    <button class="filter-btn" data-filter="sweeteners">Sweeteners</button>
+    <button class="filter-btn" data-filter="cancer">Cancer Risk</button>
+  </div>
+
+  <div class="grid" id="articleGrid"></div>
+  <div class="empty-state" id="emptyState">
+    <div class="empty-icon">◎</div>
+    <div class="empty-text">No articles in this category yet.</div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Evidence-Based Nutrition Research</div>
+    <div class="footer-text">Updated 2025</div>
+  </footer>
+</div>
+
+<script>
+const articles = [
+  {
+    num: '01',
+    title: 'Protein Requirements: Why 1.62 g/kg Undershoots the Evidence',
+    desc: 'The Morton 2018 meta-analysis that set the 1.62 g/kg ceiling has a p-value of 0.079 and 80% untrained subjects. IAAO data and effect size slopes point to 2.0–2.35 g/kg for trained individuals.',
+    tags: ['protein'],
+    studies: '14 studies cited',
+    href: 'protein-intake-graphic.html',
+    soon: false,
+  },
+  {
+    num: '02',
+    title: 'Autophagy & Fasting: What the Flux Data Actually Shows',
+    desc: 'Extended fasting does not linearly increase autophagy — ALR feedback caps induction at 2–4 hours. Exercise produces validated autophagic flux of +93–117%. Training status overrides fasting duration.',
+    tags: ['fasting'],
+    studies: '11 studies cited',
+    href: 'autophagy-graphic.html',
+    soon: false,
+  },
+  {
+    num: '03',
+    title: 'Glycemic Variability: Spikes Are Physiology, Not Pathology',
+    desc: 'Insulin resistance is lipid-driven via DAG/ceramide → PKC-θ → IRS-1 blockade — not glucose-speed-driven. HbA1c U-curve shows optimal survival at 5.0–6.0%. CGMs overestimate glucose ~15 mg/dL in healthy people.',
+    tags: ['glucose'],
+    studies: '9 studies cited',
+    href: 'glycemic-variability-graphic.html',
+    soon: false,
+  },
+  {
+    num: '04',
+    title: 'Milk & Bone Health: Three Outcomes, Three Different Evidence Stories',
+    desc: 'Neutral on mortality (RR 0.99–1.01). Complex on fractures — yogurt outperforms milk, vitamin D fortification confounds geography. Positive on BMD with RCT-backed gains of +2.6–3.0% in children.',
+    tags: ['dairy'],
+    studies: '12 studies cited',
+    href: 'milk-research-graphic.html',
+    soon: false,
+  },
+  {
+    num: '05',
+    title: 'Artificial Sweeteners: What 13 RCTs Actually Show',
+    desc: '–94 kcal/day vs sugar across 129 RCT comparisons. Six controlled studies show no effect on blood glucose or insulin. Three human RCTs show no gut microbiome disruption at realistic doses.',
+    tags: ['sweeteners'],
+    studies: '13 studies cited',
+    href: 'sweeteners-graphic.html',
+    soon: false,
+  },
+  {
+    num: '06',
+    title: 'Red Meat & Cancer Risk: Relative vs Absolute Risk',
+    desc: 'HR 1.18 per 50g/day processed meat (Chan 2011, 28 studies) translates to 4.3% → 5.07% absolute lifetime CRC risk. High vegetable intake (HR 1.66 with high meat) nearly matches low meat + low vegetables (HR 1.56).',
+    tags: ['cancer'],
+    studies: '8 studies cited',
+    href: 'redmeat-cancer-graphic.html',
+    soon: false,
+  },
+  // COMING SOON
+  {
+    num: '07',
+    title: 'Creatine: Beyond the Gym — Cognitive and Metabolic Effects',
+    desc: 'The evidence on creatine supplementation for brain health, cellular energy, and performance across age groups.',
+    tags: ['protein'],
+    studies: 'Coming soon',
+    href: '#',
+    soon: true,
+  },
+  {
+    num: '08',
+    title: 'Vitamin D: The Chronic Deficiency Nobody Talks About',
+    desc: 'Optimal serum levels, supplementation thresholds, and what the RCT data says about immune, bone, and metabolic outcomes.',
+    tags: ['glucose'],
+    studies: 'Coming soon',
+    href: '#',
+    soon: true,
+  },
+  {
+    num: '09',
+    title: 'Sleep & Metabolic Health: The Missing Variable',
+    desc: 'Sleep restriction drives insulin resistance independently of diet. Ghrelin/leptin disruption, glucose tolerance, and muscle protein synthesis all degrade with chronic sleep debt.',
+    tags: ['glucose'],
+    studies: 'Coming soon',
+    href: '#',
+    soon: true,
+  },
+  {
+    num: '10',
+    title: 'Omega-3 & Cardiovascular Risk: Meta-Analysis Update',
+    desc: 'Re-examining the EPA/DHA evidence after REDUCE-IT and STRENGTH. What dose, what formulation, and who actually benefits.',
+    tags: ['cancer'],
+    studies: 'Coming soon',
+    href: '#',
+    soon: true,
+  },
+  {
+    num: '11',
+    title: 'Leucine Threshold & Muscle Protein Synthesis',
+    desc: 'The minimum leucine dose to trigger MPS, how it varies by age and training status, and why protein source distribution across meals matters.',
+    tags: ['protein'],
+    studies: 'Coming soon',
+    href: '#',
+    soon: true,
+  },
+];
+
+const tagColors = {
+  protein: 'tag-protein',
+  fasting: 'tag-fasting',
+  glucose: 'tag-glucose',
+  dairy: 'tag-dairy',
+  sweeteners: 'tag-sweeteners',
+  cancer: 'tag-cancer',
+};
+
+function buildCard(a, idx) {
+  const card = document.createElement('a');
+  card.className = 'article-card' + (a.soon ? ' soon' : '');
+  card.href = a.soon ? '#' : a.href;
+  card.dataset.tags = a.tags.join(',');
+  if (a.soon) card.addEventListener('click', e => e.preventDefault());
+
+  const tagsHtml = a.tags.map(t =>
+    `<span class="tag ${tagColors[t] || ''}">${t}</span>`
+  ).join('') + (a.soon ? '<span class="tag tag-soon">Soon</span>' : '');
+
+  card.innerHTML = `
+    <div class="card-inner">
+      <div class="card-num">${a.num}</div>
+      <div class="card-body">
+        <div class="card-tags">${tagsHtml}</div>
+        <div class="card-title">${a.title}</div>
+        <div class="card-desc">${a.desc}</div>
+        <div class="card-meta">
+          <span class="card-studies">${a.studies}</span>
+          ${a.soon ? '<span class="soon-badge">In Progress</span>' : '<span class="card-arrow">→</span>'}
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Staggered entrance animation
+  setTimeout(() => card.classList.add('visible'), 50 + idx * 60);
+  return card;
+}
+
+function render(filter) {
+  const grid = document.getElementById('articleGrid');
+  const empty = document.getElementById('emptyState');
+  grid.innerHTML = '';
+
+  const filtered = filter === 'all'
+    ? articles
+    : articles.filter(a => a.tags.includes(filter));
+
+  if (filtered.length === 0) {
+    empty.classList.add('show');
+    return;
+  }
+  empty.classList.remove('show');
+
+  // Separate published and coming soon
+  const published = filtered.filter(a => !a.soon);
+  const soon = filtered.filter(a => a.soon);
+
+  published.forEach((a, i) => grid.appendChild(buildCard(a, i)));
+
+  if (soon.length > 0 && filter === 'all') {
+    const div = document.createElement('div');
+    div.className = 'section-divider';
+    div.style.animationDelay = (published.length * 60 + 200) + 'ms';
+    div.innerHTML = `<div class="section-divider-line"></div><div class="section-divider-label">Coming Soon</div><div class="section-divider-line"></div>`;
+    grid.appendChild(div);
+    soon.forEach((a, i) => grid.appendChild(buildCard(a, published.length + i + 1)));
+  } else {
+    soon.forEach((a, i) => grid.appendChild(buildCard(a, published.length + i)));
+  }
+}
+
+// Filter buttons
+document.getElementById('filterBar').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render(btn.dataset.filter);
+});
+
+render('all');
+</script>
+</body>
+</html>
