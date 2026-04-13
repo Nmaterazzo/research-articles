@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milk & Health — Origin Symmetrics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f0f13;
+    --surface: #17171d;
+    --surface2: #1e1e26;
+    --border: #2a2a38;
+    --text: #e8e6e0;
+    --muted: #7a7870;
+    --green: #3dba5f;
+    --green-dim: rgba(61,186,95,0.12);
+    --orange: #e8890a;
+    --orange-dim: rgba(232,137,10,0.12);
+    --red: #e05252;
+    --red-dim: rgba(224,82,82,0.12);
+    --blue: #4f9cf5;
+    --blue-dim: rgba(79,156,245,0.12);
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    padding: 48px 20px 64px;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .top-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .top-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 36px;
+    max-width: 580px;
+    line-height: 1.55;
+  }
+
+  /* ── VERDICT BAR ── */
+  .verdict-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 36px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .verdict-cell {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+
+  .verdict-cell::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .vc-neutral::before { background: var(--blue); }
+  .vc-complex::before { background: var(--orange); }
+  .vc-positive::before { background: var(--green); }
+
+  .vc-neutral { background: var(--blue-dim); }
+  .vc-complex { background: var(--orange-dim); }
+  .vc-positive { background: var(--green-dim); }
+
+  .verdict-outcome {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .verdict-label {
+    font-size: 1.0rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .vc-neutral .verdict-label { color: var(--blue); }
+  .vc-complex .verdict-label { color: var(--orange); }
+  .vc-positive .verdict-label { color: var(--green); }
+
+  .verdict-sub {
+    font-size: 0.72rem;
+    color: rgba(232,230,224,0.55);
+    line-height: 1.35;
+  }
+
+  .evidence-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-top: 2px;
+    width: fit-content;
+  }
+
+  .ep-high { background: rgba(61,186,95,0.15); color: var(--green); border: 1px solid rgba(61,186,95,0.3); }
+  .ep-mod { background: rgba(232,137,10,0.15); color: var(--orange); border: 1px solid rgba(232,137,10,0.3); }
+  .ep-low { background: rgba(224,82,82,0.15); color: var(--red); border: 1px solid rgba(224,82,82,0.3); }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    margin-top: 36px;
+  }
+
+  .section-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.7rem; font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .sn-blue { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(79,156,245,0.3); }
+  .sn-orange { background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(232,137,10,0.3); }
+  .sn-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(61,186,95,0.3); }
+
+  .section-title-text {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .section-sub {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-left: auto;
+  }
+
+  /* ── CHART CARD ── */
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chart-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .cc-blue::before { background: linear-gradient(90deg, var(--blue), transparent); }
+  .cc-orange::before { background: linear-gradient(90deg, var(--orange), transparent); }
+  .cc-green::before { background: linear-gradient(90deg, var(--green), transparent); }
+
+  .chart-card-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .chart-card-source {
+    font-family: var(--mono);
+    font-size: 0.54rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+    letter-spacing: 0.06em;
+  }
+  .chart-container { height: 220px; position: relative; }
+  canvas { width: 100%; height: 100%; display: block; }
+
+  /* ── INSIGHT STRIP ── */
+  .insight-strip {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 16px;
+  }
+
+  .insight {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .insight-icon {
+    font-size: 0.65rem;
+    font-family: var(--mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .insight-val {
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .insight-desc {
+    font-size: 0.7rem;
+    color: rgba(232,230,224,0.5);
+    line-height: 1.35;
+  }
+
+  /* ── FINDING ROW ── */
+  .finding-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .finding-tag {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: 0.06em;
+    margin-top: 1px;
+  }
+
+  .ft-neutral { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(79,156,245,0.25); }
+  .ft-warn { background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(232,137,10,0.25); }
+  .ft-good { background: var(--green-dim); color: var(--green); border: 1px solid rgba(61,186,95,0.25); }
+  .ft-bad { background: var(--red-dim); color: var(--red); border: 1px solid rgba(224,82,82,0.25); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .callout strong { font-weight: 700; }
+
+  .co-blue { background: var(--blue-dim); border-left: 3px solid var(--blue); }
+  .co-orange { background: var(--orange-dim); border-left: 3px solid var(--orange); }
+  .co-green { background: var(--green-dim); border-left: 3px solid var(--green); }
+  .co-red { background: var(--red-dim); border-left: 3px solid var(--red); }
+
+  .callout-head {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .co-blue .callout-head { color: var(--blue); }
+  .co-orange .callout-head { color: var(--orange); }
+  .co-green .callout-head { color: var(--green); }
+  .co-red .callout-head { color: var(--red); }
+
+  /* ── DAIRY COMPARISON GRID ── */
+  .dairy-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .dairy-cell {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dairy-name {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .dairy-rr {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .dairy-outcome {
+    font-size: 0.64rem;
+    color: rgba(232,230,224,0.45);
+    line-height: 1.3;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  /* ── BOTTOM VERDICT ── */
+  .bottom-verdict {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+
+  .bv-title {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .bv-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba(232,230,224,0.85);
+  }
+
+  .bv-text strong { color: var(--text); font-weight: 700; }
+  .bv-text .g { color: var(--green); font-weight: 700; }
+  .bv-text .o { color: var(--orange); font-weight: 700; }
+  .bv-text .r { color: var(--red); font-weight: 700; }
+  .bv-text .b { color: var(--blue); font-weight: 700; }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-brand {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .footer-refs {
+    font-family: var(--mono);
+    font-size: 0.54rem;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+    .verdict-bar { grid-template-columns: 1fr; }
+    .dairy-grid { grid-template-columns: repeat(2, 1fr); }
+    .insight-strip { flex-direction: column; }
+    .footer-refs { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-label">Evidence Review · Dairy Nutrition · Origin Symmetrics</div>
+
+<h1>Milk: What the Meta-Analyses<br>Actually Show</h1>
+<p class="subtitle">Three outcomes. Three completely different evidence stories. This is what systematic reviews and RCTs say — not what the campaigns say.</p>
+
+<!-- Verdict bar -->
+<div class="verdict-bar">
+  <div class="verdict-cell vc-neutral">
+    <div class="verdict-outcome">All-Cause Mortality</div>
+    <div class="verdict-label">Neutral</div>
+    <div class="verdict-sub">No consistent association. High heterogeneity (I²=94%) across studies.</div>
+    <div class="evidence-pill ep-mod">Moderate Evidence</div>
+  </div>
+  <div class="verdict-cell vc-complex">
+    <div class="verdict-outcome">Bone Fracture Risk</div>
+    <div class="verdict-label">Complex</div>
+    <div class="verdict-sub">Inconsistent. Non-linear. Yogurt/cheese outperform milk specifically.</div>
+    <div class="evidence-pill ep-low">Observational Only</div>
+  </div>
+  <div class="verdict-cell vc-positive">
+    <div class="verdict-outcome">Bone Mineral Density</div>
+    <div class="verdict-label">Positive</div>
+    <div class="verdict-sub">Small but significant BMD gains across age groups in RCTs.</div>
+    <div class="evidence-pill ep-high">RCT-Backed</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SECTION 1: MORTALITY
+════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-num sn-blue">01</div>
+  <div class="section-title-text">All-Cause Mortality — The Neutral Story</div>
+  <div class="section-sub">Meta-Analyses · Cohort Studies</div>
+</div>
+
+<div class="insight-strip">
+  <div class="insight">
+    <div class="insight-icon" style="color:var(--blue)">RR per 200g/day</div>
+    <div class="insight-val" style="color:var(--blue)">0.99–1.01</div>
+    <div class="insight-desc">Total dairy — all-cause mortality. Statistically indistinguishable from no effect.</div>
+  </div>
+  <div class="insight">
+    <div class="insight-icon" style="color:var(--red)">I² Heterogeneity</div>
+    <div class="insight-val" style="color:var(--red)">94%</div>
+    <div class="insight-desc">For non-fermented milk & all-cause mortality. So high that pooled HR estimates are unreliable.</div>
+  </div>
+  <div class="insight">
+    <div class="insight-icon" style="color:var(--blue)">Dose Response</div>
+    <div class="insight-val" style="color:var(--blue)">None</div>
+    <div class="insight-desc">Incremental increases in dairy consumption don't alter mortality risk in either direction.</div>
+  </div>
+</div>
+
+<div class="finding-row">
+  <span class="finding-tag ft-neutral">Consistent</span>
+  Overviews of systematic reviews and meta-analyses show milk, cheese, yogurt, and butter all report RR of 0.96–1.01 per 200g/day — none significantly different from null. Total dairy consumption does not alter overall longevity in either direction within typical consumption ranges.
+</div>
+<div class="finding-row">
+  <span class="finding-tag ft-warn">Caveat</span>
+  Specific cause-of-death data is murkier. CVD associations (I²=93%), cancer (I²=75%) show substantial variability — suggesting the effect may differ by population, geography, or dairy subtype even if the aggregate signal is flat.
+</div>
+<div class="finding-row">
+  <span class="finding-tag ft-neutral">Context</span>
+  The famous Michaëlsson Swedish cohort (≥3 glasses/day → HR 1.93 in women) is a single observational study. When synthesized into meta-analyses with other cohorts, this signal disappears into heterogeneity rather than driving a consistent pooled effect.
+</div>
+
+<div class="callout co-blue">
+  <div class="callout-head">Bottom Line — Mortality</div>
+  <strong>Milk is not killing you and it's not saving you from dying.</strong> The highest-level evidence says null effect on all-cause mortality. The inconsistencies in individual studies are absorbed into noise at the meta-analytic level, not resolved into a consistent signal.
+</div>
+
+<hr class="divider">
+
+<!-- ════════════════════════════════════════
+     SECTION 2: FRACTURES
+════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-num sn-orange">02</div>
+  <div class="section-title-text">Bone Fracture Prevalence — The Complicated Story</div>
+  <div class="section-sub">Meta-Analyses · No RCTs Available</div>
+</div>
+
+<!-- Dairy product comparison -->
+<div class="dairy-grid">
+  <div class="dairy-cell">
+    <div class="dairy-name">Yogurt</div>
+    <div class="dairy-rr" style="color:var(--green)">RR 0.78</div>
+    <div class="dairy-outcome">Hip fracture risk<br>(95% CI 0.68–0.90)</div>
+  </div>
+  <div class="dairy-cell">
+    <div class="dairy-name">Cheese</div>
+    <div class="dairy-rr" style="color:var(--green)">RR 0.85</div>
+    <div class="dairy-outcome">Hip fracture risk<br>(95% CI 0.66–1.08)</div>
+  </div>
+  <div class="dairy-cell">
+    <div class="dairy-name">Milk</div>
+    <div class="dairy-rr" style="color:var(--orange)">RR 0.86</div>
+    <div class="dairy-outcome">Hip fracture risk<br>(95% CI 0.73–1.02) — crosses null</div>
+  </div>
+  <div class="dairy-cell">
+    <div class="dairy-name">Total Dairy</div>
+    <div class="dairy-rr" style="color:var(--muted)">NS</div>
+    <div class="dairy-outcome">Hip fracture risk<br>Not significantly associated</div>
+  </div>
+</div>
+
+<!-- Dose-response chart -->
+<div class="chart-card cc-orange">
+  <div class="chart-card-title">Milk Intake & Hip Fracture Risk — The Non-Linear Dose-Response</div>
+  <div class="chart-card-source">Meta-analysis of prospective cohort studies · Milk consumption & fragility fractures</div>
+  <div class="chart-container">
+    <canvas id="doseChart"></canvas>
+  </div>
+</div>
+
+<div class="finding-row">
+  <span class="finding-tag ft-bad">Paradox</span>
+  Risk of hip fracture rises as milk consumption increases from 0 → 600 g/day in cohort meta-analyses — then plateaus. 200 g/day may have a modest beneficial threshold. Higher is not better, and may be worse.
+</div>
+<div class="finding-row">
+  <span class="finding-tag ft-good">Fermented Wins</span>
+  Yogurt shows consistent 22% lower hip fracture risk (RR 0.78) across meta-analyses. Fermentation alters gut microflora, provides anti-inflammatory effects, and changes the nutrient matrix in ways plain milk does not.
+</div>
+<div class="finding-row">
+  <span class="finding-tag ft-warn">Geography Matters</span>
+  Milk shows reduced fracture risk in US populations (RR 0.75) but not Scandinavian (RR 1.00). Hypothesis: vitamin D fortification of milk in the US, not the milk itself, drives the benefit.
+</div>
+<div class="finding-row">
+  <span class="finding-tag ft-bad">No RCTs</span>
+  Zero large-scale randomized controlled trials directly measuring fracture incidence with milk intervention exist. All fracture data is observational — subject to residual confounding, recall bias, and reverse causation.
+</div>
+
+<div class="callout co-orange">
+  <div class="callout-head">Bottom Line — Fractures</div>
+  <strong>The "milk = strong bones = no fractures" equation doesn't hold at the evidence level.</strong> Yogurt and cheese show more consistent protection than milk. The dose-response for milk is non-linear — and ecological data shows countries with the highest milk intake have the highest fracture rates. Vitamin D fortification may be doing the work that's being attributed to milk itself.
+</div>
+
+<hr class="divider">
+
+<!-- ════════════════════════════════════════
+     SECTION 3: BMD
+════════════════════════════════════════ -->
+<div class="section-header">
+  <div class="section-num sn-green">03</div>
+  <div class="section-title-text">Bone Mineral Density — The Strongest Story</div>
+  <div class="section-sub">Meta-Analyses of RCTs · Causal Evidence</div>
+</div>
+
+<!-- BMD chart -->
+<div class="chart-card cc-green">
+  <div class="chart-card-title">BMD Gains from Dairy Supplementation — Across Age Groups (RCTs)</div>
+  <div class="chart-card-source">Meta-analyses of RCTs · Children (3–18y) · Adults · Postmenopausal Women</div>
+  <div class="chart-container">
+    <canvas id="bmdChart"></canvas>
+  </div>
+</div>
+
+<div class="insight-strip">
+  <div class="insight">
+    <div class="insight-icon" style="color:var(--green)">Whole-body BMC</div>
+    <div class="insight-val" style="color:var(--green)">+3.0%</div>
+    <div class="insight-desc">In children 3–18 years from dairy supplementation RCTs.</div>
+  </div>
+  <div class="insight">
+    <div class="insight-icon" style="color:var(--green)">Lumbar Spine BMD</div>
+    <div class="insight-val" style="color:var(--green)">+2.6%</div>
+    <div class="insight-desc">Children — consistent across gender, geography, trial duration.</div>
+  </div>
+  <div class="insight">
+    <div class="insight-icon" style="color:var(--green)">Postmenopausal</div>
+    <div class="insight-val" style="color:var(--green)">SMD 0.21–0.58</div>
+    <div class="insight-desc">Significant BMD effect at lumbar spine, femoral neck, total hip. Appears after 12–18 months.</div>
+  </div>
+</div>
+
+<div class="finding-row">
+  <span class="finding-tag ft-good">RCT Gold Standard</span>
+  This is the only outcome with meta-analyses of RCTs as the evidence base — the highest level of causal inference. BMD improvements are small but consistent across children, adults, and postmenopausal women at multiple skeletal sites.
+</div>
+<div class="finding-row">
+  <span class="finding-tag ft-warn">Context-Dependent</span>
+  Benefits are significantly more pronounced in individuals with baseline calcium intake below 700 mg/day and in longer trials (>1 year). If you're already meeting calcium targets from diverse sources, the marginal benefit of additional milk on BMD may be negligible.
+</div>
+<div class="finding-row">
+  <span class="finding-tag ft-warn">Mechanism Known</span>
+  Calcium + protein → suppress PTH → reduce bone resorption. Protein in milk also directly stimulates intestinal calcium absorption. The biological pathway is well-characterized — this isn't correlation, it's understood mechanism.
+</div>
+<div class="finding-row">
+  <span class="finding-tag ft-bad">BMD ≠ Fracture Prevention</span>
+  Higher BMD from RCTs does not translate into demonstrated fracture reduction in observational data. Bone quality, microarchitecture, fall risk, and physical activity all determine fracture — BMD is one input, not the whole picture.
+</div>
+
+<div class="callout co-green">
+  <div class="callout-head">Bottom Line — BMD</div>
+  <strong>This is where milk earns its reputation</strong> — but with a crucial caveat. RCT data consistently shows BMD improvements, particularly in calcium-deficient populations. The mechanism is understood. But BMD is not the same as fracture prevention, and the two outcome literatures tell completely different stories despite everyone assuming they're the same question.
+</div>
+
+<hr class="divider">
+
+<!-- ── BOTTOM VERDICT ── -->
+<div class="bottom-verdict">
+  <div class="bv-title">Synthesis · The Evidence Scorecard</div>
+  <div class="bv-text">
+    Milk is <b class="b">neutral on mortality</b>, <b class="o">complicated on fractures</b>, and <b class="g">modestly effective for BMD</b> — and these three findings do not all point in the same direction, which is exactly why "milk is good for your bones" is an oversimplification.<br><br>
+    The most important reframe: <strong>yogurt and cheese outperform milk specifically on fracture data</strong>, vitamin D fortification may explain much of the geographic benefit attributed to milk, and <strong>BMD improvements are real but context-dependent</strong> — they're most meaningful when calcium intake is suboptimal. More milk for someone already hitting calcium targets from varied whole foods is doing very little incremental work.<br><br>
+    The public health message should be: <b class="g">fermented dairy for fracture protection</b>, <b class="g">calcium-adequate intake via whatever source fits your diet</b>, <b class="o">moderate milk as part of a mixed approach</b>, and <b class="r">no evidence that higher milk intake beyond moderate amounts provides additional benefit</b> — and some observational signals suggest the opposite.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics · originsymmetrics.com</div>
+  <div class="footer-refs">
+    PMC7551481 · PMC9340984 · Lu et al. 2019<br>
+    Michaëlsson et al. 2014 · PMC8970833<br>
+    ADA/WHO Criteria · Milajerdi et al. 2018
+  </div>
+</div>
+
+<script>
+// ── Chart 1: Non-linear dose-response for milk & hip fracture
+(function() {
+  const canvas = document.getElementById('doseChart');
+  const ctx = canvas.getContext('2d');
+
+  function setup() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * window.devicePixelRatio;
+    canvas.height = rect.height * window.devicePixelRatio;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    draw(rect.width, rect.height);
+  }
+
+  function draw(W, H) {
+    ctx.clearRect(0, 0, W, H);
+    const PAD = { top: 28, right: 30, bottom: 50, left: 65 };
+    const CW = W - PAD.left - PAD.right;
+    const CH = H - PAD.top - PAD.bottom;
+    const X_MIN = 0, X_MAX = 1200;
+    const Y_MIN = 0.7, Y_MAX = 1.4;
+
+    function px(x) { return PAD.left + ((x - X_MIN) / (X_MAX - X_MIN)) * CW; }
+    function py(y) { return PAD.top + CH - ((y - Y_MIN) / (Y_MAX - Y_MIN)) * CH; }
+
+    // BG
+    ctx.fillStyle = '#17171d'; ctx.fillRect(0, 0, W, H);
+
+    // Grid
+    ctx.strokeStyle = 'rgba(42,42,56,0.8)'; ctx.lineWidth = 1;
+    [0.8, 0.9, 1.0, 1.1, 1.2, 1.3].forEach(y => {
+      ctx.beginPath(); ctx.moveTo(PAD.left, py(y)); ctx.lineTo(PAD.left + CW, py(y)); ctx.stroke();
+    });
+    [200, 400, 600, 800, 1000, 1200].forEach(x => {
+      ctx.beginPath(); ctx.moveTo(px(x), PAD.top); ctx.lineTo(px(x), PAD.top + CH); ctx.stroke();
+    });
+
+    // Null reference line at RR=1.0
+    ctx.strokeStyle = 'rgba(122,120,112,0.5)'; ctx.lineWidth = 1.2; ctx.setLineDash([5,4]);
+    ctx.beginPath(); ctx.moveTo(PAD.left, py(1.0)); ctx.lineTo(PAD.left + CW, py(1.0)); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(122,120,112,0.7)'; ctx.font = '500 9px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('RR = 1.0 (null)', PAD.left + 4, py(1.0) - 5);
+
+    // Confidence interval band
+    const upper = [[0,1.35],[100,1.28],[200,1.18],[400,1.14],[600,1.12],[800,1.13],[1000,1.14],[1200,1.15]];
+    const lower = [[0,0.92],[100,0.88],[200,0.86],[400,0.92],[600,0.98],[800,1.00],[1000,1.01],[1200,1.02]];
+
+    ctx.beginPath();
+    ctx.moveTo(px(upper[0][0]), py(upper[0][1]));
+    upper.forEach(([x,y]) => ctx.lineTo(px(x), py(y)));
+    lower.slice().reverse().forEach(([x,y]) => ctx.lineTo(px(x), py(y)));
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(232,137,10,0.1)'; ctx.fill();
+
+    // Main curve
+    const main = [[0,1.12],[100,1.06],[200,1.0],[300,1.02],[400,1.04],[500,1.06],[600,1.08],[800,1.09],[1000,1.09],[1200,1.09]];
+
+    ctx.beginPath();
+    ctx.moveTo(px(main[0][0]), py(main[0][1]));
+    for (let i = 1; i < main.length; i++) {
+      const prev = main[i-1], curr = main[i];
+      const cpx = (px(prev[0]) + px(curr[0])) / 2;
+      ctx.bezierCurveTo(cpx, py(prev[1]), cpx, py(curr[1]), px(curr[0]), py(curr[1]));
+    }
+    ctx.strokeStyle = '#e8890a'; ctx.lineWidth = 2.5; ctx.stroke();
+
+    // 200g/day sweet spot marker
+    ctx.beginPath(); ctx.arc(px(200), py(1.0), 5, 0, Math.PI*2);
+    ctx.fillStyle = '#3dba5f'; ctx.fill();
+    ctx.strokeStyle = '#17171d'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.fillStyle = '#3dba5f'; ctx.font = '600 9px Inter, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('~200g/day', px(200), py(1.0) - 10);
+    ctx.fillText('potential benefit', px(200), py(1.0) - 1);
+
+    // Axes
+    ctx.strokeStyle = '#2a2a38'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(PAD.left, PAD.top); ctx.lineTo(PAD.left, PAD.top + CH);
+    ctx.lineTo(PAD.left + CW, PAD.top + CH); ctx.stroke();
+
+    // Labels
+    ctx.fillStyle = '#7a7870'; ctx.font = '500 10px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    [200, 400, 600, 800, 1000, 1200].forEach(x => ctx.fillText(x + 'g', px(x), PAD.top + CH + 16));
+    ctx.fillStyle = '#e8e6e0'; ctx.font = '600 11px Inter, sans-serif';
+    ctx.fillText('Daily Milk Intake (g/day)', PAD.left + CW/2, PAD.top + CH + 36);
+
+    ctx.textAlign = 'right'; ctx.font = '500 10px IBM Plex Mono, monospace'; ctx.fillStyle = '#7a7870';
+    [0.8, 0.9, 1.0, 1.1, 1.2, 1.3].forEach(y => ctx.fillText(y.toFixed(1), PAD.left - 8, py(y) + 4));
+
+    ctx.save(); ctx.translate(14, PAD.top + CH/2); ctx.rotate(-Math.PI/2);
+    ctx.textAlign = 'center'; ctx.fillStyle = '#e8e6e0'; ctx.font = '600 11px Inter, sans-serif';
+    ctx.fillText('Relative Risk (Hip Fracture)', 0, 0); ctx.restore();
+  }
+
+  setup(); window.addEventListener('resize', setup);
+})();
+
+// ── Chart 2: BMD gains across age groups
+(function() {
+  const canvas = document.getElementById('bmdChart');
+  const ctx = canvas.getContext('2d');
+
+  function setup() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * window.devicePixelRatio;
+    canvas.height = rect.height * window.devicePixelRatio;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    draw(rect.width, rect.height);
+  }
+
+  function draw(W, H) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#17171d'; ctx.fillRect(0, 0, W, H);
+
+    const PAD = { top: 20, right: 20, bottom: 50, left: 120 };
+    const CW = W - PAD.left - PAD.right;
+    const CH = H - PAD.top - PAD.bottom;
+
+    const bars = [
+      { label: 'Children · Whole-body BMC', val: 3.0, pop: 'Ages 3–18', color: '#3dba5f' },
+      { label: 'Children · Lumbar Spine aBMD', val: 2.6, pop: 'Ages 3–18', color: '#3dba5f' },
+      { label: 'Children · Total Hip BMD', val: 1.8, pop: 'Ages 3–18', color: '#5cc87a' },
+      { label: 'Adults · Hip BMD', val: 1.4, pop: 'General Adults', color: '#4f9cf5' },
+      { label: 'Adults · Lumbar Spine BMD', val: 1.2, pop: 'General Adults', color: '#4f9cf5' },
+      { label: 'Postmeno · Lumbar Spine', val: 2.1, pop: 'SMD 0.58', color: '#e8890a' },
+      { label: 'Postmeno · Femoral Neck', val: 1.6, pop: 'SMD 0.38', color: '#e8890a' },
+      { label: 'Postmeno · Total Hip', val: 1.4, pop: 'After 12mo', color: '#e8890a' },
+    ];
+
+    const maxVal = 3.5;
+    const barH = Math.min((CH - (bars.length - 1) * 5) / bars.length, 22);
+    const gap = 5;
+
+    ctx.strokeStyle = 'rgba(42,42,56,0.7)'; ctx.lineWidth = 1;
+    [1, 2, 3].forEach(v => {
+      const bx = PAD.left + (v / maxVal) * CW;
+      ctx.beginPath(); ctx.moveTo(bx, PAD.top); ctx.lineTo(bx, PAD.top + CH); ctx.stroke();
+    });
+
+    bars.forEach((bar, i) => {
+      const y = PAD.top + i * (barH + gap);
+      const bw = (bar.val / maxVal) * CW;
+
+      // Track bg
+      ctx.fillStyle = 'rgba(42,42,56,0.4)';
+      ctx.fillRect(PAD.left, y, CW, barH);
+
+      // Bar
+      const grad = ctx.createLinearGradient(PAD.left, 0, PAD.left + bw, 0);
+      grad.addColorStop(0, bar.color);
+      grad.addColorStop(1, bar.color + '88');
+      ctx.fillStyle = grad;
+      ctx.fillRect(PAD.left, y, bw, barH);
+
+      // Label (left)
+      ctx.fillStyle = 'rgba(232,230,224,0.65)';
+      ctx.font = '500 9px Inter, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(bar.label, PAD.left - 6, y + barH/2 + 3);
+
+      // Value (right of bar)
+      ctx.fillStyle = bar.color;
+      ctx.font = '700 9.5px IBM Plex Mono, monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText('+' + bar.val + '%', PAD.left + bw + 5, y + barH/2 + 3);
+    });
+
+    // X axis labels
+    ctx.fillStyle = '#7a7870'; ctx.font = '500 9px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    [0, 1, 2, 3].forEach(v => {
+      ctx.fillText('+' + v + '%', PAD.left + (v/maxVal)*CW, PAD.top + CH + 16);
+    });
+    ctx.fillStyle = '#e8e6e0'; ctx.font = '600 11px Inter, sans-serif';
+    ctx.fillText('% Change in BMD/BMC vs Control', PAD.left + CW/2, PAD.top + CH + 34);
+
+    // Legend
+    const legItems = [
+      { color: '#3dba5f', label: 'Children (RCTs)' },
+      { color: '#4f9cf5', label: 'Adults (RCTs)' },
+      { color: '#e8890a', label: 'Postmenopausal (RCTs)' },
+    ];
+    let lx = PAD.left;
+    legItems.forEach(item => {
+      ctx.fillStyle = item.color;
+      ctx.fillRect(lx, PAD.top + CH + 44, 10, 7);
+      ctx.fillStyle = 'rgba(232,230,224,0.5)';
+      ctx.font = '500 9px Inter, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(item.label, lx + 13, PAD.top + CH + 51);
+      lx += 140;
+    });
+  }
+
+  setup(); window.addEventListener('resize', setup);
+})();
+</script>
+</body>
+</html>
