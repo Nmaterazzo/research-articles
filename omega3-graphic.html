@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omega-3 vs The Ratio — Origin Symmetrics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background:#0c0c10; color:#f0ede6; font-family:'Inter',sans-serif; padding:40px 18px 60px; max-width:860px; margin:0 auto; line-height:1.5; }
+
+  .top-label { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:#8a8880; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .top-label::after { content:''; flex:1; height:1px; background:#28283a; }
+  h1 { font-size:clamp(1.4rem,4vw,2.1rem); font-weight:900; line-height:1.15; margin-bottom:10px; letter-spacing:-0.02em; color:#f0ede6; }
+  .cr{color:#ff8080;} .cg{color:#5de07a;} .co{color:#ffaa50;} .cb{color:#7dbcff;} .cp{color:#c4a0ff;}
+  .subtitle { font-size:0.88rem; color:#8a8880; margin-bottom:28px; line-height:1.65; }
+
+  /* Three claims */
+  .three-claims { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:28px; border-radius:6px; overflow:hidden; border:1px solid #28283a; }
+  .claim-cell { padding:16px; display:flex; flex-direction:column; gap:6px; position:relative; }
+  .claim-cell::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+  .cc-r { background:rgba(224,82,82,0.1); } .cc-r::before { background:#e05252; }
+  .cc-g { background:rgba(61,186,95,0.1); } .cc-g::before { background:#3dba5f; }
+  .cc-b { background:rgba(77,158,240,0.1); } .cc-b::before { background:#4d9ef0; }
+  .claim-tag { font-family:'IBM Plex Mono',monospace; font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; }
+  .cc-r .claim-tag{color:#ff8080;} .cc-g .claim-tag{color:#5de07a;} .cc-b .claim-tag{color:#7dbcff;}
+  .claim-head { font-size:0.9rem; font-weight:800; line-height:1.2; }
+  .cc-r .claim-head{color:#ff8080;} .cc-g .claim-head{color:#5de07a;} .cc-b .claim-head{color:#7dbcff;}
+  .claim-body { font-size:0.76rem; color:rgba(240,237,230,0.7); line-height:1.5; }
+
+  /* Sections */
+  .sec-hdr { display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:28px; flex-wrap:wrap; }
+  .sec-num { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; font-weight:600; padding:3px 9px; border-radius:3px; letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; flex-shrink:0; }
+  .sn-r{background:rgba(224,82,82,0.14);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .sn-g{background:rgba(61,186,95,0.14);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .sn-b{background:rgba(77,158,240,0.14);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .sn-o{background:rgba(232,137,10,0.14);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .sn-p{background:rgba(155,110,243,0.14);color:#c4a0ff;border:1px solid rgba(155,110,243,0.3);}
+  .sec-title{font-size:1.0rem;font-weight:700;color:#f0ede6;}
+  .sec-sub{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#8a8880;margin-left:auto;letter-spacing:0.07em;text-align:right;line-height:1.4;flex-shrink:0;max-width:180px;}
+
+  /* Card */
+  .card{background:#141418;border:1px solid #28283a;border-radius:6px;padding:18px 16px;margin-bottom:12px;position:relative;overflow:hidden;}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+  .c-r::before{background:linear-gradient(90deg,#e05252,transparent);}
+  .c-g::before{background:linear-gradient(90deg,#3dba5f,transparent);}
+  .c-b::before{background:linear-gradient(90deg,#4d9ef0,transparent);}
+  .c-o::before{background:linear-gradient(90deg,#e8890a,transparent);}
+  .c-p::before{background:linear-gradient(90deg,#9b6ef3,transparent);}
+  .card-title{font-size:0.88rem;font-weight:700;color:#f0ede6;margin-bottom:4px;line-height:1.3;}
+  .card-src{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#8a8880;margin-bottom:16px;letter-spacing:0.05em;}
+
+  /* Bar chart */
+  .bar-chart{display:flex;flex-direction:column;gap:14px;}
+  .bar-row{display:flex;flex-direction:column;gap:5px;}
+  .bar-lbl-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;}
+  .bl-main{font-size:0.78rem;font-weight:600;color:#f0ede6;line-height:1.3;}
+  .bl-sub{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:#8a8880;}
+  .bl-val{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:1px;}
+  .bar-track{height:22px;background:rgba(255,255,255,0.06);border-radius:3px;position:relative;}
+  .bar-fill{height:100%;border-radius:3px;position:absolute;top:0;left:0;}
+  .bar-axis{display:flex;justify-content:space-between;margin-top:6px;}
+  .bar-axis span{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;color:#5a5860;}
+  .bar-axis-label{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:#8a8880;text-align:center;margin-top:4px;}
+
+  /* Stat strip */
+  .stat-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:14px;}
+  .stat-box{background:#1a1a20;border:1px solid #28283a;border-radius:4px;padding:12px 14px;}
+  .stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;color:#8a8880;margin-bottom:4px;}
+  .stat-val{font-size:1.3rem;font-weight:900;letter-spacing:-0.02em;line-height:1;}
+  .stat-sub{font-size:0.68rem;color:rgba(240,237,230,0.45);margin-top:3px;line-height:1.3;}
+
+  /* Findings */
+  .finding{display:flex;flex-direction:column;gap:6px;padding:12px 14px;background:#141418;border:1px solid #28283a;border-radius:4px;margin-bottom:5px;font-size:0.78rem;line-height:1.6;color:#f0ede6;}
+  .ftag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;font-weight:600;padding:2px 7px;border-radius:2px;white-space:nowrap;flex-shrink:0;letter-spacing:0.06em;width:fit-content;}
+  .ft-r{background:rgba(224,82,82,0.14);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .ft-g{background:rgba(61,186,95,0.14);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .ft-b{background:rgba(77,158,240,0.14);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .ft-o{background:rgba(232,137,10,0.14);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .ft-y{background:rgba(232,192,74,0.12);color:#f0d060;border:1px solid rgba(232,192,74,0.3);}
+
+  /* Callout */
+  .callout{border-radius:4px;padding:14px 16px;margin-bottom:12px;font-size:0.80rem;line-height:1.65;color:#f0ede6;width:100%;}
+  .callout strong{font-weight:700;}
+  .co-r{background:rgba(224,82,82,0.14);border-left:3px solid #e05252;}
+  .co-g{background:rgba(61,186,95,0.14);border-left:3px solid #3dba5f;}
+  .co-b{background:rgba(77,158,240,0.14);border-left:3px solid #4d9ef0;}
+  .co-o{background:rgba(232,137,10,0.14);border-left:3px solid #e8890a;}
+  .co-p{background:rgba(155,110,243,0.14);border-left:3px solid #9b6ef3;}
+  .callout-head{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+  .co-r .callout-head{color:#ff8080;} .co-g .callout-head{color:#5de07a;}
+  .co-b .callout-head{color:#7dbcff;} .co-o .callout-head{color:#ffaa50;}
+  .co-p .callout-head{color:#c4a0ff;}
+
+  /* Table */
+  .gen-table{width:100%;border-collapse:collapse;font-size:0.74rem;margin-bottom:12px;}
+  .gen-table th{background:#1e1e28;color:#8a8880;padding:7px 10px;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;text-align:left;border-bottom:1px solid #28283a;}
+  .gen-table td{padding:8px 10px;border-bottom:1px solid #28283a;vertical-align:top;color:#f0ede6;line-height:1.4;}
+  .gen-table tr:last-child td{border-bottom:none;}
+
+  /* Dose viz */
+  .dose-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+  .dose-row{display:flex;align-items:center;gap:10px;}
+  .dose-label{font-size:0.76rem;font-weight:600;width:140px;flex-shrink:0;line-height:1.3;}
+  .dose-bar-wrap{flex:1;height:20px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden;}
+  .dose-bar{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;}
+  .dose-bar-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;color:rgba(255,255,255,0.9);white-space:nowrap;}
+  .dose-outcome{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;width:100px;flex-shrink:0;text-align:right;color:#8a8880;line-height:1.3;}
+
+  /* O3 Index viz */
+  .o3-scale{display:flex;height:28px;border-radius:4px;overflow:hidden;margin-bottom:8px;}
+  .o3-zone{display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;color:#fff;}
+
+  .div{border:none;border-top:1px solid #28283a;margin:24px 0;}
+  .bottom{background:#1a1a24;border:1px solid #28283a;border-radius:6px;padding:22px;margin-bottom:24px;}
+  .bottom-tag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a8880;margin-bottom:10px;}
+  .bottom-text{font-size:0.87rem;line-height:1.7;color:rgba(240,237,230,0.88);}
+  .bottom-text strong{color:#f0ede6;font-weight:700;}
+  .footer{display:flex;justify-content:space-between;align-items:flex-end;padding-top:18px;border-top:1px solid #28283a;flex-wrap:wrap;gap:8px;}
+  .footer-brand{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#8a8880;}
+  .footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:#8a8880;text-align:right;line-height:1.7;}
+
+  @media(max-width:560px){
+    .three-claims{grid-template-columns:1fr;}
+    .stat-strip{grid-template-columns:1fr;}
+    .claim-head{font-size:0.85rem;}
+    .sec-sub{display:none;}
+    .dose-outcome{display:none;}
+    .footer-refs{text-align:left;}
+    .dose-label{width:100px;font-size:0.7rem;}
+    .dose-bar-label{font-size:0.52rem;}
+    h1{font-size:1.3rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-label">Evidence Review · Omega-3 Fatty Acids · Origin Symmetrics</div>
+
+<h1>Forget the ratio. <span class="cg">Getting enough EPA+DHA</span> is what the evidence supports. A high omega-6:omega-3 ratio is a marker of <span class="cr">omega-3 deficiency</span> — not proof that omega-6 is harmful.</h1>
+<p class="subtitle">What peer-reviewed cohort studies, clinical trials, and mechanistic research actually show about how omega-3s protect health.</p>
+
+<!-- Three claims -->
+<div class="three-claims">
+  <div class="claim-cell cc-g">
+    <div class="claim-tag">UK Biobank n=85,425</div>
+    <div class="claim-head">Both omega-3 AND omega-6 protect</div>
+    <div class="claim-body">High circulating omega-3: 31% lower all-cause mortality. High omega-6: 23% lower. Both are protective. Omega-3 is just stronger.</div>
+  </div>
+  <div class="claim-cell cc-r">
+    <div class="claim-tag">ALA Conversion</div>
+    <div class="claim-head">Plant omega-3 barely converts to EPA/DHA</div>
+    <div class="claim-body">ALA→EPA: &lt;5% typical. ALA→DHA: essentially negligible (&lt;0.1–4%). The bottleneck is enzymatic capacity, not competition with omega-6.</div>
+  </div>
+  <div class="claim-cell cc-b">
+    <div class="claim-tag">REDUCE-IT · NEJM 2019</div>
+    <div class="claim-head">High-dose EPA alone: 25% fewer CV events</div>
+    <div class="claim-body">4g/day pure EPA (no ratio manipulation). Absolute risk reduction 4.8%. 8,179 patients. Median 4.9 years. N Engl J Med.</div>
+  </div>
+</div>
+
+<!-- ════ SECTION 1: UK BIOBANK ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-g">01</div>
+  <div class="sec-title">The UK Biobank — The Key Study That Changes the Argument</div>
+  <div class="sec-sub">Zhang et al., 2024 · eLife · n=85,425 · 12.7-year follow-up</div>
+</div>
+
+<div class="stat-strip">
+  <div class="stat-box">
+    <div class="stat-label">Omega-3 (highest vs lowest quintile)</div>
+    <div class="stat-val" style="color:#5de07a">–31%</div>
+    <div class="stat-sub">All-cause mortality. 95% CI 15–44%. Circulating plasma measurement — not self-report.</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-label">Omega-3 vs CVD mortality</div>
+    <div class="stat-val" style="color:#5de07a">–34%</div>
+    <div class="stat-sub">CVD mortality reduction in highest vs lowest omega-3 quintile.</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-label">Omega-6 (highest vs lowest quintile)</div>
+    <div class="stat-val" style="color:#5de07a">–23%</div>
+    <div class="stat-sub">Also protective. Higher omega-6 is independently associated with LOWER all-cause mortality.</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-label">High ratio (omega-6/omega-3)</div>
+    <div class="stat-val" style="color:#ff8080">+26%</div>
+    <div class="stat-sub">Higher all-cause mortality. +14% cancer. +31% CVD. But the ratio rose because omega-3 was low — not because omega-6 was high.</div>
+  </div>
+</div>
+
+<div class="card c-g">
+  <div class="card-title">Mortality Risk: Omega-3 vs Omega-6 vs Their Ratio</div>
+  <div class="card-src">Zhang et al., 2024 · eLife 12:RP90132 · UK Biobank · Plasma NMR measurement · Cox proportional hazards · adjusted for BMI, smoking, activity, comorbidities</div>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main" style="color:#5de07a;">High omega-3 — all-cause mortality</span><br><span class="bl-sub">Highest vs lowest quintile</span></div>
+        <span class="bl-val" style="color:#5de07a">–31% (CI 15–44%)</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:31%;background:rgba(61,186,95,0.7);"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main" style="color:#5de07a;">High omega-3 — CVD mortality</span><br><span class="bl-sub">Strongest individual PUFA effect</span></div>
+        <span class="bl-val" style="color:#5de07a">–34%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:34%;background:rgba(61,186,95,0.65);"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main" style="color:#5de07a;">High omega-6 — all-cause mortality</span><br><span class="bl-sub">Also protective — not harmful</span></div>
+        <span class="bl-val" style="color:#5de07a">–23%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:23%;background:rgba(61,186,95,0.45);"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main" style="color:#ff8080;">High omega-6/omega-3 ratio — all-cause</span><br><span class="bl-sub">Risk increases — but omega-6 isn't the cause</span></div>
+        <span class="bl-val" style="color:#ff8080">+26% (CI 15–38%)</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:26%;background:rgba(224,82,82,0.6);"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main" style="color:#ff8080;">High ratio — CVD mortality</span><br><span class="bl-sub">Driven by omega-3 deficiency, not omega-6 excess</span></div>
+        <span class="bl-val" style="color:#ff8080">+31% (CI 10–55%)</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:31%;background:rgba(224,82,82,0.55);"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bar-axis" style="margin-top:8px;"><span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>40%</span></div>
+  <div class="bar-axis-label">% Change in Mortality vs Reference Quintile</div>
+</div>
+
+<div class="callout co-g">
+  <div class="callout-head">The Critical Reframe From Zhang et al., 2024</div>
+  The authors explicitly concluded: <strong>"the stronger protection offered by high levels of omega-3s likely explains why having a high ratio of omega-6s to omega-3s was linked to harm."</strong> The ratio is a proxy metric for omega-3 deficiency — not evidence that omega-6 is toxic. When both are measured independently, both are protective. Omega-3 is simply much more protective.
+</div>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 2: OMEGA-6 IS NOT THE PROBLEM ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-o">02</div>
+  <div class="sec-title">Omega-6 Is Not the Enemy — What 150 Cohorts Show</div>
+  <div class="sec-sub">Sadeghi et al., 2025 · J Transl Med · 150 publications</div>
+</div>
+
+<div class="finding"><span class="ftag ft-o">Umbrella Meta-Analysis 2025</span><span>Sadeghi et al. (2025) conducted an umbrella review of 150 publications examining omega-6 and CVD, cancer, and mortality. Result: <strong>higher dietary intake and circulating levels of omega-6 were associated with lower risks of CVDs, cancer incidence, and all-cause mortality</strong> — particularly for coronary heart disease and stroke. This is the opposite of what the "omega-6 is pro-inflammatory" narrative predicts.</span></div>
+<div class="finding"><span class="ftag ft-o">Circulating Biomarker Study</span><span>Marklund et al. (Circulation, 2019): Global consortium of 30 prospective studies, 13 countries. Higher circulating linoleic acid (the primary omega-6) was <strong>consistently associated with lower CVD risk</strong> across populations. This was measured as objective blood biomarkers — not self-reported dietary intake.</span></div>
+<div class="finding"><span class="ftag ft-o">AHA Advisory</span><span>American Heart Association Science Advisory (Circulation, 2009): "Advice to reduce omega-6 PUFA intakes is typically framed as a call to lower the ratio... However, the evidence suggests that it would have the opposite effect. Higher omega-6 PUFA intakes can inhibit the conversion of ALA to EPA, but such conversion is already quite low, and whether additional small changes would have net effects on CHD risk after the other benefits of LA consumption are taken into account is not clear."</span></div>
+
+<div class="callout co-o">
+  <div class="callout-head">What "Pro-Inflammatory" Actually Means</div>
+  Arachidonic acid (AA), an omega-6 derivative, is a precursor to pro-inflammatory eicosanoids — but these are <strong>essential for initiating immune responses and tissue repair</strong>. The problem is chronic, unresolved inflammation. Critically: dietary linoleic acid has a negligible impact on blood or tissue levels of arachidonic acid. Studies consistently show linoleic acid intake does not increase inflammatory markers. The "omega-6 causes inflammation" hypothesis is not supported by RCT data on inflammatory biomarkers.
+</div>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 3: ALA CONVERSION ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-r">03</div>
+  <div class="sec-title">Why ALA Cannot Replace EPA+DHA — The Conversion Problem</div>
+  <div class="sec-sub">Brenna et al., 2009 · ISSFAL · PLEFA</div>
+</div>
+
+<div class="card c-r">
+  <div class="card-title">ALA Conversion Efficiency in Humans</div>
+  <div class="card-src">Brenna et al., 2009 · PLEFA 80:85–91 · ISSFAL Position Statement · Multiple controlled human trials</div>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">ALA → EPA conversion</span><br><span class="bl-sub">Best-case estimate · varies by sex and diet</span></div>
+        <span class="bl-val" style="color:#ffaa50">&lt;5% typical</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:5%;background:rgba(232,137,10,0.7);"></div>
+        <div style="position:absolute;top:3px;left:6%;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#ffaa50;">Low, but measurable</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">ALA → DHA conversion</span><br><span class="bl-sub">Essentially negligible in most adults</span></div>
+        <span class="bl-val" style="color:#ff8080">&lt;0.1–4%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:2%;background:rgba(224,82,82,0.7);"></div>
+        <div style="position:absolute;top:3px;left:3%;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#ff8080;">Near-zero in most studies</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Preformed DHA → blood DHA</span><br><span class="bl-sub">Direct supplementation of EPA+DHA</span></div>
+        <span class="bl-val" style="color:#5de07a">~100% effective</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:100%;background:rgba(61,186,95,0.6);"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding"><span class="ftag ft-r">The Ratio Fallacy</span><span>The ratio argument assumes that reducing omega-6 will free up enzymatic capacity and increase ALA→DHA conversion. But Brenna et al. (2009) and a Dutch controlled trial (Zutphen, Am J Clin Nutr) both found conversion of ALA is determined by <strong>absolute amounts of ALA, not the ratio</strong>. Even with a "perfect" 1:1 ratio, ALA supplementation alone cannot raise DHA to meaningful levels. <strong>The bottleneck is enzymatic capacity — not competition.</strong></span></div>
+<div class="finding"><span class="ftag ft-r">ISSFAL Position</span><span>The International Society for the Study of Fatty Acids and Lipids formally concluded: "Conversion of ALA to EPA is very low, and to DHA is even less — essentially negligible. These very low conversion rates mean that ALA cannot meet the body's need for DHA." Direct consumption of preformed EPA and DHA is required.</span></div>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 4: CLINICAL TRIALS ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-b">04</div>
+  <div class="sec-title">Clinical Trials of Absolute EPA+DHA Dose</div>
+  <div class="sec-sub">REDUCE-IT · JELIS · GISSI-P</div>
+</div>
+
+<div class="dose-grid">
+  <div class="dose-row">
+    <div class="dose-label" style="color:#7dbcff;">REDUCE-IT<br><span style="font-size:0.67rem;color:#8a8880;">Bhatt et al., NEJM 2019</span></div>
+    <div class="dose-bar-wrap">
+      <div class="dose-bar" style="width:100%;background:linear-gradient(90deg,rgba(77,158,240,0.7),rgba(77,158,240,0.3));">
+        <span class="dose-bar-label">EPA 4g/day pure · 8,179 patients · 4.9 years</span>
+      </div>
+    </div>
+    <div class="dose-outcome" style="color:#5de07a;">–25% CV events<br>–20% CV death</div>
+  </div>
+  <div class="dose-row">
+    <div class="dose-label" style="color:#7dbcff;">JELIS<br><span style="font-size:0.67rem;color:#8a8880;">Yokoyama, Lancet 2007</span></div>
+    <div class="dose-bar-wrap">
+      <div class="dose-bar" style="width:45%;background:linear-gradient(90deg,rgba(77,158,240,0.6),rgba(77,158,240,0.2));">
+        <span class="dose-bar-label">EPA 1.8g/day · 18,645 patients</span>
+      </div>
+    </div>
+    <div class="dose-outcome" style="color:#5de07a;">–19% major<br>CV events</div>
+  </div>
+  <div class="dose-row">
+    <div class="dose-label" style="color:#8a8880;">Low-dose trials<br><span style="font-size:0.67rem;color:#8a8880;">~1g EPA+DHA/day</span></div>
+    <div class="dose-bar-wrap">
+      <div class="dose-bar" style="width:25%;background:rgba(138,136,128,0.3);">
+        <span class="dose-bar-label">Multiple trials · ~1g/day</span>
+      </div>
+    </div>
+    <div class="dose-outcome" style="color:#ff8080;">No consistent<br>benefit</div>
+  </div>
+</div>
+
+<div class="finding"><span class="ftag ft-b">Why Low Doses Failed</span><span>Multiple meta-analyses of ~1g/day EPA+DHA mixtures showed no consistent cardiovascular benefit. REDUCE-IT (4g pure EPA) and JELIS (1.8g EPA, but in a Japanese population with a high baseline dietary omega-3 from fish) both succeeded. The dose-response pattern strongly supports the <strong>absolute sufficiency threshold</strong> hypothesis: there is a minimum EPA+DHA target that must be reached for clinical benefit.</span></div>
+<div class="finding"><span class="ftag ft-b">REDUCE-IT Design Note</span><span>REDUCE-IT used <strong>pure icosapentaenoic acid (EPA ethyl ester)</strong> — no DHA, no ratio manipulation. n=8,179 statin-treated patients with elevated triglycerides. Absolute risk reduction 4.8% in composite CV endpoint. This trial isolated the effect of absolute EPA dose, not any change in the omega-6/omega-3 ratio.</span></div>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 5: OMEGA-3 INDEX ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-p">05</div>
+  <div class="sec-title">The Omega-3 Index — An Absolute Biomarker, Not a Ratio</div>
+  <div class="sec-sub">Harris & von Schacky, 2004 · Prev Med · RBC EPA+DHA %</div>
+</div>
+
+<div class="card c-p">
+  <div class="card-title">Omega-3 Index Risk Stratification (EPA+DHA as % of Red Blood Cell Fatty Acids)</div>
+  <div class="card-src">Harris & von Schacky, 2004 · Prev Med 39:212–220 · Validated cardiovascular risk factor · &gt;700 citations</div>
+
+  <div class="o3-scale">
+    <div class="o3-zone" style="width:33%;background:rgba(224,82,82,0.7);">&lt;4% · High Risk</div>
+    <div class="o3-zone" style="width:40%;background:rgba(232,137,10,0.6);">4–8% · Moderate Risk</div>
+    <div class="o3-zone" style="width:27%;background:rgba(61,186,95,0.7);">&gt;8% · Low Risk</div>
+  </div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:#8a8880;margin-bottom:12px;text-align:center;">% of RBC fatty acids that are EPA+DHA</div>
+
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Typical US adult</span><br><span class="bl-sub">Estimated average O3 index</span></div>
+        <span class="bl-val" style="color:#ff8080">~4–5%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:41%;background:rgba(224,82,82,0.55);"></div>
+        <div style="position:absolute;top:3px;left:43%;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:#ff8080;">High-risk zone</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Typical Japanese adult</span><br><span class="bl-sub">High fish-consuming population</span></div>
+        <span class="bl-val" style="color:#5de07a">~8–11%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:83%;background:rgba(61,186,95,0.6);"></div>
+        <div style="position:absolute;top:3px;left:85%;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:#5de07a;">Low risk</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Target: low cardiovascular risk</span><br><span class="bl-sub">Clinical recommendation</span></div>
+        <span class="bl-val" style="color:#5de07a">&gt;8%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:67%;background:rgba(155,110,243,0.5);border-right:2px dashed #c4a0ff;"></div>
+        <div style="position:absolute;top:3px;left:69%;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:#c4a0ff;">Target threshold</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding"><span class="ftag ft-p">Why This Matters for the Ratio Argument</span><span>The Omega-3 Index is defined purely as the <strong>absolute percentage of EPA+DHA in red blood cell membranes</strong> — independent of omega-6 levels. It predicts sudden cardiac death, all-cause mortality, and a wide range of health outcomes without reference to any ratio. A 1-SD increase in the O3I is associated with a 15% reduction in CHD mortality (HR 0.85, 95% CI 0.80–0.91; Atherosclerosis meta-analysis of 10 cohorts). The body doesn't care about the ratio — it cares about absolute EPA+DHA tissue saturation.</span></div>
+<div class="finding"><span class="ftag ft-p">Achieving 8%+ Index</span><span>Reaching the low-risk O3I threshold of &gt;8% typically requires daily EPA+DHA intake of 1,500–2,000 mg from direct sources (fish oil or fatty fish). Raising ALA intake from plant sources — regardless of omega-6 changes — cannot achieve this because ALA→DHA conversion is essentially negligible.</span></div>
+
+<div class="div"></div>
+
+<div class="bottom">
+  <div class="bottom-tag">Synthesis · The Reframe</div>
+  <div class="bottom-text">
+    The ratio framing is an oversimplification that points to a real problem through the wrong mechanism. A high omega-6/omega-3 ratio is a marker of disease risk — but the causal driver is <strong>omega-3 deficiency</strong>, not omega-6 excess. The UK Biobank (n=85,425, 12.7 years) shows both omega-3 and omega-6 are independently protective, with omega-3 showing stronger effects. The ratio rises when omega-3 is insufficient, not when omega-6 is consumed.<br><br>
+    Two independent lines of evidence support the absolute intake model: the Omega-3 Index (EPA+DHA as % of RBC membranes) is a validated cardiovascular risk factor that predicts mortality independently of any ratio; and REDUCE-IT (NEJM 2019) showed 4g/day pure EPA — with no ratio manipulation — produced a 25% reduction in cardiovascular events and 4.8% absolute risk reduction.<br><br>
+    <strong>The practical implication:</strong> focus on reaching sufficient absolute EPA+DHA intake (~1.5–2g/day minimum, targeting an O3I &gt;8%), primarily from oily fish or high-quality supplements. Reducing omega-6 intake is unnecessary and may be counterproductive given its independent cardiovascular protective effects.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics · originsymmetrics.com</div>
+  <div class="footer-refs">
+    Zhang et al., 2024 · eLife 12:RP90132<br>
+    Bhatt et al., 2019 · NEJM 380:11–22<br>
+    Harris & von Schacky, 2004 · Prev Med<br>
+    Brenna et al., 2009 · PLEFA 80:85–91<br>
+    Sadeghi et al., 2025 · J Transl Med
+  </div>
+</div>
+
+</body>
+</html>
