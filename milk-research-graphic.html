@@ -728,9 +728,16 @@
     ctx.beginPath(); ctx.arc(px(200), py(1.0), 5, 0, Math.PI*2);
     ctx.fillStyle = '#3dba5f'; ctx.fill();
     ctx.strokeStyle = '#17171d'; ctx.lineWidth = 1.5; ctx.stroke();
-    ctx.fillStyle = '#3dba5f'; ctx.font = '600 9px Inter, sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText('~200g/day', px(200), py(1.0) - 10);
-    ctx.fillText('potential benefit', px(200), py(1.0) - 1);
+    // Draw a vertical tick line upward from the dot
+    ctx.beginPath();
+    ctx.moveTo(px(200), py(1.0) - 7);
+    ctx.lineTo(px(200), py(1.0) - 32);
+    ctx.strokeStyle = 'rgba(61,186,95,0.5)'; ctx.lineWidth = 1; ctx.stroke();
+    // Label above the line, clear of the curve
+    ctx.fillStyle = '#3dba5f'; ctx.font = '700 9px Inter, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('~200g/day', px(200), py(1.0) - 44);
+    ctx.font = '500 8px Inter, sans-serif';
+    ctx.fillText('potential benefit', px(200), py(1.0) - 34);
 
     // Axes
     ctx.strokeStyle = '#2a2a38'; ctx.lineWidth = 1.5;
