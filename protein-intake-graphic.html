@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protein Intake — Origin Symmetrics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background:#0c0c10; color:#f0ede6; font-family:'Inter',sans-serif; padding:40px 18px 60px; max-width:860px; margin:0 auto; line-height:1.5; }
+
+  .top-label { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:#8a8880; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .top-label::after { content:''; flex:1; height:1px; background:#28283a; }
+  h1 { font-size:clamp(1.4rem,4vw,2.1rem); font-weight:900; line-height:1.15; margin-bottom:10px; letter-spacing:-0.02em; color:#f0ede6; }
+  .cr{color:#ff8080;} .cg{color:#5de07a;} .co{color:#ffaa50;} .cb{color:#7dbcff;} .cp{color:#c4a0ff;}
+  .subtitle { font-size:0.86rem; color:#8a8880; margin-bottom:28px; line-height:1.6; }
+
+  /* Three points */
+  .three-points { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:28px; }
+  .point { display:flex; gap:10px; align-items:flex-start; }
+  .point-num { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:800; flex-shrink:0; margin-top:1px; color:#fff; }
+  .point p { font-size:0.78rem; line-height:1.45; color:rgba(240,237,230,0.8); }
+  .point p strong { color:#f0ede6; font-weight:700; }
+
+  /* Section */
+  .sec-hdr { display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:28px; flex-wrap:wrap; }
+  .sec-num { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; font-weight:600; padding:3px 9px; border-radius:3px; letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; flex-shrink:0; }
+  .sn-r{background:rgba(224,82,82,0.14);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .sn-g{background:rgba(61,186,95,0.14);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .sn-o{background:rgba(232,137,10,0.14);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .sn-b{background:rgba(77,158,240,0.14);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .sn-p{background:rgba(155,110,243,0.14);color:#c4a0ff;border:1px solid rgba(155,110,243,0.3);}
+  .sec-title{font-size:1.0rem;font-weight:700;color:#f0ede6;}
+  .sec-sub{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#8a8880;margin-left:auto;letter-spacing:0.07em;text-align:right;line-height:1.4;flex-shrink:0;max-width:160px;}
+
+  /* Card */
+  .card{background:#141418;border:1px solid #28283a;border-radius:6px;padding:18px 16px;margin-bottom:12px;position:relative;overflow:hidden;}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+  .c-r::before{background:linear-gradient(90deg,#e05252,transparent);}
+  .c-g::before{background:linear-gradient(90deg,#3dba5f,transparent);}
+  .c-o::before{background:linear-gradient(90deg,#e8890a,transparent);}
+  .c-b::before{background:linear-gradient(90deg,#4d9ef0,transparent);}
+  .c-p::before{background:linear-gradient(90deg,#9b6ef3,transparent);}
+  .card-title{font-size:0.85rem;font-weight:700;color:#f0ede6;margin-bottom:3px;}
+  .card-src{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#8a8880;margin-bottom:16px;letter-spacing:0.05em;}
+
+  /* Stat strip */
+  .stat-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:14px;}
+  .stat-box{background:#1a1a20;border:1px solid #28283a;border-radius:4px;padding:12px 14px;}
+  .stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;color:#8a8880;margin-bottom:4px;}
+  .stat-val{font-size:1.3rem;font-weight:900;letter-spacing:-0.02em;line-height:1;}
+  .stat-sub{font-size:0.68rem;color:rgba(240,237,230,0.45);margin-top:3px;line-height:1.3;}
+
+  /* Bar chart */
+  .bar-chart{display:flex;flex-direction:column;gap:14px;}
+  .bar-row{display:flex;flex-direction:column;gap:5px;}
+  .bar-lbl-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .bl-main{font-size:0.78rem;font-weight:600;color:#f0ede6;}
+  .bl-sub{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:#8a8880;}
+  .bl-val{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;font-weight:700;white-space:nowrap;flex-shrink:0;}
+  .bar-track{height:22px;background:rgba(255,255,255,0.06);border-radius:3px;position:relative;}
+  .bar-fill{height:100%;border-radius:3px;position:absolute;top:0;left:0;}
+  .bar-axis{display:flex;justify-content:space-between;margin-top:6px;}
+  .bar-axis span{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;color:#5a5860;}
+  .bar-axis-label{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:#8a8880;text-align:center;margin-top:4px;}
+
+  /* Threshold visual */
+  .threshold-vis { display:flex; flex-direction:column; gap:4px; margin-bottom:12px; }
+  .tv-row { display:flex; align-items:center; gap:8px; }
+  .tv-label { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; width:70px; flex-shrink:0; text-align:right; color:#8a8880; }
+  .tv-bar-wrap { flex:1; height:20px; background:rgba(255,255,255,0.05); border-radius:3px; position:relative; overflow:hidden; }
+  .tv-bar { height:100%; border-radius:3px; display:flex; align-items:center; padding:0 8px; }
+  .tv-bar-label { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; font-weight:600; color:rgba(255,255,255,0.9); white-space:nowrap; }
+  .tv-note { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; width:80px; flex-shrink:0; color:#8a8880; line-height:1.3; }
+
+  /* Table */
+  .gen-table{width:100%;border-collapse:collapse;font-size:0.74rem;margin-bottom:12px;}
+  .gen-table th{background:#1e1e28;color:#8a8880;padding:7px 10px;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;text-align:left;border-bottom:1px solid #28283a;}
+  .gen-table td{padding:8px 10px;border-bottom:1px solid #28283a;vertical-align:top;color:#f0ede6;line-height:1.4;}
+  .gen-table tr:last-child td{border-bottom:none;}
+
+  /* Findings */
+  .finding{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:#141418;border:1px solid #28283a;border-radius:4px;margin-bottom:5px;font-size:0.77rem;line-height:1.5;color:#f0ede6;}
+  .ftag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;font-weight:600;padding:2px 7px;border-radius:2px;white-space:nowrap;flex-shrink:0;letter-spacing:0.06em;margin-top:1px;}
+  .ft-r{background:rgba(224,82,82,0.14);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .ft-g{background:rgba(61,186,95,0.14);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .ft-o{background:rgba(232,137,10,0.14);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .ft-b{background:rgba(77,158,240,0.14);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .ft-p{background:rgba(155,110,243,0.14);color:#c4a0ff;border:1px solid rgba(155,110,243,0.3);}
+  .ft-y{background:rgba(232,192,74,0.12);color:#f0d060;border:1px solid rgba(232,192,74,0.3);}
+
+  /* Callout */
+  .callout{border-radius:4px;padding:14px 16px;margin-bottom:12px;font-size:0.78rem;line-height:1.55;color:#f0ede6;}
+  .callout strong{font-weight:700;}
+  .co-r{background:rgba(224,82,82,0.14);border-left:3px solid #e05252;}
+  .co-g{background:rgba(61,186,95,0.14);border-left:3px solid #3dba5f;}
+  .co-o{background:rgba(232,137,10,0.14);border-left:3px solid #e8890a;}
+  .co-b{background:rgba(77,158,240,0.14);border-left:3px solid #4d9ef0;}
+  .co-p{background:rgba(155,110,243,0.14);border-left:3px solid #9b6ef3;}
+  .callout-head{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+  .co-r .callout-head{color:#ff8080;} .co-g .callout-head{color:#5de07a;}
+  .co-o .callout-head{color:#ffaa50;} .co-b .callout-head{color:#7dbcff;}
+  .co-p .callout-head{color:#c4a0ff;}
+
+  /* Convergence box */
+  .convergence{background:#1a1a28;border:1px solid rgba(155,110,243,0.3);border-radius:6px;padding:18px 16px;margin-bottom:12px;}
+  .conv-title{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:#c4a0ff;margin-bottom:10px;font-weight:600;}
+  .conv-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:0.78rem;}
+  .conv-row:last-child{margin-bottom:0;}
+  .conv-source{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:#8a8880;width:160px;flex-shrink:0;}
+  .conv-bar-wrap{flex:1;height:14px;background:rgba(255,255,255,0.05);border-radius:2px;position:relative;overflow:hidden;}
+  .conv-bar{height:100%;border-radius:2px;background:rgba(155,110,243,0.5);}
+  .conv-val{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:700;color:#c4a0ff;width:80px;flex-shrink:0;text-align:right;}
+
+  /* Divider */
+  .div{border:none;border-top:1px solid #28283a;margin:24px 0;}
+
+  /* Bottom */
+  .bottom{background:#1a1a24;border:1px solid #28283a;border-radius:6px;padding:22px;margin-bottom:24px;}
+  .bottom-tag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a8880;margin-bottom:10px;}
+  .bottom-text{font-size:0.86rem;line-height:1.65;color:rgba(240,237,230,0.85);}
+  .bottom-text strong{color:#f0ede6;font-weight:700;}
+
+  /* Recommendation grid */
+  .rec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px;}
+  .rec-box{background:#141418;border:1px solid #28283a;border-radius:4px;padding:14px;}
+  .rec-label{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:#8a8880;margin-bottom:6px;}
+  .rec-val{font-size:1.1rem;font-weight:900;letter-spacing:-0.01em;line-height:1.1;margin-bottom:4px;}
+  .rec-sub{font-size:0.7rem;color:rgba(240,237,230,0.5);line-height:1.35;}
+
+  /* Footer */
+  .footer{display:flex;justify-content:space-between;align-items:flex-end;padding-top:18px;border-top:1px solid #28283a;flex-wrap:wrap;gap:8px;}
+  .footer-brand{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#8a8880;}
+  .footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:#8a8880;text-align:right;line-height:1.7;}
+
+  @media(max-width:560px){
+    .three-points{grid-template-columns:1fr;}
+    .stat-strip{grid-template-columns:1fr;}
+    .rec-grid{grid-template-columns:1fr;}
+    .sec-sub{display:none;}
+    .tv-note{display:none;}
+    .footer-refs{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-label">Evidence Review · Protein Intake · Origin Symmetrics</div>
+
+<h1>The <span class="cr">1.62 g/kg consensus</span> is based on a <span class="cr">non-significant p-value</span>. Converging evidence from IAAO studies and longitudinal re-analysis points to <span class="cg">2.0–2.35 g/kg</span> for trained individuals.</h1>
+<p class="subtitle">Why the Morton 2018 meta-analysis breakpoint fails statistically, what IAAO methodology reveals, and where two independent lines of evidence unexpectedly agree.</p>
+
+<div class="three-points">
+  <div class="point">
+    <div class="point-num" style="background:#e05252">1</div>
+    <p>Morton 2018's breakpoint at 1.62 g/kg has <strong>p = 0.079</strong> (not significant) and a 95% CI of 1.03–2.20 g/kg — spanning nearly the entire experimental range.</p>
+  </div>
+  <div class="point">
+    <div class="point-num" style="background:#3dba5f">2</div>
+    <p>Three IAAO studies in trained individuals converge on a <strong>95% safe intake of 1.93–2.38 g/kg</strong>. The highest-quality study (Mazzulla 2020) finds 2.38 g/kg.</p>
+  </div>
+  <div class="point">
+    <div class="point-num" style="background:#9b6ef3">3</div>
+    <p>Longitudinal dose-response from 50 studies (Nunes 2022) shows <strong>positive effect size slopes through 2.4 g/kg</strong> — no hard breakpoint at 1.62 g/kg.</p>
+  </div>
+</div>
+
+<!-- ════ SECTION 1: MORTON FAILURE ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-r">01</div>
+  <div class="sec-title">The Morton 2018 Problem — Statistics First</div>
+  <div class="sec-sub">Morton et al., 2018 · Meta-Analysis</div>
+</div>
+
+<div class="stat-strip">
+  <div class="stat-box">
+    <div class="stat-label">p-value (breakpoint)</div>
+    <div class="stat-val" style="color:#ff8080">0.079</div>
+    <div class="stat-sub">Fails the p &lt; 0.05 threshold. Cannot reject null hypothesis of no breakpoint.</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-label">95% Confidence Interval</div>
+    <div class="stat-val" style="color:#ff8080">1.03–2.20</div>
+    <div class="stat-sub">g/kg. Spans 1.17 g/kg — nearly the entire experimental range tested.</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-label">Studies included</div>
+    <div class="stat-val" style="color:#8a8880">49</div>
+    <div class="stat-sub">~80% untrained/novice participants. Trained lifters were a small minority.</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-label">Breakpoint estimate</div>
+    <div class="stat-val" style="color:#ffaa50">1.62 g/kg</div>
+    <div class="stat-sub">Equally compatible with true breakpoints at 1.2, 1.8, or 2.1 g/kg given the CI width.</div>
+  </div>
+</div>
+
+<div class="card c-r">
+  <div class="card-title">Morton 95% CI vs Experimental Range</div>
+  <div class="card-src">Morton et al., 2018 · 42 study arms · 723 subjects · biphasic linear regression</div>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <span class="bl-main">Experimental protein range tested</span>
+        <span class="bl-val" style="color:#8a8880">0.9 – 2.25 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:100%;background:rgba(138,136,128,0.2);"></div>
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;padding-left:10px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#8a8880;">Full experimental range</span>
+        </div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <span class="bl-main" style="color:#ff8080;">95% CI of breakpoint</span>
+        <span class="bl-val" style="color:#ff8080">1.03 – 2.20 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div style="position:absolute;top:0;left:9.5%;width:86%;height:100%;background:rgba(224,82,82,0.25);border-radius:2px;border:1px solid rgba(224,82,82,0.4);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#ff8080;">CI spans 95% of the tested range</span>
+        </div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <span class="bl-main" style="color:#ffaa50;">Point estimate (breakpoint)</span>
+        <span class="bl-val" style="color:#ffaa50">1.62 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div style="position:absolute;top:4px;left:calc(54% - 1px);width:2px;height:14px;background:#ffaa50;"></div>
+        <div style="position:absolute;top:0;left:56%;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:#ffaa50;">← 1.62 g/kg</div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;margin-top:8px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">0.9</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">1.2</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">1.5</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#ffaa50;font-weight:600;">1.62</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">1.8</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">2.1</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">2.25</span>
+  </div>
+  <div class="bar-axis-label" style="margin-top:6px;">Protein Intake (g/kg/day)</div>
+</div>
+
+<div class="callout co-r">
+  <div class="callout-head">Simpson's Paradox — The Confounding Variable</div>
+  ~80% of Morton's 49 studies used untrained/novice participants who gain muscle rapidly at modest protein intakes. When high-responder novice studies are pooled with trained-athlete studies, the aggregate trend produces a spurious breakpoint. <strong>Morton's own supplementary data shows trained cohorts gaining +1.25–1.7 kg additional FFM when protein was raised from ~1.62 to 2.0–2.9 g/kg</strong> — directly contradicting the breakpoint hypothesis.
+</div>
+
+<div class="finding"><span class="ftag ft-r">Morton's Own Data</span><span>In trained-cohort subgroups from Morton's own supplementary figures: Cribb 2007 (1.63→2.92 g/kg: +1.6 kg FFM), Hoffman 2009 (1.63→2.22 g/kg: +1.25 kg), Kerksick 2006 (1.58→2.32 g/kg: +1.7 kg), Hoffman 2006 (1.24→2.0 g/kg: +1.3 kg). All control groups consumed protein at or above the supposed breakpoint — yet further increases produced substantial gains.</span></div>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 2: IAAO ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-g">02</div>
+  <div class="sec-title">IAAO Studies — Direct Measurement of Saturation</div>
+  <div class="sec-sub">Bandegan 2017 · Malowany 2019 · Mazzulla 2020</div>
+</div>
+
+<div class="finding"><span class="ftag ft-g">Why IAAO Supersedes Nitrogen Balance</span><span>Historical recommendations used nitrogen balance (NB) studies, which underestimate requirements by <strong>40–50%</strong> due to unmeasured losses through skin, sweat, hair, and conceptual limitations. IAAO directly measures the point at which indicator amino acid oxidation plateaus — a direct proxy for saturation of protein synthetic capacity. No measurement error compounding.</span></div>
+
+<div class="card c-g">
+  <div class="card-title">IAAO Studies in Resistance-Trained Individuals — 95% Safe Intakes</div>
+  <div class="card-src">Bandegan et al., 2017 · Malowany et al., 2019 · Mazzulla et al., 2020</div>
+
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Bandegan 2017</span><br><span class="bl-sub">Trained men · non-training day</span></div>
+        <span class="bl-val" style="color:#5de07a">2.20 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:75%;background:rgba(61,186,95,0.55);"></div>
+        <div style="position:absolute;top:4px;left:55%;width:2px;height:14px;background:#ff8080;opacity:0.7;"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Malowany 2019</span><br><span class="bl-sub">Trained women · training day</span></div>
+        <span class="bl-val" style="color:#5de07a">1.93 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:66%;background:rgba(61,186,95,0.45);"></div>
+        <div style="position:absolute;top:4px;left:55%;width:2px;height:14px;background:#ff8080;opacity:0.7;"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main" style="color:#5de07a;">Mazzulla 2020</span><br><span class="bl-sub">Trained men · training day · highest quality</span></div>
+        <span class="bl-val" style="color:#5de07a">2.38 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:81%;background:rgba(61,186,95,0.75);"></div>
+        <div style="position:absolute;top:4px;left:55%;width:2px;height:14px;background:#ff8080;opacity:0.7;"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <span class="bl-main" style="color:#ff8080;">Morton 1.62 g/kg (for reference)</span>
+        <span class="bl-val" style="color:#ff8080">1.62 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:55%;background:rgba(224,82,82,0.35);border:1px dashed rgba(224,82,82,0.5);"></div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;margin-top:8px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">0</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">0.5</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">1.0</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#ffaa50;">1.62</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">2.0</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5de07a;">2.38</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#5a5860;">3.0</span>
+  </div>
+  <div class="bar-axis-label" style="margin-top:4px;">95% Safe Intake (g/kg/day) · Red line = Morton 1.62 g/kg</div>
+</div>
+
+<table class="gen-table">
+  <thead><tr><th>Study</th><th>Population</th><th>EAR (g/kg)</th><th>95% Safe Intake</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Bandegan 2017</strong></td><td>Trained men · non-training</td><td>1.70 (→2.22 re-analyzed)</td><td style="color:#5de07a;font-weight:700;">2.20 g/kg</td></tr>
+    <tr><td><strong>Malowany 2019</strong></td><td>Trained women · training day</td><td>1.49</td><td style="color:#5de07a;font-weight:700;">1.93 g/kg</td></tr>
+    <tr><td><strong>Mazzulla 2020</strong></td><td>Trained men · training day</td><td>2.0</td><td style="color:#5de07a;font-weight:700;">2.38 g/kg</td></tr>
+  </tbody>
+</table>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 3: DOSE RESPONSE ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-o">03</div>
+  <div class="sec-title">Longitudinal Dose-Response — Effect Size Slopes</div>
+  <div class="sec-sub">Nunes et al., 2022 · 50 studies</div>
+</div>
+
+<div class="card c-o">
+  <div class="card-title">Effect Size Slope by Protein Intake Range (FFM Gain per 1 g/kg increase)</div>
+  <div class="card-src">Nunes et al., 2022 · 50 longitudinal studies · effect size slope methodology</div>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">&lt; 1.5 g/kg</span><br><span class="bl-sub">High returns zone</span></div>
+        <span class="bl-val" style="color:#5de07a">ES slope 0.88</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:88%;background:linear-gradient(90deg,#5de07a,rgba(61,186,95,0.5));"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">1.5 – 1.99 g/kg</span><br><span class="bl-sub">Moderate returns · still meaningful</span></div>
+        <span class="bl-val" style="color:#ffaa50">ES slope 0.38</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:38%;background:linear-gradient(90deg,#ffaa50,rgba(232,137,10,0.5));"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">2.0 – 2.4 g/kg</span><br><span class="bl-sub" style="color:#ffaa50;">Still positive — not zero</span></div>
+        <span class="bl-val" style="color:#ffaa50">ES slope 0.19</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:19%;background:rgba(232,137,10,0.6);"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">&gt; 2.4 g/kg</span><br><span class="bl-sub">Approaching saturation</span></div>
+        <span class="bl-val" style="color:#8a8880">ES slope ~0.05</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:5%;background:rgba(138,136,128,0.5);"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bar-axis" style="margin-top:8px;">
+    <span>0</span><span>0.2</span><span>0.4</span><span>0.6</span><span>0.8</span><span>1.0</span>
+  </div>
+  <div class="bar-axis-label">Effect Size per 1 g/kg Protein Increase</div>
+</div>
+
+<div class="callout co-o">
+  <div class="callout-head">Key Insight — No Hard Breakpoint at 1.62 g/kg</div>
+  The effect size slope remains <strong>positive through 2.4 g/kg</strong>. This is graded, non-linear diminishing returns — not the sharp discontinuity implied by a "breakpoint" model. Positive effects were observed up to an average intake of 2.34 g/kg (Candow et al., 2006). The first negative effect appeared at 2.38 g/kg — in untrained participants in an extreme caloric surplus (+2000 kcal/day), which may not generalize.
+</div>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 4: CONVERGENCE ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-p">04</div>
+  <div class="sec-title">The Convergence — Two Independent Methods, Same Answer</div>
+</div>
+
+<div class="convergence">
+  <div class="conv-title">Unprecedented Agreement — Acute Mechanistic + Chronic Longitudinal</div>
+  <div class="conv-row">
+    <div class="conv-source">IAAO Studies<br>(Acute mechanistic)</div>
+    <div class="conv-bar-wrap"><div class="conv-bar" style="width:93%;background:rgba(61,186,95,0.45);"></div></div>
+    <div class="conv-val" style="color:#5de07a;">→ 2.38 g/kg</div>
+  </div>
+  <div class="conv-row">
+    <div class="conv-source">Longitudinal Data<br>(Chronic FFM gains)</div>
+    <div class="conv-bar-wrap"><div class="conv-bar" style="width:91%;background:rgba(155,110,243,0.45);"></div></div>
+    <div class="conv-val" style="color:#c4a0ff;">→ 2.35 g/kg</div>
+  </div>
+  <div class="conv-row">
+    <div class="conv-source">Morton 1.62 estimate<br>(for reference)</div>
+    <div class="conv-bar-wrap"><div class="conv-bar" style="width:62%;background:rgba(224,82,82,0.3);"></div></div>
+    <div class="conv-val" style="color:#ff8080;">1.62 g/kg</div>
+  </div>
+  <div style="margin-top:12px;padding-top:10px;border-top:1px solid #28283a;font-size:0.77rem;color:rgba(240,237,230,0.75);line-height:1.5;">
+    Two entirely different methodologies — acute whole-body protein oxidation (IAAO) and chronic FFM accumulation across 50 longitudinal studies — independently arrive at <strong style="color:#c4a0ff;">2.35–2.38 g/kg</strong> as the upper bound. This is the unprecedented agreement that provides confidence well beyond what either method alone could offer.
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 5: ENERGY STATUS ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-r">05</div>
+  <div class="sec-title">Energy Status Modulates Requirements</div>
+</div>
+
+<div class="card c-r">
+  <div class="card-title">Protein Requirements by Caloric Phase</div>
+  <div class="card-src">Multiple sources · caloric deficit increases protein requirements significantly</div>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Caloric Surplus</span><br><span class="bl-sub">Hypertrophy phase</span></div>
+        <span class="bl-val" style="color:#5de07a">2.0–2.35 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:70%;background:rgba(61,186,95,0.55);"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Maintenance</span><br><span class="bl-sub">Body recomposition</span></div>
+        <span class="bl-val" style="color:#5de07a">2.0–2.35 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:70%;background:rgba(61,186,95,0.5);"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Mild Deficit <span style="color:#ffaa50;">(-300–500 kcal)</span></span><br><span class="bl-sub">Fat loss · preserve muscle</span></div>
+        <span class="bl-val" style="color:#ffaa50">2.3–3.1 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:90%;background:rgba(232,137,10,0.55);"></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl-row">
+        <div><span class="bl-main">Aggressive Deficit <span style="color:#ff8080;">(-500–1000 kcal)</span></span><br><span class="bl-sub">Maximize LBM retention</span></div>
+        <span class="bl-val" style="color:#ff8080">2.4–3.1 g/kg</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:98%;background:rgba(224,82,82,0.55);"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bar-axis" style="margin-top:8px;"><span>0</span><span>0.5</span><span>1.0</span><span>1.5</span><span>2.0</span><span>2.5</span><span>3.1</span></div>
+  <div class="bar-axis-label">Protein Intake (g/kg total body weight/day)</div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ SECTION 6: RECOMMENDATIONS ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-g">06</div>
+  <div class="sec-title">Practical Recommendations by Goal</div>
+</div>
+
+<div class="rec-grid">
+  <div class="rec-box">
+    <div class="rec-label">Hypertrophy — Trained Male</div>
+    <div class="rec-val" style="color:#5de07a;">2.0–2.35 g/kg</div>
+    <div class="rec-sub">Total body weight · or 2.35–2.75 g/kg FFM at 15% body fat</div>
+  </div>
+  <div class="rec-box">
+    <div class="rec-label">Hypertrophy — Trained Female</div>
+    <div class="rec-val" style="color:#5de07a;">1.75–2.05 g/kg</div>
+    <div class="rec-sub">Total body weight · or 2.35–2.75 g/kg FFM at 25% body fat</div>
+  </div>
+  <div class="rec-box">
+    <div class="rec-label">Fat Loss — Any Sex</div>
+    <div class="rec-val" style="color:#ffaa50;">2.3–3.1 g/kg</div>
+    <div class="rec-sub">Total body weight · higher end in aggressive deficits to preserve LBM</div>
+  </div>
+  <div class="rec-box">
+    <div class="rec-label">Saturation Threshold</div>
+    <div class="rec-val" style="color:#c4a0ff;">~2.35 g/kg</div>
+    <div class="rec-sub">Where IAAO and longitudinal data independently converge. Returns minimal beyond this.</div>
+  </div>
+</div>
+
+<div class="finding"><span class="ftag ft-g">Body Composition Scaling</span><span>Protein requirements scale with metabolically active tissue, not total body weight. A 100 kg individual at 40% body fat (60 kg FFM) and a 100 kg individual at 10% body fat (90 kg FFM) have drastically different requirements. Use FFM scaling for precision: 2.35–2.75 g/kg FFM for hypertrophy across sexes largely eliminates the apparent male/female difference.</span></div>
+<div class="finding"><span class="ftag ft-b">Meal Distribution</span><span>Distribute across 4–5 meals with <strong>~1.7–2.0g leucine minimum per meal</strong> (≈25–30g whey or 35–40g casein/beef). Spreading total daily intake matters more than maximizing leucine in any single meal. Daily total protein intake predicts ~41% of hypertrophy variance; acute post-exercise timing contributes &lt;2% of variance independently.</span></div>
+<div class="finding"><span class="ftag ft-o">Protein Quality</span><span>Prioritize high-DIAAS proteins: whey isolate (~1.09), egg white (~1.08), whole egg (~1.06), milk (~1.14), beef (~0.92). Plant proteins are generally adequate when total intake hits the 2.0–2.35 g/kg target, as the lower quality is offset by volume. Blending plant sources improves amino acid completeness.</span></div>
+
+<div class="div"></div>
+
+<div class="bottom">
+  <div class="bottom-tag">Synthesis · The Evidence Scorecard</div>
+  <div class="bottom-text">
+    The 1.62 g/kg recommendation rests on a <strong>non-significant p-value (0.079)</strong>, a confidence interval spanning 1.03–2.20 g/kg, and a dataset dominated by untrained participants who inflate the response at low protein intakes. It was never a reliable ceiling for trained individuals.<br><br>
+    Three IAAO studies in trained athletes converge on a <strong style="color:#5de07a;">95% safe intake of 1.93–2.38 g/kg</strong>, with the most methodologically rigorous study (Mazzulla 2020) pointing to 2.38 g/kg. Fifty longitudinal studies re-analyzed by effect size slopes (Nunes 2022) show <strong style="color:#5de07a;">positive dose-response through 2.4 g/kg</strong> — no hard breakpoint anywhere near 1.62 g/kg.<br><br>
+    The convergence of two independent methodologies at <strong style="color:#c4a0ff;">2.35–2.38 g/kg</strong> provides unprecedented confidence. The practical target: <strong>2.0–2.35 g/kg total body weight</strong> for trained males in maintenance or surplus. At 15% body fat this equals <strong>2.35–2.75 g/kg FFM</strong>. The upper bound isn't arbitrary — it's where two independent lines of evidence converge, and where Morton's own trained-cohort data shows continued positive returns.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics · originsymmetrics.com</div>
+  <div class="footer-refs">
+    Morton et al., 2018 · Br J Sports Med<br>
+    Bandegan et al., 2017 · J Nutr<br>
+    Malowany et al., 2019 · Nutrients<br>
+    Mazzulla et al., 2020 · J Nutr<br>
+    Nunes et al., 2022 · Br J Sports Med
+  </div>
+</div>
+
+</body>
+</html>
