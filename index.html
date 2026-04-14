@@ -324,6 +324,7 @@ header {
 .tag-sweeteners { background: rgba(180,99,255,0.12); color: #d4a0ff; border: 1px solid rgba(180,99,255,0.25); }
 .tag-cancer   { background: rgba(255,107,107,0.12); color: #ff8080; border: 1px solid rgba(255,107,107,0.25); }
 .tag-soon     { background: rgba(90,88,120,0.2); color: var(--text3); border: 1px solid rgba(90,88,120,0.3); }
+.tag-omega3   { background: rgba(61,186,95,0.12); color: #5de07a; border: 1px solid rgba(61,186,95,0.25); }
 
 .card-title {
   font-family: 'Syne', sans-serif;
@@ -461,7 +462,7 @@ footer {
 
   <div class="stats-row">
     <div class="stat">
-      <div class="stat-num acc1">6</div>
+      <div class="stat-num acc1">7</div>
       <div class="stat-label">Published</div>
     </div>
     <div class="stat">
@@ -469,7 +470,7 @@ footer {
       <div class="stat-label">Studies Cited</div>
     </div>
     <div class="stat">
-      <div class="stat-num acc3">5</div>
+      <div class="stat-num acc3">4</div>
       <div class="stat-label">Coming Soon</div>
     </div>
   </div>
@@ -482,6 +483,7 @@ footer {
     <button class="filter-btn" data-filter="dairy">Dairy</button>
     <button class="filter-btn" data-filter="sweeteners">Sweeteners</button>
     <button class="filter-btn" data-filter="cancer">Cancer Risk</button>
+    <button class="filter-btn" data-filter="omega3">Omega-3</button>
   </div>
 
   <div class="grid" id="articleGrid"></div>
@@ -554,7 +556,7 @@ const articles = [
   },
   // COMING SOON
   {
-    num: '07',
+    num: '08',
     title: 'Creatine: Beyond the Gym — Cognitive and Metabolic Effects',
     desc: 'The evidence on creatine supplementation for brain health, cellular energy, and performance across age groups.',
     tags: ['protein'],
@@ -563,7 +565,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '08',
+    num: '09',
     title: 'Vitamin D: The Chronic Deficiency Nobody Talks About',
     desc: 'Optimal serum levels, supplementation thresholds, and what the RCT data says about immune, bone, and metabolic outcomes.',
     tags: ['glucose'],
@@ -572,7 +574,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '09',
+    num: '10',
     title: 'Sleep & Metabolic Health: The Missing Variable',
     desc: 'Sleep restriction drives insulin resistance independently of diet. Ghrelin/leptin disruption, glucose tolerance, and muscle protein synthesis all degrade with chronic sleep debt.',
     tags: ['glucose'],
@@ -581,16 +583,16 @@ const articles = [
     soon: true,
   },
   {
-    num: '10',
-    title: 'Omega-3 & Cardiovascular Risk: Meta-Analysis Update',
-    desc: 'Re-examining the EPA/DHA evidence after REDUCE-IT and STRENGTH. What dose, what formulation, and who actually benefits.',
-    tags: ['cancer'],
-    studies: 'Coming soon',
-    href: '#',
-    soon: true,
+    num: '07',
+    title: 'Omega-3 vs The Ratio: Absolute EPA+DHA Intake Is What Matters',
+    desc: 'UK Biobank (n=85,425): both omega-3 and omega-6 are independently protective, omega-3 stronger (–31% vs –23% all-cause mortality). REDUCE-IT: 4g/day pure EPA → 25% fewer CV events. ALA→DHA conversion is essentially negligible.',
+    tags: ['omega3'],
+    studies: '5 key studies cited',
+    href: 'omega3-graphic.html',
+    soon: false,
   },
   {
-    num: '11',
+    num: '12',
     title: 'Leucine Threshold & Muscle Protein Synthesis',
     desc: 'The minimum leucine dose to trigger MPS, how it varies by age and training status, and why protein source distribution across meals matters.',
     tags: ['protein'],
@@ -601,6 +603,7 @@ const articles = [
 ];
 
 const tagColors = {
+  omega3: 'tag-omega3',
   protein: 'tag-protein',
   fasting: 'tag-fasting',
   glucose: 'tag-glucose',
