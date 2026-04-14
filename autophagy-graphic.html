@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autophagy & Fasting — Origin Symmetrics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background:#0c0c10; color:#f0ede6; font-family:'Inter',sans-serif; padding:40px 18px 60px; max-width:860px; margin:0 auto; line-height:1.5; }
+
+  .top-label { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:#8a8880; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .top-label::after { content:''; flex:1; height:1px; background:#28283a; }
+  h1 { font-size:clamp(1.4rem,4vw,2.1rem); font-weight:900; line-height:1.15; margin-bottom:10px; letter-spacing:-0.02em; color:#f0ede6; }
+  .cr{color:#ff8080;} .cg{color:#5de07a;} .co{color:#ffaa50;} .cb{color:#7dbcff;}
+  .subtitle { font-size:0.86rem; color:#8a8880; margin-bottom:28px; line-height:1.6; }
+
+  /* Three points */
+  .three-points { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:28px; }
+  .point { display:flex; gap:10px; align-items:flex-start; }
+  .point-num { width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:800; flex-shrink:0; margin-top:1px; color:#fff; }
+  .point p { font-size:0.78rem; line-height:1.45; color:rgba(240,237,230,0.8); }
+  .point p strong { color:#f0ede6; font-weight:700; }
+
+  /* Section header */
+  .sec-hdr { display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:28px; flex-wrap:wrap; color:#f0ede6; }
+  .sec-num { font-family:'IBM Plex Mono',monospace; font-size:0.58rem; font-weight:600; padding:3px 9px; border-radius:3px; letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; flex-shrink:0; }
+  .sn-r{background:rgba(224,82,82,0.14);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .sn-g{background:rgba(61,186,95,0.14);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .sn-o{background:rgba(232,137,10,0.14);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .sn-b{background:rgba(77,158,240,0.14);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+  .sec-title{font-size:1.0rem;font-weight:700;color:#f0ede6;}
+  .sec-sub{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#8a8880;margin-left:auto;letter-spacing:0.07em;text-align:right;line-height:1.4;flex-shrink:0;max-width:160px;}
+
+  /* Card */
+  .card{background:#141418;border:1px solid #28283a;border-radius:6px;padding:18px 16px;margin-bottom:12px;position:relative;overflow:hidden;}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+  .c-r::before{background:linear-gradient(90deg,#e05252,transparent);}
+  .c-g::before{background:linear-gradient(90deg,#3dba5f,transparent);}
+  .c-o::before{background:linear-gradient(90deg,#e8890a,transparent);}
+  .c-b::before{background:linear-gradient(90deg,#4d9ef0,transparent);}
+  .card-title{font-size:0.85rem;font-weight:700;color:#f0ede6;margin-bottom:3px;}
+  .card-src{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:#8a8880;margin-bottom:16px;letter-spacing:0.05em;}
+
+  /* Timeline chart CSS */
+  .timeline { display:flex; flex-direction:column; gap:0; }
+  .timeline-row { display:flex; flex-direction:column; gap:4px; margin-bottom:16px; }
+  .tl-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+  .tl-label { font-size:0.8rem; font-weight:700; }
+  .tl-val { font-family:'IBM Plex Mono',monospace; font-size:0.68rem; font-weight:700; }
+
+  .tl-track { height:28px; background:rgba(255,255,255,0.05); border-radius:3px; position:relative; overflow:hidden; }
+  .tl-segment { height:100%; position:absolute; top:0; border-radius:2px; display:flex; align-items:center; padding:0 8px; font-family:'IBM Plex Mono',monospace; font-size:0.6rem; font-weight:600; color:rgba(255,255,255,0.9); white-space:nowrap; }
+
+  .tl-axis { display:flex; margin-top:6px; position:relative; }
+  .tl-axis-tick { font-family:'IBM Plex Mono',monospace; font-size:0.54rem; color:#5a5860; position:absolute; transform:translateX(-50%); }
+
+  /* Legend */
+  .chart-legend { display:flex; gap:14px; margin-top:14px; flex-wrap:wrap; }
+  .legend-item { display:flex; align-items:center; gap:6px; font-size:0.72rem; color:#8a8880; }
+  .legend-line { width:20px; height:3px; border-radius:2px; flex-shrink:0; }
+
+  /* Phase breakdown */
+  .phase-grid { display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
+  .phase-row { display:flex; gap:10px; align-items:stretch; }
+  .phase-time { font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:#8a8880; width:60px; flex-shrink:0; padding-top:10px; text-align:right; }
+  .phase-bar { width:3px; background:#28283a; flex-shrink:0; border-radius:2px; }
+  .phase-content { flex:1; background:#1a1a20; border:1px solid #28283a; border-radius:4px; padding:8px 12px; }
+  .phase-title { font-size:0.76rem; font-weight:700; margin-bottom:2px; }
+  .phase-desc { font-size:0.72rem; color:rgba(240,237,230,0.6); line-height:1.4; }
+
+  /* Tables */
+  .gen-table{width:100%;border-collapse:collapse;font-size:0.74rem;margin-bottom:12px;}
+  .gen-table th{background:#1e1e28;color:#8a8880;padding:7px 10px;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;text-align:left;border-bottom:1px solid #28283a;}
+  .gen-table td{padding:8px 10px;border-bottom:1px solid #28283a;vertical-align:top;color:#f0ede6;line-height:1.4;}
+  .gen-table tr:last-child td{border-bottom:none;}
+  .gen-table.t-r th{background:rgba(224,82,82,0.2);color:#ff8080;}
+  .gen-table.t-g th{background:rgba(61,186,95,0.2);color:#5de07a;}
+
+  /* Badge */
+  .badge{display:inline-block;padding:2px 8px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;white-space:nowrap;}
+  .bg-g{background:rgba(61,186,95,0.14);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .bg-r{background:rgba(224,82,82,0.14);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .bg-o{background:rgba(232,137,10,0.14);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .bg-p{background:rgba(155,110,243,0.14);color:#c4a0ff;border:1px solid rgba(155,110,243,0.3);}
+
+  /* Findings */
+  .finding{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:#141418;border:1px solid #28283a;border-radius:4px;margin-bottom:5px;font-size:0.77rem;line-height:1.5;color:#f0ede6;}
+  .ftag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;font-weight:600;padding:2px 7px;border-radius:2px;white-space:nowrap;flex-shrink:0;letter-spacing:0.06em;margin-top:1px;}
+  .ft-r{background:rgba(224,82,82,0.14);color:#ff8080;border:1px solid rgba(224,82,82,0.3);}
+  .ft-g{background:rgba(61,186,95,0.14);color:#5de07a;border:1px solid rgba(61,186,95,0.3);}
+  .ft-o{background:rgba(232,137,10,0.14);color:#ffaa50;border:1px solid rgba(232,137,10,0.3);}
+  .ft-b{background:rgba(77,158,240,0.14);color:#7dbcff;border:1px solid rgba(77,158,240,0.3);}
+
+  /* Callout */
+  .callout{border-radius:4px;padding:14px 16px;margin-bottom:12px;font-size:0.78rem;line-height:1.55;color:#f0ede6;}
+  .callout strong{font-weight:700;}
+  .co-r{background:rgba(224,82,82,0.14);border-left:3px solid #e05252;}
+  .co-g{background:rgba(61,186,95,0.14);border-left:3px solid #3dba5f;}
+  .co-o{background:rgba(232,137,10,0.14);border-left:3px solid #e8890a;}
+  .callout-head{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+  .co-r .callout-head{color:#ff8080;} .co-g .callout-head{color:#5de07a;} .co-o .callout-head{color:#ffaa50;}
+
+  /* Callout bar */
+  .callout-bar{background:#1a1a24;border:1px solid #28283a;border-radius:4px;padding:12px 16px;margin-top:12px;font-size:0.8rem;line-height:1.5;text-align:center;color:rgba(240,237,230,0.85);}
+
+  /* Divider */
+  .div{border:none;border-top:1px solid #28283a;margin:24px 0;}
+
+  /* Bottom */
+  .bottom{background:#1a1a24;border:1px solid #28283a;border-radius:6px;padding:22px;margin-bottom:24px;}
+  .bottom-tag{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a8880;margin-bottom:10px;}
+  .bottom-text{font-size:0.86rem;line-height:1.65;color:rgba(240,237,230,0.85);}
+  .bottom-text strong{color:#f0ede6;font-weight:700;}
+
+  /* Footer */
+  .footer{display:flex;justify-content:space-between;align-items:flex-end;padding-top:18px;border-top:1px solid #28283a;flex-wrap:wrap;gap:8px;}
+  .footer-brand{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#8a8880;}
+  .footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:#8a8880;text-align:right;line-height:1.7;}
+
+  @media(max-width:560px){
+    .three-points{grid-template-columns:1fr;}
+    .sec-sub{display:none;}
+    .footer-refs{text-align:left;}
+    .gen-table th:nth-child(4),.gen-table td:nth-child(4){display:none;}
+  }
+</style>
+</head>
+<body style="background-color:#0c0c10!important;color:#f0ede6!important;">
+
+<div class="top-label">Mechanism Review · Autophagy & Fasting · Origin Symmetrics</div>
+
+<h1><span class="cr">48–72 hour fasting</span> does not linearly increase autophagy. The AMPK-mTOR feedback loop self-limits within <span class="co">2–4 hours</span>. <span class="cg">Exercise produces validated flux increases</span> — prolonged fasting in muscle does not.</h1>
+<p class="subtitle">What the biopsy data and flux studies actually show about autophagy induction, duration, and tissue specificity.</p>
+
+<div class="three-points">
+  <div class="point">
+    <div class="point-num" style="background:#e05252">1</div>
+    <p>Skeletal muscle shows <strong>metabolic resistance</strong> to prolonged fasting. At 72 hours, LC3B-II and p62 both rise — the definitive signature of <strong>impaired flux</strong>, not enhanced clearance.</p>
+  </div>
+  <div class="point">
+    <div class="point-num" style="background:#e8890a">2</div>
+    <p>The AMPK-mTOR axis implements <strong>intrinsic negative feedback at 2–4 hours</strong> via autophagic lysosome reformation (ALR). Amino acids liberated by autophagy reactivate mTORC1, capping further induction.</p>
+  </div>
+  <div class="point">
+    <div class="point-num" style="background:#3dba5f">3</div>
+    <p>Acute exercise produces <strong>+93–117% autophagic flux</strong> in human vastus lateralis (ex vivo confirmed), sustained up to 24 hours. Training status overrides fasting effects entirely.</p>
+  </div>
+</div>
+
+<!-- ════ CHART ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-g">01</div>
+  <div class="sec-title">Autophagy Response Over Time: Fasting vs Exercise</div>
+  <div class="sec-sub">Vendelbo 2014 · Dethlefsen 2018 · Botella 2022</div>
+</div>
+
+<div class="card c-g">
+  <div class="card-title">Relative Autophagic Flux — Fasting vs Exercise</div>
+  <div class="card-src">Vendelbo et al., 2014 · Dethlefsen et al., 2018 · Botella et al., 2022 · Yu et al., 2010</div>
+
+  <div style="position:relative;height:300px;">
+    <canvas id="timelineChart" style="width:100%;height:100%;display:block;"></canvas>
+  </div>
+
+  <div class="callout-bar">
+    Fasting autophagy <strong style="color:#ff8080;">plateaus and degrades</strong> after 2–4h feedback. Exercise delivers <strong style="color:#5de07a;">validated flux increases</strong> that persist <strong style="color:#ffaa50;">24 hours post-workout</strong>.
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ BIOMARKER TABLE ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-b">02</div>
+  <div class="sec-title">How to Read the Biomarkers — LC3B-II / p62 Logic</div>
+</div>
+
+<table class="gen-table">
+  <thead><tr><th>Pattern</th><th>LC3B-II</th><th>p62</th><th>Verdict</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Functional Flux</strong></td><td>↑ Increases</td><td>↓ Decreases</td><td><span class="badge bg-g">✓ Good</span></td></tr>
+    <tr><td><strong>Flux Impairment</strong></td><td>↑ Increases</td><td>↑ Increases</td><td><span class="badge bg-r">✗ Blocked</span></td></tr>
+    <tr><td><strong>Reduced Activity</strong></td><td>↓ Decreases</td><td>↓ Decreases</td><td><span class="badge bg-o">— Neutral</span></td></tr>
+    <tr><td><strong>Exercise-Induced</strong></td><td>↓ Decreases</td><td>Variable</td><td><span class="badge bg-g">✓ Best — rapid turnover</span></td></tr>
+  </tbody>
+</table>
+
+<div class="callout co-r">
+  <div class="callout-head">Critical Misread</div>
+  <strong>Elevated LC3B-II alone can mean more autophagy OR blocked autophagy</strong> — you cannot distinguish without flux measurement. The gold standard requires lysosomal blockade (chloroquine/bafilomycin) to calculate differential LC3B-II accumulation. Static marker studies have been systematically misinterpreted for years.
+</div>
+
+<div class="div"></div>
+
+<!-- ════ FASTING STUDIES ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-r">03</div>
+  <div class="sec-title">Human Fasting Biopsies — What They Actually Show</div>
+  <div class="sec-sub">Vendelbo 2014 · Dethlefsen 2018</div>
+</div>
+
+<table class="gen-table t-r">
+  <thead><tr><th>Study</th><th>LC3B-II</th><th>p62</th><th>Interpretation</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Vendelbo 2014</strong><br><span style="font-size:0.67rem;color:#8a8880;">72h fast · n=8</span></td>
+      <td style="color:#ff8080;">↑ +30%</td>
+      <td style="color:#ff8080;">↑ +10%</td>
+      <td><span class="badge bg-r">Flux Impairment</span> Both markers elevated. Lysosomal failure. Insulin resistance developed.</td>
+    </tr>
+    <tr>
+      <td><strong>Dethlefsen 2018</strong><br><span style="font-size:0.67rem;color:#8a8880;">36h fast · untrained</span></td>
+      <td style="color:#ffaa50;">↓ ~20%</td>
+      <td style="color:#ffaa50;">↓ ~20%</td>
+      <td><span class="badge bg-o">Muscle Resistance</span> No AMPK-Thr172 or mTOR-Ser2448 change. Muscle ignored the fast entirely.</td>
+    </tr>
+    <tr>
+      <td><strong>Dethlefsen 2018</strong><br><span style="font-size:0.67rem;color:#8a8880;">36h fast · trained</span></td>
+      <td>No change</td>
+      <td>No change</td>
+      <td><span class="badge bg-o">Training Overrides</span> Lower AMPK/ULK1 vs untrained. Higher basal Beclin-1. Exercise adaptation supersedes fasting.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout co-r">
+  <div class="callout-head">The 72-Hour Paradox</div>
+  At 72 hours: LC3B-II ↑ + p62 ↑ simultaneously. This is the <strong>molecular signature of dysfunctional autophagy</strong> — identical to lysosomal storage diseases. The muscle attempted autophagy but failed to complete degradation. The claim that 72-hour fasting "rejuvenates cells through autophagy" directly contradicts this biopsy data.
+</div>
+
+<div class="div"></div>
+
+<!-- ════ EXERCISE ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-g">04</div>
+  <div class="sec-title">Exercise — Validated Autophagic Flux in Human Tissue</div>
+  <div class="sec-sub">Botella 2022 · Campos 2017</div>
+</div>
+
+<table class="gen-table t-g">
+  <thead><tr><th>Study</th><th>Method</th><th>Flux Result</th><th>Key Insight</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Botella 2022</strong></td>
+      <td>Ex vivo · human vastus lateralis · NH4Cl/leupeptin</td>
+      <td><span class="badge bg-g">+93–117% flux</span><br><span style="font-size:0.67rem;color:#8a8880;">Sustained 24h</span></td>
+      <td>LC3B-II protein <em>decreased</em> –24% post-exercise — but flux skyrocketed. Static markers were backwards.</td>
+    </tr>
+    <tr>
+      <td><strong>Campos 2017</strong></td>
+      <td>8 weeks training · cardiac tissue</td>
+      <td><span class="badge bg-g">Flux restored</span></td>
+      <td>Exercise reestablished autophagic flux in failing hearts. Cleared accumulated LC3B-II, BECN1, p62, PARK2.</td>
+    </tr>
+    <tr>
+      <td><strong>Islam 2021</strong></td>
+      <td>Fasting + exercise combined</td>
+      <td><span class="badge bg-o">No additive effect</span></td>
+      <td>Adding fasting to exercise did NOT augment autophagy beyond exercise alone. Exercise stimulus is dominant.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout co-g">
+  <div class="callout-head">Why Exercise Wins — The Cyclic Stress Advantage</div>
+  Exercise creates <strong>transient catabolism followed by anabolic rebound</strong> — autophagy fires during and post-workout, then mTOR reactivates with nutrition to drive repair. This cycling leverages both pathways. Prolonged fasting instead produces chronic mTOR suppression, impairing immune function and risking muscle catabolism — while biopsy data shows it may actually block flux.
+</div>
+
+<div class="div"></div>
+
+<!-- ════ AMPK FEEDBACK ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-o">05</div>
+  <div class="sec-title">The AMPK-mTOR Feedback Loop — Why Duration ≠ Depth</div>
+  <div class="sec-sub">Yu et al., 2010 · Nature</div>
+</div>
+
+<div class="phase-grid">
+  <div class="phase-row">
+    <div class="phase-time">0–1h</div>
+    <div class="phase-bar" style="background:#e8890a;"></div>
+    <div class="phase-content">
+      <div class="phase-title" style="color:#ffaa50;">Initiation</div>
+      <div class="phase-desc">mTORC1 inactivates → ULK1 released → autophagosomes begin forming</div>
+    </div>
+  </div>
+  <div class="phase-row">
+    <div class="phase-time">1–2h</div>
+    <div class="phase-bar" style="background:#3dba5f;"></div>
+    <div class="phase-content">
+      <div class="phase-title" style="color:#5de07a;">Peak Flux</div>
+      <div class="phase-desc">Maximum autophagosome formation and cargo degradation. This is the productive window.</div>
+    </div>
+  </div>
+  <div class="phase-row">
+    <div class="phase-time">2–4h</div>
+    <div class="phase-bar" style="background:#e8890a;"></div>
+    <div class="phase-content">
+      <div class="phase-title" style="color:#ffaa50;">ALR Feedback</div>
+      <div class="phase-desc"><strong>Amino acids liberated by autophagy reactivate mTORC1</strong> → ULK1 re-inhibited → autophagic lysosome reformation begins → system self-limits. This is not a bug — it prevents suicidal self-digestion.</div>
+    </div>
+  </div>
+  <div class="phase-row">
+    <div class="phase-time">4h+</div>
+    <div class="phase-bar" style="background:#e05252;"></div>
+    <div class="phase-content">
+      <div class="phase-title" style="color:#ff8080;">Constrained Steady State</div>
+      <div class="phase-desc">System cycles in self-limited steady state. <strong>Additional fasting hours do not increase autophagy depth</strong> — they only extend systemic costs of nutrient deprivation.</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ TISSUE SPECIFICITY ════ -->
+<div class="sec-hdr">
+  <div class="sec-num sn-b">06</div>
+  <div class="sec-title">Tissue Specificity — "Fasting Activates Autophagy" Is Incomplete</div>
+</div>
+
+<table class="gen-table">
+  <thead><tr><th>Tissue</th><th>Fasting Response</th><th>Exercise Response</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Liver</strong></td>
+      <td><span class="badge bg-g">Robust ↑</span> — serves gluconeogenesis and systemic amino acid supply</td>
+      <td>Moderate ↑</td>
+    </tr>
+    <tr>
+      <td><strong>Skeletal Muscle</strong></td>
+      <td><span class="badge bg-r">Resistance / Impairment</span> — 36h no signaling; 72h marker accumulation</td>
+      <td><span class="badge bg-g">+93–117% validated flux</span></td>
+    </tr>
+    <tr>
+      <td><strong>Cardiac Muscle</strong></td>
+      <td>Modest response</td>
+      <td><span class="badge bg-g">Flux restoration documented</span></td>
+    </tr>
+    <tr>
+      <td><strong>Immune Cells</strong></td>
+      <td>Variable by subtype</td>
+      <td>Not well studied</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="finding"><span class="ftag ft-o">Critical Caveat</span><span>Liver fasting data does NOT translate to skeletal muscle. Most fasting autophagy research measures hepatic tissue. Blood-based flux assays (PBMCs) also cannot be used as a muscle proxy. The tissue matters enormously — and muscle is where most people care about the outcome.</span></div>
+
+<div class="div"></div>
+
+<div class="bottom">
+  <div class="bottom-tag">Synthesis · The Practical Bottom Line</div>
+  <div class="bottom-text">
+    <strong>Strategic, transient metabolic stressors — particularly ≥45 min moderate-vigorous exercise and moderate caloric restriction — provide more reliable autophagy modulation than extended fasting</strong>, without the systemic costs of chronic mTOR suppression, immune dysfunction, or muscle catabolism.<br><br>
+    For trained individuals especially, fasting adds nothing to autophagy that exercise hasn't already achieved — and biopsy data from Vendelbo 2014 shows it may actively impair flux at 72 hours. The maximum achievable autophagic flux is reached within hours, not days. Duration does not equal depth.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics · originsymmetrics.com</div>
+  <div class="footer-refs">
+    Vendelbo et al., 2014 · Dethlefsen et al., 2018<br>
+    Botella et al., 2022 · Yu et al., 2010 (Nature)<br>
+    Islam et al., 2021 · Campos et al., 2017
+  </div>
+</div>
+
+
+<script>
+const canvas = document.getElementById('timelineChart');
+const ctx = canvas.getContext('2d');
+
+function setup() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * window.devicePixelRatio;
+  canvas.height = rect.height * window.devicePixelRatio;
+  canvas.style.width = rect.width + 'px';
+  canvas.style.height = rect.height + 'px';
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  draw(rect.width, rect.height);
+}
+
+function draw(W, H) {
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#141418';
+  ctx.fillRect(0, 0, W, H);
+
+  const PAD = { top: 30, right: 20, bottom: 52, left: 46 };
+  const CW = W - PAD.left - PAD.right;
+  const CH = H - PAD.top - PAD.bottom;
+
+  const X_MAX = 80;
+  const Y_MIN = 0, Y_MAX = 125;
+
+  function px(x) { return PAD.left + (x / X_MAX) * CW; }
+  function py(y) { return PAD.top + CH - ((y - Y_MIN) / (Y_MAX - Y_MIN)) * CH; }
+
+  // Grid
+  ctx.strokeStyle = 'rgba(40,40,58,0.9)';
+  ctx.lineWidth = 1;
+  [25,50,75,100].forEach(y => {
+    ctx.beginPath(); ctx.moveTo(PAD.left, py(y)); ctx.lineTo(PAD.left+CW, py(y)); ctx.stroke();
+  });
+  [12,24,36,48,60,72].forEach(x => {
+    ctx.beginPath(); ctx.moveTo(px(x), PAD.top); ctx.lineTo(px(x), PAD.top+CH); ctx.stroke();
+  });
+
+  // Baseline at y=50
+  ctx.strokeStyle = 'rgba(138,136,128,0.35)';
+  ctx.lineWidth = 1.2;
+  ctx.setLineDash([5,4]);
+  ctx.beginPath(); ctx.moveTo(PAD.left, py(50)); ctx.lineTo(PAD.left+CW, py(50)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = 'rgba(138,136,128,0.55)';
+  ctx.font = '500 8px IBM Plex Mono,monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('— baseline', PAD.left + 4, py(50) - 4);
+
+  // ALR shaded zone 2-4h
+  ctx.fillStyle = 'rgba(232,137,10,0.07)';
+  ctx.fillRect(px(2), PAD.top, px(4)-px(2), CH);
+
+  // Axes
+  ctx.strokeStyle = '#28283a'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(PAD.left, PAD.top); ctx.lineTo(PAD.left, PAD.top+CH);
+  ctx.lineTo(PAD.left+CW, PAD.top+CH); ctx.stroke();
+
+  // ── FASTING CURVE (red)
+  const fasting = [
+    [0,50],[0.5,65],[1,82],[2,90],[3,82],[4,70],
+    [8,63],[12,58],[24,53],[36,49],[48,45],[60,41],[72,37],[80,35]
+  ];
+
+  // Filled area
+  ctx.beginPath();
+  ctx.moveTo(px(fasting[0][0]), py(50));
+  fasting.forEach(([x,y]) => ctx.lineTo(px(x), py(y)));
+  ctx.lineTo(px(fasting[fasting.length-1][0]), py(50));
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(224,82,82,0.09)'; ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(px(fasting[0][0]), py(fasting[0][1]));
+  for (let i=1;i<fasting.length;i++) {
+    const p=fasting[i-1],c=fasting[i],cpx=(px(p[0])+px(c[0]))/2;
+    ctx.bezierCurveTo(cpx,py(p[1]),cpx,py(c[1]),px(c[0]),py(c[1]));
+  }
+  ctx.strokeStyle='#e05252'; ctx.lineWidth=2.2; ctx.stroke();
+
+  // ── EXERCISE CURVE (green)
+  const exercise = [
+    [0,50],[0.5,78],[1,102],[2,110],[3,106],
+    [4,100],[6,94],[8,87],[12,77],[18,64],[24,54],[28,50]
+  ];
+
+  ctx.beginPath();
+  ctx.moveTo(px(exercise[0][0]), py(50));
+  exercise.forEach(([x,y]) => ctx.lineTo(px(x), py(y)));
+  ctx.lineTo(px(exercise[exercise.length-1][0]), py(50));
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(61,186,95,0.1)'; ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(px(exercise[0][0]), py(exercise[0][1]));
+  for (let i=1;i<exercise.length;i++) {
+    const p=exercise[i-1],c=exercise[i],cpx=(px(p[0])+px(c[0]))/2;
+    ctx.bezierCurveTo(cpx,py(p[1]),cpx,py(c[1]),px(c[0]),py(c[1]));
+  }
+  ctx.strokeStyle='#3dba5f'; ctx.lineWidth=2.2; ctx.stroke();
+
+  // ── MARKERS
+  // Exercise peak dot
+  ctx.beginPath(); ctx.arc(px(2), py(110), 4, 0, Math.PI*2);
+  ctx.fillStyle='#3dba5f'; ctx.fill();
+  ctx.strokeStyle='#141418'; ctx.lineWidth=1.5; ctx.stroke();
+
+  // 72h fasting dot
+  ctx.beginPath(); ctx.arc(px(72), py(37), 4, 0, Math.PI*2);
+  ctx.fillStyle='#e05252'; ctx.fill();
+  ctx.strokeStyle='#141418'; ctx.lineWidth=1.5; ctx.stroke();
+
+  // ALR label — placed ABOVE chart area, far left of shaded zone
+  ctx.fillStyle='#ffaa50';
+  ctx.font='600 8px Inter,sans-serif';
+  ctx.textAlign='left';
+  ctx.fillText('ALR 2–4h feedback', PAD.left+2, PAD.top-4);
+
+  // Exercise annotation — below legend, right side, clear of overlap
+  ctx.fillStyle='#3dba5f';
+  ctx.font='700 8.5px Inter,sans-serif';
+  ctx.textAlign='right';
+  ctx.fillText('+93–117% flux', PAD.left+CW, PAD.top+52);
+  ctx.font='500 7.5px Inter,sans-serif';
+  ctx.fillText('ex vivo confirmed', PAD.left+CW, PAD.top+63);
+
+  // 72h annotation — right-aligned so it doesn't go off screen
+  ctx.fillStyle='#e05252';
+  ctx.font='600 8.5px Inter,sans-serif';
+  ctx.textAlign='right';
+  ctx.fillText('72h: impaired', PAD.left+CW, py(37)+14);
+
+  // ── LEGEND — placed in upper right clear area
+  const lx = PAD.left + CW * 0.62;
+  const ly = PAD.top + 6;
+  ctx.strokeStyle='#e05252'; ctx.lineWidth=2.2;
+  ctx.beginPath(); ctx.moveTo(lx,ly+5); ctx.lineTo(lx+16,ly+5); ctx.stroke();
+  ctx.fillStyle='#f0ede6'; ctx.font='500 8.5px Inter,sans-serif'; ctx.textAlign='left';
+  ctx.fillText('Fasting', lx+20, ly+9);
+
+  ctx.strokeStyle='#3dba5f'; ctx.lineWidth=2.2;
+  ctx.beginPath(); ctx.moveTo(lx,ly+19); ctx.lineTo(lx+16,ly+19); ctx.stroke();
+  ctx.fillStyle='#f0ede6';
+  ctx.fillText('Exercise', lx+20, ly+23);
+
+  // ── Y axis labels
+  ctx.textAlign='right'; ctx.fillStyle='#5a5860';
+  ctx.font='500 9px IBM Plex Mono,monospace';
+  [25,50,75,100].forEach(y => ctx.fillText(y, PAD.left-4, py(y)+3));
+
+  // Y axis title
+  ctx.save(); ctx.translate(11, PAD.top+CH/2); ctx.rotate(-Math.PI/2);
+  ctx.textAlign='center'; ctx.fillStyle='#f0ede6';
+  ctx.font='600 9px Inter,sans-serif';
+  ctx.fillText('Autophagic Flux', 0, 0); ctx.restore();
+
+  // ── X axis labels
+  ctx.textAlign='center'; ctx.fillStyle='#5a5860';
+  ctx.font='500 9px IBM Plex Mono,monospace';
+  [0,12,24,36,48,60,72].forEach(x => {
+    ctx.fillStyle = x===72 ? '#ffaa50' : '#5a5860';
+    ctx.fillText(x+'h', px(x), PAD.top+CH+16);
+  });
+  ctx.fillStyle='#f0ede6'; ctx.font='600 10px Inter,sans-serif';
+  ctx.fillText('Time (hours)', PAD.left+CW/2, PAD.top+CH+34);
+}
+
+setup();
+window.addEventListener('resize', setup);
+</script>
+</body>
+</html>
