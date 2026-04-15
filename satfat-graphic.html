@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saturated Fat, Heart Disease, and Everything In Between — Origin Symmetrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0e;
+  --bg2: #111118;
+  --bg3: #17171f;
+  --bg4: #1e1e28;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #edeae3;
+  --text2: rgba(237,234,227,0.7);
+  --text3: rgba(237,234,227,0.4);
+  --red: #f05252;
+  --red-dim: rgba(240,82,82,0.12);
+  --red-border: rgba(240,82,82,0.25);
+  --green: #4ede8a;
+  --green-dim: rgba(78,222,138,0.1);
+  --green-border: rgba(78,222,138,0.2);
+  --amber: #f5a623;
+  --amber-dim: rgba(245,166,35,0.1);
+  --amber-border: rgba(245,166,35,0.2);
+  --blue: #60a5fa;
+  --blue-dim: rgba(96,165,250,0.1);
+  --blue-border: rgba(96,165,250,0.2);
+  --purple: #c084fc;
+  --purple-dim: rgba(192,132,252,0.1);
+  --purple-border: rgba(192,132,252,0.2);
+  --teal: #2dd4bf;
+  --teal-dim: rgba(45,212,191,0.1);
+  --teal-border: rgba(45,212,191,0.2);
+  --orange: #fb923c;
+  --orange-dim: rgba(251,146,60,0.1);
+  --orange-border: rgba(251,146,60,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  padding: 64px 24px 56px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, rgba(240,82,82,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(78,222,138,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 20px;
+}
+.hero-tag::before {
+  content: '';
+  display: inline-block;
+  width: 18px; height: 1px;
+  background: var(--red);
+}
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+h1 em { font-style: italic; color: var(--red); }
+h1 strong { font-style: normal; color: var(--green); }
+.hero-sub {
+  font-size: 0.95rem;
+  color: var(--text2);
+  max-width: 640px;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.hstat {
+  background: var(--bg2);
+  padding: 14px 16px;
+}
+.hstat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hstat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  line-height: 1.4;
+}
+
+/* ── CONTENT ── */
+.content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ── SECTION HEADER ── */
+.sec {
+  margin-top: 56px;
+}
+.sec-hdr {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.sec-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.sn-red   { background: var(--red-dim);    color: var(--red);    border: 1px solid var(--red-border); }
+.sn-green { background: var(--green-dim);  color: var(--green);  border: 1px solid var(--green-border); }
+.sn-amber { background: var(--amber-dim);  color: var(--amber);  border: 1px solid var(--amber-border); }
+.sn-blue  { background: var(--blue-dim);   color: var(--blue);   border: 1px solid var(--blue-border); }
+.sn-purple{ background: var(--purple-dim); color: var(--purple); border: 1px solid var(--purple-border); }
+.sn-teal  { background: var(--teal-dim);   color: var(--teal);   border: 1px solid var(--teal-border); }
+.sn-orange{ background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-border); }
+
+.sec-title-wrap {}
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.1rem, 3vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.sec-src {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.53rem;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+
+/* ── PROSE ── */
+.prose {
+  font-size: 0.88rem;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.prose strong { color: var(--text); font-weight: 600; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.card.cr::before { background: linear-gradient(90deg, var(--red), transparent 70%); }
+.card.cg::before { background: linear-gradient(90deg, var(--green), transparent 70%); }
+.card.ca::before { background: linear-gradient(90deg, var(--amber), transparent 70%); }
+.card.cb::before { background: linear-gradient(90deg, var(--blue), transparent 70%); }
+.card.cp::before { background: linear-gradient(90deg, var(--purple), transparent 70%); }
+.card.ct::before { background: linear-gradient(90deg, var(--teal), transparent 70%); }
+.card.co::before { background: linear-gradient(90deg, var(--orange), transparent 70%); }
+.card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.card-src {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+
+/* ── GRID LAYOUTS ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+/* ── STAT BOX ── */
+.stat-box {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+}
+.stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-desc {
+  font-size: 0.73rem;
+  color: var(--text3);
+  line-height: 1.45;
+}
+
+/* ── FINDINGS ── */
+.finding {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  font-size: 0.83rem;
+  line-height: 1.65;
+  color: var(--text2);
+}
+.finding strong { color: var(--text); font-weight: 600; }
+.ftag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.53rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  width: fit-content;
+}
+.ft-r  { background: var(--red-dim);    color: var(--red);    border: 1px solid var(--red-border); }
+.ft-g  { background: var(--green-dim);  color: var(--green);  border: 1px solid var(--green-border); }
+.ft-a  { background: var(--amber-dim);  color: var(--amber);  border: 1px solid var(--amber-border); }
+.ft-b  { background: var(--blue-dim);   color: var(--blue);   border: 1px solid var(--blue-border); }
+.ft-p  { background: var(--purple-dim); color: var(--purple); border: 1px solid var(--purple-border); }
+.ft-t  { background: var(--teal-dim);   color: var(--teal);   border: 1px solid var(--teal-border); }
+.ft-o  { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-border); }
+
+/* ── CALLOUT ── */
+.callout {
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+.callout strong { font-weight: 600; }
+.callout-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.co-r { background: var(--red-dim);    border-left: 3px solid var(--red); }
+.co-g { background: var(--green-dim);  border-left: 3px solid var(--green); }
+.co-a { background: var(--amber-dim);  border-left: 3px solid var(--amber); }
+.co-b { background: var(--blue-dim);   border-left: 3px solid var(--blue); }
+.co-p { background: var(--purple-dim); border-left: 3px solid var(--purple); }
+.co-t { background: var(--teal-dim);   border-left: 3px solid var(--teal); }
+.co-o { background: var(--orange-dim); border-left: 3px solid var(--orange); }
+.co-r .callout-head { color: var(--red); }
+.co-g .callout-head { color: var(--green); }
+.co-a .callout-head { color: var(--amber); }
+.co-b .callout-head { color: var(--blue); }
+.co-p .callout-head { color: var(--purple); }
+.co-t .callout-head { color: var(--teal); }
+.co-o .callout-head { color: var(--orange); }
+
+/* ── BAR CHARTS ── */
+.bar-chart { display: flex; flex-direction: column; gap: 16px; }
+.bar-row { display: flex; flex-direction: column; gap: 6px; }
+.bar-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.bar-name { font-size: 0.82rem; font-weight: 500; color: var(--text); line-height: 1.35; }
+.bar-sub  { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; color: var(--text3); margin-top: 2px; }
+.bar-val  { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+.bar-track {
+  height: 24px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  position: absolute;
+  top: 0; left: 0;
+}
+.bar-inner-label {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.7);
+  pointer-events: none;
+}
+.bar-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.bar-axis span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.54rem;
+  color: var(--text3);
+}
+.bar-axis-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--text3);
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ── CHAIN DIAGRAM ── */
+.chain {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 14px;
+}
+.chain-step {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.chain-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  flex-shrink: 0;
+}
+.chain-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: #fff;
+  z-index: 1;
+}
+.chain-line {
+  width: 2px;
+  flex: 1;
+  background: var(--border2);
+  margin: 0 auto;
+}
+.chain-step:last-child .chain-line { display: none; }
+.chain-body {
+  flex: 1;
+  padding: 4px 0 20px 14px;
+}
+.chain-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.chain-text {
+  font-size: 0.84rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+.chain-text strong { color: var(--text); font-weight: 600; }
+.chain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* ── EVIDENCE TIER TABLE ── */
+.etable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+.etable th {
+  background: var(--bg3);
+  color: var(--text3);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.etable td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.etable tr:last-child td { border-bottom: none; }
+.etable td:first-child { color: var(--text); font-weight: 500; }
+
+/* ── STRENGTH INDICATOR ── */
+.str-dots { display: flex; gap: 3px; align-items: center; }
+.str-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+.str-dot.on  { background: var(--green); }
+.str-dot.off { background: var(--border2); }
+
+/* ── HORIZONTAL RISK BAR ── */
+.risk-scale {
+  display: flex;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.risk-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+
+/* ── COMPARISON PANEL ── */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.compare-side { background: var(--bg2); padding: 18px; }
+.compare-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.compare-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+.compare-icon {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── DIVIDER ── */
+.div {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* ── GAP BOX ── */
+.gap-box {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+.gap-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.gap-title { font-size: 0.84rem; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+.gap-body  { font-size: 0.78rem; color: var(--text2); line-height: 1.6; }
+
+/* ── BOTTOM SYNTHESIS ── */
+.synthesis {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 28px 24px;
+  margin-top: 40px;
+}
+.synth-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 16px;
+}
+.synth-text {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text2);
+}
+.synth-text strong { color: var(--text); font-weight: 600; }
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text3);
+}
+.footer-refs {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--text3);
+  line-height: 1.8;
+  text-align: right;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 580px) {
+  .hero { padding: 44px 18px 40px; }
+  .content { padding: 0 18px 60px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .compare { grid-template-columns: 1fr; }
+  .compare-side + .compare-side { border-top: 2px solid var(--border); }
+  .footer-refs { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<div class="hero">
+<div class="hero-inner">
+  <div class="hero-tag">Cardiovascular Research · Origin Symmetrics</div>
+  <h1>Saturated Fat, Heart Disease, and <em>Everything In Between</em> —<br><strong>What the Research Actually Shows</strong></h1>
+  <p class="hero-sub">The complete mechanistic, genetic, and clinical evidence connecting dietary saturated fat → LDL receptor suppression → elevated ApoB → subendothelial particle retention → atherosclerosis — and where the chain is strong, where it is qualified, and where it remains genuinely unknown.</p>
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-num" style="color:var(--red);">2M+</div>
+      <div class="hstat-label">Participants across EAS consensus studies establishing LDL causality</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-num" style="color:var(--amber);">593,354</div>
+      <div class="hstat-label">Subjects in 15 discordance studies — ApoB outperformed LDL-C 9/9 times</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-num" style="color:var(--green);">9/9</div>
+      <div class="hstat-label">Studies where ApoB outperformed LDL-C in discordance analysis</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-num" style="color:var(--purple);">3×</div>
+      <div class="hstat-label">Greater proportional CVD risk reduction from lifetime vs. short-term LDL-C lowering (MR)</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="content">
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1: THE MECHANISTIC CHAIN
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-red">01</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">The Response-to-Retention Pathway: How Atherosclerosis Actually Starts</div>
+      <div class="sec-src">Williams & Tabas 1995 · EAS Consensus 2020 · Borén et al., Nat Rev Cardiol 2024</div>
+    </div>
+  </div>
+
+  <p class="prose">The core mechanistic model is not the "lipid hypothesis" of popular discourse. It is the <strong>response-to-retention hypothesis</strong> — first articulated in 1995, now the consensus framework supported by direct human pathology, in vitro binding data, and genetic evidence. Inflammation is not a parallel cause; it is a downstream response to particle retention. The sequence is unambiguous in its directionality.</p>
+
+  <div class="chain">
+    <div class="chain-step">
+      <div class="chain-left">
+        <div class="chain-dot" style="background:var(--red);">1</div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-body">
+        <div class="chain-label" style="color:var(--red);">Entry via Transcytosis</div>
+        <div class="chain-text">ApoB-containing lipoproteins (LDL, IDL, VLDL remnants, Lp(a)) enter the subendothelial space through caveolin-1-dependent transcytosis. Entry rate is <strong>proportional to circulating particle concentration</strong>. Very large particles (>500nm chylomicrons) cannot cross; this size threshold explains why intact VLDL is less atherogenic than its remnants.</div>
+      </div>
+    </div>
+    <div class="chain-step">
+      <div class="chain-left">
+        <div class="chain-dot" style="background:var(--orange);">2</div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-body">
+        <div class="chain-label" style="color:var(--orange);">Retention by Proteoglycans — The Critical Rate-Limiting Step</div>
+        <div class="chain-text"><strong>ApoB has positively charged regions that bind ionically to the negatively charged glycosaminoglycan chains</strong> of subendothelial proteoglycans (biglycan, versican, perlecan). This retention — not merely elevated plasma levels — is the initiating event. At early grades of atherosclerosis, lipid deposition is present <em>in the absence of macrophages</em>; macrophages appear later. Retention precedes and causes inflammation.</div>
+        <div class="chain-badge" style="background:var(--orange-dim);color:var(--orange);border:1px solid var(--orange-border);">Key insight: small dense LDL binds proteoglycans more avidly than large buoyant LDL — size and density affect retention affinity independently of ApoB count</div>
+      </div>
+    </div>
+    <div class="chain-step">
+      <div class="chain-left">
+        <div class="chain-dot" style="background:var(--amber);">3</div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-body">
+        <div class="chain-label" style="color:var(--amber);">Modification: From Inert to Pathological</div>
+        <div class="chain-text">Retained LDL is exposed to secretory sphingomyelinase (S-SMase) and secretory phospholipase A2 (sPLA2), which remodel its surface and dramatically increase proteoglycan affinity — trapping particles further. Oxidizing agents convert LDL into <strong>oxidized LDL (oxLDL)</strong>, which: (a) generates damage-associated molecular patterns (DAMPs), (b) cannot exit via LDL receptors, (c) is avidly ingested by macrophage scavenger receptors rather than the regulated LDL receptor pathway. S-SMase also aggregates particles, preventing exit through size increase alone.</div>
+      </div>
+    </div>
+    <div class="chain-step">
+      <div class="chain-left">
+        <div class="chain-dot" style="background:var(--blue);">4</div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-body">
+        <div class="chain-label" style="color:var(--blue);">Maladaptive Inflammatory Response</div>
+        <div class="chain-text">Modified retained lipoproteins trigger monocyte recruitment and differentiation into macrophages. Macrophages ingest modified LDL via scavenger receptors — forming <strong>foam cells</strong> (the hallmark of the fatty streak). Unlike receptor-mediated uptake via LDL receptors, scavenger receptor uptake is not downregulated — macrophages continue ingesting until they become lipid-engorged and dysfunctional. T-cells and mast cells follow, establishing a chronic, non-resolving inflammatory lesion.</div>
+      </div>
+    </div>
+    <div class="chain-step">
+      <div class="chain-left">
+        <div class="chain-dot" style="background:var(--purple);">5</div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-body">
+        <div class="chain-label" style="color:var(--purple);">Self-Amplifying Retention Loop</div>
+        <div class="chain-text">Macrophages release lipoprotein lipase and phospholipase-A2 into the lesion, which <strong>induce proteoglycan remodeling toward higher LDL-binding affinity</strong> — creating a self-amplifying cycle of further retention and progression. Smooth muscle cells migrate into the intima, laying down collagen to form the fibrous cap. Plaque becomes structurally defined.</div>
+      </div>
+    </div>
+    <div class="chain-step">
+      <div class="chain-left">
+        <div class="chain-dot" style="background:var(--red);">6</div>
+        <div class="chain-line"></div>
+      </div>
+      <div class="chain-body">
+        <div class="chain-label" style="color:var(--red);">Plaque Rupture → Clinical Event</div>
+        <div class="chain-text">Macrophage-secreted proteases degrade the fibrous cap, creating thin-capped, vulnerable plaque. Tissue factor exposure upon disruption triggers thrombus formation. If the thrombosed artery supplies myocardium: <strong>myocardial infarction</strong>. If it supplies the brain: <strong>ischemic stroke</strong>. The sequence from first fatty streak to clinical event spans decades of cumulative exposure.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout co-r">
+    <div class="callout-head">The Inflammation Misconception</div>
+    Inflammation does not independently cause atherosclerosis — it responds to retained, modified LDL. The CANTOS trial (canakinumab, anti-IL-1β) showed that targeting inflammation <em>alone</em> reduces CV events, which some interpret as inflammation being an independent cause. The correct interpretation: inflammation is a <strong>downstream amplifier</strong>. Without initial particle retention, the inflammatory cascade has no trigger. Reducing inflammation after particles are already retained slows progression but doesn't change the initiating mechanism.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 2: LDL-C CAUSALITY
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-red">02</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">LDL-C Causality — The Genetic Evidence Is Definitive</div>
+      <div class="sec-src">Ference et al., Eur Heart J 2017 · EAS Consensus Panel · >200 prospective cohort studies</div>
+    </div>
+  </div>
+
+  <p class="prose">The EAS Consensus Statement synthesized >200 prospective cohort studies, Mendelian randomization studies, and RCTs comprising <strong>2+ million participants and 150,000+ CV events</strong>. The relationship is log-linear, cumulative, and consistent across every independent methodological approach. Scientists rarely use causal language; this is the exception.</p>
+
+  <div class="grid-2">
+    <div class="stat-box">
+      <div class="stat-label">Mendelian Randomization Advantage</div>
+      <div class="stat-val" style="color:var(--red);">3×</div>
+      <div class="stat-desc">Greater proportional CVD risk reduction from lifetime genetically lower LDL-C vs. shorter-term statin treatment — confirming cumulative exposure is causal</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">LDL-C in FH (homozygous untreated)</div>
+      <div class="stat-val" style="color:var(--red);">400–600+</div>
+      <div class="stat-desc">mg/dL LDL-C from birth. Children present with MI in first decade of life — without any other traditional risk factors. Isolated exposure establishes sufficiency.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">PCSK9 Loss-of-Function</div>
+      <div class="stat-val" style="color:var(--green);">~90%</div>
+      <div class="stat-desc">Reduction in CVD risk with genetically determined LDL-C of 20–40 mg/dL — consistent across PCSK9 inhibitor trials that mirror the genetic effect</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Dose-Response Relationship</div>
+      <div class="stat-val" style="color:var(--amber);">Log-linear</div>
+      <div class="stat-desc">Each 1 mmol/L (~39 mg/dL) absolute LDL-C reduction → ~22% relative CVD event reduction — consistent across all drug classes and genetic mechanisms</div>
+    </div>
+  </div>
+
+  <div class="card cg">
+    <div class="card-title">Why Mendelian Randomization Establishes Causality (Not Just Association)</div>
+    <div class="card-src">Ference et al., 2017 · NEJM 2016 PCSK9/HMGCR variation study</div>
+    <p class="prose" style="margin-bottom:0;">Observational epidemiology cannot prove causation — confounders and reverse causation are always possible. Mendelian randomization (MR) uses genetic variants inherited at conception as instrumental variables. Because genetic allocation is essentially random with respect to adult lifestyle factors, MR eliminates reverse causation and most confounding — analogous to randomization in a clinical trial. Key MR findings: <strong>(1)</strong> HMGCR variants (the target of statins) → same LDL-C and ASCVD risk reduction as statins themselves. <strong>(2)</strong> PCSK9 variants → same LDL-C and ASCVD reduction as PCSK9 inhibitor drugs. <strong>(3)</strong> Both genetic and pharmacological lowering produce proportionally identical risk reduction, confirming it is LDL lowering itself — not off-target drug effects — that drives benefit. The concordance of natural genetic experiments with pharmacological interventions is uniquely powerful evidence.</p>
+  </div>
+
+  <div class="finding">
+    <span class="ftag ft-r">Critical Qualifier</span>
+    <span>The EAS statement includes an essential condition: benefit requires that LDL-C reduction is <strong>"concordant with the reduction in LDL particle number."</strong> This is why evacetrapib failed — it reduced LDL-C 37% but ApoB only 15%. No clinical benefit followed (HR 1.01, p=0.91, n=12,092). Mechanisms that lower LDL-C without lowering ApoB proportionally do not reduce events. This single natural experiment validates the entire ApoB-particle-number framework.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 3: APoB VS LDL-C
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-amber">03</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">ApoB Is the True Driver — What LDL-C Misses and Why It Matters</div>
+      <div class="sec-src">Sniderman meta-analysis · NLA Consensus 2024 · Marston et al., JAMA Cardiol 2022 · n=389,000+</div>
+    </div>
+  </div>
+
+  <p class="prose">LDL-C measures the <em>mass of cholesterol</em> inside LDL particles. ApoB measures the <em>number of atherogenic particles</em> (every VLDL, IDL, LDL, and Lp(a) particle carries exactly one ApoB molecule). Since atherogenesis is driven by particle retention — not cholesterol mass — particle number is the more proximate causal variable. When cholesterol per particle varies (hypertriglyceridemia, insulin resistance, sdLDL phenotype, keto diet), LDL-C and ApoB diverge, and ApoB wins every time.</p>
+
+  <div class="card ca">
+    <div class="card-title">Relative Risk Comparison: ApoB vs. Non-HDL-C vs. LDL-C</div>
+    <div class="card-src">Sniderman et al., Circ Cardiovasc Qual Outcomes — 12 studies, n=233,455, 22,950 events</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name" style="color:var(--green);">ApoB</div><div class="bar-sub">Most potent marker of CV risk · accounts for all atherogenic particles</div></div>
+          <div class="bar-val" style="color:var(--green);">RRR 1.43 (CI 1.35–1.51)</div>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:86%;background:linear-gradient(90deg,rgba(78,222,138,0.7),rgba(78,222,138,0.3));"></div>
+          <div class="bar-inner-label">Strongest marker</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name" style="color:var(--amber);">Non-HDL-C</div><div class="bar-sub">Intermediate — captures VLDL cholesterol that LDL-C misses</div></div>
+          <div class="bar-val" style="color:var(--amber);">RRR 1.34 (CI 1.24–1.44)</div>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:74%;background:linear-gradient(90deg,rgba(245,166,35,0.7),rgba(245,166,35,0.3));"></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name" style="color:var(--red);">LDL-C</div><div class="bar-sub">Weakest — misses non-LDL ApoB particles; fails in discordance cases</div></div>
+          <div class="bar-val" style="color:var(--red);">RRR 1.25 (CI 1.18–1.33)</div>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:50%;background:linear-gradient(90deg,rgba(240,82,82,0.7),rgba(240,82,82,0.3));"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bar-axis"><span>1.0</span><span>1.1</span><span>1.2</span><span>1.3</span><span>1.4</span><span>1.5+</span></div>
+    <div class="bar-axis-label">Relative Risk Ratio per standard deviation increase</div>
+  </div>
+
+  <div class="card ca">
+    <div class="card-title">The Discordance Evidence — 15 Studies, 593,354 Participants</div>
+    <div class="card-src">Sniderman et al., J Clin Lipidol 2025 · Systematic review of all discordance analyses through Sept 2024</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">ApoB outperformed LDL-C</div><div class="bar-sub">Head-to-head discordance studies</div></div>
+          <div class="bar-val" style="color:var(--green);">9 / 9 studies</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:rgba(78,222,138,0.5);"></div><div class="bar-inner-label">Unanimous — every single discordance study</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">ApoB outperformed non-HDL-C</div><div class="bar-sub">Where second-best marker falls short</div></div>
+          <div class="bar-val" style="color:var(--amber);">7 / 9 studies</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:78%;background:rgba(245,166,35,0.5);"></div></div>
+      </div>
+    </div>
+    <p class="prose" style="margin-top:14px;margin-bottom:0;font-size:0.78rem;">The UK Biobank + FOURIER + IMPROVE-IT combined analysis (n=389,000+) found that <strong>ApoB was the only lipid parameter independently associated with MI once LDL-C and TG were simultaneously modeled</strong>. LDL-C and non-HDL-C lost statistical significance once ApoB was included. This is the highest-quality evidence: ApoB captures all atherogenic information; LDL-C and non-HDL-C are only partial proxies.</p>
+  </div>
+
+  <div class="compare">
+    <div class="compare-side">
+      <div class="compare-head" style="color:var(--red);">✕ LDL-C Fails When...</div>
+      <div class="compare-item"><div class="compare-icon" style="background:var(--red-dim);color:var(--red);">!</div><span>Hypertriglyceridemia: elevated VLDL/IDL carry ApoB but little LDL-C — particle burden underestimated</span></div>
+      <div class="compare-item"><div class="compare-icon" style="background:var(--red-dim);color:var(--red);">!</div><span>Small dense LDL phenotype: same ApoB, less cholesterol per particle — LDL-C underestimates risk</span></div>
+      <div class="compare-item"><div class="compare-icon" style="background:var(--red-dim);color:var(--red);">!</div><span>CETP inhibition (evacetrapib): LDL-C fell 37%, ApoB only 15% — no clinical benefit followed</span></div>
+      <div class="compare-item"><div class="compare-icon" style="background:var(--red-dim);color:var(--red);">!</div><span>Statin-treated patients: residual high-ApoB despite low LDL-C predicts residual risk not captured by LDL-C</span></div>
+      <div class="compare-item"><div class="compare-icon" style="background:var(--red-dim);color:var(--red);">!</div><span>Ketogenic diet LMHR phenotype: elevated LDL-C context-dependent; ApoB composition (large buoyant) unclear</span></div>
+    </div>
+    <div class="compare-side">
+      <div class="compare-head" style="color:var(--green);">✓ ApoB Targets (NLA 2024)</div>
+      <div class="compare-item"><div class="compare-icon" style="background:var(--green-dim);color:var(--green);">→</div><span><strong style="color:var(--text);">&lt;90 mg/dL</strong> — Intermediate risk</span></div>
+      <div class="compare-item"><div class="compare-icon" style="background:var(--green-dim);color:var(--green);">→</div><span><strong style="color:var(--text);">&lt;70 mg/dL</strong> — High risk</span></div>
+      <div class="compare-item"><div class="compare-icon" style="background:var(--green-dim);color:var(--green);">→</div><span><strong style="color:var(--text);">&lt;60 mg/dL</strong> — Very high risk (post-ACS, recurrent events)</span></div>
+      <div class="compare-item" style="margin-top:12px;"><div class="compare-icon" style="background:var(--amber-dim);color:var(--amber);">⚠</div><span>These targets lack prospective RCT validation — all ApoB superiority evidence comes from post-hoc analyses and observational data, not trials that randomized to ApoB targets. This is the field's critical methodological gap.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 4: SFA MECHANISM
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-orange">04</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">How Saturated Fat Raises ApoB: The SREBP-2 Pathway</div>
+      <div class="sec-src">DELTA Study · Mensink 2003 (60 controlled trials) · WHO SFA review 2016 · Hayes & Khosla 1995</div>
+    </div>
+  </div>
+
+  <p class="prose">Not all saturated fatty acids are equivalent. The LDL-raising effect is chain-length-specific and operates through a defined molecular mechanism. Understanding this specificity matters for dietary advice that goes beyond "saturated fat is bad."</p>
+
+  <div class="card co">
+    <div class="card-title">LDL-Raising Potency by Saturated Fatty Acid Chain Length</div>
+    <div class="card-src">Mensink 2003 · WHO SFA systematic review 2016 · Hayes & Khosla 1995 · animal model convergence</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">Myristic acid (C14:0)</div><div class="bar-sub">Major source: dairy fat, coconut oil · Most potent LDL-raiser per gram</div></div>
+          <div class="bar-val" style="color:var(--red);">High ↑↑↑</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:95%;background:rgba(240,82,82,0.6);"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">Palmitic acid (C16:0)</div><div class="bar-sub">Most abundant SFA in Western diet · major source: palm oil, meat</div></div>
+          <div class="bar-val" style="color:var(--red);">High ↑↑↑</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:90%;background:rgba(240,82,82,0.55);"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">Lauric acid (C12:0)</div><div class="bar-sub">Coconut oil (~50%) · raises LDL-C but also HDL-C — TC:HDL ratio nuance</div></div>
+          <div class="bar-val" style="color:var(--amber);">Moderate ↑↑</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:75%;background:rgba(245,166,35,0.55);"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">Stearic acid (C18:0)</div><div class="bar-sub">Beef tallow, cocoa butter · rapidly converted to oleic acid in liver</div></div>
+          <div class="bar-val" style="color:var(--green);">Neutral ↔</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:5%;background:rgba(78,222,138,0.4);"></div><div class="bar-inner-label" style="color:var(--green);">Does not raise LDL-C</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">cis-PUFA (linoleic acid, C18:2)</div><div class="bar-sub">Comparison reference — replacement nutrient</div></div>
+          <div class="bar-val" style="color:var(--green);">Lowers ↓↓↓</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:90%;background:rgba(78,222,138,0.6);"></div><div class="bar-inner-label">Upregulates LDL receptors</div></div>
+      </div>
+    </div>
+    <div class="bar-axis-label" style="margin-top:8px;">Relative LDL-C raising effect (red = raises, green = lowers)</div>
+  </div>
+
+  <div class="callout co-o">
+    <div class="callout-head">The Molecular Mechanism — SREBP-2</div>
+    Palmitic, myristic, and lauric acid cannot efficiently serve as substrates for the ACAT (sterol O-acyltransferase) esterification reaction in liver cells. This causes <strong>free cholesterol accumulation inside hepatocytes</strong>. The free cholesterol buildup suppresses SREBP-2 — the transcription factor that controls LDL receptor gene expression. With fewer LDL receptors on hepatocyte surfaces, <strong>LDL clearance from circulation decreases and VLDL/LDL secretion increases</strong>, raising both LDL-C and ApoB. Stearic acid (C18:0) is rapidly desaturated to oleic acid by stearoyl-CoA desaturase, bypassing this accumulation — explaining its metabolic neutrality. The DELTA feeding study confirmed this directly in humans: reducing SFA from 15% to 6% of energy increased LDL receptor abundance by 10.5% (p&lt;0.05), with a corresponding 11.8% decrease in LDL-C (r = −0.59, p&lt;0.01).
+  </div>
+
+  <div class="card co">
+    <div class="card-title">Effect of Replacing 1% Energy from SFA with Other Macronutrients on LDL-C</div>
+    <div class="card-src">Mensink RP, WHO systematic review 2016 · 60+ controlled feeding trials</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">SFA → PUFA (n-6)</div><div class="bar-sub">Best dietary exchange · also improves TC:HDL ratio</div></div>
+          <div class="bar-val" style="color:var(--green);">−2.1 mg/dL per 1%E</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:82%;background:rgba(78,222,138,0.6);"></div><div class="bar-inner-label">Preferred replacement</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">SFA → MUFA</div><div class="bar-sub">Good exchange · maintains HDL-C</div></div>
+          <div class="bar-val" style="color:var(--teal);">−1.6 mg/dL per 1%E</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:62%;background:rgba(45,212,191,0.5);"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">SFA → Carbohydrate</div><div class="bar-sub">Reduced benefit · TC:HDL ratio unchanged · TG increases · sdLDL increases</div></div>
+          <div class="bar-val" style="color:var(--amber);">−1.3 mg/dL per 1%E</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:50%;background:rgba(245,166,35,0.4);"></div><div class="bar-inner-label">TC:HDL ratio unchanged</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">SFA → Refined carbohydrate / sugar</div><div class="bar-sub">Potentially adverse — raises TG, reduces HDL-C, increases sdLDL formation</div></div>
+          <div class="bar-val" style="color:var(--red);">Net adverse</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:30%;background:rgba(240,82,82,0.5);"></div><div class="bar-inner-label" style="color:var(--red);">↑ TG · ↓ HDL · ↑ sdLDL</div></div>
+      </div>
+    </div>
+    <div class="bar-axis-label" style="margin-top:8px;">Change in LDL-C per 1% energy exchange · bar length = relative LDL-C benefit</div>
+  </div>
+
+  <div class="finding">
+    <span class="ftag ft-r">The Replacement Nutrient Is Everything</span>
+    <span>This is the most underappreciated complexity in the SFA-CVD relationship. Meta-analyses that pool SFA reduction trials without distinguishing the replacement nutrient obscure the real finding. <strong>SFA→PUFA: CHD events reduced ~19–24% (Mozaffarian, 8 RCTs).</strong> SFA→refined carbs: no consistent benefit, potentially adverse metabolic consequences. SFA→complex carbs: modest LDL-C reduction but TC:HDL ratio unchanged. The dietary recommendation should be specific: replace C12–C16 SFAs with PUFA-rich unsaturated fats — not simply "eat less fat."</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 5: CLINICAL TRIAL EVIDENCE
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-blue">05</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">Clinical Trial Evidence: Strong for Statins/PCSK9i, Weaker for Dietary SFA</div>
+      <div class="sec-src">Cholesterol Treatment Trialists · Mozaffarian 2010 · Yamada et al. 2025 meta-analysis · Hooper et al. 2020 Cochrane</div>
+    </div>
+  </div>
+
+  <p class="prose">The evidence chain has different strengths at different links. The genetic and mechanistic evidence for LDL/ApoB causality is among the strongest in medicine. The direct dietary RCT evidence translating SFA reduction to hard CV event reduction is considerably weaker — not because the upstream chain is wrong, but because dietary RCTs face unique methodological challenges.</p>
+
+  <div class="card cb">
+    <div class="card-title">Lipid-Lowering Interventions: Evidence Strength for Hard CV Outcomes</div>
+    <div class="card-src">Cholesterol Treatment Trialists meta-analyses · Mozaffarian 2010 · Yamada 2025 · Hooper 2020</div>
+    <div style="overflow-x:auto;">
+    <table class="etable">
+      <thead>
+        <tr>
+          <th>Intervention</th>
+          <th>LDL-C ↓</th>
+          <th>ApoB ↓</th>
+          <th>Hard CV Event Reduction</th>
+          <th>Evidence Strength</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>High-intensity statin</td>
+          <td style="color:var(--green);">40–55%</td>
+          <td style="color:var(--green);">40–50%</td>
+          <td style="color:var(--green);">~25–35% RRR (per 1 mmol/L)</td>
+          <td><div class="str-dots"><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div></div></td>
+        </tr>
+        <tr>
+          <td>PCSK9 inhibitor + statin</td>
+          <td style="color:var(--green);">50–65%</td>
+          <td style="color:var(--green);">45–55%</td>
+          <td style="color:var(--green);">~15% incremental RRR (FOURIER, ODYSSEY)</td>
+          <td><div class="str-dots"><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div></div></td>
+        </tr>
+        <tr>
+          <td>Ezetimibe + statin</td>
+          <td style="color:var(--green);">~24%</td>
+          <td style="color:var(--green);">~21%</td>
+          <td style="color:var(--green);">~6.4% RRR (IMPROVE-IT)</td>
+          <td><div class="str-dots"><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot off"></div></div></td>
+        </tr>
+        <tr>
+          <td>SFA → PUFA substitution (dietary)</td>
+          <td style="color:var(--amber);">~2.1 mg/dL per 1%E</td>
+          <td style="color:var(--amber);">Proportional</td>
+          <td style="color:var(--amber);">~19–24% RRR (8 RCTs, PUFA replacement only)</td>
+          <td><div class="str-dots"><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot off"></div><div class="str-dot off"></div></div></td>
+        </tr>
+        <tr>
+          <td>SFA reduction (mixed/unspecified replacement)</td>
+          <td style="color:var(--amber);">~4 mg/dL mean</td>
+          <td style="color:var(--amber);">Small</td>
+          <td style="color:var(--red);">No significant difference (9 RCTs, Yamada 2025)</td>
+          <td><div class="str-dots"><div class="str-dot on"></div><div class="str-dot on"></div><div class="str-dot off"></div><div class="str-dot off"></div><div class="str-dot off"></div></div></td>
+        </tr>
+        <tr>
+          <td>Evacetrapib (CETP inhibitor)</td>
+          <td style="color:var(--green);">37%</td>
+          <td style="color:var(--red);">Only 15%</td>
+          <td style="color:var(--red);">HR 1.01 — no benefit (ACCELERATE, n=12,092)</td>
+          <td><div class="str-dots"><div class="str-dot off"></div><div class="str-dot off"></div><div class="str-dot off"></div><div class="str-dot off"></div><div class="str-dot off"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="prose" style="margin-top:12px;margin-bottom:0;font-size:0.76rem;"><strong>Evacetrapib is the critical natural experiment:</strong> it proves the ApoB-particle-number hypothesis in the strongest possible way. A 37% LDL-C reduction that reduced ApoB only 15% produced zero clinical benefit. Mechanisms that lower LDL-C without proportionally reducing particle count do not reduce atherosclerosis. Every successful lipid-lowering therapy reduces ApoB concordantly with LDL-C.</p>
+  </div>
+
+  <div class="finding">
+    <span class="ftag ft-a">Why Dietary SFA RCTs Fail to Show Significance</span>
+    <span>The Yamada 2025 meta-analysis (9 RCTs, n=13,532) found no significant reduction in cardiovascular mortality or MI from SFA restriction. This does not contradict the mechanistic chain. <strong>Methodological explanations:</strong> (1) Mean LDL-C reduction was only ~4 mg/dL — vs. 40+ mg/dL from high-intensity statins; (2) Nearly all trials predate statins, making background therapy non-comparable to current practice; (3) Replacement nutrients were not controlled — many used carbohydrates; (4) Trial durations of 3–9 years may be insufficient for atherosclerosis progression outcomes; (5) Sex: only 2 trials included women, neither showed benefit — leaving female-specific evidence entirely absent. The Mozaffarian PUFA-for-SFA meta-analysis (8 RCTs, PUFA specifically) <em>does</em> show ~19–24% CHD event reduction — suggesting the benefit is real when the replacement is correctly specified.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 6: LDL PARTICLE SIZE
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-purple">06</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">LDL Particle Size: Not All ApoB Particles Are Equally Atherogenic</div>
+      <div class="sec-src">Krauss et al. · PLoS ONE phenotype B RCT 2017 · Frontiers Cardiovasc Med 2025</div>
+    </div>
+  </div>
+
+  <p class="prose">ApoB particle count is the primary atherogenic driver, but particle characteristics modulate risk per particle. Small dense LDL (sdLDL) is substantially more atherogenic than large buoyant LDL on a per-particle basis — with direct implications for how SFA-induced LDL changes translate to clinical risk.</p>
+
+  <div class="grid-2">
+    <div class="card cp">
+      <div class="card-title">Large Buoyant LDL (Pattern A)</div>
+      <div class="card-src">Lower proteoglycan affinity · less oxidation-prone</div>
+      <div class="finding" style="margin-bottom:0;background:var(--bg3);">
+        <span class="ftag ft-p">Characteristics</span>
+        <span>Larger diameter (~30nm) · Higher cholesterol-to-protein ratio · Lower proteoglycan binding affinity · Shorter arterial residence time · Less susceptible to oxidative modification · More efficiently cleared by LDL receptors. <strong>SFA intake (typical ranges) predominantly raises large buoyant LDL</strong> in individuals with normal lipid phenotype (Pattern A).</span>
+      </div>
+    </div>
+    <div class="card cr">
+      <div class="card-title">Small Dense LDL (Pattern B / sdLDL)</div>
+      <div class="card-src">Higher proteoglycan affinity · more atherogenic per particle</div>
+      <div class="finding" style="margin-bottom:0;background:var(--bg3);">
+        <span class="ftag ft-r">Characteristics</span>
+        <span>Smaller diameter (~20nm) · Penetrates endothelium more readily · <strong>Higher proteoglycan binding affinity</strong> (binds longer, harder to clear) · Longer plasma residence time (reduced LDL receptor affinity) · Greater susceptibility to oxidation · More prone to glycation/desialylation. Elevated sdLDL associated with metabolic syndrome, insulin resistance, high TG, low HDL.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout co-p">
+    <div class="callout-head">The SFA-sdLDL Nuance — Pattern B Exception</div>
+    In individuals with <strong>LDL Phenotype B</strong> (preponderance of sdLDL, typically with elevated TG and insulin resistance), the response to very high SFA intake (18% of energy) is different from pattern A individuals. The PLoS ONE RCT (n=53 phenotype B individuals) found that the high SFA diet significantly increased total, medium, <em>and</em> small LDL particle concentrations alongside ApoB elevation — unlike the typical finding of predominantly large LDL increases in pattern A. This means: <strong>the cardiovascular impact of SFA-induced LDL-C elevation may depend substantially on baseline metabolic phenotype</strong>. Phenotype B individuals are likely at greater risk from SFA-induced changes than phenotype A individuals with equivalent LDL-C numbers.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 7: LIPOPROTEIN(a)
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-teal">07</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">Lipoprotein(a): The Independent Genetic Wild Card</div>
+      <div class="sec-src">AHA Scientific Statement 2022 · Reyes-Soffer et al. · GET-READI feeding trial 2023 · EAS Lp(a) Consensus 2022</div>
+    </div>
+  </div>
+
+  <p class="prose">Lp(a) is structurally similar to LDL but carries an additional protein — apolipoprotein(a) — that confers unique atherogenic and thrombotic properties through oxidized phospholipid (OxPL) binding. It is independent, causal, and for most people, immovable by lifestyle — making it a risk factor that standard lipid panels invisibly miss.</p>
+
+  <div class="grid-2">
+    <div class="stat-box">
+      <div class="stat-label">Genetic Determination</div>
+      <div class="stat-val" style="color:var(--teal);">70–90%</div>
+      <div class="stat-desc">Of interindividual Lp(a) variability is genetically determined by the LPA gene locus. Diet and exercise have minimal effects on levels.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Population Prevalence — High Risk</div>
+      <div class="stat-val" style="color:var(--amber);">1 in 5</div>
+      <div class="stat-desc">~20% of the global population has Lp(a) ≥125 nmol/L (≥50 mg/dL) — the high-risk threshold. Disproportionately elevated in African and South Asian descent.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">High-Risk Threshold</div>
+      <div class="stat-val" style="color:var(--teal);">≥125 nmol/L</div>
+      <div class="stat-desc">≈50 mg/dL. Levels ≥250 nmol/L (~100 mg/dL) approximately double ASCVD risk. Standard lipid panels do not include Lp(a) — it requires a separate test.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Residual Risk on Statin</div>
+      <div class="stat-val" style="color:var(--red);">Independent</div>
+      <div class="stat-desc">Lp(a) remains a risk factor even with effective LDL-C and ApoB reduction — capturing risk that statins cannot address. Explains some of the "statin non-responders."</div>
+    </div>
+  </div>
+
+  <div class="callout co-t">
+    <div class="callout-head">The SFA-Lp(a) Paradox — GET-READI Finding</div>
+    The GET-READI RCT (n=166 African Americans) fed DASH-type diet (6% SFA) vs. average American diet (16% SFA). LDL-C fell 12 mg/dL and ApoB-100 fell 5 mg/dL — both favorable. But <strong>Lp(a) increased significantly: median 58 vs. 44 mg/dL (p&lt;0.0001)</strong>. Lp(a) is an independent, genetically determined CVD risk factor. This paradox — SFA reduction simultaneously improving and worsening atherogenic lipid markers — means the net effect of dietary SFA reduction on overall CVD risk is not uniformly positive across all individuals and populations. The mechanism driving SFA-induced Lp(a) suppression (and SFA-reduction-induced Lp(a) rise) is not established. This is a genuine unresolved complexity, particularly important for populations with disproportionately elevated Lp(a).
+  </div>
+
+  <div class="finding">
+    <span class="ftag ft-t">Atherogenicity Per Particle</span>
+    <span>A 2024 JACC genetic analysis (Björnson et al.) found that Lp(a) is <strong>markedly more atherogenic than LDL on a per-ApoB-particle basis</strong> — likely due to its oxidized phospholipid (OxPL) cargo and prothrombotic properties from the apo(a) plasminogen-like domain. This means total ApoB, while superior to LDL-C, still does not fully capture atherogenic burden when Lp(a) is substantially elevated — an important limitation of any single-metric approach to lipid risk.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 8: LMHR — RETRACTED STUDY
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-red">08</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">The LMHR Claim Collapsed — A Case Study in Selective Reporting</div>
+      <div class="sec-src">KETO-CTA retracted JACC Advances 2025 · NATURE-CT AHA 2024 · PARADIGM · ACC 2025 plaque consensus</div>
+    </div>
+  </div>
+
+  <p class="prose">The Lean Mass Hyper-Responder (LMHR) phenotype — LDL-C ≥200 mg/dL + HDL-C ≥80 mg/dL + TG ≤70 mg/dL on ketogenic diet — became the centerpiece of an argument that high LDL-C/ApoB is harmless in metabolically healthy individuals. The longitudinal study designed to test this claim was retracted after methodological errors too severe to correct. The actual plaque progression data told the opposite story.</p>
+
+  <div class="callout co-r" style="border-left-width:4px;">
+    <div class="callout-head">⚠ RETRACTED — Soto-Mota, Norwitz, Feldman et al. · JACC Advances · 2025</div>
+    <strong>"Plaque Begets Plaque, ApoB Does Not: Longitudinal Data From the KETO-CTA Trial"</strong> was retracted at the request of the authors and editors. The retraction notice states: <em>"concerns were raised regarding the methodology in this article, which affect the reliability of the data. The authors and the Editors agree that the identified errors are too great to be corrected with a corrigendum."</em> The paper had already drawn multiple published critiques in JACC and a Medscape commentary before retraction.
+  </div>
+
+  <div class="card cr">
+    <div class="card-title">What the Authors Omitted — And What the Numbers Actually Showed</div>
+    <div class="card-src">KETO-CTA trial · NCT05733325 · Authors' reply JACC Advances 2025 · NATURE-CT AHA Abstract 2024</div>
+
+    <div class="finding" style="background:var(--bg3);margin-bottom:8px;">
+      <span class="ftag ft-r">Primary Outcome Buried</span>
+      <span>The pre-registered primary endpoint was <strong>change in non-calcified coronary plaque volume (ΔNCPV)</strong>. The published paper showed this only in a figure without reporting the numerical value — and emphasized PAV (percent atheroma volume), a secondary endpoint, in the text and conclusions. Multiple published letters to JACC flagged this as selective reporting. The authors only disclosed the primary outcome number on social media after public pressure.</span>
+    </div>
+
+    <div class="finding" style="background:var(--bg3);margin-bottom:8px;">
+      <span class="ftag ft-r">The Hidden Number</span>
+      <span>When pressed, lead author Soto-Mota disclosed on X/Twitter: <strong>median ΔNCPV = 18.8–18.9 mm³</strong> over 1 year, corresponding to a <strong>42.8% relative increase</strong>. The mean was 31.5 mm³ (SD 31.5 mm³) — reported in the published reply. The authors chose to report median rather than mean, which substantially minimized the apparent effect given the highly skewed distribution.</span>
+    </div>
+
+    <div class="finding" style="background:var(--bg3);margin-bottom:0;">
+      <span class="ftag ft-r">Funding & Conflicts</span>
+      <span>The study was funded by Dave Feldman's own Citizen Science Foundation. Feldman is a co-author and a prominent LMHR advocate with a documented public position that high LDL-C on keto is safe. The paper's conclusion — that ApoB does not predict plaque progression in LMHRs — directly aligned with this position, while the primary outcome data suggesting accelerated plaque growth was not foregrounded.</span>
+    </div>
+  </div>
+
+  <div class="card cr">
+    <div class="card-title">Plaque Progression in Context — The LMHR Rate vs. Reference Populations</div>
+    <div class="card-src">NATURE-CT (AHA 2024 Abstract 4139340) · PARADIGM study · ACC 2025 plaque consensus · KETO-CTA authors' reply</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name" style="color:var(--red);">LMHR group — KETO-CTA</div><div class="bar-sub">Lean, metabolically healthy, mean LDL-C 237 mg/dL · 1-year follow-up · <em>retracted</em></div></div>
+          <div class="bar-val" style="color:var(--red);">18.9 mm³/yr (median)</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:97%;background:rgba(240,82,82,0.65);"></div><div class="bar-inner-label">3.86× higher than healthy reference</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name" style="color:var(--amber);">Metabolic syndrome — PARADIGM</div><div class="bar-sub">3.2-year follow-up · annualized ~5.6 mm³/yr</div></div>
+          <div class="bar-val" style="color:var(--amber);">~17.8 mm³ / 3.2 yrs</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:55%;background:rgba(245,166,35,0.55);"></div><div class="bar-inner-label">LMHRs reached this in 1 year</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">Without metabolic syndrome — PARADIGM</div><div class="bar-sub">3.2-year follow-up · annualized ~3.2 mm³/yr</div></div>
+          <div class="bar-val">~10.3 mm³ / 3.2 yrs</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:32%;background:rgba(96,165,250,0.5);"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name" style="color:var(--green);">Healthy individuals — NATURE-CT (Budoff lab)</div><div class="bar-sub">Same lab, same scanner, same Cleerly AI · mean LDL 111 mg/dL · ~4.9-yr follow-up</div></div>
+          <div class="bar-val" style="color:var(--green);">4.9 mm³/yr (annualized median)</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:25%;background:rgba(78,222,138,0.55);"></div><div class="bar-inner-label">Reference: metabolically healthy, no risk factors</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div><div class="bar-name">ACC 2025 threshold — "plaque progression"</div><div class="bar-sub">ACC Scientific Statement · annualized clinical threshold</div></div>
+          <div class="bar-val" style="color:var(--amber);">≥5–10 mm³/yr</div>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:26%;background:rgba(245,166,35,0.3);border-right:2px dashed var(--amber);"></div>
+          <div style="position:absolute;top:3px;left:27%;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:var(--amber);">← Progression threshold</div>
+        </div>
+      </div>
+    </div>
+    <div class="bar-axis"><span>0</span><span>5</span><span>10</span><span>15</span><span>20 mm³/yr</span></div>
+    <p class="prose" style="margin-top:12px;margin-bottom:0;font-size:0.76rem;"><strong>The NATURE-CT comparison is the most damning:</strong> it was conducted in the same Budoff lab, on the same CT scanner, using the same Cleerly AI software — on a metabolically healthy population with mean LDL-C of 111 mg/dL. Their annualized median plaque progression was 4.9 mm³/yr. The LMHR group showed 18.9 mm³ in just one year — <strong>3.86× higher than the healthy reference from the same lab</strong>. The ACC 2025 Scientific Statement defines clinically meaningful NCPV progression as ≥5–10 mm³/year. LMHRs exceeded even the upper threshold in a single year.</p>
+  </div>
+
+  <div class="callout co-r">
+    <div class="callout-head">The Broader Methodological Failures</div>
+    Published letters in JACC and Medscape identified multiple additional problems: <strong>(1)</strong> Pre-registered primary endpoint (ΔNCPV) omitted from results and conclusions — secondary endpoint (PAV) promoted instead. <strong>(2)</strong> No internal control group — the planned healthy-LDL control arm was dropped, reportedly due to funding constraints. Cross-cohort comparisons used very small subgroups (as few as n=17) without statistical testing or confounder adjustment. <strong>(3)</strong> Mean vs. median: reporting median (18.9 mm³) while the mean was 31.5 mm³ — a deliberate choice that minimized apparent effect size given the right-skewed distribution. <strong>(4)</strong> The original paper stated NCPV data was shown in Figure 1 "without proper description" — the actual value had to be extracted from social media posts. This is not how pre-registered clinical trials report their primary outcomes.
+  </div>
+
+  <div class="finding">
+    <span class="ftag ft-a">What Remains Scientifically Valid About LMHR</span>
+    <span>The <strong>phenotype itself is real</strong> — lean, metabolically healthy individuals do develop dramatic LDL-C elevation on ketogenic diets through the lipid energy model mechanism (flux-driven VLDL production, not receptor impairment). The <strong>2024 KETO Trial cross-sectional data</strong> (Budoff et al., JACC Advances 2024 — separate from the retracted longitudinal paper) showing no greater baseline plaque burden vs. matched controls at 4.7 years of exposure remains unpublished. What is gone is the claim that plaque <em>progression</em> is unaffected by ApoB in this population. The retracted longitudinal data, properly contextualized, showed the opposite: accelerated plaque progression at nearly 4× the healthy reference rate. The LMHR phenotype warrants clinical concern and ApoB monitoring — not reassurance.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 9: EVIDENCE GAPS
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <div class="sec-num sn-blue">09</div>
+    <div class="sec-title-wrap">
+      <div class="sec-title">Critical Evidence Gaps — What the Field Genuinely Does Not Know</div>
+    </div>
+  </div>
+
+  <p class="prose">Intellectual honesty requires explicitly flagging where the evidence chain is incomplete or where confident claims in either direction are not justified by available data.</p>
+
+  <div class="gap-box">
+    <div class="gap-num">Gap 01 · Highest Priority</div>
+    <div class="gap-title">No RCT has ever randomized to ApoB targets</div>
+    <div class="gap-body">Every landmark lipid trial used LDL-C as the primary endpoint and target. ApoB superiority evidence comes entirely from post-hoc analyses, observational studies, and natural experiments (evacetrapib). There is no prospective trial comparing "treat to ApoB target" vs. "treat to LDL-C target" with hard CV event outcomes. This is the single most important methodological gap in the ApoB literature — and the primary reason guidelines remain cautious about formally elevating ApoB to primary target status despite overwhelming epidemiological superiority.</div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-num">Gap 02</div>
+    <div class="gap-title">SFA dietary RCTs predate statins — no statin-era data</div>
+    <div class="gap-body">All 9 eligible SFA reduction RCTs in the Yamada 2025 meta-analysis were conducted before widespread statin use. Whether dietary SFA reduction produces incremental CV benefit on top of high-intensity statin therapy has never been formally tested. This is the most clinically relevant question for patients already on optimized pharmacological therapy — and it is completely unanswered.</div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-num">Gap 03</div>
+    <div class="gap-title">LDL particle size phenotype modulates SFA-risk translation</div>
+    <div class="gap-body">SFA predominantly raises large buoyant LDL in Phenotype A individuals, but raises all LDL subclasses including sdLDL in Phenotype B individuals. Whether SFA-induced large buoyant LDL elevation carries equivalent atherogenic risk to an equivalent ApoB elevation from sdLDL is not established. If large buoyant LDL is substantially less atherogenic per particle (lower proteoglycan affinity, slower oxidation), then Phenotype A individuals may be at lower risk from SFA-induced LDL changes than particle count alone suggests.</div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-num">Gap 04</div>
+    <div class="gap-title">LMHR long-term hard event outcomes — decades of data don't exist</div>
+    <div class="gap-body">The retracted KETO-CTA longitudinal paper actually showed <em>accelerated</em> plaque progression (18.9 mm³/yr vs. 4.9 mm³/yr in the healthy reference population from the same lab). What does not exist is hard CV event data — MI, stroke, death — over 20–30 years. Plaque progression surrogates suggest elevated risk; whether that translates to proportionally elevated clinical events over decades in this population remains unknown. The retraction removed a false reassurance but did not replace it with hard outcome data.</div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-num">Gap 05</div>
+    <div class="gap-title">Lp(a)-SFA interaction across populations and ancestry</div>
+    <div class="gap-body">The GET-READI Lp(a) elevation with SFA reduction is a single RCT in African Americans. Whether this generalizes to other populations, whether the magnitude is clinically significant given the LDL-C/ApoB benefit, and whether the net effect on overall ASCVD risk is positive or negative for high-Lp(a) individuals reducing SFA is unknown. The mechanism of SFA-modulation of Lp(a) is not established.</div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-num">Gap 06</div>
+    <div class="gap-title">No dietary SFA RCT data in women</div>
+    <div class="gap-body">Only 2 of 9 eligible SFA reduction RCTs included women, and neither showed significant benefit. Whether SFA reduction differentially affects CVD risk in women vs. men — given known hormonal effects on lipoprotein metabolism, the different role of HDL-C, and distinct presentation of ASCVD in women — is entirely unknown.</div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-num">Gap 07</div>
+    <div class="gap-title">Individual variation in ApoB response to SFA by genetics</div>
+    <div class="gap-body">The magnitude of LDL-C/ApoB elevation per gram of dietary SFA varies substantially across individuals, likely due to APOE genotype, LDL receptor polymorphisms, and other lipid metabolism genes. APOE4 carriers show markedly greater LDL-C responses to dietary saturated fat than APOE2 carriers. Personalized dietary fat recommendations based on lipid genetics remain aspirational but underdeveloped clinically — and no hard-outcome data by genotype exists.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SYNTHESIS
+══════════════════════════════════════════════ -->
+<div class="synthesis">
+  <div class="synth-head">Synthesis · The Complete Evidence Picture</div>
+  <div class="synth-text">
+    The mechanistic chain connecting dietary SFA to ASCVD is coherent and well-supported at every link from molecular biology through genetics. <strong>Specific SFAs (C12, C14, C16)</strong> suppress hepatic SREBP-2 via intrahepatic free cholesterol accumulation → reduce LDL receptor expression → impair LDL clearance and increase VLDL/LDL secretion → <strong>elevated ApoB particle count</strong>. These particles enter the arterial wall via transcytosis, bind to subendothelial proteoglycans via ApoB's positively charged regions, undergo oxidative and enzymatic modification, and trigger the maladaptive macrophage-dominated inflammatory response that constitutes atherosclerosis. Inflammation does not start this process — it responds to it.<br><br>
+    <strong>LDL-C causality</strong> is established by the highest quality genetic evidence: >200 cohort studies and multiple independent Mendelian randomization analyses show a log-linear, cumulative, causal relationship. <strong>ApoB is a more accurate atherogenic particle count metric</strong> than LDL-C, outperforming it in 9/9 discordance studies (593,354 participants), and in a combined analysis of 389,000+ individuals was the only lipid parameter independently associated with MI once LDL-C and TG were simultaneously modeled. <strong>The evacetrapib natural experiment</strong> is the most decisive evidence: 37% LDL-C reduction with only 15% ApoB reduction produced zero clinical benefit — proving particle count, not cholesterol mass, drives outcomes.<br><br>
+    <strong>Where the evidence is weaker:</strong> Direct dietary RCT evidence for hard CV event reduction from SFA restriction is non-significant in meta-analyses (though trending), largely because trials used carbohydrate replacement, were pre-statin, and had insufficient LDL-C change magnitudes. The PUFA-for-SFA substitution RCTs do show ~19–24% CHD event reduction. The <strong>LMHR phenotype</strong> is real, but the primary paper claiming high ApoB does not drive plaque progression in LMHRs has been <strong>retracted</strong> for methodological errors too severe to correct. The actual plaque progression data — omitted from the published paper and only disclosed on social media after public pressure — showed LMHRs accumulated NCPV at 18.9 mm³/yr vs. 4.9 mm³/yr in a metabolically healthy reference population from the same lab with the same scanner, a 3.86× difference. This does not establish long-term hard event risk, but it definitively removes the claim that ApoB is irrelevant to plaque in this population. <strong>Lp(a)</strong> is an independent causal risk factor capturing residual risk that even ApoB-targeted therapy misses, with the paradoxical finding that SFA reduction may raise Lp(a) in certain populations.<br><br>
+    <strong>The practical framework:</strong> Limit C12–C16 SFAs, replace with PUFA-rich unsaturated fats (not refined carbohydrates). Measure ApoB as the primary atherogenic particle burden metric. Measure Lp(a) at least once. In Phenotype B individuals, SFA-induced LDL changes carry greater per-particle atherogenic weight. The evidence supports both the dietary recommendation and the mechanistic explanation — while acknowledging that the direct RCT translation to hard outcomes is less robust than the upstream genetic and mechanistic evidence.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics</div>
+  <div class="footer-refs">
+    Ference et al., Eur Heart J 2017 · EAS Consensus · Borén et al., Nat Rev Cardiol 2024<br>
+    Sniderman et al., J Clin Lipidol 2025 · JAMA Cardiol 2022 · NLA Consensus 2024<br>
+    Mensink et al., Am J Clin Nutr 2003 · WHO SFA Review 2016 · GET-READI 2023<br>
+    KETO-CTA (Feldman/Norwitz/Budoff) — RETRACTED 2026 · NATURE-CT AHA 2024<br>
+    Lincoff et al., NEJM 2017 (Evacetrapib) · ACC 2025 Plaque Consensus<br>
+    Reyes-Soffer et al., ATVB 2022 · Yamada et al., JMA J 2025 · Williams & Tabas 1995
+  </div>
+</div>
+
+</div><!-- /content -->
+</body>
+</html>
