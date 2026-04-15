@@ -263,15 +263,15 @@
   /* ── FINDING ROW ── */
   .finding-row {
     display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    padding: 10px 14px;
+    flex-direction: column;
+    gap: 7px;
+    padding: 12px 14px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 4px;
     margin-bottom: 6px;
     font-size: 0.78rem;
-    line-height: 1.45;
+    line-height: 1.6;
   }
 
   .finding-tag {
@@ -283,7 +283,7 @@
     white-space: nowrap;
     flex-shrink: 0;
     letter-spacing: 0.06em;
-    margin-top: 1px;
+    width: fit-content;
   }
 
   .ft-neutral { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(79,156,245,0.25); }
