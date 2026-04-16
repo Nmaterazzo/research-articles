@@ -140,11 +140,10 @@ header {
 
 .stat {
   flex: 1;
-  padding: 0 20px 0 0;
-  border-right: 1px solid var(--border);
+  padding: 0 32px 0 0;
 }
 .stat:first-child { padding-left: 0; }
-.stat:last-child { border-right: none; }
+.stat:last-child { padding-right: 0; }
 
 .stat-num {
   font-family: 'Syne', sans-serif;
@@ -317,16 +316,18 @@ header {
   border-radius: 2px;
 }
 
-.tag-protein  { background: rgba(108,99,255,0.15); color: #a89fff; border: 1px solid rgba(108,99,255,0.25); }
-.tag-fasting  { background: rgba(99,255,218,0.1);  color: #63ffda; border: 1px solid rgba(99,255,218,0.2); }
-.tag-glucose  { background: rgba(255,209,102,0.1); color: #ffd166; border: 1px solid rgba(255,209,102,0.2); }
-.tag-dairy    { background: rgba(255,107,107,0.1); color: #ff9e9e; border: 1px solid rgba(255,107,107,0.2); }
+.tag-protein    { background: rgba(108,99,255,0.15); color: #a89fff; border: 1px solid rgba(108,99,255,0.25); }
+.tag-fasting    { background: rgba(99,255,218,0.1);  color: #63ffda; border: 1px solid rgba(99,255,218,0.2); }
+.tag-glucose    { background: rgba(255,209,102,0.1); color: #ffd166; border: 1px solid rgba(255,209,102,0.2); }
+.tag-dairy      { background: rgba(255,107,107,0.1); color: #ff9e9e; border: 1px solid rgba(255,107,107,0.2); }
 .tag-sweeteners { background: rgba(180,99,255,0.12); color: #d4a0ff; border: 1px solid rgba(180,99,255,0.25); }
-.tag-cancer   { background: rgba(255,107,107,0.12); color: #ff8080; border: 1px solid rgba(255,107,107,0.25); }
-.tag-soon     { background: rgba(90,88,120,0.2); color: var(--text3); border: 1px solid rgba(90,88,120,0.3); }
-.tag-omega3    { background: rgba(61,186,95,0.12); color: #5de07a; border: 1px solid rgba(61,186,95,0.25); }
-.tag-satfat    { background: rgba(251,146,60,0.12); color: #fb923c; border: 1px solid rgba(251,146,60,0.25); }
-.tag-heart     { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
+.tag-cancer     { background: rgba(255,107,107,0.12); color: #ff8080; border: 1px solid rgba(255,107,107,0.25); }
+.tag-soon       { background: rgba(90,88,120,0.2); color: var(--text3); border: 1px solid rgba(90,88,120,0.3); }
+.tag-omega3     { background: rgba(61,186,95,0.12); color: #5de07a; border: 1px solid rgba(61,186,95,0.25); }
+.tag-satfat     { background: rgba(251,146,60,0.12); color: #fb923c; border: 1px solid rgba(251,146,60,0.25); }
+.tag-heart      { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
+.tag-melatonin  { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
+.tag-sleep      { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
 
 .card-title {
   font-family: 'Syne', sans-serif;
@@ -464,11 +465,11 @@ footer {
 
   <div class="stats-row">
     <div class="stat">
-      <div class="stat-num acc1">8</div>
+      <div class="stat-num acc1">9</div>
       <div class="stat-label">Published</div>
     </div>
     <div class="stat">
-      <div class="stat-num acc2">75+</div>
+      <div class="stat-num acc2">90+</div>
       <div class="stat-label">Studies Cited</div>
     </div>
     <div class="stat">
@@ -488,6 +489,7 @@ footer {
     <button class="filter-btn" data-filter="omega3">Omega-3</button>
     <button class="filter-btn" data-filter="satfat">Saturated Fat</button>
     <button class="filter-btn" data-filter="heart">Heart Disease</button>
+    <button class="filter-btn" data-filter="sleep">Sleep</button>
   </div>
 
   <div class="grid" id="articleGrid"></div>
@@ -497,8 +499,8 @@ footer {
   </div>
 
   <footer>
-    <div class="footer-text">Evidence-Based Nutrition Research</div>
-    <div class="footer-text">Updated 2025</div>
+    <div class="footer-text">Origin Symmetrics</div>
+    <div class="footer-text">Updated 2026</div>
   </footer>
 </div>
 
@@ -576,9 +578,18 @@ const articles = [
     href: 'satfat-graphic.html',
     soon: false,
   },
-  // COMING SOON
   {
     num: '09',
+    title: 'Melatonin: The Most Underrated Supplement for Women\'s Health',
+    desc: 'Far beyond sleep — a 2025 meta-analysis of 11 RCTs found a 59% increase in IVF clinical pregnancy odds. PCOS women are melatonin-deficient in follicular fluid. The luteal phase naturally peaks melatonin 4.5×. And the standard 5–10mg US dose is 10–16× above physiological range.',
+    tags: ['sleep'],
+    studies: '15+ key studies cited',
+    href: 'melatonin-graphic.html',
+    soon: false,
+  },
+  // COMING SOON
+  {
+    num: '10',
     title: 'Creatine: Beyond the Gym — Cognitive and Metabolic Effects',
     desc: 'The evidence on creatine supplementation for brain health, cellular energy, and performance across age groups.',
     tags: ['protein'],
@@ -587,7 +598,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '10',
+    num: '11',
     title: 'Vitamin D: The Chronic Deficiency Nobody Talks About',
     desc: 'Optimal serum levels, supplementation thresholds, and what the RCT data says about immune, bone, and metabolic outcomes.',
     tags: ['glucose'],
@@ -596,7 +607,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '11',
+    num: '12',
     title: 'Sleep & Metabolic Health: The Missing Variable',
     desc: 'Sleep restriction drives insulin resistance independently of diet. Ghrelin/leptin disruption, glucose tolerance, and muscle protein synthesis all degrade with chronic sleep debt.',
     tags: ['glucose'],
@@ -605,7 +616,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '12',
+    num: '13',
     title: 'Leucine Threshold & Muscle Protein Synthesis',
     desc: 'The minimum leucine dose to trigger MPS, how it varies by age and training status, and why protein source distribution across meals matters.',
     tags: ['protein'],
@@ -616,15 +627,17 @@ const articles = [
 ];
 
 const tagColors = {
-  omega3: 'tag-omega3',
-  satfat: 'tag-satfat',
-  heart: 'tag-heart',
-  protein: 'tag-protein',
-  fasting: 'tag-fasting',
-  glucose: 'tag-glucose',
-  dairy: 'tag-dairy',
+  omega3:     'tag-omega3',
+  satfat:     'tag-satfat',
+  heart:      'tag-heart',
+  protein:    'tag-protein',
+  fasting:    'tag-fasting',
+  glucose:    'tag-glucose',
+  dairy:      'tag-dairy',
   sweeteners: 'tag-sweeteners',
-  cancer: 'tag-cancer',
+  cancer:     'tag-cancer',
+  melatonin:  'tag-sleep',
+  sleep:      'tag-sleep',
 };
 
 function buildCard(a, idx) {
@@ -653,7 +666,6 @@ function buildCard(a, idx) {
     </div>
   `;
 
-  // Staggered entrance animation
   setTimeout(() => card.classList.add('visible'), 50 + idx * 60);
   return card;
 }
@@ -673,7 +685,6 @@ function render(filter) {
   }
   empty.classList.remove('show');
 
-  // Separate published and coming soon
   const published = filtered.filter(a => !a.soon);
   const soon = filtered.filter(a => a.soon);
 
@@ -691,7 +702,6 @@ function render(filter) {
   }
 }
 
-// Filter buttons
 document.getElementById('filterBar').addEventListener('click', e => {
   const btn = e.target.closest('.filter-btn');
   if (!btn) return;
