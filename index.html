@@ -328,6 +328,7 @@ header {
 .tag-heart      { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
 .tag-melatonin  { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
 .tag-sleep      { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
+.tag-organic    { background: rgba(78,222,138,0.12); color: #6ee7a0; border: 1px solid rgba(78,222,138,0.25); }
 
 .card-title {
   font-family: 'Syne', sans-serif;
@@ -465,11 +466,11 @@ footer {
 
   <div class="stats-row">
     <div class="stat">
-      <div class="stat-num acc1">9</div>
+      <div class="stat-num acc1">10</div>
       <div class="stat-label">Published</div>
     </div>
     <div class="stat">
-      <div class="stat-num acc2">90+</div>
+      <div class="stat-num acc2">110+</div>
       <div class="stat-label">Studies Cited</div>
     </div>
     <div class="stat">
@@ -490,6 +491,7 @@ footer {
     <button class="filter-btn" data-filter="satfat">Saturated Fat</button>
     <button class="filter-btn" data-filter="heart">Heart Disease</button>
     <button class="filter-btn" data-filter="sleep">Sleep</button>
+    <button class="filter-btn" data-filter="organic">Organic</button>
   </div>
 
   <div class="grid" id="articleGrid"></div>
@@ -565,7 +567,7 @@ const articles = [
     title: 'Omega-3 vs The Ratio: Absolute EPA+DHA Intake Is What Matters',
     desc: 'UK Biobank (n=85,425): both omega-3 and omega-6 are independently protective, omega-3 stronger (–31% vs –23% all-cause mortality). REDUCE-IT: 4g/day pure EPA → 25% fewer CV events. ALA→DHA conversion is essentially negligible.',
     tags: ['omega3', 'heart'],
-    studies: '5 key studies cited',
+    studies: '5 studies cited',
     href: 'omega3-graphic.html',
     soon: false,
   },
@@ -574,7 +576,7 @@ const articles = [
     title: 'Saturated Fat, Heart Disease, and Everything In Between — What the Research Actually Shows',
     desc: 'The complete mechanistic and clinical evidence: SFA → LDL receptor suppression → ApoB elevation → subendothelial particle retention → atherosclerosis. Includes ApoB vs LDL-C discordance (9/9 studies), evacetrapib natural experiment, the KETO-CTA retraction, Lp(a) paradox, and 7 evidence gaps.',
     tags: ['satfat', 'heart'],
-    studies: '20+ key studies cited',
+    studies: '20+ studies cited',
     href: 'satfat-graphic.html',
     soon: false,
   },
@@ -583,13 +585,22 @@ const articles = [
     title: 'Melatonin: The Most Underrated Supplement for Women\'s Health',
     desc: 'Far beyond sleep — a 2025 meta-analysis of 11 RCTs found a 59% increase in IVF clinical pregnancy odds. PCOS women are melatonin-deficient in follicular fluid. The luteal phase naturally peaks melatonin 4.5×. And the standard 5–10mg US dose is 10–16× above physiological range.',
     tags: ['sleep'],
-    studies: '15+ key studies cited',
+    studies: '15+ studies cited',
     href: 'melatonin-graphic.html',
+    soon: false,
+  },
+  {
+    num: '10',
+    title: 'Is Organic Food Actually Healthier? What the Evidence Shows',
+    desc: 'Organic produce has 4–5× fewer pesticide residues — but residues in conventional are mostly far below safety thresholds for adults. Polyphenols are 19–69% higher in organic crops. The NutriNet-Santé cohort (n=68,946) found a 25% cancer risk reduction — but healthy user bias is the dominant problem. Plus: the Vital Farms label-washing case study decoded.',
+    tags: ['organic'],
+    studies: '18+ studies cited',
+    href: 'organic-graphic.html',
     soon: false,
   },
   // COMING SOON
   {
-    num: '10',
+    num: '11',
     title: 'Creatine: Beyond the Gym — Cognitive and Metabolic Effects',
     desc: 'The evidence on creatine supplementation for brain health, cellular energy, and performance across age groups.',
     tags: ['protein'],
@@ -598,7 +609,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '11',
+    num: '12',
     title: 'Vitamin D: The Chronic Deficiency Nobody Talks About',
     desc: 'Optimal serum levels, supplementation thresholds, and what the RCT data says about immune, bone, and metabolic outcomes.',
     tags: ['glucose'],
@@ -607,7 +618,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '12',
+    num: '13',
     title: 'Sleep & Metabolic Health: The Missing Variable',
     desc: 'Sleep restriction drives insulin resistance independently of diet. Ghrelin/leptin disruption, glucose tolerance, and muscle protein synthesis all degrade with chronic sleep debt.',
     tags: ['glucose'],
@@ -616,7 +627,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '13',
+    num: '14',
     title: 'Leucine Threshold & Muscle Protein Synthesis',
     desc: 'The minimum leucine dose to trigger MPS, how it varies by age and training status, and why protein source distribution across meals matters.',
     tags: ['protein'],
@@ -638,6 +649,7 @@ const tagColors = {
   cancer:     'tag-cancer',
   melatonin:  'tag-sleep',
   sleep:      'tag-sleep',
+  organic:    'tag-organic',
 };
 
 function buildCard(a, idx) {
