@@ -329,6 +329,7 @@ header {
 .tag-melatonin  { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
 .tag-sleep      { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
 .tag-organic    { background: rgba(78,222,138,0.12); color: #6ee7a0; border: 1px solid rgba(78,222,138,0.25); }
+.tag-fooddyes   { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
 
 .card-title {
   font-family: 'Syne', sans-serif;
@@ -466,11 +467,11 @@ footer {
 
   <div class="stats-row">
     <div class="stat">
-      <div class="stat-num acc1">10</div>
+      <div class="stat-num acc1">11</div>
       <div class="stat-label">Published</div>
     </div>
     <div class="stat">
-      <div class="stat-num acc2">110+</div>
+      <div class="stat-num acc2">130+</div>
       <div class="stat-label">Studies Cited</div>
     </div>
     <div class="stat">
@@ -492,6 +493,7 @@ footer {
     <button class="filter-btn" data-filter="heart">Heart Disease</button>
     <button class="filter-btn" data-filter="sleep">Sleep</button>
     <button class="filter-btn" data-filter="organic">Organic</button>
+    <button class="filter-btn" data-filter="fooddyes">Food Dyes</button>
   </div>
 
   <div class="grid" id="articleGrid"></div>
@@ -598,9 +600,18 @@ const articles = [
     href: 'organic-graphic.html',
     soon: false,
   },
-  // COMING SOON
   {
     num: '11',
+    title: 'Food Dyes: The Science and Politics Behind America\'s Most Controversial Additives',
+    desc: 'Red 40 is not banned in the EU — it\'s E129, approved since 1994. The ADHD link is real but affects ~0.8% of all US kids. DNA damage findings in mice conflict with OECD genotoxicity studies. Benzidine contamination is the most underreported concern. And the RFK Jr. "ban" was a voluntary industry request with no mandate.',
+    tags: ['fooddyes', 'cancer'],
+    studies: '20+ studies cited',
+    href: 'fooddyes-graphic.html',
+    soon: false,
+  },
+  // COMING SOON
+  {
+    num: '12',
     title: 'Creatine: Beyond the Gym — Cognitive and Metabolic Effects',
     desc: 'The evidence on creatine supplementation for brain health, cellular energy, and performance across age groups.',
     tags: ['protein'],
@@ -609,7 +620,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '12',
+    num: '13',
     title: 'Vitamin D: The Chronic Deficiency Nobody Talks About',
     desc: 'Optimal serum levels, supplementation thresholds, and what the RCT data says about immune, bone, and metabolic outcomes.',
     tags: ['glucose'],
@@ -618,7 +629,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '13',
+    num: '14',
     title: 'Sleep & Metabolic Health: The Missing Variable',
     desc: 'Sleep restriction drives insulin resistance independently of diet. Ghrelin/leptin disruption, glucose tolerance, and muscle protein synthesis all degrade with chronic sleep debt.',
     tags: ['glucose'],
@@ -627,7 +638,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '14',
+    num: '15',
     title: 'Leucine Threshold & Muscle Protein Synthesis',
     desc: 'The minimum leucine dose to trigger MPS, how it varies by age and training status, and why protein source distribution across meals matters.',
     tags: ['protein'],
@@ -650,6 +661,7 @@ const tagColors = {
   melatonin:  'tag-sleep',
   sleep:      'tag-sleep',
   organic:    'tag-organic',
+  fooddyes:   'tag-fooddyes',
 };
 
 function buildCard(a, idx) {
