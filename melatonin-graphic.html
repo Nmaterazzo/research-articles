@@ -1134,7 +1134,7 @@ h1 strong { font-style: normal; color: #4ede8a; }
   <!-- Plasma melatonin chart -->
   <div class="card ca">
     <div class="card-title">Plasma Melatonin Levels by Dose vs. Normal Nocturnal Range</div>
-    <div class="card-src">Zhdanova et al. 2001 · Peak plasma levels observed within 2 hours of ingestion</div>
+    <div class="card-src">Zhdanova et al. 2001 · 0.1, 0.3, and 3 mg measured; 5 mg estimated from pharmacokinetic extrapolation</div>
     <!-- viewBox: 440 wide × 230 tall. Bars at x=20,120,220,320 each w=80, centers at 60,160,260,360 -->
     <svg width="100%" height="230" viewBox="0 0 440 230" preserveAspectRatio="xMidYMid meet" style="display:block;background:rgba(255,255,255,0.03);border-radius:6px;margin-bottom:10px;">
       <!-- Normal nocturnal band: y=118–146 -->
@@ -1143,26 +1143,26 @@ h1 strong { font-style: normal; color: #4ede8a; }
       <line x1="0" y1="146" x2="440" y2="146" stroke="rgba(78,222,138,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
       <text x="8" y="136" font-family="'IBM Plex Mono', monospace" font-size="8.5" fill="#4ede8a" font-weight="600">Normal nocturnal range</text>
 
-      <!-- Bar 1: 0.1mg · center x=60 · height=38 · top=172 -->
-      <rect x="20" y="172" width="80" height="38" rx="3" fill="rgba(78,222,138,0.55)"/>
-      <text x="60" y="196" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">84 pg/mL</text>
+      <!-- Bar 1: 0.1mg · green · height=26 · top=184 -->
+      <rect x="20" y="184" width="80" height="26" rx="3" fill="rgba(78,222,138,0.6)"/>
+      <text x="60" y="201" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">84 pg/mL</text>
       <text x="60" y="222" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#4ede8a" font-weight="700" text-anchor="middle">0.1 mg</text>
 
-      <!-- Bar 2: 0.3mg · center x=160 · height=80 · top=130 -->
-      <rect x="120" y="130" width="80" height="80" rx="3" fill="rgba(245,166,35,0.62)"/>
+      <!-- Bar 2: 0.3mg · green · height=80 · top=130 -->
+      <rect x="120" y="130" width="80" height="80" rx="3" fill="rgba(78,222,138,0.55)"/>
       <text x="160" y="174" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">220 pg/mL</text>
-      <text x="160" y="222" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#f5a623" font-weight="700" text-anchor="middle">0.3 mg</text>
+      <text x="160" y="222" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#4ede8a" font-weight="700" text-anchor="middle">0.3 mg</text>
 
-      <!-- Bar 3: 3mg · center x=260 · height=196 · top=14 -->
-      <rect x="220" y="14" width="80" height="196" rx="3" fill="rgba(240,82,82,0.62)"/>
+      <!-- Bar 3: 3mg · yellow · height=196 · top=14 -->
+      <rect x="220" y="14" width="80" height="196" rx="3" fill="rgba(245,166,35,0.7)"/>
       <text x="260" y="118" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">1,370 pg/mL</text>
-      <text x="260" y="222" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#f05252" font-weight="700" text-anchor="middle">3 mg</text>
+      <text x="260" y="222" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#f5a623" font-weight="700" text-anchor="middle">3 mg</text>
 
-      <!-- Bar 4: 10mg · center x=360 · height=204 · top=6 -->
-      <rect x="320" y="6" width="80" height="204" rx="3" fill="rgba(240,82,82,0.85)"/>
-      <text x="360" y="106" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">~4,500+</text>
-      <text x="360" y="118" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">pg/mL</text>
-      <text x="360" y="222" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#f05252" font-weight="700" text-anchor="middle">10 mg (est.)</text>
+      <!-- Bar 4: 5mg · red · estimated ~2,250 pg/mL · maxed out height -->
+      <rect x="320" y="0" width="80" height="210" rx="3" fill="rgba(240,82,82,0.85)"/>
+      <text x="360" y="102" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">~2,250</text>
+      <text x="360" y="114" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">pg/mL (est.)</text>
+      <text x="360" y="222" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#f05252" font-weight="700" text-anchor="middle">5 mg (est.)</text>
     </svg>
     <div style="text-align:center;margin-top:6px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:rgba(237,234,227,0.4);">Peak plasma melatonin concentration within 2 hours of ingestion</span></div>
   </div>
