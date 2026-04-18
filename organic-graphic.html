@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is Organic Food Actually Healthier? — Origin Symmetrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0e;
+  --bg2: #111118;
+  --bg3: #17171f;
+  --border: rgba(255,255,255,0.07);
+  --text: #edeae3;
+  --text2: rgba(237,234,227,0.7);
+  --text3: rgba(237,234,227,0.4);
+  --green: #4ede8a;
+  --amber: #f5a623;
+  --red: #f05252;
+  --blue: #60a5fa;
+  --teal: #2dd4bf;
+  --orange: #fb923c;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0e;color:#edeae3;font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;padding:64px 24px 56px;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.07)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(78,222,138,0.07) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(245,166,35,0.05) 0%,transparent 60%);pointer-events:none}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;animation:particleDrift linear infinite;opacity:0}
+@keyframes particleDrift{0%{transform:translateY(100%) translateX(0);opacity:0}10%{opacity:1}90%{opacity:0.4}100%{transform:translateY(-20px) translateX(40px);opacity:0}}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(237,234,227,0.4);margin-bottom:20px}
+.hero-tag::before{content:'';display:inline-block;width:18px;height:1px;background:#4ede8a}
+h1{font-family:'Fraunces',serif;font-size:clamp(2rem,6vw,3.6rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px}
+h1 em{font-style:italic;color:#4ede8a}
+h1 strong{font-style:normal;color:#f5a623}
+.hero-sub{font-size:0.95rem;color:rgba(237,234,227,0.7);max-width:640px;margin-bottom:32px;line-height:1.7}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,0.07);border-radius:6px;overflow:hidden}
+.hstat{background:#111118;padding:14px 16px}
+.hstat-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;line-height:1;margin-bottom:4px}
+.hstat-label{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(237,234,227,0.4);line-height:1.4}
+
+/* CONTENT */
+.content{max-width:860px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-top:56px}
+.sec-hdr{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:4px 10px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:3px}
+.sn-green{background:rgba(78,222,138,0.1);color:#4ede8a;border:1px solid rgba(78,222,138,0.2)}
+.sn-amber{background:rgba(245,166,35,0.1);color:#f5a623;border:1px solid rgba(245,166,35,0.2)}
+.sn-red{background:rgba(240,82,82,0.12);color:#f05252;border:1px solid rgba(240,82,82,0.25)}
+.sn-blue{background:rgba(96,165,250,0.1);color:#60a5fa;border:1px solid rgba(96,165,250,0.2)}
+.sn-teal{background:rgba(45,212,191,0.1);color:#2dd4bf;border:1px solid rgba(45,212,191,0.2)}
+.sn-orange{background:rgba(251,146,60,0.1);color:#fb923c;border:1px solid rgba(251,146,60,0.2)}
+.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.1rem,3vw,1.45rem);font-weight:700;line-height:1.2;margin-bottom:4px}
+.sec-src{font-family:'IBM Plex Mono',monospace;font-size:0.53rem;color:rgba(237,234,227,0.4);letter-spacing:0.06em;line-height:1.5}
+.prose{font-size:0.88rem;color:rgba(237,234,227,0.7);line-height:1.75;margin-bottom:16px}
+.prose strong{color:#edeae3;font-weight:600}
+
+/* CARDS */
+.card{background:#111118;border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:20px;margin-bottom:12px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card.cg::before{background:linear-gradient(90deg,#4ede8a,transparent 70%)}
+.card.ca::before{background:linear-gradient(90deg,#f5a623,transparent 70%)}
+.card.cr::before{background:linear-gradient(90deg,#f05252,transparent 70%)}
+.card.cb::before{background:linear-gradient(90deg,#60a5fa,transparent 70%)}
+.card.ct::before{background:linear-gradient(90deg,#2dd4bf,transparent 70%)}
+.card.co::before{background:linear-gradient(90deg,#fb923c,transparent 70%)}
+.card-title{font-size:0.85rem;font-weight:600;color:#edeae3;margin-bottom:4px}
+.card-src{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:rgba(237,234,227,0.4);letter-spacing:0.06em;margin-bottom:16px}
+
+/* FINDINGS */
+.finding{background:#111118;border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:14px 16px;margin-bottom:8px;font-size:0.83rem;line-height:1.65;color:rgba(237,234,227,0.7)}
+.finding strong{color:#edeae3;font-weight:600}
+.ftag{display:block;width:fit-content;font-family:'IBM Plex Mono',monospace;font-size:0.53rem;font-weight:600;padding:3px 8px;border-radius:3px;letter-spacing:0.08em;margin-bottom:8px}
+.ft-g{background:rgba(78,222,138,0.1);color:#4ede8a;border:1px solid rgba(78,222,138,0.2)}
+.ft-a{background:rgba(245,166,35,0.1);color:#f5a623;border:1px solid rgba(245,166,35,0.2)}
+.ft-r{background:rgba(240,82,82,0.12);color:#f05252;border:1px solid rgba(240,82,82,0.25)}
+.ft-b{background:rgba(96,165,250,0.1);color:#60a5fa;border:1px solid rgba(96,165,250,0.2)}
+.ft-t{background:rgba(45,212,191,0.1);color:#2dd4bf;border:1px solid rgba(45,212,191,0.2)}
+.ft-o{background:rgba(251,146,60,0.1);color:#fb923c;border:1px solid rgba(251,146,60,0.2)}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:16px 18px;margin-bottom:14px;font-size:0.85rem;line-height:1.7;color:#edeae3}
+.callout strong{font-weight:600}
+.callout-head{display:block;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.co-g{background:rgba(78,222,138,0.1);border-left:3px solid #4ede8a}
+.co-a{background:rgba(245,166,35,0.1);border-left:3px solid #f5a623}
+.co-r{background:rgba(240,82,82,0.12);border-left:3px solid #f05252}
+.co-b{background:rgba(96,165,250,0.1);border-left:3px solid #60a5fa}
+.co-o{background:rgba(251,146,60,0.1);border-left:3px solid #fb923c}
+.co-g .callout-head{color:#4ede8a}
+.co-a .callout-head{color:#f5a623}
+.co-r .callout-head{color:#f05252}
+.co-b .callout-head{color:#60a5fa}
+.co-o .callout-head{color:#fb923c}
+
+/* ANIMATED BARS */
+.bar-chart{display:flex;flex-direction:column;gap:14px}
+.bar-row{display:flex;flex-direction:column;gap:5px}
+.bar-label-row{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.bar-name{font-size:0.82rem;font-weight:500;color:#edeae3;line-height:1.35}
+.bar-sub{font-family:'IBM Plex Mono',monospace;font-size:0.57rem;color:rgba(237,234,227,0.4);margin-top:2px}
+.bar-val{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;font-weight:600;white-space:nowrap;flex-shrink:0}
+.bar-track{height:22px;background:rgba(255,255,255,0.05);border-radius:4px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;position:absolute;top:0;left:0;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.bar-inner-label{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 10px;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.75);pointer-events:none}
+.bar-axis-label{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:rgba(237,234,227,0.35);text-align:center;margin-top:6px}
+
+/* DONUT RINGS */
+.donut-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;justify-content:center}
+.donut-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;min-width:110px}
+.donut-svg{overflow:visible}
+.donut-track{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:8}
+.donut-fill{fill:none;stroke-width:8;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;stroke-dasharray:0 283;transition:stroke-dasharray 1.4s cubic-bezier(0.4,0,0.2,1)}
+.donut-caption{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.06em;color:rgba(237,234,227,0.5);text-align:center;line-height:1.5;max-width:120px}
+
+/* DOT MATRIX */
+.dot-matrix-wrap{background:#17171f;border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:20px;margin-bottom:12px}
+.dot-matrix-title{font-size:0.83rem;font-weight:600;color:#edeae3;margin-bottom:4px}
+.dot-matrix-sub{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:rgba(237,234,227,0.4);margin-bottom:14px;line-height:1.5}
+.dot-grid{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.dot{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);opacity:0;transition:opacity 0.3s ease,background 0.3s,transform 0.2s;flex-shrink:0}
+.dot-legend{display:flex;gap:16px;flex-wrap:wrap}
+.dot-legend-item{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;color:rgba(237,234,227,0.6)}
+.dot-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* STACKED SPLIT BARS */
+.split-bar-wrap{margin-bottom:14px}
+.split-bar-label{font-size:0.8rem;font-weight:500;color:rgba(237,234,227,0.7);margin-bottom:5px}
+.split-bar{height:30px;border-radius:5px;overflow:hidden;display:flex;width:100%}
+.split-seg{height:100%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;color:rgba(255,255,255,0.9);white-space:nowrap;overflow:hidden;transition:flex 1s cubic-bezier(0.4,0,0.2,1)}
+.split-axis{display:flex;justify-content:space-between;margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:rgba(237,234,227,0.35)}
+
+/* CONFOUNDING FUNNEL */
+.funnel-wrap{background:#17171f;border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:20px;margin-bottom:12px}
+.funnel-title{font-size:0.83rem;font-weight:600;color:#edeae3;margin-bottom:4px}
+.funnel-sub{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:rgba(237,234,227,0.4);margin-bottom:16px;line-height:1.5}
+.funnel-step{display:flex;align-items:center;margin-bottom:4px;opacity:0;transform:translateX(-16px);transition:opacity 0.5s ease,transform 0.5s ease}
+.funnel-step.vis{opacity:1;transform:translateX(0)}
+.funnel-box{flex:1;padding:10px 14px;border-radius:5px;font-size:0.82rem;line-height:1.4;color:#edeae3;font-weight:500}
+.funnel-connector{width:2px;height:10px;background:rgba(255,255,255,0.12);margin-left:20px}
+.funnel-note{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:rgba(237,234,227,0.4);margin-top:12px;line-height:1.5}
+
+/* GRIDS */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.stat-box{background:#17171f;border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:16px}
+.stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,234,227,0.4);margin-bottom:6px;line-height:1.4}
+.stat-val{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:700;line-height:1;margin-bottom:4px}
+.stat-desc{font-size:0.73rem;color:rgba(237,234,227,0.4);line-height:1.45}
+
+/* PRICE BARS */
+.price-row{margin-bottom:14px}
+.price-name{font-size:0.82rem;font-weight:500;color:#edeae3;margin-bottom:3px}
+.price-sub{font-family:'IBM Plex Mono',monospace;font-size:0.57rem;color:rgba(237,234,227,0.4);margin-bottom:6px}
+.price-track{height:28px;background:rgba(255,255,255,0.04);border-radius:4px;position:relative;overflow:hidden}
+.price-conv-seg{position:absolute;left:0;top:0;height:100%;background:rgba(255,255,255,0.12);display:flex;align-items:center;padding:0 8px;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:rgba(255,255,255,0.5)}
+.price-org-seg{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;justify-content:flex-end;padding:0 8px;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;color:rgba(255,255,255,0.9)}
+.price-divider{position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.25)}
+
+/* LABEL ITEMS */
+.label-item{background:#17171f;border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:14px 16px;margin-bottom:8px;transition:border-color 0.2s,background 0.2s}
+.label-item:hover{border-color:rgba(255,255,255,0.14);background:#1a1a24}
+.label-name{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;display:block}
+.label-body{font-size:0.82rem;color:rgba(237,234,227,0.7);line-height:1.6}
+.label-body strong{color:#edeae3}
+
+/* VERDICT TABLE */
+.verdict-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin-bottom:12px}
+.verdict-table th{background:#17171f;color:rgba(237,234,227,0.4);font-family:'IBM Plex Mono',monospace;font-size:0.54rem;text-transform:uppercase;letter-spacing:0.1em;padding:10px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.07)}
+.verdict-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.07);color:rgba(237,234,227,0.7);vertical-align:top;line-height:1.5}
+.verdict-table tr:last-child td{border-bottom:none}
+.verdict-table td:first-child{color:#edeae3;font-weight:500}
+.verdict-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.06em;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.65}}
+
+/* SCROLL FADE */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.vis{opacity:1;transform:translateY(0)}
+
+/* SYNTHESIS */
+.synthesis{background:#111118;border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:28px 24px;margin-top:40px}
+.synth-head{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(237,234,227,0.4);margin-bottom:16px}
+.synth-text{font-size:0.9rem;line-height:1.8;color:rgba(237,234,227,0.7)}
+.synth-text strong{color:#edeae3;font-weight:600}
+
+/* FOOTER */
+.footer{border-top:1px solid rgba(255,255,255,0.07);padding-top:18px;margin-top:28px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.footer-brand{font-family:'Fraunces',serif;font-size:0.85rem;font-weight:700;color:rgba(237,234,227,0.4)}
+.footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:rgba(237,234,227,0.4);line-height:1.8;text-align:right}
+
+@media(max-width:580px){
+  .hero{padding:44px 18px 40px}
+  .content{padding:0 18px 60px}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .grid-2{grid-template-columns:1fr}
+  .footer-refs{text-align:left}
+  .verdict-table{font-size:0.72rem}
+  .verdict-table th,.verdict-table td{padding:8px}
+  .dot{width:14px;height:14px}
+  .donut-wrap{min-width:90px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+<div class="particles" id="particles"></div>
+<div class="hero-inner">
+  <div class="hero-tag">Food Science Research · Origin Symmetrics</div>
+  <h1>Is Organic Food <em>Actually</em> Healthier?<br><strong>What the Evidence Shows</strong></h1>
+  <p class="hero-sub">The honest answer sits between "organic is identical to conventional" and "organic is dramatically healthier." Each question — nutrients, pesticides, clinical outcomes, cost — has a different answer.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num" style="color:#4ede8a" data-target="47" data-suffix="%">0%</div><div class="hstat-label">Average organic price premium across grocery categories — Consumer Reports</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:#f5a623" data-target="75" data-suffix="%">0%</div><div class="hstat-label">Of conventional US produce contains detectable pesticide residues — USDA 2024</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:#60a5fa" data-target="35" data-suffix="">0</div><div class="hstat-label">Studies in the largest organic health outcomes systematic review — Vigar et al. 2020</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:#f05252" data-target="0" data-suffix="">0</div><div class="hstat-label">Long-term RCTs measuring direct health outcomes from organic vs. conventional diet</div></div>
+  </div>
+</div>
+</div>
+
+<div class="content">
+
+<!-- SECTION 1 -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-green">01</div>
+    <div><div class="sec-title">What "Organic" Actually Means — Before We Debate It</div><div class="sec-src">USDA National Organic Program · FDA · USDA AMS</div></div>
+  </div>
+  <p class="prose">Most debates start without agreeing on definitions. USDA Certified Organic is a legally binding standard — not a wellness label.</p>
+  <div class="grid-2">
+    <div class="card cg">
+      <div class="card-title">What USDA Organic Guarantees</div>
+      <div class="finding" style="background:#17171f;margin-bottom:8px;"><div class="ftag ft-g">Crop Standards</div>No synthetic pesticides, no synthetic nitrogen fertilizers, no GMOs, no irradiation. Natural and approved biological pesticides are still permitted.</div>
+      <div class="finding" style="background:#17171f;margin-bottom:0;"><div class="ftag ft-g">Livestock Standards</div>Organic feed, pasture access, no routine antibiotics, no growth hormones. Outdoor access required — size and duration varies.</div>
+    </div>
+    <div class="card cr">
+      <div class="card-title">The Most Common Myths</div>
+      <div class="finding" style="background:#17171f;margin-bottom:8px;"><div class="ftag ft-r">Myth</div><strong>"Organic means pesticide-free."</strong> False. Organic farms use approved natural pesticides. The difference is <em>which</em> pesticides and residue levels — not zero vs. some.</div>
+      <div class="finding" style="background:#17171f;margin-bottom:0;"><div class="ftag ft-r">Myth</div><strong>"Hormone-free means premium quality."</strong> Giving hormones to chickens is illegal in the US. Most conventional eggs are already antibiotic-free. These labels signal nothing meaningful.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-amber">02</div>
+    <div><div class="sec-title">Nutrient Content: Real Differences, Unclear Clinical Significance</div><div class="sec-src">Barański et al., Br J Nutr 2014 (343 publications) · Faoro et al., Heliyon 2024 (656 comparisons)</div></div>
+  </div>
+  <p class="prose">The most comprehensive compositional analysis — Barański et al. 2014, a meta-analysis of 343 peer-reviewed publications — found real differences. Whether they translate clinically is uncertain.</p>
+
+  <div class="card ca">
+    <div class="card-title">Polyphenol / Antioxidant Levels — Organic vs. Conventional Crops</div>
+    <div class="card-src">Barański et al., British Journal of Nutrition 2014 · 343 peer-reviewed publications · bars animate on scroll</div>
+    <div class="bar-chart" id="nutrientBars">
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Flavanones (citrus compounds)</div><div class="bar-sub">Largest measured gap across all polyphenol classes</div></div><div class="bar-val" style="color:#4ede8a">+69%</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.8),rgba(78,222,138,0.3))" data-width="100"></div><div class="bar-inner-label">Largest difference</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Anthocyanins</div><div class="bar-sub">Blueberries, cherries — antioxidant pigments</div></div><div class="bar-val" style="color:#4ede8a">+51%</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.7),rgba(78,222,138,0.25))" data-width="74"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Flavonols (quercetin, kaempferol)</div><div class="bar-sub">Anti-inflammatory — found across most plant foods</div></div><div class="bar-val" style="color:#4ede8a">+50%</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.65),rgba(78,222,138,0.2))" data-width="72"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Stilbenes (resveratrol)</div><div class="bar-sub">Grapes, peanuts</div></div><div class="bar-val" style="color:#4ede8a">+28%</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.55),rgba(78,222,138,0.15))" data-width="41"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Phenolic acids</div><div class="bar-sub">Broad category across most plant foods</div></div><div class="bar-val" style="color:#4ede8a">+19%</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.45),rgba(78,222,138,0.12))" data-width="28"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Cadmium (toxic heavy metal)</div><div class="bar-sub">Lower in organic — linked to non-use of mineral phosphate fertilizers</div></div><div class="bar-val" style="color:#f05252">~50% lower ✓</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(240,82,82,0.6),rgba(240,82,82,0.2))" data-width="100"></div><div class="bar-inner-label">Organic wins on cadmium</div></div>
+      </div>
+    </div>
+    <div class="bar-axis-label">Relative difference organic vs. conventional · bars animate on scroll</div>
+  </div>
+
+  <!-- Donut rings -->
+  <div class="card ca">
+    <div class="card-title">How Often Do Studies Actually Find a Nutritional Difference?</div>
+    <div class="card-src">Faoro et al., Heliyon 2024 · 147 studies · 656 comparative analyses</div>
+    <div class="donut-row" id="donutRow1">
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="110" height="110" viewBox="0 0 110 110">
+          <circle class="donut-track" cx="55" cy="55" r="45"/>
+          <circle class="donut-fill" cx="55" cy="55" r="45" stroke="#4ede8a" data-pct="29"/>
+          <text x="55" y="48" text-anchor="middle" font-family="'Fraunces',serif" font-size="18" font-weight="700" fill="#4ede8a">29%</text>
+          <text x="55" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(237,234,227,0.4)">of comparisons</text>
+        </svg>
+        <div class="donut-caption">showed significant difference between organic and conventional</div>
+      </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="110" height="110" viewBox="0 0 110 110">
+          <circle class="donut-track" cx="55" cy="55" r="45"/>
+          <circle class="donut-fill" cx="55" cy="55" r="45" stroke="#f05252" data-pct="71"/>
+          <text x="55" y="48" text-anchor="middle" font-family="'Fraunces',serif" font-size="18" font-weight="700" fill="#f05252">71%</text>
+          <text x="55" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(237,234,227,0.4)">of comparisons</text>
+        </svg>
+        <div class="donut-caption">showed no significant nutritional difference at all</div>
+      </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="110" height="110" viewBox="0 0 110 110">
+          <circle class="donut-track" cx="55" cy="55" r="45"/>
+          <circle class="donut-fill" cx="55" cy="55" r="45" stroke="#f5a623" data-pct="17"/>
+          <text x="55" y="48" text-anchor="middle" font-family="'Fraunces',serif" font-size="18" font-weight="700" fill="#f5a623">17%</text>
+          <text x="55" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(237,234,227,0.4)">avg antioxidant ↑</text>
+        </svg>
+        <div class="donut-caption">average total antioxidant activity higher in organic (Barański 2014)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout co-a">
+    <span class="callout-head">Why the Differences Exist — The Dilution Effect</span>
+    When intensive fertilization drives higher yields, plants produce more starch and carbohydrates — but antioxidant concentrations don't scale proportionally. They get diluted. Organic farms have lower nitrogen inputs and lower yields, so plants invest more energy in secondary metabolites like polyphenols. The differences are real and mechanistically explained — the open question is whether they're large enough to matter clinically.
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-red">03</div>
+    <div><div class="sec-title">Pesticide Residues — The Most Clear-Cut Difference</div><div class="sec-src">USDA Pesticide Data Program 2024 · Barański 2014 · Jacobs et al. 2012 · EWG 2026</div></div>
+  </div>
+  <p class="prose">This is where organic wins most definitively — and where the debate gets distorted in both directions. Detection facts are unambiguous. Whether detection equals risk is the contested question.</p>
+
+  <!-- Stacked split bars -->
+  <div class="card cr">
+    <div class="card-title">Pesticide Residue Detection — Organic vs. Conventional</div>
+    <div class="card-src">USDA Pesticide Data Program 2024 · % of samples with detectable residues · bars animate on scroll</div>
+    <div id="splitBars">
+      <div class="split-bar-wrap">
+        <div class="split-bar-label">Conventional produce — all categories</div>
+        <div class="split-bar">
+          <div class="split-seg" style="background:rgba(240,82,82,0.65);flex:75" data-flex="75">75% detected</div>
+          <div class="split-seg" style="background:rgba(255,255,255,0.06);color:rgba(237,234,227,0.35);flex:25" data-flex="25">25% clean</div>
+        </div>
+        <div class="split-axis"><span>0%</span><span>50%</span><span>100%</span></div>
+      </div>
+      <div class="split-bar-wrap">
+        <div class="split-bar-label">Organic produce — all categories</div>
+        <div class="split-bar">
+          <div class="split-seg" style="background:rgba(240,82,82,0.3);flex:20" data-flex="20">~20%</div>
+          <div class="split-seg" style="background:rgba(78,222,138,0.2);color:rgba(78,222,138,0.8);flex:80" data-flex="80">~80% clean ✓</div>
+        </div>
+        <div class="split-axis"><span>0%</span><span>50%</span><span>100%</span></div>
+      </div>
+      <div class="split-bar-wrap" style="margin-bottom:0">
+        <div class="split-bar-label">Conventional Dirty Dozen (strawberries, spinach, etc.)</div>
+        <div class="split-bar">
+          <div class="split-seg" style="background:rgba(240,82,82,0.85);flex:95" data-flex="95">95%+ detected</div>
+          <div class="split-seg" style="background:rgba(255,255,255,0.04);color:rgba(237,234,227,0.2);flex:5" data-flex="5"></div>
+        </div>
+        <div class="split-axis"><span>0%</span><span>50%</span><span>100%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card cr">
+    <div class="card-title">Relative Pesticide Burden by Produce Category — Conventional</div>
+    <div class="card-src">EWG Shopper's Guide 2026 · USDA PDP · bars animate on scroll</div>
+    <div class="bar-chart" id="pesticideBars">
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name" style="color:#f05252">Strawberries · Spinach · Leafy Greens</div><div class="bar-sub">Thin-skinned · avg 4+ pesticides per sample · >95% positive</div></div><div class="bar-val" style="color:#f05252">Very High</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(240,82,82,0.8),rgba(240,82,82,0.3))" data-width="97"></div><div class="bar-inner-label">Organic matters most here</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name" style="color:#f5a623">Grapes · Peaches · Apples · Blueberries</div><div class="bar-sub">Soft skin · frequently multiple residues · Dirty Dozen mainstays</div></div><div class="bar-val" style="color:#f5a623">High</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.75),rgba(245,166,35,0.25))" data-width="74"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Potatoes · Cherries · Nectarines</div><div class="bar-sub">Moderate contamination · worth considering organic</div></div><div class="bar-val">Moderate</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.4),rgba(245,166,35,0.12))" data-width="50"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name" style="color:#4ede8a">Avocados · Corn · Pineapple · Onions</div><div class="bar-sub">Thick skin — Clean Fifteen · organic adds almost no residue benefit here</div></div><div class="bar-val" style="color:#4ede8a">Very Low</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.5),rgba(78,222,138,0.15))" data-width="8"></div><div class="bar-inner-label" style="color:rgba(78,222,138,0.7)">Organic adds little value here</div></div>
+      </div>
+    </div>
+    <div class="bar-axis-label">Relative pesticide residue burden in conventional produce</div>
+  </div>
+
+  <!-- Dot matrix -->
+  <div class="dot-matrix-wrap" id="dotMatrix">
+    <div class="dot-matrix-title">The Dose-Threshold Reality — 1 in 100 Dots Is Your Risk Level</div>
+    <div class="dot-matrix-sub">A peer-reviewed risk assessment of Dirty Dozen produce found reference dose values exceed mean consumer exposure in all cases — more than 1,000× higher than exposure estimates in over 90% of comparisons. Each dot = 1 serving of conventional produce. Only the red dot reaches anywhere near the safety threshold. Detection is not the same as risk for most adults.</div>
+    <div class="dot-grid" id="dotGrid"></div>
+    <div class="dot-legend">
+      <div class="dot-legend-item"><div class="dot-legend-dot" style="background:rgba(245,166,35,0.6)"></div>Typical daily serving (conventional)</div>
+      <div class="dot-legend-item"><div class="dot-legend-dot" style="background:#f05252;box-shadow:0 0 6px rgba(240,82,82,0.7)"></div>Approaches safety threshold</div>
+    </div>
+  </div>
+
+  <div class="callout co-b">
+    <span class="callout-head">Where the Concern Is More Legitimate — Children & Mixture Effects</span>
+    The dose-threshold argument for adults has two weak points. <strong>(1) Mixture effects:</strong> Thresholds are set for individual pesticides — cumulative exposure to many residues simultaneously is not formally assessed in any regulatory framework. <strong>(2) Children:</strong> Developing nervous systems are more sensitive to organophosphate and pyrethroid exposure. The American Academy of Pediatrics flagged concerns at current exposure levels in children specifically.
+  </div>
+
+  <div class="finding">
+    <div class="ftag ft-b">Glyphosate — Genuinely Contested, Not Settled</div>
+    The IARC classifies glyphosate as "probably carcinogenic." The EPA, EFSA, and WHO/FAO classify it as "unlikely to be carcinogenic." The Parkinson's association is under investigation but not established. Regulatory bodies genuinely disagree — this is not a case where one side is clearly wrong.
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-blue">04</div>
+    <div><div class="sec-title">Clinical Health Outcomes — Promising Associations, Persistent Confounding</div><div class="sec-src">Baudry et al., JAMA Intern Med 2018 (n=68,946) · Vigar et al. 2020 · Jiang et al., Nutr Rev 2024</div></div>
+  </div>
+  <p class="prose">Observational associations exist across several disease categories. Whether organic food itself causes them — or the broader healthy lifestyle of organic buyers — is the central unresolved question.</p>
+
+  <div class="card cb">
+    <div class="card-title">NutriNet-Santé Cohort — Organic Diet & Cancer Risk (n=68,946 · 7 years)</div>
+    <div class="card-src">Baudry et al., JAMA Internal Medicine 2018 · multivariable adjusted · all findings observational</div>
+    <div class="bar-chart" id="cancerBars">
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Overall cancer risk reduction (top vs. bottom organic quartile)</div><div class="bar-sub">HR 0.75 · 95% CI 0.63–0.88 · absolute risk reduction 0.6%</div></div><div class="bar-val" style="color:#4ede8a">−25% relative</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.65),rgba(78,222,138,0.2))" data-width="80"></div><div class="bar-inner-label">Confounding likely</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Non-Hodgkin lymphoma</div><div class="bar-sub">Strongest specific finding · replicated across 2+ independent cohorts</div></div><div class="bar-val" style="color:#4ede8a">Significant ↓</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.6),rgba(78,222,138,0.2))" data-width="70"></div><div class="bar-inner-label">Most reproducible</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Postmenopausal breast cancer</div><div class="bar-sub">Significant association in this cohort</div></div><div class="bar-val" style="color:#4ede8a">Significant ↓</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.5),rgba(78,222,138,0.15))" data-width="58"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Colorectal · Prostate · Skin cancer</div><div class="bar-sub">No significant associations found</div></div><div class="bar-val" style="color:rgba(237,234,227,0.4)">No effect</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:rgba(255,255,255,0.12)" data-width="4"></div><div class="bar-inner-label" style="color:rgba(237,234,227,0.35)">Not significant</div></div>
+      </div>
+    </div>
+    <div class="bar-axis-label">Risk reduction vs. lowest organic consumption quartile · observational only</div>
+  </div>
+
+  <!-- Confounding funnel -->
+  <div class="funnel-wrap" id="confoundFunnel">
+    <div class="funnel-title">The Healthy User Bias — Why We Can't Trust the Numbers Alone</div>
+    <div class="funnel-sub">People who buy organic differ from non-buyers in many ways simultaneously. Each step below is an additional factor that correlates with organic consumption AND independently lowers disease risk.</div>
+    <div class="funnel-step" style="transition-delay:0s"><div class="funnel-box" style="background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.3)">🛒 Buys organic food regularly</div></div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-step" style="transition-delay:0.15s"><div style="min-width:20px;flex-shrink:0"></div><div class="funnel-box" style="background:rgba(78,222,138,0.12);border:1px solid rgba(78,222,138,0.25)">🥦 Also eats more vegetables, fruit, whole grains overall</div></div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-step" style="transition-delay:0.3s"><div style="min-width:40px;flex-shrink:0"></div><div class="funnel-box" style="background:rgba(78,222,138,0.1);border:1px solid rgba(78,222,138,0.2)">🏃 Also exercises more regularly</div></div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-step" style="transition-delay:0.45s"><div style="min-width:60px;flex-shrink:0"></div><div class="funnel-box" style="background:rgba(78,222,138,0.08);border:1px solid rgba(78,222,138,0.15)">🚭 Also less likely to smoke or drink excessively</div></div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-step" style="transition-delay:0.6s"><div style="min-width:80px;flex-shrink:0"></div><div class="funnel-box" style="background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.2)">🎓 Also higher income and education on average</div></div>
+    <div class="funnel-connector"></div>
+    <div class="funnel-step" style="transition-delay:0.75s"><div style="min-width:100px;flex-shrink:0"></div><div class="funnel-box" style="background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.25);font-weight:600">📊 Study shows "organic reduces cancer risk 25%"</div></div>
+    <div class="funnel-note">Danish Diet, Cancer and Health cohort confirmed organic consumption strongly correlates with adherence to national dietary guidelines, healthy BMI, non-smoking, and physical activity — making causal isolation nearly impossible in observational data.</div>
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-teal">05</div>
+    <div><div class="sec-title">Organic Dairy & Eggs — One Documented Advantage</div><div class="sec-src">Średnicka-Tober et al. 2016 · Consumer Reports · USDA AMS egg labeling</div></div>
+  </div>
+  <p class="prose">Unlike produce, organic dairy has one well-documented compositional difference directly tied to farming practice — not just soil chemistry.</p>
+  <div class="grid-2">
+    <div class="stat-box"><div class="stat-label">Omega-3 content — Organic vs. conventional dairy</div><div class="stat-val" style="color:#2dd4bf">+60%</div><div class="stat-desc">Organic milk contains ~60% more omega-3 fatty acids. Mechanism: pasture access and grass diet directly raises omega-3 in milk fat. Effect extends to yogurt and cheese.</div></div>
+    <div class="stat-box"><div class="stat-label">Clinical significance vs. direct fish oil</div><div class="stat-val" style="color:#f5a623">Modest</div><div class="stat-desc">The absolute increase is real but modest — a glass of organic milk adds ~35mg more ALA. Not equivalent to an omega-3 supplement, but it's real and mechanistically explained.</div></div>
+  </div>
+  <div class="finding">
+    <div class="ftag ft-t">Why Organic Eggs Underdeliver vs. the Marketing</div>
+    USDA Organic eggs require organic feed and outdoor access — but organic hens are typically fed commercial corn-and-soy diets rather than foraging on insects and grass. This limits the omega-3 and nutrient improvement. <strong>The real driver of egg quality is diet and genuine outdoor access, not the organic label.</strong> A truly pastured egg from a small farm with real foraging will have better nutrient profile than an organic egg from a commercial operation where hens eat organic grain indoors.
+  </div>
+</div>
+
+<!-- SECTION 6 -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-amber">06</div>
+    <div><div class="sec-title">The Cost Reality — What Are You Actually Paying?</div><div class="sec-src">Consumer Reports market basket study · LendingTree 2024 · USDA ERS 2023</div></div>
+  </div>
+  <p class="prose">The premium for organic is real and varies dramatically by category. A targeted approach captures most of the hypothetical benefit at a fraction of the cost.</p>
+
+  <div class="card ca">
+    <div class="card-title">Average Organic Price Premium by Category</div>
+    <div class="card-src">Consumer Reports (100+ product pairings at 8 grocers) · LendingTree 2024 · USDA ERS</div>
+    <div class="price-row">
+      <div class="price-name">Eggs & Dairy</div><div class="price-sub">Highest premium — organic feed and pasture requirements significantly raise production cost</div>
+      <div class="price-track"><div class="price-conv-seg" style="width:38%">Conventional</div><div class="price-org-seg" style="width:100%;background:linear-gradient(90deg,rgba(240,82,82,0.45),rgba(240,82,82,0.2))">+50–82%</div><div class="price-divider" style="left:38%"></div></div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">High-Residue Produce (strawberries, spinach, leafy greens)</div><div class="price-sub">Best value — largest pesticide difference, moderate premium, frequently consumed</div>
+      <div class="price-track"><div class="price-conv-seg" style="width:55%">Conventional</div><div class="price-org-seg" style="width:100%;background:linear-gradient(90deg,rgba(245,166,35,0.5),rgba(245,166,35,0.2))">+20–50%</div><div class="price-divider" style="left:55%"></div></div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">Average grocery basket (mixed)</div><div class="price-sub">Consumer Reports: 47% average premium across 100+ product pairings</div>
+      <div class="price-track"><div class="price-conv-seg" style="width:60%">Conventional</div><div class="price-org-seg" style="width:100%;background:linear-gradient(90deg,rgba(245,166,35,0.35),rgba(245,166,35,0.12))">+47% avg</div><div class="price-divider" style="left:60%"></div></div>
+    </div>
+    <div class="price-row">
+      <div class="price-name">Low-Residue Produce (avocados, onions, corn, pineapple)</div><div class="price-sub">Lowest value — organic buys almost no pesticide benefit over conventional</div>
+      <div class="price-track"><div class="price-conv-seg" style="width:82%">Conventional</div><div class="price-org-seg" style="width:100%;background:linear-gradient(90deg,rgba(78,222,138,0.3),rgba(78,222,138,0.1))">+7–20%</div><div class="price-divider" style="left:82%"></div></div>
+    </div>
+    <div class="price-row" style="margin-bottom:0">
+      <div class="price-name">Packaged / shelf-stable (crackers, pasta, cereals)</div><div class="price-sub">Worst value — minimal benefit, often high premium — skip organic here</div>
+      <div class="price-track"><div class="price-conv-seg" style="width:48%">Conventional</div><div class="price-org-seg" style="width:100%;background:linear-gradient(90deg,rgba(240,82,82,0.4),rgba(240,82,82,0.15))">High premium, low benefit</div><div class="price-divider" style="left:48%"></div></div>
+    </div>
+  </div>
+
+  <div class="callout co-g">
+    <span class="callout-head">Smart Spending Framework</span>
+    <strong>Prioritize organic:</strong> Strawberries, spinach, kale, peaches, grapes, apples, blueberries — thin-skinned, high-residue, frequently consumed. Dairy too if budget allows (omega-3 benefit is real). <strong>Skip organic for:</strong> Avocados, onions, corn, pineapple, cabbage, mushrooms — thick-skinned or naturally low-residue. Frozen organic produce is often cost-equivalent to fresh conventional while delivering the same residue reduction.
+  </div>
+</div>
+
+<!-- SECTION 7 -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-orange">07</div>
+    <div><div class="sec-title">The Vital Farms Case Study — Label Washing Explained</div><div class="sec-src">PETA Foundation v. Vital Farms · W.D. Texas 2021–2023 · USDA AMS · HFAC Certified Humane</div></div>
+  </div>
+  <p class="prose">Vital Farms is a useful case study not because they're uniquely bad actors, but because their controversy exposes how the entire egg label ecosystem works — and doesn't — for consumers.</p>
+
+  <div class="card co">
+    <div class="card-title">What Actually Happened — Separating Fact From Social Media</div>
+    <div class="card-src">Class action filed 2021 · class claims dismissed 2023 · PETA dropped out May 2023</div>
+    <div class="finding" style="background:#17171f;margin-bottom:8px;"><div class="ftag ft-o">The Lawsuit</div>A class-action filed in 2021 alleged Vital Farms misled consumers: hens kept primarily indoors despite "pasture-raised" branding, beak tipping, sourcing from hatcheries that cull male chicks. Vital Farms denied all allegations. Class action claims were dismissed in 2023. PETA dropped out in May 2023 without explanation.</div>
+    <div class="finding" style="background:#17171f;margin-bottom:8px;"><div class="ftag ft-r">The $292,000 Settlement — Widely Misunderstood</div>Social media posts cite this as proof of guilt. It isn't. This settled a <em>separate</em> dispute where the court sanctioned Vital Farms for compelling PETA to respond to excessively broad subpoenas — called the tactic "particularly ugly." Nothing to do with animal welfare allegations, which were dismissed.</div>
+    <div class="finding" style="background:#17171f;margin-bottom:0;"><div class="ftag ft-a">The Legitimate Criticism</div>Vital Farms holds Certified Humane "Pasture Raised" certification — 108 sq ft per bird with living vegetation, audited annually. This is genuinely above most competitors. The fair critique: operating at scale across 300+ contracted farms with public market pressure creates a gap between the small-farm pastoral marketing imagery and the commercial reality. Hens are fed corn-and-soy, and yolks are supplemented with carotenoid feed additives for darker color — disclosed on their website but not prominently.</div>
+  </div>
+
+  <div class="card co">
+    <div class="card-title">Egg Label Decoder — What They Actually Mean Legally</div>
+    <div class="card-src">USDA AMS · ASPCA Label Guide · HFAC Certified Humane standards</div>
+    <div class="label-item"><span class="label-name" style="color:rgba(237,234,227,0.35)">🚫 "Natural" / "Hormone-Free" / "Antibiotic-Free"</span><div class="label-body"><strong>Meaningless.</strong> All US eggs are hormone-free by law. "Natural" refers only to post-slaughter processing. Most conventional eggs are already antibiotic-free. These labels signal nothing about welfare or quality.</div></div>
+    <div class="label-item"><span class="label-name" style="color:#f05252">⚠ "Cage-Free"</span><div class="label-body"><strong>No cages, but no outdoor access required.</strong> Hens live in large barns — sometimes 200,000+ birds per facility. Some welfare improvement, but far from pastoral. USDA-verified cage-free requires farm visits twice yearly.</div></div>
+    <div class="label-item"><span class="label-name" style="color:#f5a623">⚠ "Free-Range" (USDA standard)</span><div class="label-body"><strong>Outdoor access required, but minimally defined.</strong> The USDA has considered five minutes of daily outdoor access sufficient. The outdoor area may be a small concrete porch. Size, quality, and duration are unregulated without third-party certification.</div></div>
+    <div class="label-item"><span class="label-name" style="color:#f5a623">~ "Pasture-Raised" (no certification)</span><div class="label-body"><strong>Not regulated by USDA as a standalone claim.</strong> Any producer can use this term without meeting any defined standard. Always look for Certified Humane, Animal Welfare Approved, or GAP Step 4+ backing this claim.</div></div>
+    <div class="label-item"><span class="label-name" style="color:#4ede8a">✓ "Pasture-Raised" + Certified Humane</span><div class="label-body"><strong>108 sq ft per bird, living vegetation, year-round outdoor access.</strong> Independently audited annually. This is Vital Farms' actual standard. Meaningfully better than cage-free or standard free-range. The best widely available retail option.</div></div>
+    <div class="label-item" style="margin-bottom:0"><span class="label-name" style="color:#4ede8a">✓✓ Animal Welfare Approved / GAP Step 4+</span><div class="label-body"><strong>Most rigorous welfare standard at retail.</strong> Requires meaningful pasture time, species-appropriate behavior, no beak trimming. Harder to find — typically local farms, farmers markets, or CSA subscriptions. Closest to the marketing imagery premium brands use.</div></div>
+  </div>
+</div>
+
+<!-- SECTION 8 -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-green">08</div>
+    <div><div class="sec-title">The Verdict — What the Research Actually Supports</div></div>
+  </div>
+
+  <!-- Verdict donuts -->
+  <div class="card cg" style="margin-bottom:16px">
+    <div class="card-title">Evidence Confidence by Domain</div>
+    <div class="card-src">Synthesis across all reviewed studies · ring size = strength of evidence base</div>
+    <div class="donut-row" id="donutRow2">
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="100" height="100" viewBox="0 0 100 100">
+          <circle class="donut-track" cx="50" cy="50" r="40"/>
+          <circle class="donut-fill" cx="50" cy="50" r="40" stroke="#4ede8a" data-pct="90"/>
+          <text x="50" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" font-weight="600" fill="#4ede8a">STRONG</text>
+          <text x="50" y="56" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(237,234,227,0.4)">evidence</text>
+        </svg>
+        <div class="donut-caption">Pesticide residue reduction</div>
+      </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="100" height="100" viewBox="0 0 100 100">
+          <circle class="donut-track" cx="50" cy="50" r="40"/>
+          <circle class="donut-fill" cx="50" cy="50" r="40" stroke="#2dd4bf" data-pct="70"/>
+          <text x="50" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" font-weight="600" fill="#2dd4bf">MODERATE</text>
+          <text x="50" y="56" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(237,234,227,0.4)">evidence</text>
+        </svg>
+        <div class="donut-caption">Nutrient differences (polyphenols, omega-3)</div>
+      </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="100" height="100" viewBox="0 0 100 100">
+          <circle class="donut-track" cx="50" cy="50" r="40"/>
+          <circle class="donut-fill" cx="50" cy="50" r="40" stroke="#f05252" data-pct="22"/>
+          <text x="50" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" font-weight="600" fill="#f05252">WEAK</text>
+          <text x="50" y="56" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(237,234,227,0.4)">evidence</text>
+        </svg>
+        <div class="donut-caption">Clinical disease outcomes (cancer, etc.)</div>
+      </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="100" height="100" viewBox="0 0 100 100">
+          <circle class="donut-track" cx="50" cy="50" r="40"/>
+          <circle class="donut-fill" cx="50" cy="50" r="40" stroke="#60a5fa" data-pct="40"/>
+          <text x="50" y="44" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" font-weight="600" fill="#60a5fa">EMERGING</text>
+          <text x="50" y="56" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(237,234,227,0.4)">evidence</text>
+        </svg>
+        <div class="donut-caption">Children &amp; pregnancy vulnerability</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto">
+  <table class="verdict-table">
+    <thead><tr><th>Claim</th><th>Verdict</th><th>Strength</th></tr></thead>
+    <tbody>
+      <tr><td>Organic has lower pesticide residues</td><td><span class="verdict-badge" style="background:rgba(78,222,138,0.1);color:#4ede8a;border:1px solid rgba(78,222,138,0.2)">True</span></td><td style="color:rgba(237,234,227,0.5)">4–5× more residues in conventional · consistent across all meta-analyses</td></tr>
+      <tr><td>Conventional residues are harmful at typical doses (adults)</td><td><span class="verdict-badge" style="background:rgba(245,166,35,0.1);color:#f5a623;border:1px solid rgba(245,166,35,0.2)">Unclear</span></td><td style="color:rgba(237,234,227,0.5)">Doses typically &lt;1/1000th of safety threshold · mixture effects unassessed</td></tr>
+      <tr><td>Organic has meaningfully higher nutrients</td><td><span class="verdict-badge" style="background:rgba(245,166,35,0.1);color:#f5a623;border:1px solid rgba(245,166,35,0.2)">Modest only</span></td><td style="color:rgba(237,234,227,0.5)">Real polyphenol differences · clinical translation unproven</td></tr>
+      <tr><td>Organic reduces cancer risk</td><td><span class="verdict-badge" style="background:rgba(245,166,35,0.1);color:#f5a623;border:1px solid rgba(245,166,35,0.2)">Possible assoc.</span></td><td style="color:rgba(237,234,227,0.5)">Observational only · healthy user bias dominates · NHL most reproducible</td></tr>
+      <tr><td>Organic dairy/meat has more omega-3</td><td><span class="verdict-badge" style="background:rgba(78,222,138,0.1);color:#4ede8a;border:1px solid rgba(78,222,138,0.2)">True</span></td><td style="color:rgba(237,234,227,0.5)">~60% more omega-3 in organic milk · mechanistically explained by diet</td></tr>
+      <tr><td>Children benefit more from organic</td><td><span class="verdict-badge" style="background:rgba(96,165,250,0.1);color:#60a5fa;border:1px solid rgba(96,165,250,0.2)">Plausible</span></td><td style="color:rgba(237,234,227,0.5)">AAP flagged concern · developing nervous systems more pesticide-sensitive</td></tr>
+      <tr><td>Going fully organic is worth the cost</td><td><span class="verdict-badge" style="background:rgba(240,82,82,0.1);color:#f05252;border:1px solid rgba(240,82,82,0.2)">Targeted only</span></td><td style="color:rgba(237,234,227,0.5)">Full organic ~47% more expensive · targeted high-residue buying captures most benefit</td></tr>
+      <tr><td>"Pasture-raised" egg labels are trustworthy</td><td><span class="verdict-badge" style="background:rgba(245,166,35,0.1);color:#f5a623;border:1px solid rgba(245,166,35,0.2)">Depends</span></td><td style="color:rgba(237,234,227,0.5)">Unregulated without certification · require Certified Humane + Pasture Raised together</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- SYNTHESIS -->
+<div class="synthesis fade-in">
+  <div class="synth-head">Synthesis · The Complete Evidence Picture</div>
+  <div class="synth-text">
+    The honest one-line summary: <strong>organic food is measurably different from conventional in several ways, but whether those differences translate to meaningful clinical health benefits for the average adult remains unproven.</strong><br><br>
+    What is well-established: organic produce has 4–5× fewer pesticide residue detections. Organic crops have modestly higher polyphenol content driven by the dilution effect. Organic dairy has ~60% more omega-3. Cadmium levels are lower in organic cereals. These are real, mechanistically explained differences.<br><br>
+    What is observationally associated but not proven: reduced cancer risk (particularly non-Hodgkin lymphoma), metabolic syndrome, obesity, birth complications. All come from observational cohorts where organic buyers are simultaneously healthier in many other ways. The healthy user bias has not been solved, and no long-term RCT exists.<br><br>
+    <strong>The practical framework:</strong> Prioritize organic for high-residue thin-skinned produce and dairy — that's where the pesticide difference is largest and the omega-3 benefit is real. Skip organic for thick-skinned low-residue produce and packaged goods. For eggs, look for Certified Humane + Pasture Raised together. The Vital Farms controversy reflects a real gap between premium marketing and commercial reality at scale — but their Certified Humane standard is still meaningfully above most competitors. If the full picture matters most to you, a local farm you can visit is the only fully reliable option.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics</div>
+  <div class="footer-refs">
+    Barański et al., Br J Nutr 2014 (343 publications) · Vigar et al., Nutrients 2020 (35 studies)<br>
+    Baudry et al., JAMA Intern Med 2018 (n=68,946) · Smith-Spangler et al., Ann Intern Med 2012<br>
+    Jiang et al., Nutr Rev 2024 · Mie et al., Environ Health 2017 · Faoro et al., Heliyon 2024<br>
+    USDA Pesticide Data Program 2024 · EWG Shopper's Guide 2026 · Jacobs et al. 2012<br>
+    Consumer Reports Organic Price Study · LendingTree 2024 · USDA ERS 2023<br>
+    HFAC Certified Humane Standards · USDA AMS Egg Labeling · ASPCA Label Guide
+  </div>
+</div>
+
+</div>
+
+<script>
+// PARTICLES
+(function(){
+  const c=document.getElementById('particles');
+  const cols=['rgba(78,222,138,0.4)','rgba(245,166,35,0.3)','rgba(96,165,250,0.3)','rgba(240,82,82,0.25)'];
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const s=Math.random()*4+2;
+    p.style.cssText=`width:${s}px;height:${s}px;background:${cols[Math.floor(Math.random()*cols.length)]};left:${Math.random()*100}%;bottom:-10px;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*10}s`;
+    c.appendChild(p);
+  }
+})();
+
+// HERO COUNTERS
+(function(){
+  const els=document.querySelectorAll('[data-target]');
+  setTimeout(()=>{
+    els.forEach(el=>{
+      const target=parseInt(el.dataset.target);
+      const suffix=el.dataset.suffix||'';
+      if(target===0){el.textContent='0'+suffix;return}
+      let cur=0;
+      const timer=setInterval(()=>{
+        cur=Math.min(cur+target/100,target);
+        el.textContent=Math.round(cur)+suffix;
+        if(cur>=target)clearInterval(timer);
+      },16);
+    });
+  },400);
+})();
+
+// DONUT HELPER
+function animateDonuts(container){
+  container.querySelectorAll('.donut-fill[data-pct]').forEach((ring,i)=>{
+    setTimeout(()=>{
+      const pct=parseInt(ring.dataset.pct);
+      const r=parseFloat(ring.getAttribute('r'));
+      const circ=2*Math.PI*r;
+      ring.style.strokeDasharray=`${pct/100*circ} ${circ}`;
+    },i*250+300);
+  });
+}
+
+// DOT MATRIX
+function buildDots(){
+  const grid=document.getElementById('dotGrid');
+  if(!grid||grid.children.length>0)return;
+  for(let i=0;i<100;i++){
+    const d=document.createElement('div');
+    d.className='dot';
+    if(i===0){
+      d.style.background='#f05252';
+      d.style.border='none';
+      d.style.boxShadow='0 0 8px rgba(240,82,82,0.8)';
+      d.style.animation='pulse 2s ease-in-out infinite';
+      d.style.transform='scale(1.2)';
+    }else{
+      d.style.background='rgba(245,166,35,0.4)';
+      d.style.borderColor='rgba(245,166,35,0.2)';
+    }
+    setTimeout(()=>{d.style.opacity='1'},i*12+100);
+    grid.appendChild(d);
+  }
+}
+
+// INTERSECTION OBSERVER
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    const el=entry.target;
+
+    if(el.classList.contains('fade-in'))el.classList.add('vis');
+
+    // Bars
+    el.querySelectorAll&&el.querySelectorAll('.bar-fill[data-width]').forEach((fill,i)=>{
+      setTimeout(()=>{fill.style.width=fill.dataset.width+'%'},i*130+100);
+    });
+
+    // Donuts
+    animateDonuts(el);
+
+    // Funnel
+    if(el.id==='confoundFunnel'){
+      el.querySelectorAll('.funnel-step').forEach((step,i)=>{
+        setTimeout(()=>step.classList.add('vis'),i*220+200);
+      });
+    }
+
+    // Dots
+    if(el.id==='dotMatrix')buildDots();
+
+    io.unobserve(el);
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.fade-in,.card,.sec,.dot-matrix-wrap,[id="confoundFunnel"]').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
