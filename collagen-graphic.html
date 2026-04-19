@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydrolyzed Collagen: Is It Worth Supplementing? — Origin Symmetrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0e;--bg2:#111118;--bg3:#17171f;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --text:#edeae3;--text2:rgba(237,234,227,0.7);--text3:rgba(237,234,227,0.4);
+  --amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--amber-border:rgba(245,166,35,0.22);
+  --red:#f05252;--red-dim:rgba(240,82,82,0.1);--red-border:rgba(240,82,82,0.22);
+  --green:#4ede8a;--green-dim:rgba(78,222,138,0.1);--green-border:rgba(78,222,138,0.22);
+  --blue:#60a5fa;--blue-dim:rgba(96,165,250,0.1);--blue-border:rgba(96,165,250,0.22);
+  --teal:#2dd4bf;--teal-dim:rgba(45,212,191,0.1);--teal-border:rgba(45,212,191,0.22);
+  --purple:#c084fc;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;padding:64px 24px 56px;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 80% 20%,rgba(245,166,35,0.08) 0%,transparent 60%),
+  radial-gradient(ellipse 50% 50% at 15% 70%,rgba(45,212,191,0.05) 0%,transparent 60%);
+  pointer-events:none}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;animation:pdrift linear infinite;opacity:0}
+@keyframes pdrift{0%{transform:translateY(100%);opacity:0}10%{opacity:1}90%{opacity:0.35}100%{transform:translateY(-20px) translateX(30px);opacity:0}}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+.hero-tag::before{content:'';display:inline-block;width:18px;height:1px;background:var(--amber)}
+h1{font-family:'Fraunces',serif;font-size:clamp(2rem,6vw,3.6rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px}
+h1 em{font-style:italic;color:var(--amber)}
+h1 strong{font-style:normal;color:var(--teal)}
+.hero-sub{font-size:0.95rem;color:var(--text2);max-width:640px;margin-bottom:32px;line-height:1.7}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,0.07);border-radius:6px;overflow:hidden}
+.hstat{background:var(--bg2);padding:14px 16px}
+.hstat-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;line-height:1;margin-bottom:4px}
+.hstat-label{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);line-height:1.4}
+
+/* CONTENT */
+.content{max-width:860px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-top:56px}
+.sec-hdr{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:4px 10px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:3px}
+.sn-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)}
+.sn-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-border)}
+.sn-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)}
+.sn-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border)}
+.sn-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-border)}
+.sn-p{background:rgba(192,132,252,0.1);color:var(--purple);border:1px solid rgba(192,132,252,0.22)}
+.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.1rem,3vw,1.45rem);font-weight:700;line-height:1.2;margin-bottom:4px}
+.sec-src{font-family:'IBM Plex Mono',monospace;font-size:0.53rem;color:var(--text3);letter-spacing:0.06em;line-height:1.5}
+.prose{font-size:0.88rem;color:var(--text2);line-height:1.75;margin-bottom:16px}
+.prose strong{color:var(--text);font-weight:600}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:12px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card.ca::before{background:linear-gradient(90deg,var(--amber),transparent 70%)}
+.card.cr::before{background:linear-gradient(90deg,var(--red),transparent 70%)}
+.card.cg::before{background:linear-gradient(90deg,var(--green),transparent 70%)}
+.card.cb::before{background:linear-gradient(90deg,var(--blue),transparent 70%)}
+.card.ct::before{background:linear-gradient(90deg,var(--teal),transparent 70%)}
+.card.cp::before{background:linear-gradient(90deg,var(--purple),transparent 70%)}
+.card-title{font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.card-src{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;color:var(--text3);letter-spacing:0.06em;margin-bottom:16px}
+
+/* FINDINGS */
+.finding{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 16px;margin-bottom:8px;font-size:0.83rem;line-height:1.65;color:var(--text2)}
+.finding:last-child{margin-bottom:0}
+.finding strong{color:var(--text);font-weight:600}
+.ftag{display:block;width:fit-content;font-family:'IBM Plex Mono',monospace;font-size:0.53rem;font-weight:600;padding:3px 8px;border-radius:3px;letter-spacing:0.08em;margin-bottom:8px}
+.ft-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)}
+.ft-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-border)}
+.ft-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)}
+.ft-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border)}
+.ft-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-border)}
+.ft-p{background:rgba(192,132,252,0.1);color:var(--purple);border:1px solid rgba(192,132,252,0.22)}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:16px 18px;margin-bottom:14px;font-size:0.85rem;line-height:1.75;color:var(--text)}
+.callout strong{font-weight:600}
+.callout-head{display:block;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.co-a{background:var(--amber-dim);border-left:3px solid var(--amber)}.co-a .callout-head{color:var(--amber)}
+.co-r{background:var(--red-dim);border-left:3px solid var(--red)}.co-r .callout-head{color:var(--red)}
+.co-g{background:var(--green-dim);border-left:3px solid var(--green)}.co-g .callout-head{color:var(--green)}
+.co-b{background:var(--blue-dim);border-left:3px solid var(--blue)}.co-b .callout-head{color:var(--blue)}
+.co-t{background:var(--teal-dim);border-left:3px solid var(--teal)}.co-t .callout-head{color:var(--teal)}
+
+/* ANIMATED BARS */
+.bar-chart{display:flex;flex-direction:column;gap:14px}
+.bar-row{display:flex;flex-direction:column;gap:5px}
+.bar-label-row{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.bar-name{font-size:0.82rem;font-weight:500;color:var(--text);line-height:1.35}
+.bar-sub{font-family:'IBM Plex Mono',monospace;font-size:0.57rem;color:var(--text3);margin-top:2px}
+.bar-val{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;font-weight:600;white-space:nowrap;flex-shrink:0}
+.bar-track{height:22px;background:rgba(255,255,255,0.05);border-radius:4px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;position:absolute;top:0;left:0;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.bar-inner-label{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 10px;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.75);pointer-events:none}
+.bar-axis-label{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--text3);text-align:center;margin-top:6px}
+
+/* DONUT */
+.donut-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;justify-content:center}
+.donut-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;min-width:110px}
+.donut-svg{overflow:visible}
+.donut-track{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:8}
+.donut-fill{fill:none;stroke-width:8;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;stroke-dasharray:0 283;transition:stroke-dasharray 1.4s cubic-bezier(0.4,0,0.2,1)}
+.donut-caption{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.06em;color:var(--text3);text-align:center;line-height:1.5;max-width:130px}
+
+/* GRIDS */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+.stat-box{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:16px}
+.stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;line-height:1.4}
+.stat-val{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:700;line-height:1;margin-bottom:4px}
+.stat-desc{font-size:0.73rem;color:var(--text3);line-height:1.45}
+
+/* VERDICT TABLE */
+.verdict-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin-bottom:12px}
+.verdict-table th{background:var(--bg3);color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:0.54rem;text-transform:uppercase;letter-spacing:0.1em;padding:10px 12px;text-align:left;border-bottom:1px solid var(--border2)}
+.verdict-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.5}
+.verdict-table tr:last-child td{border-bottom:none}
+.verdict-table td:first-child{color:var(--text);font-weight:500}
+.vbadge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.06em;animation:vpulse 3s ease-in-out infinite}
+@keyframes vpulse{0%,100%{opacity:1}50%{opacity:0.65}}
+
+/* ABSORPTION FLOW */
+.flow{display:flex;align-items:center;gap:0;margin-bottom:14px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+.flow-step{flex-shrink:0;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 14px;text-align:center;min-width:90px}
+.flow-step-title{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.08em;margin-bottom:3px}
+.flow-step-sub{font-size:0.7rem;color:var(--text3);line-height:1.3}
+.flow-arrow{flex-shrink:0;padding:0 6px;color:var(--text3);font-size:1rem}
+
+/* TYPE COMPARISON BLOCKS */
+.type-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.type-row{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.type-badge{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:600;padding:5px 10px;border-radius:4px;white-space:nowrap;letter-spacing:0.08em;align-self:start}
+.type-content-title{font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.type-content-body{font-size:0.8rem;color:var(--text2);line-height:1.6}
+
+/* DOSE TABLE */
+.dose-table{width:100%;border-collapse:collapse;font-size:0.8rem}
+.dose-table th{background:var(--bg3);color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:0.54rem;text-transform:uppercase;letter-spacing:0.1em;padding:10px 12px;text-align:left;border-bottom:1px solid var(--border2)}
+.dose-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.5}
+.dose-table tr:last-child td{border-bottom:none}
+.dose-table td:first-child{color:var(--amber);font-family:'IBM Plex Mono',monospace;font-size:0.75rem;font-weight:600;white-space:nowrap}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.vis{opacity:1;transform:translateY(0)}
+
+/* SYNTHESIS */
+.synthesis{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:28px 24px;margin-top:40px}
+.synth-head{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+.synth-text{font-size:0.9rem;line-height:1.8;color:var(--text2)}
+.synth-text strong{color:var(--text);font-weight:600}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding-top:18px;margin-top:28px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.footer-brand{font-family:'Fraunces',serif;font-size:0.85rem;font-weight:700;color:var(--text3)}
+.footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);line-height:1.8;text-align:right}
+
+@media(max-width:580px){
+  .hero{padding:44px 18px 40px}.content{padding:0 18px 60px}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .footer-refs{text-align:left}
+  .verdict-table{font-size:0.72rem}.verdict-table th,.verdict-table td{padding:8px}
+  .type-row{grid-template-columns:1fr}
+  .flow{gap:0}
+  .flow-step{min-width:70px;padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+<div class="particles" id="particles"></div>
+<div class="hero-inner">
+  <div class="hero-tag">Evidence-Based Nutrition · Origin Symmetrics</div>
+  <h1>Hydrolyzed<br><em>Collagen</em><br><strong>Is It Worth It?</strong></h1>
+  <p class="hero-sub">Collagen is the most abundant protein in your body — and the most misunderstood supplement on the market. It does remarkable things for connective tissue. It does nothing for muscle. Here is what the research actually shows.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num" style="color:var(--amber)" id="c1">0%</div><div class="hstat-label">Of total body protein is collagen — the structural backbone of every connective tissue</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--teal)" id="c2">0</div><div class="hstat-label">Biological value for muscle protein synthesis — by design, not a flaw</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--green)" id="c3">0</div><div class="hstat-label">RCTs showing collagen outperforms glucosamine + chondroitin for joint pain</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--red)" id="c4">0%</div><div class="hstat-label">Skin collagen decline in the first 4 years of menopause — the window for supplementation</div></div>
+  </div>
+</div>
+</div>
+
+<div class="content">
+
+<!-- S1: WHAT IT IS -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-a">01</div>
+    <div><div class="sec-title">What Collagen Actually Is — And Why BV=0 Is the Point</div><div class="sec-src">Vital Proteins amino acid data · EAA biochemistry · Baar 2017 · Shaw et al., AJCN 2017</div></div>
+  </div>
+  <p class="prose">Collagen has a biological value (BV) of 0. It is an incomplete protein missing tryptophan entirely, with very low leucine. This is not a flaw — it is the most important thing to understand before evaluating collagen as a supplement. It means collagen cannot build muscle. It also means no other protein can do what collagen does.</p>
+
+  <div class="callout co-a">
+    <span class="callout-head">The Rocks and Sand Analogy</span>
+    Think of your daily protein requirement as filling a jar. Complete proteins — whey, meat, eggs — are the rocks. They fill muscle tissue, drive myofibrillar protein synthesis, support immune function and hormones. <strong>Collagen is the sand that fills the gaps the rocks leave behind.</strong> It supplies the specific substrates — glycine, proline, hydroxyproline — that build and maintain tendons, ligaments, cartilage, skin, and bone. These are structurally separate biological functions. You cannot substitute one for the other in either direction, and counting collagen toward your daily protein quota is a category error.
+  </div>
+
+  <div class="grid-2">
+    <div class="card ca">
+      <div class="card-title">Collagen Amino Acid Profile</div>
+      <div class="card-src">~47% of collagen is glycine, proline, hydroxyproline</div>
+      <div class="bar-chart" id="colBars">
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Glycine</div><div class="bar-sub">Most abundant — ~33% · structural backbone of triple helix</div></div><div class="bar-val" style="color:var(--amber)">33%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.7),rgba(245,166,35,0.2))" data-width="100"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Proline</div><div class="bar-sub">~12% · connective tissue repair substrate</div></div><div class="bar-val" style="color:var(--amber)">12%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.65),rgba(245,166,35,0.15))" data-width="36"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Hydroxyproline</div><div class="bar-sub">~11% · unique to collagen · plasma biomarker for absorption</div></div><div class="bar-val" style="color:var(--amber)">11%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.6),rgba(245,166,35,0.12))" data-width="33"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Essential amino acids total</div><div class="bar-sub">vs ~43% in whey · missing tryptophan entirely</div></div><div class="bar-val" style="color:var(--text3)">14%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:rgba(255,255,255,0.12)" data-width="42"></div><div class="bar-inner-label" style="color:rgba(237,234,227,0.35)">Low EAA — intentional</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Leucine (mTOR trigger for MPS)</div><div class="bar-sub">vs ~11% in whey · explains BV=0 for muscle</div></div><div class="bar-val" style="color:var(--red)">~3%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:rgba(240,82,82,0.4)" data-width="9"></div><div class="bar-inner-label" style="color:rgba(240,82,82,0.6)">Cannot trigger MPS</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card cb">
+      <div class="card-title">Whey vs. Collagen — Different Tools</div>
+      <div class="card-src">Oikawa et al. 2020 · Shaw 2017 · Vital Proteins data</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Whey — Leucine</div><div class="bar-sub">Triggers mTOR → myofibrillar protein synthesis</div></div><div class="bar-val" style="color:var(--blue)">11%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(96,165,250,0.7),rgba(96,165,250,0.2))" data-width="100"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Collagen — Leucine</div><div class="bar-sub">Insufficient to trigger MPS — does not drive muscle growth</div></div><div class="bar-val" style="color:var(--red)">3%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:rgba(240,82,82,0.35)" data-width="27"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Whey — Glycine</div><div class="bar-sub">Minimal — cannot supply connective tissue substrates</div></div><div class="bar-val" style="color:var(--text3)">~2%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:rgba(255,255,255,0.1)" data-width="6"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label-row"><div><div class="bar-name">Collagen — Glycine</div><div class="bar-sub">Primary substrate for tendon, ligament, cartilage, skin repair</div></div><div class="bar-val" style="color:var(--amber)">33%</div></div>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.7),rgba(245,166,35,0.2))" data-width="100"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Triple Helix SVG -->
+  <div class="card ca">
+    <div class="card-title">The Triple Helix Structure — Why Collagen Needs Its Own Substrates</div>
+    <div class="card-src">Type I collagen · Gly-X-Y repeat sequence · three intertwined α chains</div>
+    <svg viewBox="0 0 480 110" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block;margin-bottom:12px">
+      <defs>
+        <filter id="fa"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="fb"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="fc"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- α1 amber · amplitude 24 · period 100 -->
+      <path filter="url(#fa)"
+        d="M10,55 C28,31 48,31 66,55 C84,79 104,79 122,55 C140,31 160,31 178,55 C196,79 216,79 234,55 C252,31 272,31 290,55 C308,79 328,79 346,55 C364,31 384,31 402,55 C420,79 440,79 458,55 C470,43 476,39 480,37"
+        fill="none" stroke="#f5a623" stroke-width="2.8" stroke-linecap="round"/>
+      <!-- α2 teal · amplitude 15 · period 72 -->
+      <path filter="url(#fb)"
+        d="M10,66 C22,81 36,81 48,66 C60,51 74,51 86,66 C98,81 112,81 124,66 C136,51 150,51 162,66 C174,81 188,81 200,66 C212,51 226,51 238,66 C250,81 264,81 276,66 C288,51 302,51 314,66 C326,81 340,81 352,66 C364,51 378,51 390,66 C402,81 416,81 428,66 C440,51 454,51 466,66 C474,72 478,70 480,68"
+        fill="none" stroke="#2dd4bf" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+      <!-- α3 blue-dim · amplitude 9 · period 52 -->
+      <path filter="url(#fc)"
+        d="M10,50 C18,41 28,41 36,50 C44,59 54,59 62,50 C70,41 80,41 88,50 C96,59 106,59 114,50 C122,41 132,41 140,50 C148,59 158,59 166,50 C174,41 184,41 192,50 C200,59 210,59 218,50 C226,41 236,41 244,50 C252,59 262,59 270,50 C278,41 288,41 296,50 C304,59 314,59 322,50 C330,41 340,41 348,50 C356,59 366,59 374,50 C382,41 392,41 400,50 C408,59 418,59 426,50 C434,41 444,41 452,50 C460,59 470,59 478,52"
+        fill="none" stroke="#60a5fa" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+      <!-- Labels -->
+      <text x="10" y="100" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="#f5a623">— α1 (Gly-Pro-Hyp)</text>
+      <text x="130" y="100" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="#2dd4bf">— α2</text>
+      <text x="170" y="100" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="#60a5fa">— α3</text>
+      <text x="220" y="100" font-family="'IBM Plex Mono',monospace" font-size="8" fill="rgba(237,234,227,0.22)">repeated ~1000× per chain · ~300nm length</text>
+    </svg>
+    <div class="prose" style="margin-bottom:0">Every repeat unit requires glycine in the first position — no other amino acid fits the tight core of the triple helix. This is why the body cannot synthesize collagen from generic dietary protein alone when glycine supply is limited. Modern diets largely exclude collagen-rich foods (skin, cartilage, bone broth), making glycine and hydroxyproline chronically undersupplied.</div>
+  </div>
+</div>
+
+<!-- S2: HYDROLYZED VS GELATIN -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-a">02</div>
+    <div><div class="sec-title">Hydrolyzed vs. Gelatin vs. Bone Broth — Why Form Matters</div><div class="sec-src">Iwasaki et al. 2007 · PMC Frontiers Nutrition 2024 (RCT, n=32) · Wang et al. 2015 · Asserin et al. 2015</div></div>
+  </div>
+  <p class="prose">Not all collagen sources are equivalent. The form determines how much of the bioactive peptide fraction reaches your bloodstream intact — and that fraction is what drives the tissue-specific effects.</p>
+
+  <!-- Absorption flow -->
+  <div class="card ca" style="margin-bottom:16px">
+    <div class="card-title">Absorption Pathway — Hydrolyzed Collagen</div>
+    <div class="card-src">PEPT1 transporter · plasma Hyp kinetics · human RCT data</div>
+    <div class="flow" style="gap:0;margin-bottom:12px">
+      <div class="flow-step" style="border-color:var(--amber-border)"><div class="flow-step-title" style="color:var(--amber)">Ingestion</div><div class="flow-step-sub">2–5 kDa peptides dissolve cold/hot</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-step-title" style="color:var(--teal)">GI Tract</div><div class="flow-step-sub">Di/tripeptides resist further hydrolysis</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-step-title" style="color:var(--blue)">PepT1</div><div class="flow-step-sub">Transporter carries peptides across enterocyte</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-step-title" style="color:var(--green)">Blood</div><div class="flow-step-sub">Peak at 60–120 min post-ingestion (human data)</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="border-color:var(--amber-border)"><div class="flow-step-title" style="color:var(--amber)">Tissue</div><div class="flow-step-sub">Fibroblast stimulation → collagen synthesis</div></div>
+    </div>
+    <div class="finding" style="background:var(--bg3)">
+      <div class="ftag ft-b">Human Plasma Data — Confirmed</div>
+      A randomized double-blind crossover study in humans confirmed that between 36–47% of hydroxyproline remains in peptide-bound form in circulation after collagen hydrolysate ingestion — across bovine, porcine, and marine sources, all molecular weights. The bioactive di/tripeptides (Pro-Hyp, Hyp-Gly) peak in human plasma at 60–120 minutes and directly stimulate fibroblast collagen production. This is human data, not animal.
+    </div>
+  </div>
+
+  <div class="card ca">
+    <div class="card-title">Form Comparison — Bioavailability of Collagen Peptides</div>
+    <div class="card-src">Iwasaki et al., J Agric Food Chem 2007 · Wang et al. 2015 · molecular weight data</div>
+    <div class="bar-chart" id="absorbBars">
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Hydrolyzed collagen peptides</div><div class="bar-sub">2–5 kDa · dissolves cold/hot · absorbed as intact bioactive peptides</div></div><div class="bar-val" style="color:var(--green)">Highest</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.7),rgba(78,222,138,0.2))" data-width="100"></div><div class="bar-inner-label">169 nmol/mL plasma Hyp</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Gelatin</div><div class="bar-sub">50–100 kDa · requires heat · high MW limits intact peptide absorption</div></div><div class="bar-val" style="color:var(--amber)">Good</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.6),rgba(245,166,35,0.2))" data-width="56"></div><div class="bar-inner-label">94 nmol/mL plasma Hyp</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Bone broth / whole food collagen</div><div class="bar-sub">Native collagen ~300+ kDa · most degraded to generic amino acids before absorption</div></div><div class="bar-val" style="color:var(--text3)">Variable</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:rgba(255,255,255,0.1)" data-width="25"></div><div class="bar-inner-label" style="color:var(--text3)">Mostly generic AAs</div></div>
+      </div>
+    </div>
+    <div class="bar-axis-label">Relative bioavailability as intact collagen peptides in human plasma — Iwasaki 2007</div>
+  </div>
+
+  <div class="finding">
+    <div class="ftag ft-b">Source Doesn't Matter Much — Once Hydrolyzed</div>
+    Marine, bovine, and porcine hydrolyzed collagen show comparable plasma Hyp kinetics when matched for molecular weight. The "marine collagen is more bioavailable" claim is primarily a molecular weight argument — marine sources are typically processed to ~2,000 Da vs. bovine at 3,000–8,000 Da. When equalized, absorption rates are comparable across species.
+  </div>
+
+  <div class="finding">
+    <div class="ftag ft-a">On the Isotopic Tracer Evidence</div>
+    The most compelling mechanistic evidence — that collagen peptides specifically deposit into collagenous tissues (cartilage, skin) at 2× the concentration of free proline controls — comes from radioactively labeled tracer studies in mice. This direct tissue-deposition proof cannot ethically be replicated in humans. What exists in humans: confirmed plasma absorption of intact bioactive peptides, elevated PINP collagen synthesis markers (Shaw 2017, human), measurable increases in dermal collagen density by ultrasound (Asserin 2015, human), and fibroblast stimulation in human cell culture. <strong>The mechanistic chain is plausible and partially confirmed in humans — the specific "preferential cartilage deposition" claim relies on animal tracers not yet directly replicated in people.</strong>
+  </div>
+</div>
+
+<!-- S3: COLLAGEN TYPES -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-a">03</div>
+    <div><div class="sec-title">Collagen Types — What Actually Matters for Supplementation</div><div class="sec-src">Meaghers Pharmacy type review · Paleo Pro 2026 · UC-II clinical data</div></div>
+  </div>
+  <p class="prose">There are 28 identified collagen types. Three account for 80–90% of the body's total. For supplementation, the type distinction only matters in one specific scenario — and "5 types in one scoop" products are almost entirely marketing.</p>
+
+  <div class="type-grid">
+    <div class="type-row">
+      <div class="type-badge" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)">TYPE I</div>
+      <div>
+        <div class="type-content-title">Skin · Tendons · Ligaments · Bone · Cornea</div>
+        <div class="type-content-body">90% of total body collagen. Dense rope-like triple helix, extremely high tensile strength. The primary type in bovine hide and marine sources. Most clinical evidence for skin, joint, and tendon/ligament outcomes. <strong>This is what "hydrolyzed collagen peptides" almost always means.</strong></div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-badge" style="background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-border)">TYPE II</div>
+      <div>
+        <div class="type-content-title">Articular Cartilage (60–95% of cartilage collagen)</div>
+        <div class="type-content-body">Resists compression rather than tension. Two distinct supplementation mechanisms: <strong>Hydrolyzed Type II</strong> (10g+) provides cartilage-building substrates. <strong>Undenatured Type II / UC-II</strong> (40mg — tiny dose) works via oral immune tolerance — intact cartilage antigen triggers regulatory T cells that suppress autoimmune cartilage attack. UC-II outperformed glucosamine + chondroitin in clinical trials and works through a completely different pathway than hydrolyzed collagen.</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-badge" style="background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border)">TYPE III</div>
+      <div>
+        <div class="type-content-title">Skin · Blood Vessels · Intestinal Walls · Muscles (ECM)</div>
+        <div class="type-content-body">Second most abundant (5–20% of body collagen). Always found alongside Type I. Flexible mesh structure — laid down first during tissue formation, then replaced by Type I as tissue matures. This is why younger skin and connective tissue are more supple. Bovine hide provides both Types I and III.</div>
+      </div>
+    </div>
+    <div class="type-row" style="opacity:0.6">
+      <div class="type-badge" style="background:rgba(255,255,255,0.05);color:var(--text3);border:1px solid var(--border)">V & X</div>
+      <div>
+        <div class="type-content-title">Marketing Only — No Human Supplementation Data</div>
+        <div class="type-content-body">Type V (cornea, hair) and Type X (bone growth plates) appear in "5-type collagen" blend products. Neither has been studied as a standalone supplement in human trials. Their inclusion is pure marketing differentiation with zero evidence base.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout co-a">
+    <span class="callout-head">Why Type Specificity Is Mostly Irrelevant for Hydrolyzed Forms</span>
+    Once collagen is hydrolyzed, the bioactive di/tripeptides (Pro-Hyp, Hyp-Gly) are similar regardless of which type they came from. The body uses these substrates to synthesize whichever collagen type the target tissue requires. Type-specificity matters primarily for <strong>undenatured Type II (UC-II)</strong> — because its mechanism depends on the intact antigen structure, not the amino acids. For everything else: get hydrolyzed collagen peptides (predominantly Type I ± III from bovine or marine), don't overthink the source.
+  </div>
+</div>
+
+<!-- S4: EVIDENCE BY OUTCOME -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-g">04</div>
+    <div><div class="sec-title">What the Evidence Actually Shows — By Outcome</div><div class="sec-src">Simental-Mendía et al. 2024 (35 RCTs, n=3,165) · Shaw et al., AJCN 2017 · Myung & Park 2025 (23 RCTs)</div></div>
+  </div>
+
+  <!-- Joint pain — strongest -->
+  <div class="card cg" style="margin-bottom:12px">
+    <div class="card-title">Joint Pain & Function — Strongest Evidence</div>
+    <div class="card-src">Trial sequential meta-analysis · 35 RCTs · 3,165 patients · Cochrane RoB 2 · GRADE assessment</div>
+    <div class="bar-chart" id="jointBars">
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Collagen — pain alleviation (SMD −0.35)</div><div class="bar-sub">Simental-Mendía et al., Osteoarthritis & Cartilage 2024 · 35 RCTs · moderate certainty</div></div><div class="bar-val" style="color:var(--green)">Moderate</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.7),rgba(78,222,138,0.2))" data-width="70"></div><div class="bar-inner-label">SMD −0.35 · p=0.00001</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Collagen — function improvement (SMD −0.31)</div><div class="bar-sub">Same meta-analysis · high certainty evidence</div></div><div class="bar-val" style="color:var(--green)">High cert.</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(78,222,138,0.65),rgba(78,222,138,0.2))" data-width="62"></div><div class="bar-inner-label">SMD −0.31 · high certainty</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Glucosamine + chondroitin</div><div class="bar-sub">Large independent RCTs (GAIT trial) · not significant for joint pain or joint space narrowing</div></div><div class="bar-val" style="color:var(--red)">Failed</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:rgba(240,82,82,0.25)" data-width="8"></div><div class="bar-inner-label" style="color:rgba(240,82,82,0.5)">Not significant in powered trials</div></div>
+      </div>
+    </div>
+    <div class="bar-axis-label">Effect magnitude relative to scale · collagen outperforms the two most marketed joint supplements</div>
+  </div>
+
+  <!-- Shaw protocol -->
+  <div class="card ca" style="margin-bottom:12px">
+    <div class="card-title">Connective Tissue Synthesis — The Shaw Protocol</div>
+    <div class="card-src">Shaw et al., Am J Clin Nutr 2017 · human RCT · engineered ligament model · PINP biomarker</div>
+    <div class="bar-chart" id="shawBars">
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">PINP increase — 15g collagen + 50mg Vit C</div><div class="bar-sub">Bone collagen synthesis marker · elevated for 72h post-exercise</div></div><div class="bar-val" style="color:var(--amber)">+153%</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.75),rgba(245,166,35,0.25))" data-width="100"></div><div class="bar-inner-label">vs placebo +53.9%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">PINP increase — 5g collagen + 50mg Vit C</div><div class="bar-sub">Lower dose · significant but smaller response</div></div><div class="bar-val" style="color:var(--amber)">+59%</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,rgba(245,166,35,0.55),rgba(245,166,35,0.15))" data-width="38"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><div><div class="bar-name">Placebo + exercise</div><div class="bar-sub">Exercise alone drives some collagen synthesis</div></div><div class="bar-val" style="color:var(--text3)">+54%</div></div>
+        <div class="bar-track"><div class="bar-fill" style="background:rgba(255,255,255,0.1)" data-width="35"></div></div>
+      </div>
+    </div>
+    <div class="bar-axis-label">PINP % increase from baseline · Shaw 2017 · human study · 15g consumed 60 min pre-exercise</div>
+  </div>
+
+  <div class="callout co-a">
+    <span class="callout-head">Why Vitamin C and Timing Both Matter</span>
+    Collagen synthesis requires two enzymatic hydroxylation steps — proline → hydroxyproline and lysine → hydroxylysine — both catalyzed by vitamin C-dependent enzymes. Without adequate vitamin C, the collagen cross-linking process is incomplete. Timing matters because amino acids from collagen peak in blood at 60 minutes post-ingestion. Exercise provides the mechanical loading signal. The combination — substrate availability + mechanical stimulus — is what drives the synergistic PINP response. Neither alone produces the same effect.
+  </div>
+
+  <!-- Skin — industry funding problem -->
+  <div class="card ca" style="margin-bottom:12px">
+    <div class="card-title">Skin Hydration & Elasticity — The Industry Funding Problem</div>
+    <div class="card-src">Myung & Park, Am J Med 2025 (23 RCTs, n=1,474) · Pu et al. 2023 (26 RCTs, n=1,721)</div>
+    <div class="finding" style="background:var(--bg3);margin-bottom:8px">
+      <div class="ftag ft-g">Pooled Analysis — Positive</div>
+      A meta-analysis of 26 RCTs (1,721 patients) found hydrolyzed collagen significantly improved skin hydration (p&lt;0.00001) and elasticity (p&lt;0.00001) vs. placebo. A second meta-analysis of 23 RCTs (1,474 patients) confirmed significant improvements in hydration, elasticity, and wrinkles across all studies.
+    </div>
+    <div class="finding" style="background:var(--bg3);margin-bottom:0">
+      <div class="ftag ft-r">Stratified by Funding — Evidence Collapses</div>
+      Myung & Park (2025) — the only meta-analysis to separate studies by funding source — found that <strong>studies not funded by pharmaceutical companies showed no effect on skin hydration, elasticity, or wrinkles.</strong> Industry-funded studies showed significant effects. High-quality studies showed no significant effect; low-quality studies showed improvement. The mechanistic case is real (Pro-Hyp directly stimulates fibroblasts and hyaluronic acid synthesis in human cells). The independent clinical evidence is not yet there.
+    </div>
+  </div>
+</div>
+
+<!-- S5: WHAT IT DOESN'T DO -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-r">05</div>
+    <div><div class="sec-title">What Collagen Does Nothing For — Skeletal Muscle</div><div class="sec-src">Oikawa et al. 2020 · Holm et al. 2017 · Stuart Phillips protein research group</div></div>
+  </div>
+  <p class="prose">This is the clearest part of the evidence base and the most frequently misrepresented. Collagen supplementation does not build muscle, does not drive strength gains, and should never be counted toward a daily protein target used for muscle goals.</p>
+
+  <div class="card cr">
+    <div class="card-title">Myofibrillar Protein Synthesis Rates — Whey vs. Collagen vs. Placebo</div>
+    <div class="card-src">Oikawa et al. 2020 · directly measured MPS · %·h⁻¹</div>
+    <div class="donut-row" id="mpsDonuts">
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="110" height="110" viewBox="0 0 110 110">
+          <circle class="donut-track" cx="55" cy="55" r="45"/>
+          <circle class="donut-fill" cx="55" cy="55" r="45" stroke="#60a5fa" data-pct="82"/>
+          <text x="55" y="48" text-anchor="middle" font-family="'Fraunces',serif" font-size="15" font-weight="700" fill="#60a5fa">0.041</text>
+          <text x="55" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(237,234,227,0.4)">%·h⁻¹</text>
+        </svg>
+        <div class="donut-caption">Whey — significantly above placebo (p&lt;0.05)</div>
+      </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="110" height="110" viewBox="0 0 110 110">
+          <circle class="donut-track" cx="55" cy="55" r="45"/>
+          <circle class="donut-fill" cx="55" cy="55" r="45" stroke="#f05252" data-pct="40"/>
+          <text x="55" y="48" text-anchor="middle" font-family="'Fraunces',serif" font-size="15" font-weight="700" fill="#f05252">0.036</text>
+          <text x="55" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(237,234,227,0.4)">%·h⁻¹</text>
+        </svg>
+        <div class="donut-caption">Collagen — not significantly different from placebo</div>
+      </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="110" height="110" viewBox="0 0 110 110">
+          <circle class="donut-track" cx="55" cy="55" r="45"/>
+          <circle class="donut-fill" cx="55" cy="55" r="45" stroke="rgba(255,255,255,0.3)" data-pct="32"/>
+          <text x="55" y="48" text-anchor="middle" font-family="'Fraunces',serif" font-size="15" font-weight="700" fill="rgba(237,234,227,0.5)">0.032</text>
+          <text x="55" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(237,234,227,0.4)">%·h⁻¹</text>
+        </svg>
+        <div class="donut-caption">Placebo — collagen statistically indistinguishable from this</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="ftag ft-r">The Mechanism — Why This Is Inevitable</div>
+    Myofibrillar protein synthesis (building actin and myosin — contractile muscle proteins) requires leucine to trigger mTOR signaling, and all nine essential amino acids present for translation elongation to complete. If even one EAA is missing, the ribosome stalls — the protein cannot be synthesized. Collagen has zero tryptophan and ~3% leucine. This is not a dose problem. No amount of collagen can trigger MPS because the structural requirement cannot be met. Strength gains are tied to myofibrillar synthesis. Collagen does not stimulate it.
+  </div>
+
+  <div class="finding">
+    <div class="ftag ft-a">What Collagen Does Do Within Muscle — The ECM</div>
+    Collagen does support the extracellular matrix (ECM) — the collagenous scaffolding surrounding muscle fibers (epimysium, perimysium, endomysium). This is structurally continuous with tendons and ligaments. Some studies show improved body composition with collagen + resistance training — but biopsy data shows no change in fiber cross-sectional area (fCSA), meaning no myofibrillar hypertrophy. The composition change is passive connective tissue adaptation, not muscle growth. These are different tissues doing different jobs.
+  </div>
+</div>
+
+<!-- S6: DOSING -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-t">06</div>
+    <div><div class="sec-title">Dosing — What the Research Actually Prescribes</div><div class="sec-src">Shaw 2017 · Clark 2008 · Zdzieblik 2017 & 2021 · Simental-Mendía 2024</div></div>
+  </div>
+
+  <div class="card ct" style="overflow-x:auto">
+    <div class="card-title">Evidence-Based Dosing by Goal</div>
+    <div class="card-src">Doses from RCTs that showed significant effects · no established upper limit · studies used up to 20g/day without adverse events</div>
+    <table class="dose-table" style="min-width:500px">
+      <thead><tr><th>Dose</th><th>Goal</th><th>Protocol</th><th>Evidence</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>5g/day</td>
+          <td>Exercise-related joint pain (young active adults)</td>
+          <td>Daily, any time · 12 weeks minimum</td>
+          <td>Zdzieblik 2021 — significant VAS reduction (n=180, 18–30yr)</td>
+        </tr>
+        <tr>
+          <td>10g/day</td>
+          <td>Joint health, general connective tissue support</td>
+          <td>Daily · 24 weeks for full effect</td>
+          <td>Clark 2008 · multiple OA RCTs · meta-analysis (35 RCTs)</td>
+        </tr>
+        <tr>
+          <td>15g + 50mg Vit C</td>
+          <td>Tendon/ligament synthesis · injury prevention/rehab</td>
+          <td>60 min before loading exercise · not daily dosing</td>
+          <td>Shaw 2017 — 2× PINP vs placebo · engineered ligament + human biomarker</td>
+        </tr>
+        <tr>
+          <td>2.5–10g/day</td>
+          <td>Skin hydration and elasticity</td>
+          <td>Daily · 8–12 week minimum · independent evidence limited</td>
+          <td>Positive in industry-funded RCTs · independent evidence weak</td>
+        </tr>
+        <tr>
+          <td>40mg/day UC-II</td>
+          <td>Cartilage/joint — immune modulation mechanism</td>
+          <td>Undenatured Type II · separate from hydrolyzed collagen</td>
+          <td>Outperformed glucosamine + chondroitin · different mechanism entirely</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout co-t">
+    <span class="callout-head">Critical: Do Not Count Collagen Toward Your Protein Target</span>
+    Collagen's BV for muscle is 0. If your daily protein goal is 160g and you take 15g of collagen, your effective protein for muscle purposes is still 160g — the collagen operates on a completely separate substrate pathway. Taking collagen does not allow you to reduce complete protein intake. They are additive, not substitutable. Think of it as a structural supplement in the same category as creatine — not a protein source.
+  </div>
+</div>
+
+<!-- S7: VERDICT -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-a">07</div>
+    <div><div class="sec-title">The Verdict</div></div>
+  </div>
+
+  <div style="overflow-x:auto">
+  <table class="verdict-table">
+    <thead><tr><th>Claim</th><th>Verdict</th><th>Evidence strength</th></tr></thead>
+    <tbody>
+      <tr><td>Collagen is worth supplementing for joint pain</td><td><span class="vbadge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)">Yes — strong</span></td><td style="color:var(--text3)">35 RCTs · n=3,165 · SMD −0.35 · outperforms glucosamine + chondroitin</td></tr>
+      <tr><td>Hydrolyzed &gt; gelatin &gt; bone broth for supplementation</td><td><span class="vbadge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)">Yes</span></td><td style="color:var(--text3)">Plasma Hyp: 169 vs 94 nmol/mL · molecular weight explains the gap</td></tr>
+      <tr><td>Source / type matters once hydrolyzed</td><td><span class="vbadge" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)">Mostly no</span></td><td style="color:var(--text3)">Comparable kinetics across bovine, marine, porcine at equivalent MW · exception: UC-II</td></tr>
+      <tr><td>15g + vitamin C pre-exercise drives collagen synthesis</td><td><span class="vbadge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)">Yes — human data</span></td><td style="color:var(--text3)">Shaw 2017 · 153% PINP vs placebo · sustained 72h · timing is the mechanism</td></tr>
+      <tr><td>Collagen builds or preserves muscle</td><td><span class="vbadge" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-border)">No</span></td><td style="color:var(--text3)">MPS rate = placebo level · no fCSA change in biopsies · BV=0 for this purpose</td></tr>
+      <tr><td>Collagen should count toward daily protein</td><td><span class="vbadge" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-border)">No</span></td><td style="color:var(--text3)">Category error · operates on different substrate pathway · additive not substitutable</td></tr>
+      <tr><td>Skin benefits are proven</td><td><span class="vbadge" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)">Unclear</span></td><td style="color:var(--text3)">Positive in pooled analysis · collapses when stratified by funding source · mechanistic case is real</td></tr>
+      <tr><td>Peptide deposition in cartilage is proven in humans</td><td><span class="vbadge" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)">Indirect only</span></td><td style="color:var(--text3)">Direct tracer evidence is animal · human PINP + plasma data support the mechanism · not directly confirmed</td></tr>
+      <tr><td>Multi-type "5 collagen" blends are superior</td><td><span class="vbadge" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-border)">No evidence</span></td><td style="color:var(--text3)">Types V and X have zero human supplementation trial data · pure marketing</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- SYNTHESIS -->
+<div class="synthesis fade-in">
+  <div class="synth-head">Synthesis · The Complete Picture</div>
+  <div class="synth-text">
+    Hydrolyzed collagen is one of the more genuinely useful supplements in the market — not because of inflated claims, but because it does something specific that almost nothing else does: it supplies the glycine, proline, and hydroxyproline substrates that modern diets chronically undersupply, and it delivers them in a bioavailable form that directly reaches collagenous tissues.<br><br>
+    <strong>What is well-established:</strong> Joint pain reduction (35 RCTs, moderate-to-high certainty, outperforms glucosamine and chondroitin). Connective tissue collagen synthesis augmentation with the Shaw protocol (15g + vitamin C, 60 min pre-exercise — human PINP data). Superior bioavailability of hydrolyzed forms over gelatin and bone broth. The type distinction is mostly irrelevant once hydrolyzed — get Type I/III from bovine or marine and don't overthink it.<br><br>
+    <strong>What is mechanistically sound but clinically contested:</strong> Skin hydration and elasticity — the fibroblast stimulation pathway is real and confirmed in human cells, but clinical evidence collapses when funding source is controlled. Independent replication is needed.<br><br>
+    <strong>What it definitively cannot do:</strong> Build muscle, drive myofibrillar protein synthesis, or substitute for complete protein. The BV=0 for muscle is not a dosing problem — it's a structural amino acid profile problem that no amount of collagen can overcome. Count it as a structural supplement, not a protein source.<br><br>
+    <strong>Practical approach:</strong> 5–10g/day hydrolyzed collagen peptides for general joint and connective tissue support. 15g + 50mg vitamin C, 60 minutes before exercise sessions that load the target tissue, for active tendon/ligament remodeling. Add it to your morning coffee, a smoothie, or pre-workout — it's tasteless, dissolves cold, and the evidence for joint outcomes is among the strongest in the supplement space.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics</div>
+  <div class="footer-refs">
+    Shaw et al., Am J Clin Nutr 2017 · Simental-Mendía et al., Osteoarthritis & Cartilage 2024 (35 RCTs)<br>
+    Oikawa et al. 2020 · Zdzieblik et al. 2017 & 2021 · Clark et al. 2008<br>
+    Myung & Park, Am J Med 2025 (23 RCTs) · Pu et al., Nutrients 2023 (26 RCTs)<br>
+    Iwasaki et al., J Agric Food Chem 2007 · Frontiers Nutrition 2024 (RCT, n=32)<br>
+    Asserin et al., J Cosmet Dermatol 2015 · Wang et al., J Sci Food Agric 2015
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<script>
+// PARTICLES
+(function(){
+  const c=document.getElementById('particles');
+  const cols=['rgba(245,166,35,0.4)','rgba(45,212,191,0.3)','rgba(245,166,35,0.25)','rgba(96,165,250,0.25)'];
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');p.className='particle';
+    const s=Math.random()*4+2;
+    p.style.cssText=`width:${s}px;height:${s}px;background:${cols[Math.floor(Math.random()*cols.length)]};left:${Math.random()*100}%;bottom:-10px;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*10}s`;
+    c.appendChild(p);
+  }
+})();
+
+// COUNTERS
+(function(){
+  const items=[{id:'c1',t:30,s:'%'},{id:'c2',t:0,s:''},{id:'c3',t:35,s:''},{id:'c4',t:30,s:'%'}];
+  const labels=['0%','0','0','0%'];
+  setTimeout(()=>{
+    items.forEach(({id,t,s},i)=>{
+      const el=document.getElementById(id);
+      if(t===0){el.textContent='0';return}
+      let c=0;
+      const tm=setInterval(()=>{
+        c=Math.min(c+t/70,t);
+        el.textContent=Math.round(c)+s;
+        if(c>=t)clearInterval(tm);
+      },16);
+    });
+  },400);
+})();
+
+// DONUT
+function animateDonuts(el){
+  el.querySelectorAll('.donut-fill[data-pct]').forEach((ring,i)=>{
+    setTimeout(()=>{
+      const pct=parseInt(ring.dataset.pct);
+      const r=parseFloat(ring.getAttribute('r'));
+      const circ=2*Math.PI*r;
+      ring.style.strokeDasharray=`${pct/100*circ} ${circ}`;
+    },i*250+300);
+  });
+}
+
+// IO
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    const el=entry.target;
+    if(el.classList.contains('fade-in'))el.classList.add('vis');
+    el.querySelectorAll&&el.querySelectorAll('.bar-fill[data-width]').forEach((fill,i)=>{
+      setTimeout(()=>{fill.style.width=fill.dataset.width+'%'},i*130+100);
+    });
+    animateDonuts(el);
+    io.unobserve(el);
+  });
+},{threshold:0.12});
+
+document.querySelectorAll('.fade-in,.card,.sec').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
