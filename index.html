@@ -41,7 +41,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NOISE TEXTURE ── */
 body::before {
   content: '';
   position: fixed;
@@ -52,7 +51,6 @@ body::before {
   opacity: 0.6;
 }
 
-/* ── AMBIENT ORBS ── */
 .orb {
   position: fixed;
   border-radius: 50%;
@@ -71,7 +69,6 @@ body::before {
   66% { transform: translate(-15px, 20px) scale(0.95); }
 }
 
-/* ── MAIN LAYOUT ── */
 .wrap {
   position: relative;
   z-index: 1;
@@ -80,7 +77,6 @@ body::before {
   padding: 0 20px 80px;
 }
 
-/* ── HEADER ── */
 header {
   padding: 60px 0 48px;
   position: relative;
@@ -134,7 +130,6 @@ header {
   opacity: 0.3;
 }
 
-/* ── STATS ROW ── */
 .stats-row {
   display: flex;
   gap: 0;
@@ -144,10 +139,7 @@ header {
   animation: fadeUp 0.6s ease forwards 0.4s;
 }
 
-.stat {
-  flex: 1;
-  padding: 0 32px 0 0;
-}
+.stat { flex: 1; padding: 0 32px 0 0; }
 .stat:first-child { padding-left: 0; }
 .stat:last-child { padding-right: 0; }
 
@@ -170,7 +162,6 @@ header {
   color: var(--text3);
 }
 
-/* ── FILTER BAR ── */
 .filter-bar {
   display: flex;
   gap: 6px;
@@ -207,10 +198,7 @@ header {
   opacity: 0.08;
 }
 
-.filter-btn:hover {
-  color: var(--text);
-  border-color: var(--border-h);
-}
+.filter-btn:hover { color: var(--text); border-color: var(--border-h); }
 .filter-btn:hover::before { transform: scaleX(1); }
 
 .filter-btn.active {
@@ -219,14 +207,12 @@ header {
   background: rgba(108,99,255,0.08);
 }
 
-/* ── ARTICLE GRID ── */
 .grid {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-/* ── ARTICLE CARD ── */
 .article-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -274,7 +260,6 @@ header {
 .article-card:hover::before { transform: scaleY(1); }
 .article-card:hover::after { opacity: 1; }
 
-/* Coming soon */
 .article-card.soon {
   opacity: 0.45 !important;
   cursor: default;
@@ -332,10 +317,10 @@ header {
 .tag-omega3     { background: rgba(61,186,95,0.12); color: #5de07a; border: 1px solid rgba(61,186,95,0.25); }
 .tag-satfat     { background: rgba(251,146,60,0.12); color: #fb923c; border: 1px solid rgba(251,146,60,0.25); }
 .tag-heart      { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
-.tag-melatonin  { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
 .tag-sleep      { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
 .tag-organic    { background: rgba(78,222,138,0.12); color: #6ee7a0; border: 1px solid rgba(78,222,138,0.25); }
 .tag-fooddyes   { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
+.tag-vitamins   { background: rgba(96,165,250,0.12); color: #93c5fd; border: 1px solid rgba(96,165,250,0.25); }
 
 .card-title {
   font-family: 'Syne', sans-serif;
@@ -378,7 +363,6 @@ header {
   color: var(--accent);
 }
 
-/* ── COMING SOON BADGE ── */
 .soon-badge {
   font-family: 'Syne Mono', monospace;
   font-size: 0.52rem;
@@ -390,7 +374,6 @@ header {
   border-radius: 2px;
 }
 
-/* ── SECTION DIVIDER ── */
 .section-divider {
   display: flex;
   align-items: center;
@@ -408,7 +391,6 @@ header {
   color: var(--text3);
 }
 
-/* ── EMPTY STATE ── */
 .empty-state {
   text-align: center;
   padding: 60px 20px;
@@ -418,7 +400,6 @@ header {
 .empty-icon { font-size: 2rem; margin-bottom: 12px; opacity: 0.3; }
 .empty-text { font-size: 0.85rem; color: var(--text3); }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
@@ -429,7 +410,6 @@ header {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── FOOTER ── */
 footer {
   margin-top: 60px;
   padding-top: 24px;
@@ -473,11 +453,11 @@ footer {
 
   <div class="stats-row">
     <div class="stat">
-      <div class="stat-num acc1">14</div>
+      <div class="stat-num acc1">15</div>
       <div class="stat-label">Published</div>
     </div>
     <div class="stat">
-      <div class="stat-num acc2">188+</div>
+      <div class="stat-num acc2">208+</div>
       <div class="stat-label">Studies Cited</div>
     </div>
     <div class="stat">
@@ -500,11 +480,12 @@ footer {
     <button class="filter-btn" data-filter="sleep">Sleep</button>
     <button class="filter-btn" data-filter="organic">Organic</button>
     <button class="filter-btn" data-filter="fooddyes">Food Dyes</button>
+    <button class="filter-btn" data-filter="vitamins">Vitamins</button>
   </div>
 
   <div class="grid" id="articleGrid"></div>
   <div class="empty-state" id="emptyState">
-    <div class="empty-icon">◎</div>
+    <div class="empty-icon">&#9678;</div>
     <div class="empty-text">No articles in this category yet.</div>
   </div>
 
@@ -581,8 +562,8 @@ const articles = [
   },
   {
     num: '08',
-    title: 'Saturated Fat, Heart Disease, and Everything In Between — What the Research Actually Shows',
-    desc: 'The complete mechanistic and clinical evidence: SFA → LDL receptor suppression → ApoB elevation → subendothelial particle retention → atherosclerosis. Includes ApoB vs LDL-C discordance (9/9 studies), evacetrapib natural experiment, the KETO-CTA retraction, Lp(a) paradox, and 7 evidence gaps.',
+    title: 'Saturated Fat & Heart Disease: What the Research Actually Shows',
+    desc: 'The complete mechanistic and clinical evidence: SFA → LDL receptor suppression → ApoB elevation → subendothelial particle retention → atherosclerosis. Includes ApoB vs LDL-C discordance (9/9 studies), the KETO-CTA retraction, Lp(a) paradox, and 7 evidence gaps.',
     tags: ['satfat', 'heart'],
     studies: '22 studies cited',
     href: 'satfat-graphic.html',
@@ -591,7 +572,7 @@ const articles = [
   {
     num: '09',
     title: 'Melatonin: The Most Underrated Supplement for Women\'s Health',
-    desc: 'Far beyond sleep — a 2025 meta-analysis of 11 RCTs found a 59% increase in IVF clinical pregnancy odds. PCOS women are melatonin-deficient in follicular fluid. The luteal phase naturally peaks melatonin 4.5×. And the standard 5–10mg US dose is 10–16× above physiological range.',
+    desc: 'Far beyond sleep — a 2025 meta-analysis of 11 RCTs found a 59% increase in IVF clinical pregnancy odds. PCOS women are melatonin-deficient in follicular fluid. The luteal phase naturally peaks melatonin 4.5x. And the standard 5–10mg US dose is 10–16x above physiological range.',
     tags: ['sleep'],
     studies: '16 studies cited',
     href: 'melatonin-graphic.html',
@@ -600,7 +581,7 @@ const articles = [
   {
     num: '10',
     title: 'Is Organic Food Actually Healthier? What the Evidence Shows',
-    desc: 'Organic produce has 4–5× fewer pesticide residues — but residues in conventional are mostly far below safety thresholds for adults. Polyphenols are 19–69% higher in organic crops. The NutriNet-Santé cohort (n=68,946) found a 25% cancer risk reduction — but healthy user bias is the dominant problem. Plus: the Vital Farms label-washing case study decoded.',
+    desc: 'Organic produce has 4–5x fewer pesticide residues — but residues in conventional are mostly far below safety thresholds for adults. Polyphenols are 19–69% higher in organic crops. The NutriNet-Santé cohort (n=68,946) found a 25% cancer risk reduction — but healthy user bias is the dominant problem.',
     tags: ['organic', 'cancer'],
     studies: '20 studies cited',
     href: 'organic-graphic.html',
@@ -609,7 +590,7 @@ const articles = [
   {
     num: '11',
     title: 'Food Dyes: The Science and Politics Behind America\'s Most Controversial Additives',
-    desc: 'Red 40 is not banned in the EU — it\'s E129, approved since 1994. The ADHD link is real but affects ~0.8% of all US kids. DNA damage findings in mice conflict with OECD genotoxicity studies. Benzidine contamination is the most underreported concern. And the RFK Jr. "ban" was a voluntary industry request with no mandate.',
+    desc: 'Red 40 is not banned in the EU — it\'s E129, approved since 1994. The ADHD link is real but affects ~0.8% of all US kids. DNA damage findings in mice conflict with OECD genotoxicity studies. Benzidine contamination is the most underreported concern.',
     tags: ['fooddyes', 'cancer'],
     studies: '21 studies cited',
     href: 'fooddyes-graphic.html',
@@ -618,7 +599,7 @@ const articles = [
   {
     num: '12',
     title: 'Is Collagen Actually Worth Supplementing?',
-    desc: 'Collagen has a biological value of 0 for muscle — by design, not a flaw. It outperforms glucosamine and chondroitin for joint pain across 35 RCTs (n=3,165). The Shaw protocol (15g + vitamin C, 60 min pre-exercise) produces a 153% increase in collagen synthesis markers. And the skin evidence collapses entirely when you control for industry funding.',
+    desc: 'Collagen has a biological value of 0 for muscle — by design, not a flaw. It outperforms glucosamine and chondroitin for joint pain across 35 RCTs (n=3,165). The Shaw protocol (15g + vitamin C, 60 min pre-exercise) produces a 153% increase in collagen synthesis markers.',
     tags: ['protein'],
     studies: '18 studies cited',
     href: 'collagen-graphic.html',
@@ -627,17 +608,16 @@ const articles = [
   {
     num: '13',
     title: 'Does Prime Hydration Contain "Forever Chemicals"?',
-    desc: 'A lawsuit found 8 PFAS compounds in Prime Hydration Grape — including PFOS at levels described as "3× your lifetime allowance." That framing used the most conservative non-binding EPA advisory in history. Against the actual enforceable 2024 MCL of 4 ppt, the detected level is 66× below the legal limit. Here is what the science and the lawsuit actually show.',
+    desc: 'A lawsuit found 8 PFAS compounds in Prime Hydration Grape — including PFOS described as "3x your lifetime allowance." Against the actual enforceable 2024 MCL of 4 ppt, the detected level is 66x below the legal limit. Here is what the science and the lawsuit actually show.',
     tags: ['cancer'],
     studies: '14 studies cited',
     href: 'prime-pfas-graphic.html',
     soon: false,
   },
-  // COMING SOON
   {
     num: '14',
     title: 'The Truth About "Forever Chemicals"',
-    desc: 'PFAS have been detected in virtually every American\'s blood — and PFOA is now an IARC Group 1 carcinogen. But serum levels have fallen more than 85% from peak, cancer associations come from populations exposed at 50–200× current levels, and the first enforceable MCLs were just set in 2024. Here is the full picture: the chemicals, the C8 Science Panel data, the exposure trends, and what regulation has actually accomplished.',
+    desc: 'PFAS have been detected in virtually every American\'s blood — and PFOA is now an IARC Group 1 carcinogen. But serum levels have fallen more than 85% from peak, cancer associations come from populations exposed at 50–200x current levels, and the first enforceable MCLs were just set in 2024.',
     tags: ['cancer'],
     studies: '18 studies cited',
     href: 'pfas-graphic.html',
@@ -645,6 +625,16 @@ const articles = [
   },
   {
     num: '15',
+    title: 'Are Multivitamins Worth Taking? What the Research Actually Shows',
+    desc: 'The 2024 NCI study of 390,000 adults found no mortality benefit. The same literature contains a triple-replicated RCT showing significant cognitive benefit in adults over 60. Both findings are real — the outcome and the population determine which applies to you.',
+    tags: ['vitamins', 'cancer'],
+    studies: '7 studies cited',
+    href: 'multivitamins-infographic.html',
+    soon: false,
+  },
+  // COMING SOON
+  {
+    num: '16',
     title: 'Creatine: Beyond the Gym — Cognitive and Metabolic Effects',
     desc: 'The evidence on creatine supplementation for brain health, cellular energy, and performance across age groups.',
     tags: ['protein'],
@@ -653,25 +643,25 @@ const articles = [
     soon: true,
   },
   {
-    num: '16',
+    num: '17',
     title: 'Vitamin D: The Chronic Deficiency Nobody Talks About',
     desc: 'Optimal serum levels, supplementation thresholds, and what the RCT data says about immune, bone, and metabolic outcomes.',
-    tags: ['glucose'],
-    studies: 'Coming soon',
-    href: '#',
-    soon: true,
-  },
-  {
-    num: '17',
-    title: 'Sleep & Metabolic Health: The Missing Variable',
-    desc: 'Sleep restriction drives insulin resistance independently of diet. Ghrelin/leptin disruption, glucose tolerance, and muscle protein synthesis all degrade with chronic sleep debt.',
-    tags: ['glucose'],
+    tags: ['vitamins', 'glucose'],
     studies: 'Coming soon',
     href: '#',
     soon: true,
   },
   {
     num: '18',
+    title: 'Sleep & Metabolic Health: The Missing Variable',
+    desc: 'Sleep restriction drives insulin resistance independently of diet. Ghrelin/leptin disruption, glucose tolerance, and muscle protein synthesis all degrade with chronic sleep debt.',
+    tags: ['glucose', 'sleep'],
+    studies: 'Coming soon',
+    href: '#',
+    soon: true,
+  },
+  {
+    num: '19',
     title: 'Leucine Threshold & Muscle Protein Synthesis',
     desc: 'The minimum leucine dose to trigger MPS, how it varies by age and training status, and why protein source distribution across meals matters.',
     tags: ['protein'],
@@ -691,10 +681,10 @@ const tagColors = {
   dairy:      'tag-dairy',
   sweeteners: 'tag-sweeteners',
   cancer:     'tag-cancer',
-  melatonin:  'tag-sleep',
   sleep:      'tag-sleep',
   organic:    'tag-organic',
   fooddyes:   'tag-fooddyes',
+  vitamins:   'tag-vitamins',
 };
 
 function buildCard(a, idx) {
@@ -717,7 +707,7 @@ function buildCard(a, idx) {
         <div class="card-desc">${a.desc}</div>
         <div class="card-meta">
           <span class="card-studies">${a.studies}</span>
-          ${a.soon ? '<span class="soon-badge">In Progress</span>' : '<span class="card-arrow">→</span>'}
+          ${a.soon ? '<span class="soon-badge">In Progress</span>' : '<span class="card-arrow">&rarr;</span>'}
         </div>
       </div>
     </div>
