@@ -320,7 +320,7 @@ header {
 .tag-sleep      { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
 .tag-organic    { background: rgba(78,222,138,0.12); color: #6ee7a0; border: 1px solid rgba(78,222,138,0.25); }
 .tag-fooddyes   { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
-.tag-vitamins   { background: rgba(96,165,250,0.12); color: #93c5fd; border: 1px solid rgba(96,165,250,0.25); }
+.tag-supplements   { background: rgba(96,165,250,0.12); color: #93c5fd; border: 1px solid rgba(96,165,250,0.25); }
 
 .card-title {
   font-family: 'Syne', sans-serif;
@@ -480,7 +480,7 @@ footer {
     <button class="filter-btn" data-filter="sleep">Sleep</button>
     <button class="filter-btn" data-filter="organic">Organic</button>
     <button class="filter-btn" data-filter="fooddyes">Food Dyes</button>
-    <button class="filter-btn" data-filter="vitamins">Vitamins</button>
+    <button class="filter-btn" data-filter="supplements">Supplements</button>
   </div>
 
   <div class="grid" id="articleGrid"></div>
@@ -573,7 +573,7 @@ const articles = [
     num: '09',
     title: 'Melatonin: The Most Underrated Supplement for Women\'s Health',
     desc: 'Far beyond sleep — a 2025 meta-analysis of 11 RCTs found a 59% increase in IVF clinical pregnancy odds. PCOS women are melatonin-deficient in follicular fluid. The luteal phase naturally peaks melatonin 4.5x. And the standard 5–10mg US dose is 10–16x above physiological range.',
-    tags: ['sleep'],
+    tags: ["sleep", "supplements"],
     studies: '16 studies cited',
     href: 'melatonin-graphic.html',
     soon: false,
@@ -600,7 +600,7 @@ const articles = [
     num: '12',
     title: 'Is Collagen Actually Worth Supplementing?',
     desc: 'Collagen has a biological value of 0 for muscle — by design, not a flaw. It outperforms glucosamine and chondroitin for joint pain across 35 RCTs (n=3,165). The Shaw protocol (15g + vitamin C, 60 min pre-exercise) produces a 153% increase in collagen synthesis markers.',
-    tags: ['protein'],
+    tags: ['protein', 'supplements'],
     studies: '18 studies cited',
     href: 'collagen-graphic.html',
     soon: false,
@@ -627,7 +627,7 @@ const articles = [
     num: '15',
     title: 'Are Multivitamins Worth Taking? What the Research Actually Shows',
     desc: 'The 2024 NCI study of 390,000 adults found no mortality benefit. The same literature contains a triple-replicated RCT showing significant cognitive benefit in adults over 60. Both findings are real — the outcome and the population determine which applies to you.',
-    tags: ['vitamins', 'cancer'],
+    tags: ["supplements", "cancer"],
     studies: '7 studies cited',
     href: 'multivitamins-infographic.html',
     soon: false,
@@ -637,7 +637,7 @@ const articles = [
     num: '16',
     title: 'Creatine: Beyond the Gym — Cognitive and Metabolic Effects',
     desc: 'The evidence on creatine supplementation for brain health, cellular energy, and performance across age groups.',
-    tags: ['protein'],
+    tags: ['protein', 'supplements'],
     studies: 'Coming soon',
     href: '#',
     soon: true,
@@ -646,7 +646,7 @@ const articles = [
     num: '17',
     title: 'Vitamin D: The Chronic Deficiency Nobody Talks About',
     desc: 'Optimal serum levels, supplementation thresholds, and what the RCT data says about immune, bone, and metabolic outcomes.',
-    tags: ['vitamins', 'glucose'],
+    tags: ["supplements", "glucose"],
     studies: 'Coming soon',
     href: '#',
     soon: true,
@@ -684,7 +684,7 @@ const tagColors = {
   sleep:      'tag-sleep',
   organic:    'tag-organic',
   fooddyes:   'tag-fooddyes',
-  vitamins:   'tag-vitamins',
+  supplements: 'tag-supplements',
 };
 
 function buildCard(a, idx) {
