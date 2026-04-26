@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gut Microbiome: Separating Science from Marketing - Origin Symmetrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0e; --bg2:#111118; --bg3:#17171f; --bg4:#1d1d28;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13);
+  --text:#edeae3; --text2:rgba(237,234,227,0.7); --text3:rgba(237,234,227,0.38);
+  --teal:#2dd4bf; --teal-dim:rgba(45,212,191,0.09); --teal-b:rgba(45,212,191,0.22);
+  --green:#4ede8a; --green-dim:rgba(78,222,138,0.09); --green-b:rgba(78,222,138,0.22);
+  --amber:#f5a623; --amber-dim:rgba(245,166,35,0.1); --amber-b:rgba(245,166,35,0.22);
+  --red:#f05252; --red-dim:rgba(240,82,82,0.09); --red-b:rgba(240,82,82,0.22);
+  --blue:#60a5fa; --blue-dim:rgba(96,165,250,0.1); --blue-b:rgba(96,165,250,0.22);
+  --purple:#c084fc; --purple-dim:rgba(192,132,252,0.1); --purple-b:rgba(192,132,252,0.22);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);padding:52px 20px 0}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(45,212,191,0.07) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 60% at 10% 70%,rgba(245,166,35,0.05) 0%,transparent 60%)}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;animation:pdrift linear infinite;opacity:0}
+@keyframes pdrift{0%{transform:translateY(100%);opacity:0}10%{opacity:1}90%{opacity:.3}100%{transform:translateY(-20px);opacity:0}}
+
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+.hero-tag::before{content:'';display:inline-block;width:20px;height:1px;background:var(--teal)}
+h1{font-family:'Fraunces',serif;font-size:clamp(1.9rem,5.5vw,3.4rem);font-weight:900;line-height:1.05;letter-spacing:-0.025em;margin-bottom:12px}
+h1 em{font-style:italic;color:var(--teal)}
+h1 strong{color:var(--amber)}
+.hero-sub{font-size:0.9rem;color:var(--text2);max-width:620px;margin-bottom:32px;line-height:1.78}
+
+/* HERO SCORECARD */
+.hero-score{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:rgba(255,255,255,0.05);border-radius:8px 8px 0 0;overflow:hidden}
+.hs-card{background:var(--bg2);padding:16px 14px}
+.hs-label{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px}
+.hs-big{font-family:'Fraunces',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;line-height:1;letter-spacing:-0.03em;margin-bottom:5px}
+.hs-sub{font-family:'IBM Plex Mono',monospace;font-size:0.46rem;color:var(--text3);line-height:1.55;letter-spacing:0.03em}
+.hs-bar{height:2px;border-radius:2px;margin-top:12px;background:rgba(255,255,255,0.06);overflow:hidden}
+.hs-bar-fill{height:100%;border-radius:2px;width:0;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)}
+.hsc-t .hs-label{color:var(--teal)} .hsc-t .hs-big{color:var(--teal)} .hsc-t .hs-bar-fill{background:var(--teal)}
+.hsc-a .hs-label{color:var(--amber)} .hsc-a .hs-big{color:var(--amber)} .hsc-a .hs-bar-fill{background:var(--amber)}
+.hsc-r .hs-label{color:var(--red)} .hsc-r .hs-big{color:var(--red)} .hsc-r .hs-bar-fill{background:var(--red)}
+
+.hero-footer{background:var(--bg2);border-top:1px solid var(--border);border-radius:0 0 8px 8px;padding:12px 16px;display:flex;gap:10px;align-items:flex-start}
+.hero-footer-icon{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--amber);flex-shrink:0;padding-top:1px}
+.hero-footer-text{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);line-height:1.6;letter-spacing:0.03em}
+.hero-footer-text strong{color:var(--text2)}
+
+/* LAYOUT */
+.content{max-width:860px;margin:0 auto;padding:0 20px 80px}
+.sec{margin-top:52px}
+.sec-hdr{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:3px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:3px}
+.sn-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)}
+.sn-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
+.sn-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
+.sn-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
+.sn-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-b)}
+.sn-p{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-b)}
+.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.05rem,2.8vw,1.4rem);font-weight:700;line-height:1.2;margin-bottom:3px}
+.sec-src{font-family:'IBM Plex Mono',monospace;font-size:0.51rem;color:var(--text3);letter-spacing:0.05em;line-height:1.5}
+.prose{font-size:0.87rem;color:var(--text2);line-height:1.78;margin-bottom:14px}
+.prose strong{color:var(--text);font-weight:600}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card.ct::before{background:linear-gradient(90deg,var(--teal),transparent 70%)}
+.card.ca::before{background:linear-gradient(90deg,var(--amber),transparent 70%)}
+.card.cr::before{background:linear-gradient(90deg,var(--red),transparent 70%)}
+.card.cg::before{background:linear-gradient(90deg,var(--green),transparent 70%)}
+.card.cb::before{background:linear-gradient(90deg,var(--blue),transparent 70%)}
+.card.cp::before{background:linear-gradient(90deg,var(--purple),transparent 70%)}
+.card-title{font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.card-src{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);letter-spacing:0.05em;margin-bottom:14px}
+
+/* FTAGS - block display so text always below */
+.ftag{display:block;width:fit-content;font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.08em;margin-bottom:8px}
+.ft-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)}
+.ft-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
+.ft-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
+.ft-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
+.ft-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-b)}
+.ft-p{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-b)}
+
+/* FINDINGS */
+.finding{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px 15px;margin-bottom:8px;font-size:0.82rem;line-height:1.68;color:var(--text2)}
+.finding:last-child{margin-bottom:0}
+.finding strong{color:var(--text);font-weight:600}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:14px 16px;margin-bottom:12px;font-size:0.84rem;line-height:1.75;color:var(--text)}
+.callout strong{font-weight:600}
+.callout-head{display:block;font-family:'IBM Plex Mono',monospace;font-size:0.53rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:7px;font-weight:600}
+.co-t{background:var(--teal-dim);border-left:3px solid var(--teal)}.co-t .callout-head{color:var(--teal)}
+.co-a{background:var(--amber-dim);border-left:3px solid var(--amber)}.co-a .callout-head{color:var(--amber)}
+.co-r{background:var(--red-dim);border-left:3px solid var(--red)}.co-r .callout-head{color:var(--red)}
+.co-g{background:var(--green-dim);border-left:3px solid var(--green)}.co-g .callout-head{color:var(--green)}
+.co-b{background:var(--blue-dim);border-left:3px solid var(--blue)}.co-b .callout-head{color:var(--blue)}
+
+/* SVG CHARTS */
+.chart-wrap{width:100%;margin-bottom:10px;overflow:hidden;border-radius:6px;background:var(--bg3)}
+.chart-wrap svg{display:block;width:100%;height:auto}
+.chart-note{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);margin-top:6px;line-height:1.6}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.leg{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--text2);letter-spacing:0.04em}
+.leg-dot{width:10px;height:3px;border-radius:2px;flex-shrink:0}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+
+/* EVIDENCE MATRIX */
+.evidence-matrix{display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
+.em-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:11px 14px}
+.em-claim{font-size:0.82rem;color:var(--text);font-weight:500;line-height:1.35}
+.em-sub{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;color:var(--text3);margin-top:3px;line-height:1.4}
+.em-badge{font-family:'IBM Plex Mono',monospace;font-size:0.47rem;font-weight:600;padding:3px 8px;border-radius:3px;white-space:nowrap;letter-spacing:0.06em;flex-shrink:0}
+
+/* VERDICT CARDS (mobile-friendly section 7 pattern) */
+.verdict-cards{display:flex;flex-direction:column;gap:8px}
+.vc-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px 14px}
+.vc-card-claim{font-size:0.83rem;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3}
+.vc-card-verdict{margin-bottom:8px}
+.vc-card-evidence{font-size:0.78rem;color:var(--text2);line-height:1.6}
+.vb{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.5rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.05em;white-space:nowrap}
+
+/* PUBLICATION VOLUME BARS */
+.pub-chart{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.pub-row{display:grid;grid-template-columns:60px 1fr 52px;gap:8px;align-items:center}
+.pub-year{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:var(--text3);text-align:right}
+.pub-track{height:20px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;position:relative}
+.pub-fill{height:100%;border-radius:3px;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.pub-val{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;color:var(--text3);text-align:left}
+
+/* SYNTHESIS */
+.synthesis{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:26px 22px;margin-top:40px}
+.synth-head{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+.synth-text{font-size:0.88rem;line-height:1.82;color:var(--text2)}
+.synth-text strong{color:var(--text);font-weight:600}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.vis{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding-top:16px;margin-top:28px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.footer-brand{font-family:'Fraunces',serif;font-size:0.82rem;font-weight:700;color:var(--text3)}
+.footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;color:var(--text3);line-height:1.8;text-align:right}
+
+/* RESPONSIVE */
+@media(max-width:580px){
+  .hero-score{grid-template-columns:1fr 1fr}
+  .hero-score .hs-card:last-child{grid-column:1/-1}
+  .grid-2{grid-template-columns:1fr}
+  .hero{padding:38px 16px 0}
+  .content{padding:0 16px 60px}
+  .footer-refs{text-align:left}
+  .em-row{grid-template-columns:1fr;gap:6px}
+  .pub-row{grid-template-columns:48px 1fr 44px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Evidence-Based Nutrition · Origin Symmetrics</div>
+    <h1>The Gut Microbiome:<br><em>What We Know,</em><br><strong>What We Don't</strong></h1>
+    <p class="hero-sub">Over 150,000 papers. A booming supplement industry. Gut health kits selling for hundreds of dollars. And researchers still cannot define what a healthy microbiome actually looks like. Here is what the science says, where the gaps are, and which claims are running ahead of the evidence.</p>
+
+    <div class="hero-score">
+      <div class="hs-card hsc-t">
+        <div class="hs-label">Papers published</div>
+        <div class="hs-big">150K+</div>
+        <div class="hs-sub">Studies with "microbiome" in title or abstract published since 2001</div>
+        <div class="hs-bar"><div class="hs-bar-fill" id="hb1" data-w="100"></div></div>
+      </div>
+      <div class="hs-card hsc-a">
+        <div class="hs-label">Clinical certainty</div>
+        <div class="hs-big">1</div>
+        <div class="hs-sub">Clear clinical application with strong RCT evidence: FMT for C. difficile recurrence</div>
+        <div class="hs-bar"><div class="hs-bar-fill" id="hb2" data-w="100"></div></div>
+      </div>
+      <div class="hs-card hsc-r">
+        <div class="hs-label">Healthy microbiome defined?</div>
+        <div class="hs-big">No</div>
+        <div class="hs-sub">No universal signature established despite decades of study across global populations</div>
+        <div class="hs-bar"><div class="hs-bar-fill" id="hb3" data-w="100"></div></div>
+      </div>
+    </div>
+    <div class="hero-footer">
+      <div class="hero-footer-icon">◈</div>
+      <div class="hero-footer-text"><strong>The core problem:</strong> The field is still mostly in a descriptive phase. Companies are selling dietary interventions based on speculative associations and marketing hype built on science that cannot yet define its own target. That gap between research volume and actionable knowledge is the story.</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- S1: THE DEFINITION PROBLEM -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-t">01</div>
+    <div>
+      <div class="sec-title">The Field Cannot Define What It Is Trying to Optimize</div>
+      <div class="sec-src">Wastyk et al. Cell 2021 · Dahl et al. British Journal of Nutrition 2020 · Nature Microbiology "Hype to Hope" editorial 2024 · PubMed search June 2024</div>
+    </div>
+  </div>
+  <p class="prose">Before you can improve something, you need to know what the good version looks like. The gut microbiome field has a foundational problem: despite tens of thousands of papers and global sequencing efforts, researchers have not established a universal definition of a healthy microbiome. Without that baseline, every claim about optimizing your gut is built on an undefined target.</p>
+
+  <!-- PUBLICATION BOOM vs KNOWLEDGE GAP -->
+  <div class="card ct">
+    <div class="card-title">Research Volume vs. Clinical Knowledge: The Widening Gap</div>
+    <div class="card-src">PubMed publication counts for "gut microbiota" + "nutrition" · Nature Microbiology editorial, July 2024</div>
+
+    <div class="pub-chart" id="pubChart">
+      <div class="pub-row">
+        <div class="pub-year">2000-04</div>
+        <div class="pub-track"><div class="pub-fill" style="background:rgba(45,212,191,0.4)" data-width="4"></div></div>
+        <div class="pub-val">~400</div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2005-09</div>
+        <div class="pub-track"><div class="pub-fill" style="background:rgba(45,212,191,0.45)" data-width="8"></div></div>
+        <div class="pub-val">~900</div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2010-14</div>
+        <div class="pub-track"><div class="pub-fill" style="background:rgba(45,212,191,0.5)" data-width="22"></div></div>
+        <div class="pub-val">~2,500</div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2015-19</div>
+        <div class="pub-track"><div class="pub-fill" style="background:rgba(45,212,191,0.6)" data-width="56"></div></div>
+        <div class="pub-val">~6,300</div>
+      </div>
+      <div class="pub-row">
+        <div class="pub-year">2020-24</div>
+        <div class="pub-track"><div class="pub-fill" style="background:rgba(45,212,191,0.85)" data-width="100"></div></div>
+        <div class="pub-val">11,000+</div>
+      </div>
+    </div>
+
+    <!-- SVG: Knowledge vs Hype split bar -->
+    <div class="chart-wrap" style="margin-top:14px">
+      <svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="120" fill="#17171f"/>
+        <text x="16" y="22" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.1em" text-anchor="start">WHAT 11,000 PAPERS HAVE ESTABLISHED</text>
+
+        <!-- Track -->
+        <rect x="16" y="32" width="568" height="32" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+
+        <!-- Directional signal: ~30% -->
+        <rect x="16" y="32" width="170" height="32" rx="4" fill="rgba(45,212,191,0.35)"/>
+        <text x="101" y="52" fill="#2dd4bf" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Directional signals</text>
+        <text x="101" y="63" fill="rgba(45,212,191,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">associations, not causation</text>
+
+        <!-- Association zone: ~50% -->
+        <rect x="186" y="32" width="280" height="32" rx="0" fill="rgba(245,166,35,0.2)"/>
+        <text x="326" y="52" fill="#f5a623" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Associations needing replication</text>
+        <text x="326" y="63" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">n=small, confounded, observational</text>
+
+        <!-- Unknown: ~20% -->
+        <rect x="466" y="32" width="118" height="32" rx="4" fill="rgba(240,82,82,0.2)"/>
+        <text x="525" y="52" fill="#f05252" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Hype</text>
+        <text x="525" y="63" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">no evidence base</text>
+
+        <!-- labels -->
+        <text x="101" y="90" fill="rgba(45,212,191,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">~30%</text>
+        <text x="326" y="90" fill="rgba(245,166,35,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">~50%</text>
+        <text x="525" y="90" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">~20%</text>
+
+        <text x="300" y="112" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Rough proportional estimate based on evidence quality distribution in the field</text>
+      </svg>
+    </div>
+    <div class="chart-note">More papers does not mean more answers. Publication volume has exploded while the foundational question, what does a healthy microbiome actually look like, remains unanswered. This gap is what the supplement industry lives in.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-t">The British Journal of Nutrition verdict</div>
+      <strong>Despite tens of thousands of papers and huge efforts in characterising the gut microbiota of humans across the planet,</strong> science is still not able to define a "healthy microbiome" or to give specific recommendations on how to alter the microbiome to affect health outcomes. This was published in 2020 and remains accurate in 2025.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-t">The individual variability problem</div>
+      The Human Microbiome Project found that each person carries around 600,000 microbial genes in the gut, roughly half shared between individuals. But the other half is highly individual. <strong>A single strain per species typically dominates each person's microbiome and preserves its own stability over time,</strong> making universal dietary recommendations almost impossible to validate.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-t">What "healthy" depends on</div>
+      Defining who counts as a "healthy" reference subject is itself contested. Is it someone with no current illness? An athlete at peak performance? An elderly person who has lived to 90? Centenarians? Each answer gives you a different microbiome profile. <strong>You cannot define a healthy microbiome without first defining health, and that definition is not settled.</strong>
+    </div>
+    <div class="finding">
+      <div class="ftag ft-t">Transit time: the overlooked confounder</div>
+      Gut transit time, how fast food moves through your colon, is one of the strongest predictors of microbiome composition. It varies dramatically between people and is almost never controlled for in dietary studies. <strong>Two people eating the identical diet can have radically different microbiomes just because of transit time differences,</strong> which collapses the idea that specific foods reliably produce specific microbial outcomes.
+    </div>
+  </div>
+</div>
+
+<!-- S2: DYSBIOSIS IS A BUZZWORD -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-a">02</div>
+    <div>
+      <div class="sec-title">"Dysbiosis" Is a Marketing Word, Not a Clinical Diagnosis</div>
+      <div class="sec-src">Walker and Hoyles, Nature Microbiology 2023 · Joos et al. Nature Reviews Microbiology 2024 · Lancet Gastroenterology consensus 2025</div>
+    </div>
+  </div>
+  <p class="prose">Walk into any supplement store or visit any gut health brand's website and you will see "dysbiosis" used confidently, implying a diagnosable condition that their product corrects. The problem is that the leading microbiome researchers in the world have published consensus papers explicitly calling the term vague, circular, and clinically meaningless.</p>
+
+  <!-- DYSBIOSIS CIRCULAR DEFINITION SVG -->
+  <div class="card ca">
+    <div class="card-title">The Dysbiosis Circular Definition Problem</div>
+    <div class="card-src">Walker and Hoyles, Nature Microbiology 2023 · Hooks and O'Malley 2017 · PMC literature review</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="230" fill="#17171f"/>
+
+        <!-- Three boxes in a triangle arrangement to show circularity -->
+        <!-- Box 1: top center -->
+        <rect x="200" y="16" width="200" height="52" rx="6" fill="rgba(245,166,35,0.12)" stroke="rgba(245,166,35,0.3)" stroke-width="1"/>
+        <text x="300" y="38" fill="#f5a623" font-family="DM Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle">Dysbiosis is defined as</text>
+        <text x="300" y="52" fill="rgba(245,166,35,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">"imbalance of the microbiota"</text>
+        <text x="300" y="63" fill="rgba(245,166,35,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">(most common definition in literature)</text>
+
+        <!-- Box 2: bottom left -->
+        <rect x="30" y="148" width="200" height="52" rx="6" fill="rgba(245,166,35,0.08)" stroke="rgba(245,166,35,0.2)" stroke-width="1"/>
+        <text x="130" y="170" fill="rgba(245,166,35,0.8)" font-family="DM Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle">"Imbalance" = loss of</text>
+        <text x="130" y="183" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">homeostasis</text>
+
+        <!-- Box 3: bottom right -->
+        <rect x="370" y="148" width="200" height="52" rx="6" fill="rgba(245,166,35,0.08)" stroke="rgba(245,166,35,0.2)" stroke-width="1"/>
+        <text x="470" y="170" fill="rgba(245,166,35,0.8)" font-family="DM Sans,sans-serif" font-size="11" font-weight="600" text-anchor="middle">"Homeostasis" is</text>
+        <text x="470" y="183" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">rarely defined</text>
+
+        <!-- Arrows -->
+        <defs>
+          <marker id="arr-a" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(245,166,35,0.5)"/>
+          </marker>
+        </defs>
+        <!-- Top to bottom-left -->
+        <line x1="230" y1="68" x2="160" y2="148" stroke="rgba(245,166,35,0.35)" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arr-a)"/>
+        <!-- Bottom-left to bottom-right -->
+        <line x1="230" y1="174" x2="370" y2="174" stroke="rgba(245,166,35,0.35)" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arr-a)"/>
+        <!-- Bottom-right to top -->
+        <line x1="435" y1="148" x2="365" y2="68" stroke="rgba(245,166,35,0.35)" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arr-a)"/>
+
+        <!-- Center label -->
+        <text x="300" y="118" fill="rgba(240,82,82,0.8)" font-family="Fraunces,serif" font-size="14" font-weight="700" text-anchor="middle">Circular</text>
+        <text x="300" y="134" fill="rgba(240,82,82,0.55)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">definition lacking scientific value</text>
+
+        <!-- Bottom note -->
+        <text x="300" y="218" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Hooks and O'Malley 2017 · Walker and Hoyles Nature Microbiology 2023</text>
+      </svg>
+    </div>
+    <div class="chart-note">When researchers traced the definition of dysbiosis through the literature, they found it refers to homeostasis, which is itself rarely defined. This circular logic has "led to a catchall definition lacking scientific value" according to published analysis of the field.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-a">What the 2025 Lancet consensus actually said</div>
+      An international expert panel published consensus guidelines in the Lancet Gastroenterology on microbiome testing. On the Firmicutes/Bacteroidetes ratio, the most commonly reported metric in consumer gut tests, the panel was explicit: <strong>it should be excluded from clinical reporting because there is insufficient evidence to establish a causal relationship between this ratio and host health.</strong>
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">Post-testing advice is "strongly discouraged"</div>
+      The same 2025 consensus statement noted that direct-to-consumer tests proliferating without regulatory oversight result in "considerable waste of patient and health-care resources due to inappropriate requests for medical exams or inappropriate subsequent prescribing of supplements and medications." <strong>Post-testing therapeutic advice by the testing provider is strongly discouraged.</strong> That is the panel's language, not a summary.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">Microbes are not inherently good or bad</div>
+      Walker and Hoyles in Nature Microbiology 2023: "Microorganisms and their metabolites are neither 'good' nor 'bad', they merely exist." The popular framing of certain bacteria as villains and others as heroes does not reflect how the ecology actually works. <strong>Healthy individuals carry Clostridioides difficile in their gut throughout life. It only causes problems in specific contexts.</strong> Context is everything. Binary good/bad framing is not science.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">The DNA nutrition parallel</div>
+      The gut microbiome testing industry is following the same playbook as DNA-based personalized nutrition: take a real but early-stage scientific signal, translate it into a consumer product well before the evidence supports actionable recommendations, and market it as precision health. <strong>DNA-based diet matching has not been validated in RCTs. Microbiome-based diet matching is not there yet either.</strong>
+    </div>
+  </div>
+
+  <div class="callout co-a">
+    <span class="callout-head">The Chicken or the Egg Problem</span>
+    Even when a microbiome difference is found between sick and healthy people, the field cannot consistently determine which came first. Did the altered microbiome contribute to the disease, or did the disease alter the microbiome? This causation question is almost never resolved in observational studies, and most microbiome research is observational. Without knowing the direction of causation, you cannot build a dietary intervention.
+  </div>
+</div>
+
+<!-- S3: THE NATURE MICROBIOLOGY 2025 PAPER -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-g">03</div>
+    <div>
+      <div class="sec-title">Fackelmann et al. (Nature Microbiology 2025): The Biggest Diet-Microbiome Study to Date</div>
+      <div class="sec-src">Fackelmann et al. Nature Microbiology 2025 · 21,561 individuals · 5 multinational cohorts · vegan, vegetarian, omnivore diet patterns</div>
+    </div>
+  </div>
+  <p class="prose">It is genuinely large and well-designed relative to most microbiome research. It found real microbiome differences between vegans, vegetarians, and omnivores, with certain omnivore-associated bacteria negatively correlated with cardiometabolic markers. The conclusion many people drew from it is bigger than what the study can actually support.</p>
+
+  <!-- SVG: diet pattern microbiome signatures -->
+  <div class="card cg">
+    <div class="card-title">Diet Pattern vs. Gut Microbiome Signatures: Key Bacteria and Their Associations</div>
+    <div class="card-src">Fackelmann et al. Nature Microbiology 2025 · AUC = 0.85 for classifying diet from microbiome profile alone</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 272" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="260" fill="#17171f"/>
+
+        <!-- Three columns: Omnivore bacteria | scale | Vegan bacteria -->
+        <!-- Column headers -->
+        <rect x="10" y="14" width="175" height="22" rx="4" fill="rgba(240,82,82,0.12)" stroke="rgba(240,82,82,0.25)" stroke-width="0.5"/>
+        <text x="97" y="29" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle" font-weight="600" letter-spacing="0.06em">OMNIVORE SIGNATURE</text>
+
+        <rect x="415" y="14" width="175" height="22" rx="4" fill="rgba(78,222,138,0.12)" stroke="rgba(78,222,138,0.25)" stroke-width="0.5"/>
+        <text x="502" y="29" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle" font-weight="600" letter-spacing="0.06em">VEGAN SIGNATURE</text>
+
+        <!-- Center axis -->
+        <line x1="300" y1="42" x2="300" y2="248" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <text x="300" y="50" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">cardiometabolic correlation</text>
+        <text x="210" y="50" fill="rgba(240,82,82,0.4)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">negative</text>
+        <text x="390" y="50" fill="rgba(78,222,138,0.4)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">positive</text>
+
+        <!-- Omnivore bacteria rows -->
+        <!-- Ruminococcus torques -->
+        <text x="183" y="80" fill="rgba(237,234,227,0.75)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end" font-style="italic">R. torques</text>
+        <rect x="186" y="71" width="111" height="14" rx="2" fill="rgba(240,82,82,0.35)" stroke="rgba(240,82,82,0.5)" stroke-width="0.5"/>
+        <text x="242" y="81" fill="rgba(255,255,255,0.6)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">neg. CVD markers</text>
+
+        <!-- Bilophila wadsworthia -->
+        <text x="183" y="110" fill="rgba(237,234,227,0.75)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end" font-style="italic">B. wadsworthia</text>
+        <rect x="186" y="101" width="85" height="14" rx="2" fill="rgba(240,82,82,0.28)" stroke="rgba(240,82,82,0.4)" stroke-width="0.5"/>
+        <text x="229" y="111" fill="rgba(255,255,255,0.6)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">neg. lipid profile</text>
+
+        <!-- Alistipes putredinis -->
+        <text x="183" y="140" fill="rgba(237,234,227,0.75)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end" font-style="italic">A. putredinis</text>
+        <rect x="186" y="131" width="70" height="14" rx="2" fill="rgba(240,82,82,0.22)" stroke="rgba(240,82,82,0.35)" stroke-width="0.5"/>
+        <text x="221" y="141" fill="rgba(255,255,255,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">neg. glucose</text>
+
+        <!-- Vegan bacteria rows -->
+        <!-- Prevotella copri -->
+        <text x="417" y="80" fill="rgba(237,234,227,0.75)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="start" font-style="italic">P. copri</text>
+        <rect x="303" y="71" width="111" height="14" rx="2" fill="rgba(78,222,138,0.3)" stroke="rgba(78,222,138,0.45)" stroke-width="0.5"/>
+        <text x="358" y="81" fill="rgba(255,255,255,0.6)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">pos. cardiometabolic</text>
+
+        <!-- Faecalibacterium prausnitzii -->
+        <text x="417" y="110" fill="rgba(237,234,227,0.75)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="start" font-style="italic">F. prausnitzii</text>
+        <rect x="303" y="101" width="90" height="14" rx="2" fill="rgba(78,222,138,0.25)" stroke="rgba(78,222,138,0.4)" stroke-width="0.5"/>
+        <text x="348" y="111" fill="rgba(255,255,255,0.6)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">anti-inflammatory</text>
+
+        <!-- Roseburia intestinalis -->
+        <text x="417" y="140" fill="rgba(237,234,227,0.75)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="start" font-style="italic">R. intestinalis</text>
+        <rect x="303" y="131" width="72" height="14" rx="2" fill="rgba(78,222,138,0.2)" stroke="rgba(78,222,138,0.35)" stroke-width="0.5"/>
+        <text x="339" y="141" fill="rgba(255,255,255,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">butyrate prod.</text>
+
+        <!-- AUC label -->
+        <rect x="248" y="162" width="104" height="36" rx="5" fill="rgba(45,212,191,0.1)" stroke="rgba(45,212,191,0.3)" stroke-width="1"/>
+        <text x="300" y="176" fill="#2dd4bf" font-family="Fraunces,serif" font-size="16" font-weight="700" text-anchor="middle">0.85</text>
+        <text x="300" y="190" fill="rgba(45,212,191,0.6)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">AUC (diet classification)</text>
+
+        <!-- Self-report warning -->
+        <rect x="10" y="212" width="580" height="46" rx="5" fill="rgba(245,166,35,0.07)" stroke="rgba(245,166,35,0.2)" stroke-width="0.5"/>
+        <text x="300" y="228" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle" letter-spacing="0.08em">CRITICAL LIMITATION</text>
+        <text x="300" y="241" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Dietary intake is entirely self-reported. Self-report data systematically</text>
+        <text x="300" y="252" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">overestimates healthy food intake and underestimates processed food.</text>
+      </svg>
+    </div>
+    <div class="chart-note">The study found an AUC of 0.85, meaning gut bacteria alone could classify diet pattern in 85% of cases. This is a strong signal that diet shapes the microbiome. It does not tell us which specific foods drive which specific bacteria, or whether those bacteria causally produce the cardiometabolic associations shown here.</div>
+  </div>
+
+  <div class="callout co-g">
+    <span class="callout-head">The Correct Takeaway</span>
+    The study essentially confirms: eating more fruits and vegetables is associated with favorable gut bacteria, which are associated with favorable cardiometabolic markers. That directional finding is real. But it is built on self-reported dietary data, and the associations between those bacteria and health outcomes are correlational, not causal. The paper cannot tell you to eat a specific food to produce a specific bacterial shift to produce a specific health outcome. That chain of causation has not been established.
+  </div>
+</div>
+
+<!-- S4: TMAO DEBUNKED -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-r">04</div>
+    <div>
+      <div class="sec-title">TMAO: The Cardiovascular Villain That Mendelian Randomization Could Not Find</div>
+      <div class="sec-src">Canyelles et al. IJMS 2023 · Jia et al. Diabetes 2019 · TMAO/ischemic stroke MR meta-analysis 2023 · secondary RCT analysis 2024</div>
+    </div>
+  </div>
+  <p class="prose">Trimethylamine N-oxide became one of the most-cited arguments for why red meat is uniquely harmful: gut bacteria convert choline from animal foods into TMAO, which causes cardiovascular disease. This story went viral. The Mendelian randomization evidence has consistently failed to support the causal part of that claim.</p>
+
+  <!-- TMAO pathway + the paradox SVG -->
+  <div class="card cr">
+    <div class="card-title">The TMAO Pathway and the Fish Paradox</div>
+    <div class="card-src">Canyelles et al. IJMS 2023 · secondary RCT analysis (omega-3/whole grain diets raise TMAO but lower CVD risk) · MR studies 2019-2023</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 212" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="200" fill="#17171f"/>
+        <defs>
+          <marker id="arr-r" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(240,82,82,0.6)"/>
+          </marker>
+          <marker id="arr-g" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(78,222,138,0.6)"/>
+          </marker>
+          <marker id="arr-q" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(255,255,255,0.3)"/>
+          </marker>
+        </defs>
+
+        <!-- THE CLAIMED PATHWAY (top) -->
+        <text x="16" y="22" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.1em" font-weight="600">THE CLAIMED CAUSAL CHAIN</text>
+
+        <!-- Choline (red meat) -->
+        <rect x="10" y="30" width="90" height="34" rx="4" fill="rgba(240,82,82,0.12)" stroke="rgba(240,82,82,0.3)" stroke-width="1"/>
+        <text x="55" y="45" fill="#f05252" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">Choline</text>
+        <text x="55" y="57" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">red meat / eggs</text>
+
+        <line x1="100" y1="47" x2="128" y2="47" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arr-r)"/>
+        <text x="114" y="43" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="6" text-anchor="middle">gut bacteria</text>
+
+        <!-- TMA -->
+        <rect x="130" y="30" width="80" height="34" rx="4" fill="rgba(240,82,82,0.1)" stroke="rgba(240,82,82,0.25)" stroke-width="1"/>
+        <text x="170" y="45" fill="rgba(240,82,82,0.9)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">TMA</text>
+        <text x="170" y="57" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">intermediate</text>
+
+        <line x1="210" y1="47" x2="238" y2="47" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arr-r)"/>
+        <text x="224" y="43" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="6" text-anchor="middle">liver FMO3</text>
+
+        <!-- TMAO -->
+        <rect x="240" y="30" width="80" height="34" rx="4" fill="rgba(240,82,82,0.15)" stroke="rgba(240,82,82,0.35)" stroke-width="1"/>
+        <text x="280" y="45" fill="#f05252" font-family="DM Sans,sans-serif" font-size="10" font-weight="700" text-anchor="middle">TMAO</text>
+        <text x="280" y="57" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">blood plasma</text>
+
+        <line x1="320" y1="47" x2="348" y2="47" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arr-r)"/>
+
+        <!-- CVD -->
+        <rect x="350" y="30" width="80" height="34" rx="4" fill="rgba(240,82,82,0.1)" stroke="rgba(240,82,82,0.25)" stroke-width="1"/>
+        <text x="390" y="45" fill="rgba(240,82,82,0.9)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">CVD risk</text>
+        <text x="390" y="57" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">claimed outcome</text>
+
+        <!-- Big X over the final arrow -->
+        <text x="455" y="52" fill="rgba(240,82,82,0.7)" font-family="Fraunces,serif" font-size="20" font-weight="900" text-anchor="middle">?</text>
+        <text x="485" y="42" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="start">MR: not confirmed</text>
+        <text x="485" y="53" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="start">causally in humans</text>
+
+        <!-- Divider -->
+        <line x1="16" y1="82" x2="584" y2="82" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+
+        <!-- THE PARADOX -->
+        <text x="16" y="98" fill="rgba(78,222,138,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.1em" font-weight="600">THE FISH PARADOX (why the TMAO story falls apart)</text>
+
+        <!-- Fish / omega-3 box -->
+        <rect x="10" y="108" width="110" height="34" rx="4" fill="rgba(78,222,138,0.1)" stroke="rgba(78,222,138,0.25)" stroke-width="1"/>
+        <text x="65" y="122" fill="#4ede8a" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">Fish / Omega-3</text>
+        <text x="65" y="134" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">whole grains too</text>
+
+        <line x1="120" y1="125" x2="148" y2="125" stroke="rgba(78,222,138,0.5)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+        <!-- TMAO rises -->
+        <rect x="150" y="108" width="100" height="34" rx="4" fill="rgba(240,82,82,0.08)" stroke="rgba(240,82,82,0.2)" stroke-width="1"/>
+        <text x="200" y="122" fill="rgba(240,82,82,0.8)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">TMAO rises</text>
+        <text x="200" y="134" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">confirmed in 2 RCTs</text>
+
+        <!-- But CVD goes down -->
+        <line x1="250" y1="125" x2="278" y2="125" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" marker-end="url(#arr-q)"/>
+
+        <rect x="280" y="108" width="140" height="34" rx="4" fill="rgba(78,222,138,0.12)" stroke="rgba(78,222,138,0.3)" stroke-width="1"/>
+        <text x="350" y="122" fill="#4ede8a" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">CVD risk goes DOWN</text>
+        <text x="350" y="134" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">robust evidence base</text>
+
+        <!-- Big conflict label -->
+        <rect x="435" y="108" width="155" height="34" rx="4" fill="rgba(245,166,35,0.1)" stroke="rgba(245,166,35,0.25)" stroke-width="1"/>
+        <text x="512" y="123" fill="#f5a623" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">Contradiction</text>
+        <text x="512" y="135" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">TMAO cannot be the villain</text>
+
+        <!-- Renal confound note -->
+        <rect x="10" y="158" width="580" height="42" rx="4" fill="rgba(96,165,250,0.07)" stroke="rgba(96,165,250,0.18)" stroke-width="0.5"/>
+        <text x="300" y="172" fill="#60a5fa" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle" letter-spacing="0.06em">THE LIKELY EXPLANATION</text>
+        <text x="300" y="184" fill="rgba(96,165,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">TMAO is excreted by the kidneys. People with kidney disease have high TMAO and high CVD risk.</text>
+        <text x="300" y="194" fill="rgba(96,165,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">TMAO may be a marker of renal dysfunction, not a CVD cause.</text>
+      </svg>
+    </div>
+    <div class="chart-note">When researchers controlled for renal function in prospective studies, the association between TMAO and CVD outcomes was significantly reduced or reversed. Mendelian randomization studies, which bypass confounding, generally found no causal relationship between genetically predicted TMAO and cardiometabolic disease.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-r">What MR actually found</div>
+      Three Mendelian randomization studies on TMAO have been published. One found no significant association between genetically predicted TMAO and cardiometabolic disease. Another found a positive relationship with systolic blood pressure that largely disappeared in sensitivity analyses. <strong>No MR study has confirmed a causal link between TMAO and CVD events, cardiac mortality, or stroke.</strong>
+    </div>
+    <div class="finding">
+      <div class="ftag ft-r">The renal confound</div>
+      The association between high TMAO and CVD tends to disappear or reverse once kidney function is adjusted for in prospective studies. TMAO is eliminated by the kidneys. People with kidney disease accumulate TMAO and also have very high cardiovascular risk. <strong>The association may be measuring kidney dysfunction masquerading as a gut-microbiome effect.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- S5: WHAT THE EVIDENCE DOES SUPPORT -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-b">05</div>
+    <div>
+      <div class="sec-title">What the Evidence Actually Supports</div>
+      <div class="sec-src">Sonnenburg et al. Cell 2021 · Cochrane FMT review 2023 · Walker and Hoyles Nature Microbiology 2023 · systematic review of probiotic RCTs</div>
+    </div>
+  </div>
+  <p class="prose">The microbiome is genuinely important to health. The science just has not advanced far enough to turn that importance into specific dietary prescriptions. Here is an honest accounting of what has solid evidence, what has directional signals, and what is speculation.</p>
+
+  <!-- Evidence strength spectrum SVG -->
+  <div class="card cb">
+    <div class="card-title">Evidence Quality by Intervention: What the Data Actually Supports</div>
+    <div class="card-src">Cochrane reviews · Sonnenburg et al. Cell 2021 · systematic reviews 2022-2024 · Nature Microbiology editorial 2024</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 310" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="310" fill="#17171f"/>
+
+        <!-- Evidence scale header -->
+        <text x="300" y="20" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" letter-spacing="0.1em">EVIDENCE STRENGTH</text>
+        <line x1="30" y1="26" x2="570" y2="26" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+
+        <!-- Gradient track -->
+        <defs>
+          <linearGradient id="ev-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f05252;stop-opacity:0.5"/>
+            <stop offset="50%" style="stop-color:#f5a623;stop-opacity:0.5"/>
+            <stop offset="100%" style="stop-color:#4ede8a;stop-opacity:0.5"/>
+          </linearGradient>
+        </defs>
+        <rect x="30" y="30" width="540" height="8" rx="4" fill="url(#ev-grad)"/>
+        <text x="30" y="50" fill="rgba(240,82,82,0.55)" font-family="IBM Plex Mono,monospace" font-size="7">Speculation</text>
+        <text x="300" y="50" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Directional signal</text>
+        <text x="570" y="50" fill="rgba(78,222,138,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="end">Strong RCT evidence</text>
+
+        <!-- Items plotted on spectrum -->
+        <!-- FMT for C. diff: x=545 (strong) -->
+        <circle cx="545" cy="75" r="6" fill="#4ede8a" opacity="0.9"/>
+        <line x1="545" y1="82" x2="545" y2="94" stroke="rgba(78,222,138,0.4)" stroke-width="1"/>
+        <text x="545" y="104" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">FMT for</text>
+        <text x="545" y="115" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">C. difficile</text>
+        <text x="545" y="126" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Multiple RCTs</text>
+
+        <!-- High fiber / fermented foods: x=380 -->
+        <circle cx="380" cy="75" r="6" fill="#f5a623" opacity="0.85"/>
+        <line x1="380" y1="82" x2="380" y2="94" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+        <text x="380" y="104" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">High fiber +</text>
+        <text x="380" y="115" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">fermented foods</text>
+        <text x="380" y="126" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">1 good RCT (n=36)</text>
+
+        <!-- Probiotics for IBS: x=290 -->
+        <circle cx="290" cy="75" r="6" fill="#f5a623" opacity="0.7"/>
+        <line x1="290" y1="82" x2="290" y2="94" stroke="rgba(245,166,35,0.35)" stroke-width="1"/>
+        <text x="290" y="104" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">Probiotics</text>
+        <text x="290" y="115" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">for IBS</text>
+        <text x="290" y="126" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Strain-specific only</text>
+
+        <!-- Polyphenols: x=200 -->
+        <circle cx="200" cy="75" r="6" fill="#f5a623" opacity="0.55"/>
+        <line x1="200" y1="82" x2="200" y2="94" stroke="rgba(245,166,35,0.3)" stroke-width="1"/>
+        <text x="200" y="104" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">Polyphenols</text>
+        <text x="200" y="115" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">and diversity</text>
+        <text x="200" y="126" fill="rgba(245,166,35,0.45)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Associative only</text>
+
+        <!-- Commercial gut tests: x=60 -->
+        <circle cx="60" cy="75" r="6" fill="#f05252" opacity="0.8"/>
+        <line x1="60" y1="82" x2="60" y2="94" stroke="rgba(240,82,82,0.4)" stroke-width="1"/>
+        <text x="60" y="104" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">Commercial</text>
+        <text x="60" y="115" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">gut tests</text>
+
+        <!-- TMAO as CVD cause: x=115 -->
+        <circle cx="115" cy="75" r="6" fill="#f05252" opacity="0.65"/>
+        <line x1="115" y1="82" x2="115" y2="94" stroke="rgba(240,82,82,0.35)" stroke-width="1"/>
+        <text x="115" y="104" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">TMAO as</text>
+        <text x="115" y="115" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="9" font-weight="600" text-anchor="middle">CVD cause</text>
+
+        <!-- Shared label centered between both dots -->
+        <text x="87" y="129" fill="rgba(240,82,82,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Not clinically supported</text>
+
+        <!-- Divider -->
+        <line x1="30" y1="145" x2="570" y2="145" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+
+        <!-- What we know is consistent - horizontal summary bars -->
+        <text x="30" y="162" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.08em" font-weight="600">CONSISTENT DIRECTIONAL FINDINGS</text>
+
+        <!-- Bar rows for consistent findings -->
+        <text x="30" y="183" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9" font-weight="500">Dietary diversity increases microbial diversity</text>
+        <rect x="30" y="187" width="380" height="10" rx="2" fill="rgba(78,222,138,0.25)" stroke="rgba(78,222,138,0.4)" stroke-width="0.5"/>
+        <text x="418" y="196" fill="rgba(78,222,138,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">consistent, observational</text>
+
+        <text x="30" y="213" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9" font-weight="500">Antibiotics reduce diversity for months</text>
+        <rect x="30" y="217" width="520" height="10" rx="2" fill="rgba(78,222,138,0.4)" stroke="rgba(78,222,138,0.55)" stroke-width="0.5"/>
+        <text x="558" y="226" fill="rgba(78,222,138,0.8)" font-family="IBM Plex Mono,monospace" font-size="7">strong causal evidence</text>
+
+        <text x="30" y="243" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9" font-weight="500">Fermented foods increase microbial diversity</text>
+        <rect x="30" y="247" width="260" height="10" rx="2" fill="rgba(245,166,35,0.3)" stroke="rgba(245,166,35,0.45)" stroke-width="0.5"/>
+        <text x="298" y="256" fill="rgba(245,166,35,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">n=36 RCT, needs replication</text>
+
+        <text x="30" y="273" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9" font-weight="500">Specific microbiome = specific health outcome</text>
+        <rect x="30" y="277" width="80" height="10" rx="2" fill="rgba(240,82,82,0.3)" stroke="rgba(240,82,82,0.45)" stroke-width="0.5"/>
+        <text x="118" y="286" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">not established causally</text>
+
+        <text x="30" y="298" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5">bar width is not precise — illustrative of evidence strength relative to each other</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-b">FMT: The one clear win</div>
+      Fecal microbiota transplantation for recurrent C. difficile infection has multiple RCTs and Cochrane review support. It is the gold standard evidence for microbiome intervention causally affecting a clinical outcome. <strong>It is also the most technically invasive intervention possible and not remotely comparable to taking a probiotic supplement.</strong>
+    </div>
+    <div class="finding">
+      <div class="ftag ft-b">The Sonnenburg 2021 RCT</div>
+      This Stanford RCT (n=36) found that a high-fermented food diet increased microbial diversity and decreased 19 inflammatory markers including IL-6, IL-12p70, and IFN-gamma compared to a high-fiber diet over 10 weeks. It is the most controlled dietary intervention study on microbiome outcomes. <strong>It is small, and fermented food diversity (yogurt, kefir, kimchi, kombucha) is the specific intervention, not a probiotic pill.</strong>
+    </div>
+  </div>
+
+  <div class="callout co-b">
+    <span class="callout-head">The Antibiotic Finding Is the Strongest Causal Evidence in the Field</span>
+    A single course of broad-spectrum antibiotics can reduce gut microbial diversity for six months or longer. This is the clearest demonstration that the microbiome is causally alterable and that disruption has measurable consequences. Ironically, this evidence base supports gut health through not doing something (avoiding unnecessary antibiotics), not through buying any product.
+  </div>
+</div>
+
+<!-- S6: VERDICT -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-p">06</div>
+    <div>
+      <div class="sec-title">Claim by Claim: What the Evidence Actually Supports</div>
+    </div>
+  </div>
+
+  <div class="verdict-cards">
+    <div class="vc-card">
+      <div class="vc-card-claim">You can test whether your gut microbiome is "healthy"</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not supported</span></div>
+      <div class="vc-card-evidence">No universal signature of a healthy microbiome exists. The 2025 Lancet Gastro consensus panel explicitly discourages direct-to-consumer testing and post-test therapeutic advice. The Firmicutes/Bacteroidetes ratio should be excluded from reports entirely.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">"Dysbiosis" is a diagnosable condition that supplements can correct</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not supported</span></div>
+      <div class="vc-card-evidence">Dysbiosis is a circular, clinically vague term. Walker and Hoyles Nature Microbiology 2023 describe it as lacking scientific value in its current application. It is a marketing term, not a clinical diagnosis.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Eating more diverse plant foods benefits your gut microbiome</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)">Directionally consistent</span></div>
+      <div class="vc-card-evidence">Large observational data including Fackelmann 2025 (n=21,561) consistently shows plant-diverse diets associate with more favorable microbial profiles. Cannot specify which foods produce which bacteria, or what health outcomes causally follow.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">TMAO from red meat causes cardiovascular disease via the gut microbiome</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not causally supported</span></div>
+      <div class="vc-card-evidence">Mendelian randomization studies have not confirmed a causal TMAO-CVD link. TMAO rises with fish and omega-3 intake, which reduce CVD. The association likely reflects renal function confounding, not a gut microbiome causal pathway.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Probiotic supplements improve general gut health</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)">Strain and condition specific</span></div>
+      <div class="vc-card-evidence">Some probiotic strains have modest RCT support for IBS symptom relief and antibiotic-associated diarrhea. General gut health claims are not supported. The strains in most commercial products are not the strains studied in RCTs.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">FMT can restore gut health</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)">Yes, for C. difficile recurrence</span></div>
+      <div class="vc-card-evidence">Multiple RCTs confirm FMT as highly effective for recurrent C. difficile infection. This is the strongest evidence that microbiome intervention causally affects clinical outcomes. For other conditions, evidence is preliminary.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Microbiome-based personalized diets are ready for clinical practice</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not ready</span></div>
+      <div class="vc-card-evidence">The field is still primarily descriptive. Companies are selling personalized diet products based on speculative associations the science cannot validate. It follows the same playbook as DNA-based personalized nutrition, which has also not been validated in RCTs.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SYNTHESIS -->
+<div class="synthesis fade-in">
+  <div class="synth-head">Synthesis: Where the Science Actually Is</div>
+  <div class="synth-text">
+    The gut microbiome matters. That part is not in dispute. The microbiome plays real roles in immunity, metabolism, and likely mental health through the gut-brain axis. The problem is the enormous gap between that general importance and the specific, actionable claims being sold to consumers right now.<br><br>
+    <strong>What the field can say with confidence:</strong> Dietary diversity, especially plant food diversity, associates with greater microbial diversity. Antibiotics cause measurable, lasting disruption. Fermented foods increased both microbial diversity and reduced inflammatory markers in a controlled trial. FMT works for C. difficile. These are genuine, evidence-based findings.<br><br>
+    <strong>What the field cannot yet say:</strong> What a healthy microbiome looks like. Which specific foods reliably produce which specific bacteria in which specific people. Whether any of those bacterial shifts causally produce health outcomes rather than simply correlating with them. No researcher, no company, and no test can tell you that your microbiome is "dysbiotic" in a clinically meaningful way, or that a specific supplement will fix it.<br><br>
+    <strong>The TMAO lesson is instructive.</strong> A plausible mechanism, lots of observational associations, wide media coverage, and then Mendelian randomization finds no causal link in humans. The gut microbiome field is full of stories at the stage just before the MR data comes in. The research is real and evolving. The supplements are running decades ahead of it.<br><br>
+    The honest advice: eat varied whole foods, avoid unnecessary antibiotics, eat fermented foods if you enjoy them, and treat any product claiming to "optimize your microbiome" with the same skepticism you would apply to any claim not yet validated in properly controlled human trials.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics</div>
+  <div class="footer-refs">
+    Dahl et al. British Journal of Nutrition 2020 · "Diet and the Gut Microbiome: From Hype to Hypothesis"<br>
+    Walker and Hoyles, Nature Microbiology 2023 · "Human Microbiome Myths and Misconceptions"<br>
+    Joos et al. Nature Reviews Microbiology 2024 · "Examining the Healthy Human Microbiome Concept"<br>
+    Porcari et al. Lancet Gastroenterology 2025 · International Consensus on Microbiome Testing<br>
+    Fackelmann et al. Nature Microbiology 2025 · n=21,561 diet-microbiome cohort<br>
+    Canyelles et al. IJMS 2023 · TMAO and atherosclerotic CVD review<br>
+    Sonnenburg et al. Cell 2021 · High-fiber vs. fermented food RCT
+  </div>
+</div>
+</div>
+
+<script>
+// PARTICLES
+(function(){
+  const c=document.getElementById('particles');
+  ['rgba(45,212,191,0.28)','rgba(245,166,35,0.2)','rgba(45,212,191,0.18)'].forEach(col=>{
+    for(let j=0;j<6;j++){
+      const p=document.createElement('div');p.className='particle';
+      const s=Math.random()*3+2;
+      p.style.cssText=`width:${s}px;height:${s}px;background:${col};left:${Math.random()*100}%;bottom:-10px;animation-duration:${Math.random()*14+10}s;animation-delay:${Math.random()*14}s`;
+      c.appendChild(p);
+    }
+  });
+})();
+
+// HERO BARS
+setTimeout(()=>{
+  ['hb1','hb2','hb3'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.style.width=el.dataset.w+'%';
+  });
+},400);
+
+// ANIMATE PUB BARS ON SCROLL
+function animatePubBars(){
+  document.querySelectorAll('.pub-fill[data-width]').forEach((el,i)=>{
+    setTimeout(()=>{el.style.width=el.dataset.width+'%';},i*100+50);
+  });
+}
+
+// INTERSECTION OBSERVER
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    if(el.classList.contains('fade-in'))el.classList.add('vis');
+    if(el.id==='pubChart'||el.querySelector&&el.querySelector('#pubChart')){
+      animatePubBars();
+    }
+    io.unobserve(el);
+  });
+},{threshold:0.06});
+
+document.querySelectorAll('.fade-in,.sec').forEach(el=>io.observe(el));
+document.getElementById('pubChart')&&io.observe(document.getElementById('pubChart'));
+</script>
+</body>
+</html>
