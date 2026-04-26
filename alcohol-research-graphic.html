@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alcohol and Health: What the Evidence Actually Shows - Origin Symmetrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0e; --bg2:#111118; --bg3:#17171f; --bg4:#1c1c28;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13);
+  --text:#edeae3; --text2:rgba(237,234,227,0.7); --text3:rgba(237,234,227,0.38);
+  --red:#f05252; --red-dim:rgba(240,82,82,0.09); --red-b:rgba(240,82,82,0.22);
+  --amber:#f5a623; --amber-dim:rgba(245,166,35,0.1); --amber-b:rgba(245,166,35,0.22);
+  --green:#4ede8a; --green-dim:rgba(78,222,138,0.09); --green-b:rgba(78,222,138,0.22);
+  --blue:#60a5fa; --blue-dim:rgba(96,165,250,0.1); --blue-b:rgba(96,165,250,0.22);
+  --teal:#2dd4bf; --teal-dim:rgba(45,212,191,0.1); --teal-b:rgba(45,212,191,0.22);
+  --purple:#c084fc; --purple-dim:rgba(192,132,252,0.1); --purple-b:rgba(192,132,252,0.22);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);padding:52px 20px 0}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%,rgba(240,82,82,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 70% at 10% 80%,rgba(245,166,35,0.05) 0%,transparent 60%)}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;animation:pdrift linear infinite;opacity:0}
+@keyframes pdrift{0%{transform:translateY(100%);opacity:0}10%{opacity:1}90%{opacity:.3}100%{transform:translateY(-20px) translateX(15px);opacity:0}}
+
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+.hero-tag::before{content:'';display:inline-block;width:20px;height:1px;background:var(--red)}
+
+h1{font-family:'Fraunces',serif;font-size:clamp(1.9rem,5.5vw,3.4rem);font-weight:900;line-height:1.05;letter-spacing:-0.025em;margin-bottom:12px}
+h1 em{font-style:italic;color:var(--red)}
+h1 strong{color:var(--amber)}
+.hero-sub{font-size:0.9rem;color:var(--text2);max-width:620px;margin-bottom:32px;line-height:1.78}
+
+/* VERDICT STRIP */
+.verdict-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:rgba(255,255,255,0.05);border-radius:8px 8px 0 0;overflow:hidden;margin-top:0}
+.vcard{background:var(--bg2);padding:16px 15px}
+.vcard-label{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px}
+.vcard-claim{font-size:0.78rem;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:4px}
+.vcard-stat{font-family:'IBM Plex Mono',monospace;font-size:0.46rem;color:var(--text3);line-height:1.5}
+.vcard-bar{height:2px;border-radius:2px;margin-top:12px;background:rgba(255,255,255,0.06);overflow:hidden}
+.vcard-bar-fill{height:100%;border-radius:2px;width:0;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)}
+.vc-red .vcard-label{color:var(--red)} .vc-red .vcard-bar-fill{background:var(--red)}
+.vc-amber .vcard-label{color:var(--amber)} .vc-amber .vcard-bar-fill{background:var(--amber)}
+.vc-green .vcard-label{color:var(--green)} .vc-green .vcard-bar-fill{background:var(--green)}
+
+.hero-note{background:rgba(255,255,255,0.04);border-top:1px solid var(--border);border-radius:0 0 8px 8px;padding:12px 16px;display:flex;gap:10px;align-items:flex-start}
+.hero-note-icon{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--amber);flex-shrink:0;padding-top:1px}
+.hero-note-text{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);line-height:1.6;letter-spacing:0.03em}
+.hero-note-text strong{color:var(--text2)}
+
+/* LAYOUT */
+.content{max-width:860px;margin:0 auto;padding:0 20px 80px}
+.sec{margin-top:52px}
+.sec-hdr{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:3px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:3px}
+.sn-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
+.sn-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
+.sn-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
+.sn-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-b)}
+.sn-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)}
+.sn-p{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-b)}
+.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.05rem,2.8vw,1.4rem);font-weight:700;line-height:1.2;margin-bottom:3px}
+.sec-src{font-family:'IBM Plex Mono',monospace;font-size:0.51rem;color:var(--text3);letter-spacing:0.05em;line-height:1.5}
+.prose{font-size:0.87rem;color:var(--text2);line-height:1.78;margin-bottom:14px}
+.prose strong{color:var(--text);font-weight:600}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card.cr::before{background:linear-gradient(90deg,var(--red),transparent 70%)}
+.card.ca::before{background:linear-gradient(90deg,var(--amber),transparent 70%)}
+.card.cg::before{background:linear-gradient(90deg,var(--green),transparent 70%)}
+.card.cb::before{background:linear-gradient(90deg,var(--blue),transparent 70%)}
+.card.ct::before{background:linear-gradient(90deg,var(--teal),transparent 70%)}
+.card.cp::before{background:linear-gradient(90deg,var(--purple),transparent 70%)}
+.card-title{font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.card-src{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);letter-spacing:0.05em;margin-bottom:14px}
+
+/* FTAGS */
+.ftag{display:block;width:fit-content;font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.08em;margin-bottom:7px}
+.ft-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
+.ft-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
+.ft-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
+.ft-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-b)}
+.ft-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)}
+.ft-p{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-b)}
+
+/* FINDINGS */
+.finding{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px 15px;margin-bottom:8px;font-size:0.82rem;line-height:1.68;color:var(--text2)}
+.finding:last-child{margin-bottom:0}
+.finding strong{color:var(--text);font-weight:600}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:14px 16px;margin-bottom:12px;font-size:0.84rem;line-height:1.75;color:var(--text)}
+.callout strong{font-weight:600}
+.callout-head{display:block;font-family:'IBM Plex Mono',monospace;font-size:0.53rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:7px;font-weight:600}
+.co-r{background:var(--red-dim);border-left:3px solid var(--red)}.co-r .callout-head{color:var(--red)}
+.co-a{background:var(--amber-dim);border-left:3px solid var(--amber)}.co-a .callout-head{color:var(--amber)}
+.co-g{background:var(--green-dim);border-left:3px solid var(--green)}.co-g .callout-head{color:var(--green)}
+.co-b{background:var(--blue-dim);border-left:3px solid var(--blue)}.co-b .callout-head{color:var(--blue)}
+.co-t{background:var(--teal-dim);border-left:3px solid var(--teal)}.co-t .callout-head{color:var(--teal)}
+
+/* SVG CHART WRAPPERS */
+.chart-wrap{width:100%;margin-bottom:10px;overflow:hidden;border-radius:6px;background:var(--bg3)}
+.chart-wrap svg{display:block;width:100%;height:auto}
+.chart-note{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);margin-top:6px;line-height:1.6}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.leg{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--text2);letter-spacing:0.04em}
+.leg-dot{width:10px;height:3px;border-radius:2px;flex-shrink:0}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+
+/* MISCLASS EXPLAINER */
+.misclass{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,0.05);margin-bottom:12px}
+.mc-col{background:var(--bg2);padding:16px}
+.mc-col-hdr{font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.mc-col-null .mc-col-hdr{color:var(--red);border-color:rgba(240,82,82,0.2)}
+.mc-col-bias .mc-col-hdr{color:var(--amber);border-color:rgba(245,166,35,0.2)}
+.mc-item{font-size:0.78rem;color:var(--text2);line-height:1.55;margin-bottom:8px;padding-left:10px;position:relative}
+.mc-item::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%}
+.mc-col-null .mc-item::before{background:var(--red)}
+.mc-col-bias .mc-item::before{background:var(--amber)}
+.mc-item:last-child{margin-bottom:0}
+.mc-item strong{color:var(--text);font-weight:600}
+
+/* DOSE TABLE */
+.dose-table{width:100%;border-collapse:collapse;font-size:0.78rem}
+.dose-table th{background:var(--bg3);color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:0.5rem;text-transform:uppercase;letter-spacing:0.1em;padding:9px 11px;text-align:left;border-bottom:1px solid var(--border2)}
+.dose-table td{padding:9px 11px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.5}
+.dose-table tr:last-child td{border-bottom:none}
+.dose-table td:first-child{color:var(--text);font-weight:600}
+.dbadge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.48rem;padding:2px 6px;border-radius:3px;font-weight:600;white-space:nowrap}
+
+/* VERDICT TABLE */
+.verdict-table{width:100%;border-collapse:collapse;font-size:0.78rem}
+.verdict-table th{background:var(--bg3);color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:0.5rem;text-transform:uppercase;letter-spacing:0.1em;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border2)}
+.verdict-table td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.5}
+.verdict-table tr:last-child td{border-bottom:none}
+.verdict-table td:first-child{color:var(--text);font-weight:500}
+.vb{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.5rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.05em;white-space:nowrap}
+
+/* VERDICT CARDS — mobile stacked alternative */
+.verdict-cards{display:none;flex-direction:column;gap:8px}
+.vc-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px 14px}
+.vc-card-claim{font-size:0.83rem;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3}
+.vc-card-verdict{margin-bottom:8px}
+.vc-card-evidence{font-size:0.78rem;color:var(--text2);line-height:1.6}
+
+@media(max-width:580px){
+  .verdict-table-wrap{display:none}
+  .verdict-cards{display:flex}
+}
+
+/* SYNTHESIS */
+.synthesis{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:26px 22px;margin-top:40px}
+.synth-head{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+.synth-text{font-size:0.88rem;line-height:1.82;color:var(--text2)}
+.synth-text strong{color:var(--text);font-weight:600}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.vis{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding-top:16px;margin-top:28px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.footer-brand{font-family:'Fraunces',serif;font-size:0.82rem;font-weight:700;color:var(--text3)}
+.footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;color:var(--text3);line-height:1.8;text-align:right}
+
+/* RESPONSIVE */
+@media(max-width:580px){
+  .verdict-strip{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .misclass{grid-template-columns:1fr}
+  .hero{padding:38px 16px 0}
+  .content{padding:0 16px 60px}
+  .footer-refs{text-align:left}
+  .dose-table,.verdict-table{font-size:0.72rem}
+  .dose-table th,.dose-table td,.verdict-table th,.verdict-table td{padding:8px 9px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Evidence-Based Nutrition · Origin Symmetrics</div>
+    <h1>Alcohol and Health:<br><em>The J-Curve</em> Was<br><strong>Always a Lie</strong></h1>
+    <p class="hero-sub">For 30 years, studies showed moderate drinkers lived longer than abstainers. That finding has now been systematically dismantled. The protective signal was a statistical artifact. Here is what the corrected evidence actually shows on mortality, cancer, and the wine polyphenol myth.</p>
+
+    <div class="verdict-strip">
+      <div class="vcard vc-red">
+        <div class="vcard-label">All-cause mortality</div>
+        <div class="vcard-claim">No protective benefit at any dose after bias correction</div>
+        <div class="vcard-stat">107 cohort studies · 4.8M participants · Zhao et al. JAMA 2023</div>
+        <div class="vcard-bar"><div class="vcard-bar-fill" id="vb1" data-w="100"></div></div>
+      </div>
+      <div class="vcard vc-red">
+        <div class="vcard-label">Cancer risk</div>
+        <div class="vcard-claim">No safe threshold. Linear dose-response from the first drink.</div>
+        <div class="vcard-stat">IARC Group 1 carcinogen · 7 cancer types · 741K cases/yr globally</div>
+        <div class="vcard-bar"><div class="vcard-bar-fill" id="vb2" data-w="100"></div></div>
+      </div>
+      <div class="vcard vc-amber">
+        <div class="vcard-label">Cardioprotection claim</div>
+        <div class="vcard-claim">Null or harmful in Mendelian randomization. Confounding explains the J-curve.</div>
+        <div class="vcard-stat">MR meta-analyses across 261K+ individuals · Holmes et al. BMJ 2014</div>
+        <div class="vcard-bar"><div class="vcard-bar-fill" id="vb3" data-w="100"></div></div>
+      </div>
+    </div>
+    <div class="hero-note">
+      <div class="hero-note-icon">◈</div>
+      <div class="hero-note-text"><strong>What "moderation" actually looks like:</strong> The threshold where mortality risk becomes statistically significant is 25g/day for women and 45g/day for men. Occasional drinking of a few drinks a week sits below those thresholds. The risk is real but small at low intake. The WHO "no safe level" statement is technically correct for cancer, but does not imply that rare, low-dose drinking carries meaningful population-level risk.</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- S1: THE J-CURVE -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-r">01</div>
+    <div>
+      <div class="sec-title"><span style="font-family:'IBM Plex Mono',monospace;font-size:0.85em;font-weight:700">J</span>-Curve: 30 Years of a Statistical Artifact</div>
+      <div class="sec-src">Zhao et al. JAMA Network Open 2023 · Stockwell et al. J Stud Alcohol Drugs 2016 · 107 cohort studies · 4,838,825 participants</div>
+    </div>
+  </div>
+  <p class="prose">The J-shaped risk curve suggested moderate drinkers had lower all-cause mortality than abstainers, with risk rising at heavy intake. This became embedded in public health messaging for decades. A 2023 meta-analysis of 107 cohort studies containing 4.8 million participants showed what happens when you actually correct for the biases baked into those prior studies.</p>
+
+  <!-- SVG: J-CURVE BEFORE vs AFTER -->
+  <div class="card cr">
+    <div class="card-title">The J-Curve: What Studies Found vs. What Was Actually There</div>
+    <div class="card-src">Unadjusted vs. bias-corrected relative risk of all-cause mortality by daily alcohol intake · Zhao et al. JAMA Network Open 2023</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" id="jcurve-svg">
+        <defs>
+          <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f05252;stop-opacity:0.3"/>
+            <stop offset="100%" style="stop-color:#f05252;stop-opacity:0.05"/>
+          </linearGradient>
+          <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.2"/>
+            <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.04"/>
+          </linearGradient>
+        </defs>
+
+        <!-- BG -->
+        <rect width="600" height="280" fill="#17171f"/>
+
+        <!-- Grid -->
+        <line x1="60" y1="20" x2="60" y2="240" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <line x1="60" y1="240" x2="570" y2="240" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+        <!-- Y axis gridlines and labels -->
+        <!-- RR = 0.7 → y=240-(0.7-0.6)/(1.8-0.6)*200 = 240-200*(0.1/1.2) = 240-16.7 = 223 -->
+        <!-- Scale: y = 240 - (rr - 0.6)/(1.8-0.6) * 200 -->
+        <line x1="60" y1="240" x2="570" y2="240" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="244" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="9" text-anchor="end">0.6</text>
+
+        <line x1="60" y1="207" x2="570" y2="207" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="211" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="9" text-anchor="end">0.8</text>
+
+        <!-- RR=1.0 null line -->
+        <line x1="60" y1="173" x2="570" y2="173" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <text x="52" y="177" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" text-anchor="end">1.0</text>
+        <text x="570" y="168" fill="rgba(255,255,255,0.3)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="end">null</text>
+
+        <line x1="60" y1="140" x2="570" y2="140" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="144" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="9" text-anchor="end">1.2</text>
+
+        <line x1="60" y1="107" x2="570" y2="107" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="111" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="9" text-anchor="end">1.4</text>
+
+        <line x1="60" y1="73" x2="570" y2="73" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="77" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="9" text-anchor="end">1.6</text>
+
+        <!-- X axis labels: 0, 12.5, 25, 37.5, 50, 62.5, 75g ethanol/day -->
+        <!-- x = 60 + (g/75)*510 -->
+        <text x="60" y="257" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">0</text>
+        <text x="145" y="257" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">12.5g</text>
+        <text x="230" y="257" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">25g</text>
+        <text x="315" y="257" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">37.5g</text>
+        <text x="400" y="257" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">50g</text>
+        <text x="485" y="257" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">62.5g</text>
+        <text x="570" y="257" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">75g</text>
+        <text x="315" y="272" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Daily ethanol (g/day)</text>
+
+        <!-- Y axis label -->
+        <text x="12" y="140" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle" transform="rotate(-90,12,140)">Relative Risk (all-cause mortality)</text>
+
+        <!-- ─── UNADJUSTED J-CURVE (blue) ─── -->
+        <!-- Points: 0g→1.0, 6g→0.88, 12.5g→0.82, 25g→0.85, 37.5g→0.95, 50g→1.12, 62.5g→1.35, 75g→1.65 -->
+        <!-- y = 240 - (rr-0.6)/1.2 * 200 -->
+        <!-- (1.0)→173, (0.88)→193, (0.82)→203, (0.85)→198, (0.95)→183, (1.12)→155, (1.35)→125, (1.65)→75 -->
+        <path d="M60,173 C90,165 115,193 145,203 S200,200 230,198 S290,185 315,183 S370,158 400,155 S455,130 485,125 S545,80 570,75"
+          fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+        <!-- CI band -->
+        <path d="M60,173 C90,158 115,183 145,193 S200,190 230,188 S290,175 315,173 S370,148 400,142 S455,118 485,112 S545,68 570,62
+                 L570,88 S545,92 485,138 S430,148 400,168 S350,198 315,193 S275,198 230,208 S185,210 145,213 S110,203 90,178 Z"
+          fill="url(#blueGrad)" stroke="none"/>
+
+        <!-- J-curve annotation -->
+        <line x1="145" y1="203" x2="145" y2="257" stroke="rgba(96,165,250,0.2)" stroke-width="0.5" stroke-dasharray="3,3"/>
+        <text x="148" y="235" fill="rgba(96,165,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="7">J-curve</text>
+        <text x="148" y="243" fill="rgba(96,165,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="7">dip</text>
+
+        <!-- ─── BIAS-CORRECTED (red) ─── -->
+        <!-- Near-flat from 0 to 25g (RR ~0.97-1.02), then rising: 25g→1.04, 37.5g→1.12, 50g→1.25, 62.5g→1.45, 75g→1.72 -->
+        <!-- (0.97)→178, (1.0)→173, (1.02)→170, (1.04)→167, (1.12)→155, (1.25)→138, (1.45)→113, (1.72)→80 -->
+        <path d="M60,178 C90,175 115,173 145,172 S200,170 230,170 S280,167 315,167 S360,155 400,138 S455,118 485,113 S545,85 570,80"
+          fill="none" stroke="#f05252" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- CI band -->
+        <path d="M60,178 C90,168 115,165 145,162 S200,160 230,160 S280,157 315,158 S360,145 400,128 S455,108 485,100 S545,72 570,65
+                 L570,95 S545,98 485,126 S430,148 400,148 S350,165 315,177 S275,180 230,180 S185,182 145,182 S110,182 90,182 Z"
+          fill="url(#redGrad)" stroke="none"/>
+
+        <!-- threshold markers -->
+        <line x1="230" y1="20" x2="230" y2="240" stroke="rgba(240,82,82,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="233" y="32" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">Women</text>
+        <text x="233" y="41" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">25g/day</text>
+        <text x="233" y="50" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="6">risk rises</text>
+
+        <line x1="348" y1="20" x2="348" y2="240" stroke="rgba(245,166,35,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="351" y="32" fill="rgba(245,166,35,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">Men</text>
+        <text x="351" y="41" fill="rgba(245,166,35,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">45g/day</text>
+        <text x="351" y="50" fill="rgba(245,166,35,0.5)" font-family="IBM Plex Mono,monospace" font-size="6">risk rises</text>
+      </svg>
+    </div>
+    <div class="chart-legend">
+      <div class="leg"><div class="leg-dot" style="background:#60a5fa"></div>Unadjusted (shows J-curve)</div>
+      <div class="leg"><div class="leg-dot" style="background:#f05252"></div>Bias-corrected (lifetime abstainers as reference)</div>
+    </div>
+    <div class="chart-note">When former drinkers and sick quitters are removed from the abstainer reference group and study quality covariates are controlled for, the J-curve disappears. The apparent protective dip at low doses was a methodological artifact, not a biological effect.</div>
+  </div>
+
+  <!-- MISCLASSIFICATION EXPLAINER -->
+  <div class="misclass">
+    <div class="mc-col mc-col-null">
+      <div class="mc-col-hdr">What the bad studies did</div>
+      <div class="mc-item"><strong>Mixed former drinkers into the "abstainer" group.</strong> People who quit drinking often quit because they got sick. This makes abstainers look artificially unhealthy.</div>
+      <div class="mc-item"><strong>Used older cohorts.</strong> In older populations, the abstainer group fills up with sick quitters over time, inflating the apparent benefit of moderate drinking.</div>
+      <div class="mc-item"><strong>Compared drinkers to current abstainers,</strong> not lifetime abstainers. Occasional drinkers who rarely drink were counted as "abstainers," again polluting the reference group.</div>
+    </div>
+    <div class="mc-col mc-col-bias">
+      <div class="mc-col-hdr">What the corrected analysis found</div>
+      <div class="mc-item"><strong>86 of 107 studies</strong> included former or occasional drinkers in the abstainer reference group. Only 21 were fully clean.</div>
+      <div class="mc-item"><strong>In younger cohorts</strong> (enrolled under 50, less contaminated by sick quitters), the J-curve protection disappeared entirely and risk was monotonically linear.</div>
+      <div class="mc-item"><strong>Once corrected,</strong> low-volume drinking showed no significant reduction in all-cause mortality. The benefit was statistical noise created by a biased comparison group.</div>
+    </div>
+  </div>
+
+  <div class="callout co-r">
+    <span class="callout-head">What "Moderate" Actually Means in Grams</span>
+    In the fully adjusted models, drinking below 25g/day in women and below 45g/day in men showed no statistically significant mortality increase. One US standard drink is 14g of ethanol. So the women's threshold is roughly 1.5 drinks per day and the men's threshold is roughly 3 drinks per day. Occasional drinking of a few drinks per week sits comfortably below either threshold from a mortality standpoint. For cancer, there is no floor at any dose, but the absolute risk increase at very low consumption is genuinely small and not meaningfully detectable in any real study.
+  </div>
+</div>
+
+<!-- S2: MENDELIAN RANDOMIZATION -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-b">02</div>
+    <div>
+      <div class="sec-title">Mendelian Randomization: The Closest Thing to an RCT We Have</div>
+      <div class="sec-src">Holmes et al. BMJ 2014 · Kasseh et al. IJE 2024 · Million Veteran Program MR study · 261,991 individuals</div>
+    </div>
+  </div>
+  <p class="prose">Mendelian randomization uses genetic variants that naturally predict how much someone drinks as a proxy for a randomized experiment. People who carry certain variants of the ADH1B gene metabolize alcohol faster, find it less pleasant, and drink less as a result. This is not a choice they made, so it avoids the lifestyle confounding that plagues observational studies. The results across multiple large MR studies are consistent.</p>
+
+  <!-- SVG: MR FOREST PLOT -->
+  <div class="card cb">
+    <div class="card-title">Mendelian Randomization Studies: Alcohol and Cardiovascular / Mortality Outcomes</div>
+    <div class="card-src">Causal effect estimates from genetic instrumental variable analyses · point estimates with 95% CI · HR or OR per unit increase in alcohol consumption</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="300" fill="#17171f"/>
+
+        <!-- Null line at x=320 (OR=1.0) -->
+        <line x1="320" y1="15" x2="320" y2="270" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <text x="320" y="10" fill="rgba(255,255,255,0.3)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">null</text>
+
+        <!-- Axis labels -->
+        <text x="100" y="285" fill="rgba(237,234,227,0.28)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">0.7</text>
+        <text x="180" y="285" fill="rgba(237,234,227,0.28)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">0.85</text>
+        <text x="320" y="285" fill="rgba(237,234,227,0.28)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">1.0</text>
+        <text x="430" y="285" fill="rgba(237,234,227,0.28)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">1.2</text>
+        <text x="530" y="285" fill="rgba(237,234,227,0.28)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">1.4</text>
+        <text x="300" y="297" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">OR / HR (genetic alcohol vs. outcome)</text>
+
+        <!-- Benefit label -->
+        <text x="105" y="25" fill="rgba(78,222,138,0.4)" font-family="IBM Plex Mono,monospace" font-size="7">benefit</text>
+        <text x="430" y="25" fill="rgba(240,82,82,0.4)" font-family="IBM Plex Mono,monospace" font-size="7">harm</text>
+
+        <!-- Studies: [name, type, OR, lo, hi, sig, color] -->
+        <!-- Scale: x = 100 + (val-0.7)/(1.5-0.7)*460 -->
+        <!-- OR=1.0 -> 100+(0.3/0.8)*460 = 100+172.5 = 272.5 ... let me use simpler mapping -->
+        <!-- x = 100 + (or - 0.7) * 300 where 0.7->100, 1.0->190, 1.2->250, 1.5->340 -->
+        <!-- Actually: let 1.0 = 320 (center), scale = 230px per unit -->
+        <!-- x = 320 + (or-1.0)*230 -->
+
+        <!-- Row 1: Holmes 2014 CHD: OR 0.98, lo 0.95, hi 1.01 (null) -->
+        <text x="5" y="56" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">Holmes 2014</text>
+        <text x="5" y="67" fill="rgba(237,234,227,0.38)" font-family="IBM Plex Mono,monospace" font-size="7">CHD · MR · 261,991 individuals</text>
+        <line x1="233" y1="57" x2="347" y2="57" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <line x1="233" y1="51" x2="233" y2="63" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <line x1="347" y1="51" x2="347" y2="63" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <polygon points="316,51 325,57 316,63 307,57" fill="#60a5fa" filter="url(#glow-b)"/>
+        <text x="355" y="61" fill="#60a5fa" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">OR 0.98 (ns)</text>
+
+        <!-- Row 2: Kasseh 2024 All-cause mortality: HR 1.14, lo 1.06, hi 1.22 (sig harm) -->
+        <text x="5" y="101" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">Kasseh 2024</text>
+        <text x="5" y="112" fill="rgba(237,234,227,0.38)" font-family="IBM Plex Mono,monospace" font-size="7">All-cause mortality · nonlinear MR · IJE</text>
+        <line x1="338" y1="102" x2="371" y2="102" stroke="rgba(240,82,82,0.9)" stroke-width="2"/>
+        <line x1="338" y1="96" x2="338" y2="108" stroke="rgba(240,82,82,0.9)" stroke-width="1.5"/>
+        <line x1="371" y1="96" x2="371" y2="108" stroke="rgba(240,82,82,0.9)" stroke-width="1.5"/>
+        <polygon points="352,96 361,102 352,108 343,102" fill="#f05252" opacity="1"/>
+        <circle cx="352" cy="102" r="2" fill="white" opacity="0.7"/>
+        <text x="378" y="106" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">HR 1.14*</text>
+
+        <!-- Row 3: MVP study (Fang 2024) CHD: null -->
+        <text x="5" y="146" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">MVP Study</text>
+        <text x="5" y="157" fill="rgba(237,234,227,0.38)" font-family="IBM Plex Mono,monospace" font-size="7">CHD + T2D · multi-ancestry MR · null</text>
+        <line x1="251" y1="147" x2="381" y2="147" stroke="rgba(96,165,250,0.7)" stroke-width="1.5"/>
+        <line x1="251" y1="141" x2="251" y2="153" stroke="rgba(96,165,250,0.7)" stroke-width="1.5"/>
+        <line x1="381" y1="141" x2="381" y2="153" stroke="rgba(96,165,250,0.7)" stroke-width="1.5"/>
+        <polygon points="316,141 325,147 316,153 307,147" fill="#60a5fa"/>
+        <text x="388" y="151" fill="#60a5fa" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">OR 1.00 (ns)</text>
+
+        <!-- Row 4: Stroke MR: OR 1.27 harmful -->
+        <text x="5" y="191" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">Larsson 2020</text>
+        <text x="5" y="202" fill="rgba(237,234,227,0.38)" font-family="IBM Plex Mono,monospace" font-size="7">Stroke · MR · Circ Genomic Precis Med</text>
+        <line x1="348" y1="192" x2="388" y2="192" stroke="rgba(240,82,82,0.9)" stroke-width="2"/>
+        <line x1="348" y1="186" x2="348" y2="198" stroke="rgba(240,82,82,0.9)" stroke-width="1.5"/>
+        <line x1="388" y1="186" x2="388" y2="198" stroke="rgba(240,82,82,0.9)" stroke-width="1.5"/>
+        <polygon points="362,186 371,192 362,198 353,192" fill="#f05252"/>
+        <circle cx="362" cy="192" r="2" fill="white" opacity="0.7"/>
+        <text x="395" y="196" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">OR 1.27*</text>
+
+        <!-- Row 5: Peripheral artery disease: OR 3.05 -->
+        <text x="5" y="236" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">Larsson 2020</text>
+        <text x="5" y="247" fill="rgba(237,234,227,0.38)" font-family="IBM Plex Mono,monospace" font-size="7">Periph. artery disease · MR · strong signal</text>
+        <!-- CI would be off chart, show bar to edge -->
+        <line x1="368" y1="237" x2="540" y2="237" stroke="rgba(240,82,82,0.9)" stroke-width="2"/>
+        <line x1="368" y1="231" x2="368" y2="243" stroke="rgba(240,82,82,0.9)" stroke-width="1.5"/>
+        <polygon points="400,231 409,237 400,243 391,237" fill="#f05252"/>
+        <circle cx="400" cy="237" r="2" fill="white" opacity="0.7"/>
+        <text x="545" y="241" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">OR 3.05*</text>
+
+        <!-- dividers -->
+        <line x1="0" y1="78" x2="600" y2="78" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <line x1="0" y1="123" x2="600" y2="123" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <line x1="0" y1="168" x2="600" y2="168" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <line x1="0" y1="213" x2="600" y2="213" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+      </svg>
+    </div>
+    <div class="chart-legend">
+      <div class="leg"><div class="leg-dot" style="background:#60a5fa"></div>Null result (CI crosses 1.0)</div>
+      <div class="leg"><div class="leg-dot" style="background:#f05252"></div>Significant harm (* p&lt;0.05)</div>
+    </div>
+    <div class="chart-note">Mendelian randomization consistently finds no protective cardiovascular effect and shows linear harm for mortality and stroke. The pattern is the opposite of what observational studies suggested.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-b">Why MR is more reliable</div>
+      Genetic variants are assigned at conception, before anyone starts drinking. They cannot be confounded by diet, SES, or lifestyle choices that make moderate drinkers healthier in observational studies. The ADH1B gene variant that makes people drink less is a natural randomization experiment across millions of people.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-b">What MR cannot rule out</div>
+      MR assumes the genetic variant only affects outcomes through alcohol (no pleiotropy). ADH1B may have other effects. MR also compresses effects toward the mean, so it is best interpreted alongside, not instead of, well-designed observational data. But the direction is clear: no cardioprotection, and some cardiovascular harm.
+    </div>
+  </div>
+</div>
+
+<!-- S3: CANCER -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-r">03</div>
+    <div>
+      <div class="sec-title">Cancer: The Evidence That Does Not Have a Threshold</div>
+      <div class="sec-src">IARC Group 1 classification 1988, updated 2007 2009 · NCI Alcohol Fact Sheet · Gapstur et al. NEJM 2023 · 741,300 cancer cases/year globally</div>
+    </div>
+  </div>
+  <p class="prose">Unlike the mortality question, the alcohol-cancer relationship is not particularly contested. IARC has classified alcoholic beverages as a Group 1 carcinogen since 1988, with updates adding breast and colorectal cancer in 2007 and 2009. The mechanism is well understood. The dose-response is linear. There is no protective floor.</p>
+
+  <!-- SVG: CANCER TYPES BUBBLE -->
+  <div class="card cr">
+    <div class="card-title">Alcohol-Attributable Cancer Burden by Type (2020 Global Estimates)</div>
+    <div class="card-src">IARC Evidence Summary Brief No.6 2025 · 741,300 total alcohol-attributable cancer cases in 2020</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="240" fill="#17171f"/>
+
+        <!-- Background track bars showing relative magnitude -->
+        <!-- Esophageal: 190K = 26% of 741K -->
+        <!-- Liver: 155K = 21% -->
+        <!-- Breast: 98K = 13% -->
+        <!-- Colorectal: 100K = 13% -->
+        <!-- Oral/pharynx: 80K = 11% -->
+        <!-- Larynx: 56K = 8% -->
+        <!-- Other: 62K = 8% -->
+
+        <!-- Bar chart approach: horizontal bars -->
+        <text x="10" y="30" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Esophageal</text>
+        <rect x="160" y="18" width="350" height="18" rx="3" fill="rgba(255,255,255,0.04)"/>
+        <rect x="160" y="18" width="350" height="18" rx="3" fill="rgba(240,82,82,0.55)" class="cancer-bar" data-w="350"/>
+        <text x="518" y="30" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600">190,000</text>
+        <text x="518" y="40" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">26%</text>
+
+        <text x="10" y="64" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Liver</text>
+        <rect x="160" y="52" width="285" height="18" rx="3" fill="rgba(255,255,255,0.04)"/>
+        <rect x="160" y="52" width="285" height="18" rx="3" fill="rgba(240,82,82,0.45)" class="cancer-bar" data-w="285"/>
+        <text x="453" y="64" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600">155,000</text>
+        <text x="453" y="74" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">21%</text>
+
+        <text x="10" y="98" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Breast (F)</text>
+        <rect x="160" y="86" width="184" height="18" rx="3" fill="rgba(255,255,255,0.04)"/>
+        <rect x="160" y="86" width="184" height="18" rx="3" fill="rgba(192,132,252,0.45)" class="cancer-bar" data-w="184"/>
+        <text x="352" y="98" fill="#c084fc" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600">98,000</text>
+        <text x="352" y="108" fill="rgba(192,132,252,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">13%</text>
+
+        <text x="10" y="132" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Colorectal</text>
+        <rect x="160" y="120" width="190" height="18" rx="3" fill="rgba(255,255,255,0.04)"/>
+        <rect x="160" y="120" width="190" height="18" rx="3" fill="rgba(240,82,82,0.38)" class="cancer-bar" data-w="190"/>
+        <text x="358" y="132" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600">100,000</text>
+        <text x="358" y="142" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">14%</text>
+
+        <text x="10" y="166" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Oral / Pharynx</text>
+        <rect x="160" y="154" width="150" height="18" rx="3" fill="rgba(255,255,255,0.04)"/>
+        <rect x="160" y="154" width="150" height="18" rx="3" fill="rgba(240,82,82,0.33)" class="cancer-bar" data-w="150"/>
+        <text x="318" y="166" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600">80,000</text>
+        <text x="318" y="176" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">11%</text>
+
+        <text x="10" y="200" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">Larynx</text>
+        <rect x="160" y="188" width="105" height="18" rx="3" fill="rgba(255,255,255,0.04)"/>
+        <rect x="160" y="188" width="105" height="18" rx="3" fill="rgba(240,82,82,0.28)" class="cancer-bar" data-w="105"/>
+        <text x="273" y="200" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600">56,000</text>
+        <text x="273" y="210" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">8%</text>
+
+        <!-- Total label -->
+        <text x="300" y="232" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">741,300 total alcohol-attributable cancer cases · 4.1% of all global cancer diagnoses</text>
+      </svg>
+    </div>
+    <div class="chart-note">Breast cancer is particularly important: risk is elevated even at one drink per day in women. Most people are aware of the liver cancer link. Fewer than 20% of people asked about breast cancer name alcohol as a cause.</div>
+  </div>
+
+  <!-- MECHANISM VISUAL -->
+  <div class="card cr" style="margin-top:0">
+    <div class="card-title">How Alcohol Causes Cancer: Three Confirmed Mechanisms</div>
+    <div class="card-src">IARC Handbooks Volume 20A 2024 · NCI Alcohol and Cancer Fact Sheet · Gapstur et al. NEJM 2023</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="200" fill="#17171f"/>
+
+        <!-- Three columns -->
+        <!-- Column 1: Acetaldehyde pathway -->
+        <rect x="10" y="15" width="178" height="170" rx="6" fill="rgba(240,82,82,0.07)" stroke="rgba(240,82,82,0.2)" stroke-width="1"/>
+        <text x="99" y="36" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle" letter-spacing="0.1em" font-weight="600">ACETALDEHYDE</text>
+        <text x="99" y="58" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle">Ethanol</text>
+        <text x="99" y="72" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">ADH enzyme</text>
+        <line x1="99" y1="76" x2="99" y2="90" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arrow-r)"/>
+        <defs>
+          <marker id="arrow-r" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(240,82,82,0.7)"/>
+          </marker>
+          <marker id="arrow-a" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(245,166,35,0.7)"/>
+          </marker>
+          <marker id="arrow-p" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(192,132,252,0.7)"/>
+          </marker>
+        </defs>
+        <text x="99" y="103" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle">Acetaldehyde</text>
+        <text x="99" y="117" fill="rgba(237,234,227,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">toxic metabolite</text>
+        <line x1="99" y1="121" x2="99" y2="135" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arrow-r)"/>
+        <text x="99" y="149" fill="#f05252" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle" font-weight="600">DNA damage</text>
+        <text x="99" y="162" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">chromosomal breaks</text>
+        <text x="99" y="172" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">adduct formation</text>
+
+        <!-- Column 2: Estrogen -->
+        <rect x="211" y="15" width="178" height="170" rx="6" fill="rgba(192,132,252,0.07)" stroke="rgba(192,132,252,0.2)" stroke-width="1"/>
+        <text x="300" y="36" fill="#c084fc" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle" letter-spacing="0.1em" font-weight="600">ESTROGEN</text>
+        <text x="300" y="58" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle">Alcohol</text>
+        <text x="300" y="72" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">hepatic metabolism</text>
+        <line x1="300" y1="76" x2="300" y2="90" stroke="rgba(192,132,252,0.5)" stroke-width="1.5" marker-end="url(#arrow-p)"/>
+        <text x="300" y="103" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle">Elevated estrogen</text>
+        <text x="300" y="117" fill="rgba(237,234,227,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">circulating levels raised</text>
+        <line x1="300" y1="121" x2="300" y2="135" stroke="rgba(192,132,252,0.5)" stroke-width="1.5" marker-end="url(#arrow-p)"/>
+        <text x="300" y="149" fill="#c084fc" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle" font-weight="600">Breast cancer</text>
+        <text x="300" y="162" fill="rgba(192,132,252,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">hormone receptor</text>
+        <text x="300" y="172" fill="rgba(192,132,252,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">positive tumors</text>
+
+        <!-- Column 3: Gut microbiome -->
+        <rect x="412" y="15" width="178" height="170" rx="6" fill="rgba(245,166,35,0.07)" stroke="rgba(245,166,35,0.2)" stroke-width="1"/>
+        <text x="501" y="36" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle" letter-spacing="0.1em" font-weight="600">GUT BARRIER</text>
+        <text x="501" y="58" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle">Alcohol</text>
+        <text x="501" y="72" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">microbiome disruption</text>
+        <line x1="501" y1="76" x2="501" y2="90" stroke="rgba(245,166,35,0.5)" stroke-width="1.5" marker-end="url(#arrow-a)"/>
+        <text x="501" y="103" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle">Gut permeability</text>
+        <text x="501" y="117" fill="rgba(237,234,227,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">leaky gut + endotoxins</text>
+        <line x1="501" y1="121" x2="501" y2="135" stroke="rgba(245,166,35,0.5)" stroke-width="1.5" marker-end="url(#arrow-a)"/>
+        <text x="501" y="149" fill="#f5a623" font-family="DM Sans,sans-serif" font-size="10" text-anchor="middle" font-weight="600">Inflammation</text>
+        <text x="501" y="162" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">colorectal + liver</text>
+        <text x="501" y="172" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">cancer promotion</text>
+      </svg>
+    </div>
+    <div class="chart-note">All three mechanisms are biologically reversible upon cessation. The IARC evidence review found strong evidence that acetaldehyde damage, DNA alterations, and gut permeability all decrease within months to years after stopping drinking.</div>
+  </div>
+
+  <div class="callout co-r">
+    <span class="callout-head">The Breast Cancer Finding Deserves Its Own Callout</span>
+    Women who have just one drink per day have a measurably higher risk of breast cancer than those who drink less than one per week. Awareness of this is shockingly low: only 10-20% of people identify alcohol as a cause of breast cancer when asked, compared to 40% who correctly identify the liver cancer link. This is not a heavy-drinking problem. It is a light-drinking problem.
+  </div>
+</div>
+
+<!-- S4: THE UK BIOBANK PAPER -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-a">04</div>
+    <div>
+      <div class="sec-title">Shao et al. 2024 (UK Biobank): A Study with a Useful Finding and a Big Caveat</div>
+      <div class="sec-src">Shao et al. Medicine 2024 · 502,490 UK Biobank participants · 11.9 year follow-up · prospective cohort design</div>
+    </div>
+  </div>
+  <p class="prose">This is a large, well-powered study with a useful finding buried inside it. It found a U-shaped relationship between wine, beer, and champagne and CVD risk, with a protective signal below about 10-11 g/day. It also found that spirits showed no U-curve at all, only monotonically rising harm. Here is why you were right to be skeptical.</p>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-a">The spirits finding is the most honest data</div>
+      Spirits drinkers are demographically different from wine drinkers. Wine drinkers in the UK Biobank skew toward higher income, better diet, and more Mediterranean-adjacent lifestyles. Spirits drinkers skew the opposite way. The fact that spirits showed no J-curve at all, while wine and champagne did, suggests the protective signal tracks the person drinking, not the drink.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">Same design flaw Zhao corrected for</div>
+      The Shao study is an observational cohort and does not appear to use lifetime abstainers as the reference group. This is exactly the drinker misclassification error that inflated the J-curve in the studies Zhao 2023 corrected. The U-shaped CVD finding for wine is almost certainly the healthy user effect, not a biological signal from alcohol itself.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">Cancer finding is the most useful part</div>
+      The paper found that none of the beverage types, at any dose, showed a protective effect on cancer risk. Even within a study that found a CVD J-curve, the cancer dose-response was entirely harmful with no protective floor. This is consistent with the IARC consensus.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">Safe dose thresholds it quotes are not validated</div>
+      The paper concludes that less than 11 g/day for men and less than 10 g/day for women is a "safe dose." These numbers come from the threshold below which the U-curve dips. Given the methodological limitations, you should not interpret these as meaningful clinical thresholds. They are descriptive statistical artifacts from a biased analysis.
+    </div>
+  </div>
+</div>
+
+<!-- S5: THE WINE / RESVERATROL MYTH -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-g">05</div>
+    <div>
+      <div class="sec-title">Wine's Polyphenols Are Not Worth the Alcohol</div>
+      <div class="sec-src">Linus Pauling Institute resveratrol review · Drago et al. Food Frontiers 2024 · Bioavailability studies in 25 humans (Guerrero et al.)</div>
+    </div>
+  </div>
+  <p class="prose">Red wine's apparent cardiovascular benefits were long attributed to resveratrol, a polyphenol in grape skins. This story has not survived rigorous testing. The dose problem alone dismantles it, before you even get to bioavailability.</p>
+
+  <!-- SVG: Resveratrol dose gap visualization -->
+  <div class="card cg">
+    <div class="card-title">The Resveratrol Dose Gap: What Wine Delivers vs. What Studies Test</div>
+    <div class="card-src">Linus Pauling Institute · Drago et al. Food Frontiers 2024 · clinical trial dose ranges for cardiovascular and cancer outcomes</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="200" fill="#17171f"/>
+
+        <!-- Log scale axis from 0.5mg to 2000mg -->
+        <!-- log(0.5)=−0.3, log(2000)=3.3 → range 3.6 decades, map to x=60→570 (510px) -->
+        <!-- x = 60 + (log10(val)+0.3)/3.6 * 510 -->
+        <!-- 0.5mg → 60, 1mg → 71, 5mg → 102, 10mg → 131, 50mg → 162 wait let me redo -->
+        <!-- x = 60 + (log10(val) - log10(0.5)) / (log10(2000)-log10(0.5)) * 510 -->
+        <!-- log10(0.5)=-0.301, log10(2000)=3.301, range=3.602 -->
+        <!-- 0.5mg → 60, 1mg → 60+(0.301/3.602)*510=103, 5mg→60+(1.0/3.602)*510=202 -->
+        <!-- 10mg→60+(1.301/3.602)*510=244, 50mg→60+(1.999/3.602)*510=343 -->
+        <!-- 100mg→60+(2.301/3.602)*510=386, 500mg→60+(3.0/3.602)*510=485, 2000mg→570 -->
+
+        <!-- Grid lines -->
+        <line x1="103" y1="20" x2="103" y2="165" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="202" y1="20" x2="202" y2="165" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="244" y1="20" x2="244" y2="165" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="343" y1="20" x2="343" y2="165" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="386" y1="20" x2="386" y2="165" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="485" y1="20" x2="485" y2="165" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="570" y1="20" x2="570" y2="165" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+
+        <!-- Axis labels -->
+        <text x="60" y="180" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">0.5</text>
+        <text x="103" y="180" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">1</text>
+        <text x="202" y="180" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">5</text>
+        <text x="244" y="180" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">10</text>
+        <text x="343" y="180" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">50</text>
+        <text x="386" y="180" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">100</text>
+        <text x="485" y="180" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">500</text>
+        <text x="570" y="180" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">2000</text>
+        <text x="315" y="195" fill="rgba(237,234,227,0.22)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Resveratrol dose (mg) — log scale</text>
+
+        <!-- A glass of wine: ~0.3-0.5mg range (x=60 to 103 area) -->
+        <rect x="60" y="35" width="30" height="22" rx="3" fill="rgba(192,132,252,0.5)" stroke="rgba(192,132,252,0.8)" stroke-width="1"/>
+        <text x="75" y="30" fill="#c084fc" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" font-weight="600">1 glass wine</text>
+        <text x="75" y="70" fill="rgba(192,132,252,0.7)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">0.3-0.5 mg</text>
+
+        <!-- Arrow showing the gap -->
+        <line x1="92" y1="46" x2="343" y2="46" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#gap-arrow)"/>
+        <defs>
+          <marker id="gap-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(255,255,255,0.3)"/>
+          </marker>
+        </defs>
+        <text x="215" y="40" fill="rgba(255,255,255,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">100-200x gap</text>
+
+        <!-- Clinical trial range for CVD: 8mg - 100mg -->
+        <rect x="190" y="95" width="196" height="22" rx="3" fill="rgba(78,222,138,0.25)" stroke="rgba(78,222,138,0.6)" stroke-width="1"/>
+        <text x="288" y="90" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" font-weight="600">CVD trial range</text>
+        <text x="288" y="130" fill="rgba(78,222,138,0.7)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">8-100 mg/day</text>
+
+        <!-- Clinical trial range for anti-aging/cognitive: 100-2000mg -->
+        <rect x="386" y="95" width="184" height="22" rx="3" fill="rgba(245,166,35,0.25)" stroke="rgba(245,166,35,0.6)" stroke-width="1"/>
+        <text x="478" y="90" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" font-weight="600">Anti-aging / cognitive</text>
+        <text x="478" y="130" fill="rgba(245,166,35,0.7)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">250-2000 mg/day</text>
+
+        <!-- Bioavailability note -->
+        <text x="315" y="155" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">+ resveratrol is rapidly metabolized: only glucuronide conjugates found in human plasma, not free resveratrol</text>
+      </svg>
+    </div>
+    <div class="chart-note">A glass of wine delivers 0.3 to 0.5 mg of resveratrol. Clinical trials testing cardiovascular effects use at least 8-100 mg. Anti-aging and cognitive trials use 250-2000 mg. The dose from wine is 100 to 4000 times below what any study tests. Even at those supplement doses, bioavailability is low because resveratrol is rapidly conjugated in the gut and liver before it can act systemically.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-g">What wine actually contains</div>
+      Red wine does contain polyphenols beyond resveratrol, including quercetin, anthocyanins, and catechins, with genuine antioxidant activity. The problem is not that these compounds are inactive. The problem is that you deliver them alongside ethanol and acetaldehyde, both Group 1 carcinogens, at concentrations far below what any clinical study has shown to be effective. You can get the same polyphenols from grapes, berries, or dark chocolate without the carcinogens.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-g">The French Paradox revisited</div>
+      The French Paradox (high saturated fat, high wine, low CVD) that launched the resveratrol hypothesis is now largely explained by dietary confounding, the lag effect (French CVD deaths rose as American-style diets spread), and the same drinker misclassification errors that plagued the J-curve literature. It was a hypothesis built on observational correlation, not a validated biological mechanism.
+    </div>
+  </div>
+</div>
+
+<!-- S6: DOSE REFERENCE -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-t">06</div>
+    <div>
+      <div class="sec-title">Dose Reference: What "25g Ethanol" Actually Means in Drinks</div>
+      <div class="sec-src">US standard drink = 14g ethanol · UK unit = 8g ethanol · Canadian standard drink = 13.6g ethanol</div>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto">
+  <table class="dose-table">
+    <thead><tr><th>Drink</th><th>Typical serving</th><th>Ethanol (g)</th><th>vs. 25g women's threshold</th><th>vs. 45g men's threshold</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Beer (5%)</td>
+        <td>355ml / 12 oz can</td>
+        <td>14g</td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">0.56x threshold</span></td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">0.31x threshold</span></td>
+      </tr>
+      <tr>
+        <td>Wine (12%)</td>
+        <td>150ml / 5 oz glass</td>
+        <td>14g</td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">0.56x threshold</span></td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">0.31x threshold</span></td>
+      </tr>
+      <tr>
+        <td>Liquor (40%)</td>
+        <td>44ml / 1.5 oz shot</td>
+        <td>14g</td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">0.56x threshold</span></td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">0.31x threshold</span></td>
+      </tr>
+      <tr>
+        <td>2 drinks/day (women)</td>
+        <td>Daily average</td>
+        <td>28g</td>
+        <td><span class="dbadge" style="background:rgba(240,82,82,0.15);color:#f05252;border:1px solid rgba(240,82,82,0.3)">Above threshold</span></td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">0.62x threshold</span></td>
+      </tr>
+      <tr>
+        <td>Occasional (few drinks/week)</td>
+        <td>Monthly average ~4-6 drinks</td>
+        <td>~56-84g total/month</td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">Well below daily threshold</span></td>
+        <td><span class="dbadge" style="background:rgba(78,222,138,0.15);color:#4ede8a;border:1px solid rgba(78,222,138,0.3)">Well below daily threshold</span></td>
+      </tr>
+      <tr>
+        <td>3 drinks/day (men)</td>
+        <td>Daily average</td>
+        <td>42g</td>
+        <td><span class="dbadge" style="background:rgba(240,82,82,0.15);color:#f05252;border:1px solid rgba(240,82,82,0.3)">1.7x threshold</span></td>
+        <td><span class="dbadge" style="background:rgba(245,166,35,0.15);color:#f5a623;border:1px solid rgba(245,166,35,0.3)">Near threshold</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="chart-note" style="margin-top:8px">US standard drink = 14g ethanol. The 25g women's threshold and 45g men's threshold are where Zhao 2023 found statistically significant mortality risk elevation. Cancer risk has no threshold and scales linearly from the first drink.</div>
+</div>
+
+<!-- S7: VERDICT -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-p">07</div>
+    <div>
+      <div class="sec-title">Claim by Claim: What the Evidence Actually Says</div>
+    </div>
+  </div>
+
+  <!-- Desktop table -->
+  <div class="verdict-table-wrap" style="overflow-x:auto">
+  <table class="verdict-table">
+    <thead><tr><th>Claim</th><th>Verdict</th><th>Evidence</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Moderate drinking extends lifespan</td>
+        <td><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not supported</span></td>
+        <td style="color:var(--text3)">Zhao 2023: null result after bias correction in 107 studies, 4.8M participants. The J-curve was a statistical artifact from drinker misclassification.</td>
+      </tr>
+      <tr>
+        <td>Moderate drinking is cardioprotective</td>
+        <td><span class="vb" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)">Likely confounding</span></td>
+        <td style="color:var(--text3)">MR studies find null or slight harm for CHD and null for T2D. Genetic analyses in 261K+ people show no protective causal effect. Observational studies contaminated by healthy user bias.</td>
+      </tr>
+      <tr>
+        <td>Alcohol causes cancer at any dose</td>
+        <td><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Yes, no threshold</span></td>
+        <td style="color:var(--text3)">IARC Group 1. Linear dose-response for all 7 cancer types. Breast cancer risk elevated at just 1 drink/day in women. 741,000 cancer cases/year globally attributable to alcohol.</td>
+      </tr>
+      <tr>
+        <td>Red wine is healthier than other alcohol</td>
+        <td><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not supported</span></td>
+        <td style="color:var(--text3)">Resveratrol dose in wine (0.3-0.5 mg) is 100-4000x below clinical trial doses. Polyphenol benefits are real but obtainable from grapes or berries without alcohol. The cardioprotective signal tracks wine drinker demographics, not the wine.</td>
+      </tr>
+      <tr>
+        <td>"No safe level of alcohol" (WHO)</td>
+        <td><span class="vb" style="background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)">Technically true, context dependent</span></td>
+        <td style="color:var(--text3)">Accurate for cancer (linear, no floor). For all-cause mortality, the risk at very low doses is real but not statistically detectable in any study. The statement is epidemiologically correct but implies more precision than the data supports at very low intakes.</td>
+      </tr>
+      <tr>
+        <td>Spirits are worse than wine or beer</td>
+        <td><span class="vb" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)">Probably yes, but for demographic reasons</span></td>
+        <td style="color:var(--text3)">Shao 2024: spirits showed no U-curve (purely harmful), while wine and beer showed apparent J-curves. Most likely reflects the healthier demographic profile of wine drinkers, not a biological difference between spirits and wine at equivalent ethanol doses.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- Mobile stacked cards -->
+  <div class="verdict-cards">
+    <div class="vc-card">
+      <div class="vc-card-claim">Moderate drinking extends lifespan</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not supported</span></div>
+      <div class="vc-card-evidence">Zhao 2023: null result after bias correction in 107 studies, 4.8M participants. The J-curve was a statistical artifact from drinker misclassification.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Moderate drinking is cardioprotective</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)">Likely confounding</span></div>
+      <div class="vc-card-evidence">MR studies find null or slight harm for CHD and null for T2D. Genetic analyses in 261K+ people show no protective causal effect. Observational studies contaminated by healthy user bias.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Alcohol causes cancer at any dose</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Yes, no threshold</span></div>
+      <div class="vc-card-evidence">IARC Group 1. Linear dose-response for all 7 cancer types. Breast cancer risk elevated at just 1 drink/day in women. 741,000 cancer cases attributable to alcohol globally per year.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Red wine is healthier than other alcohol</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not supported</span></div>
+      <div class="vc-card-evidence">Resveratrol in wine (0.3-0.5 mg) is 100-4000x below clinical trial doses. The cardioprotective signal tracks wine drinker demographics, not the wine itself.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">"No safe level of alcohol" (WHO)</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)">Technically true, context dependent</span></div>
+      <div class="vc-card-evidence">Accurate for cancer (linear, no floor). For all-cause mortality, the risk at very low doses is real but not statistically detectable in any study. Correct epidemiologically but overstates precision at very low intake.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Spirits are worse than wine or beer</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)">Probably yes, for demographic reasons</span></div>
+      <div class="vc-card-evidence">Shao 2024: spirits showed no U-curve, only harm. Wine and beer showed apparent J-curves. Likely reflects who drinks wine, not what is in it.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SYNTHESIS -->
+<div class="synthesis fade-in">
+  <div class="synth-head">Synthesis: The Bottom Line</div>
+  <div class="synth-text">
+    The 30-year story of "moderate drinking is good for you" has collapsed under better methodology. The J-curve was real in the data. It was not real in the biology. When you use lifetime abstainers as the comparison group and remove former drinkers who quit because they got sick, the apparent protective dip at low doses disappears. Mendelian randomization, which gets around confounding entirely by using genetic variants as a natural experiment, confirms: no cardiovascular protection, and some linear harm for stroke and all-cause mortality.<br><br>
+    <strong>Cancer is a separate and clearer story.</strong> Alcohol causes at least 7 types of cancer through three well-understood mechanisms. There is no safe threshold. The dose-response is linear from the first drink. This is not particularly contested. The breast cancer finding deserves special attention because it applies to very low doses and is almost completely absent from public awareness.<br><br>
+    <strong>The wine argument does not hold up.</strong> Resveratrol at the dose in a glass of wine is meaninglessly small compared to what clinical trials test. The polyphenols are real, but you can get them from grapes, berries, or dark chocolate without the carcinogens. The apparent health advantage of wine drinkers versus spirit drinkers in observational studies reflects who is drinking wine, not what is in the wine.<br><br>
+    <strong>What this means practically:</strong> Occasional drinking at low frequency sits so far below the mortality thresholds that the risk is genuinely small. But small is not zero, particularly for cancer. If you drink rarely and enjoy it, the honest answer from the evidence is that the risk is low enough to be a lifestyle choice rather than a health decision. If you are a woman drinking one drink per day and thought you were in a safe zone based on old guidelines, the current evidence says you should know about the breast cancer signal. And if someone tells you that red wine is good for your heart, they are repeating a story the data stopped supporting years ago.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics</div>
+  <div class="footer-refs">
+    Zhao et al., JAMA Network Open 2023 · doi:10.1001/jamanetworkopen.2023.6185<br>
+    Kasseh et al., International Journal of Epidemiology 2024 · doi:10.1093/ije/dyae046<br>
+    Holmes et al., BMJ 2014 · MR meta-analysis 261,991 individuals<br>
+    IARC Handbooks Volume 20A 2024 · Gapstur et al. NEJM 2023<br>
+    Shao et al., Medicine 2024 · UK Biobank 502,490 participants<br>
+    NCI Alcohol and Cancer Fact Sheet · Linus Pauling Institute resveratrol review
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<script>
+// PARTICLES
+(function(){
+  const c=document.getElementById('particles');
+  ['rgba(240,82,82,0.3)','rgba(245,166,35,0.2)','rgba(240,82,82,0.18)'].forEach(col=>{
+    for(let j=0;j<6;j++){
+      const p=document.createElement('div');p.className='particle';
+      const s=Math.random()*3+2;
+      p.style.cssText=`width:${s}px;height:${s}px;background:${col};left:${Math.random()*100}%;bottom:-10px;animation-duration:${Math.random()*14+10}s;animation-delay:${Math.random()*14}s`;
+      c.appendChild(p);
+    }
+  });
+})();
+
+// ANIMATE VERDICT BARS ON LOAD
+setTimeout(()=>{
+  document.querySelectorAll('.vcard-bar-fill[data-w]').forEach(el=>{
+    el.style.width=el.dataset.w+'%';
+  });
+},400);
+
+// INTERSECTION OBSERVER FOR FADE-INS
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('vis');
+    io.unobserve(e.target);
+  });
+},{threshold:0.06});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
