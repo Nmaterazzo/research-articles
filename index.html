@@ -319,6 +319,7 @@ header {
 .tag-heart      { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
 .tag-sleep      { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.25); }
 .tag-organic    { background: rgba(78,222,138,0.12); color: #6ee7a0; border: 1px solid rgba(78,222,138,0.25); }
+.tag-gut        { background: rgba(45,212,191,0.12); color: #5eead4; border: 1px solid rgba(45,212,191,0.25); }
 .tag-fooddyes   { background: rgba(240,82,82,0.12); color: #f87171; border: 1px solid rgba(240,82,82,0.25); }
 .tag-supplements   { background: rgba(96,165,250,0.12); color: #93c5fd; border: 1px solid rgba(96,165,250,0.25); }
 
@@ -453,11 +454,11 @@ footer {
 
   <div class="stats-row">
     <div class="stat">
-      <div class="stat-num acc1">16</div>
+      <div class="stat-num acc1">17</div>
       <div class="stat-label">Published</div>
     </div>
     <div class="stat">
-      <div class="stat-num acc2">210+</div>
+      <div class="stat-num acc2">220+</div>
       <div class="stat-label">Studies Cited</div>
     </div>
     <div class="stat">
@@ -481,6 +482,7 @@ footer {
     <button class="filter-btn" data-filter="organic">Organic</button>
     <button class="filter-btn" data-filter="fooddyes">Food Dyes</button>
     <button class="filter-btn" data-filter="supplements">Supplements</button>
+    <button class="filter-btn" data-filter="gut">Gut Health</button>
   </div>
 
   <div class="grid" id="articleGrid"></div>
@@ -537,7 +539,7 @@ const articles = [
     num: '05',
     title: 'Artificial Sweeteners: What 13 RCTs Actually Show',
     desc: '–94 kcal/day vs sugar across 129 RCT comparisons. Six controlled studies show no effect on blood glucose or insulin. Three human RCTs show no gut microbiome disruption at realistic doses.',
-    tags: ['sweeteners', 'glucose'],
+    tags: ['sweeteners', 'glucose', 'gut'],
     studies: '13 studies cited',
     href: 'sweeteners-graphic.html',
     soon: false,
@@ -641,9 +643,18 @@ const articles = [
     href: 'alcohol-research-graphic.html',
     soon: false,
   },
-  // COMING SOON
   {
     num: '17',
+    title: 'The Gut Microbiome: What We Know, What We Don\'t',
+    desc: '150,000 papers published. No universal definition of a healthy microbiome. "Dysbiosis" is a circular, clinically vague term according to the researchers who study it. The TMAO-CVD causal chain fails Mendelian randomization. Here is an honest accounting of where the science actually is and what the supplement industry is selling ahead of it.',
+    tags: ['gut'],
+    studies: '7 studies cited',
+    href: 'gut-microbiome-graphic.html',
+    soon: false,
+  },
+  // COMING SOON
+  {
+    num: '18',
     title: 'Creatine: Beyond the Gym — Cognitive and Metabolic Effects',
     desc: 'The evidence on creatine supplementation for brain health, cellular energy, and performance across age groups.',
     tags: ['protein', 'supplements'],
@@ -652,7 +663,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '18',
+    num: '19',
     title: 'Vitamin D: The Chronic Deficiency Nobody Talks About',
     desc: 'Optimal serum levels, supplementation thresholds, and what the RCT data says about immune, bone, and metabolic outcomes.',
     tags: ['supplements', 'glucose'],
@@ -661,7 +672,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '19',
+    num: '20',
     title: 'Sleep & Metabolic Health: The Missing Variable',
     desc: 'Sleep restriction drives insulin resistance independently of diet. Ghrelin/leptin disruption, glucose tolerance, and muscle protein synthesis all degrade with chronic sleep debt.',
     tags: ['glucose', 'sleep'],
@@ -670,7 +681,7 @@ const articles = [
     soon: true,
   },
   {
-    num: '20',
+    num: '21',
     title: 'Leucine Threshold & Muscle Protein Synthesis',
     desc: 'The minimum leucine dose to trigger MPS, how it varies by age and training status, and why protein source distribution across meals matters.',
     tags: ['protein'],
@@ -694,6 +705,7 @@ const tagColors = {
   organic:    'tag-organic',
   fooddyes:   'tag-fooddyes',
   supplements: 'tag-supplements',
+  gut:        'tag-gut',
 };
 
 function buildCard(a, idx) {
