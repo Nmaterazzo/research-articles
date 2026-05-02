@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erythritol: Debunking the Blood Clot Panic - Origin Symmetrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0e;--bg2:#111118;--bg3:#17171f;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --text:#edeae3;--text2:rgba(237,234,227,0.7);--text3:rgba(237,234,227,0.38);
+  --red:#f05252;--red-dim:rgba(240,82,82,0.09);--red-b:rgba(240,82,82,0.22);
+  --amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--amber-b:rgba(245,166,35,0.22);
+  --green:#4ede8a;--green-dim:rgba(78,222,138,0.09);--green-b:rgba(78,222,138,0.22);
+  --blue:#60a5fa;--blue-dim:rgba(96,165,250,0.1);--blue-b:rgba(96,165,250,0.22);
+  --teal:#2dd4bf;--teal-dim:rgba(45,212,191,0.1);--teal-b:rgba(45,212,191,0.22);
+  --purple:#c084fc;--purple-dim:rgba(192,132,252,0.1);--purple-b:rgba(192,132,252,0.22);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);padding:52px 20px 0}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(78,222,138,0.07) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 60% at 10% 70%,rgba(96,165,250,0.05) 0%,transparent 60%)}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;animation:pdrift linear infinite;opacity:0}
+@keyframes pdrift{0%{transform:translateY(100%);opacity:0}10%{opacity:1}90%{opacity:.3}100%{transform:translateY(-20px);opacity:0}}
+
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+.hero-tag::before{content:'';display:inline-block;width:20px;height:1px;background:var(--green)}
+h1{font-family:'Fraunces',serif;font-size:clamp(1.9rem,5.5vw,3.4rem);font-weight:900;line-height:1.05;letter-spacing:-0.025em;margin-bottom:12px}
+h1 em{font-style:italic;color:var(--green)}
+h1 strong{color:var(--red)}
+.hero-sub{font-size:0.9rem;color:var(--text2);max-width:620px;margin-bottom:32px;line-height:1.78}
+
+/* HERO VERDICT STRIP */
+.verdict-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:rgba(255,255,255,0.05);border-radius:8px 8px 0 0;overflow:hidden}
+.vs-card{background:var(--bg2);padding:16px 14px}
+.vs-label{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:5px}
+.vs-claim{font-size:0.78rem;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:4px}
+.vs-stat{font-family:'IBM Plex Mono',monospace;font-size:0.46rem;color:var(--text3);line-height:1.55}
+.vs-bar{height:2px;border-radius:2px;margin-top:12px;background:rgba(255,255,255,0.06);overflow:hidden}
+.vs-fill{height:100%;border-radius:2px;width:0;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)}
+.vc-g .vs-label{color:var(--green)}.vc-g .vs-fill{background:var(--green)}
+.vc-b .vs-label{color:var(--blue)}.vc-b .vs-fill{background:var(--blue)}
+.vc-a .vs-label{color:var(--amber)}.vc-a .vs-fill{background:var(--amber)}
+
+.hero-note{background:var(--bg2);border-top:1px solid var(--border);border-radius:0 0 8px 8px;padding:12px 16px;display:flex;gap:10px}
+.hero-note-icon{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--amber);flex-shrink:0}
+.hero-note-text{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);line-height:1.6;letter-spacing:0.03em}
+.hero-note-text strong{color:var(--text2)}
+
+/* LAYOUT */
+.content{max-width:860px;margin:0 auto;padding:0 20px 80px}
+.sec{margin-top:52px}
+.sec-hdr{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:3px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:3px}
+.sn-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
+.sn-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-b)}
+.sn-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
+.sn-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
+.sn-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)}
+.sn-p{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-b)}
+.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.05rem,2.8vw,1.4rem);font-weight:700;line-height:1.2;margin-bottom:3px}
+.sec-src{font-family:'IBM Plex Mono',monospace;font-size:0.51rem;color:var(--text3);letter-spacing:0.05em;line-height:1.5}
+.prose{font-size:0.87rem;color:var(--text2);line-height:1.78;margin-bottom:14px}
+.prose strong{color:var(--text);font-weight:600}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card.cg::before{background:linear-gradient(90deg,var(--green),transparent 70%)}
+.card.cb::before{background:linear-gradient(90deg,var(--blue),transparent 70%)}
+.card.cr::before{background:linear-gradient(90deg,var(--red),transparent 70%)}
+.card.ca::before{background:linear-gradient(90deg,var(--amber),transparent 70%)}
+.card.ct::before{background:linear-gradient(90deg,var(--teal),transparent 70%)}
+.card.cp::before{background:linear-gradient(90deg,var(--purple),transparent 70%)}
+.card-title{font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.card-src{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);letter-spacing:0.05em;margin-bottom:14px}
+
+/* FTAG - always block so text falls below */
+.ftag{display:block;width:fit-content;font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.08em;margin-bottom:8px}
+.ft-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
+.ft-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-b)}
+.ft-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
+.ft-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
+.ft-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)}
+.ft-p{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-b)}
+
+/* FINDING BLOCKS */
+.finding{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px 15px;margin-bottom:8px;font-size:0.82rem;line-height:1.68;color:var(--text2)}
+.finding:last-child{margin-bottom:0}
+.finding strong{color:var(--text);font-weight:600}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:14px 16px;margin-bottom:12px;font-size:0.84rem;line-height:1.75;color:var(--text)}
+.callout strong{font-weight:600}
+.callout-head{display:block;font-family:'IBM Plex Mono',monospace;font-size:0.53rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:7px;font-weight:600}
+.co-g{background:var(--green-dim);border-left:3px solid var(--green)}.co-g .callout-head{color:var(--green)}
+.co-r{background:var(--red-dim);border-left:3px solid var(--red)}.co-r .callout-head{color:var(--red)}
+.co-a{background:var(--amber-dim);border-left:3px solid var(--amber)}.co-a .callout-head{color:var(--amber)}
+.co-b{background:var(--blue-dim);border-left:3px solid var(--blue)}.co-b .callout-head{color:var(--blue)}
+
+/* SVG CHARTS */
+.chart-wrap{width:100%;margin-bottom:10px;overflow:hidden;border-radius:6px;background:var(--bg3)}
+.chart-wrap svg{display:block;width:100%;height:auto}
+.chart-note{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);margin-top:6px;line-height:1.6}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.leg{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--text2);letter-spacing:0.04em}
+.leg-dot{width:10px;height:3px;border-radius:2px;flex-shrink:0}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+
+/* STAT COMPARISON BOXES */
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.stat-box{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:12px;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:900;line-height:1;margin-bottom:4px}
+.stat-lbl{font-family:'IBM Plex Mono',monospace;font-size:0.46rem;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;line-height:1.5}
+
+/* VERDICT CARDS */
+.verdict-cards{display:flex;flex-direction:column;gap:8px}
+.vc-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px 14px}
+.vc-card-claim{font-size:0.83rem;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3}
+.vc-card-verdict{margin-bottom:8px}
+.vc-card-evidence{font-size:0.78rem;color:var(--text2);line-height:1.6}
+.vb{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.5rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.05em;white-space:nowrap}
+
+/* SYNTHESIS */
+.synthesis{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:26px 22px;margin-top:40px}
+.synth-head{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+.synth-text{font-size:0.88rem;line-height:1.82;color:var(--text2)}
+.synth-text strong{color:var(--text);font-weight:600}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.vis{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding-top:16px;margin-top:28px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.footer-brand{font-family:'Fraunces',serif;font-size:0.82rem;font-weight:700;color:var(--text3)}
+.footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;color:var(--text3);line-height:1.8;text-align:right}
+
+@media(max-width:580px){
+  .verdict-strip{grid-template-columns:1fr 1fr}
+  .verdict-strip .vs-card:last-child{grid-column:1/-1}
+  .grid-2{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .stat-row .stat-box:last-child{grid-column:1/-1}
+  .hero{padding:38px 16px 0}
+  .content{padding:0 16px 60px}
+  .footer-refs{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Evidence-Based Nutrition · Origin Symmetrics</div>
+    <h1>Erythritol:<br><em>Safe Sweetener</em> or<br><strong>Hidden Danger?</strong></h1>
+    <p class="hero-sub">In 2023, a Cleveland Clinic study made headlines linking erythritol to blood clots and cardiovascular events. The fearmongering spread fast. The actual evidence tells a different story, built on reverse causation, a 10-person study, and a fundamental misunderstanding of what high plasma erythritol actually means in the body.</p>
+
+    <div class="verdict-strip">
+      <div class="vs-card vc-g">
+        <div class="vs-label">Calories / glycemic index</div>
+        <div class="vs-claim">0.2 kcal/g. GI of 0. Insulinemic index of 2.</div>
+        <div class="vs-stat">Not metabolized. Absorbed and excreted unchanged. No glucose or insulin response in studies from 20-75g.</div>
+        <div class="vs-bar"><div class="vs-fill" id="vb1" data-w="100"></div></div>
+      </div>
+      <div class="vs-card vc-b">
+        <div class="vs-label">Plasma spike after 30g</div>
+        <div class="vs-claim">1,000-fold increase from baseline. Returns to normal within 48 hours.</div>
+        <div class="vs-stat">Baseline ~3.75 µmol/L rises to ~6,480 µmol/L. Cleared renally. 78% excreted unchanged within 24 hours.</div>
+        <div class="vs-bar"><div class="vs-fill" id="vb2" data-w="100"></div></div>
+      </div>
+      <div class="vs-card vc-a">
+        <div class="vs-label">The blood clot claim</div>
+        <div class="vs-claim">Built on reverse causation and a 10-person pilot study with no chronic data.</div>
+        <div class="vs-stat">MR found no causal link to CAD. Inborn error patients with lifetime high levels show no excess thrombosis.</div>
+        <div class="vs-bar"><div class="vs-fill" id="vb3" data-w="100"></div></div>
+      </div>
+    </div>
+    <div class="hero-note">
+      <div class="hero-note-icon">◈</div>
+      <div class="hero-note-text"><strong>The Firefighter Fallacy:</strong> High plasma erythritol is a biomarker of metabolic dysfunction, not a cause. The pentose phosphate pathway overproduces erythritol under oxidative stress. Blaming dietary erythritol for CVD is like blaming the firemen for the fire they showed up to fight.</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- S1: WHAT ERYTHRITOL ACTUALLY IS -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-g">01</div>
+    <div>
+      <div class="sec-title">What Erythritol Actually Is and How Your Body Handles It</div>
+      <div class="sec-src">Bornet et al. Regul Toxicol Pharmacol 1996 · EFSA Safety Opinion 2015 · Munro et al. pharmacokinetics · Khafagy et al. Diabetes 2024</div>
+    </div>
+  </div>
+  <p class="prose">Erythritol is a four-carbon sugar alcohol found naturally in fruits, mushrooms, and fermented foods. It is also commercially produced by fermenting glucose with yeast. What sets it apart from other sweeteners and sugar alcohols is how the body handles it: almost nothing happens metabolically, which is both why it is useful as a sweetener and why the panic about it misses something fundamental.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num" style="color:var(--green)">0</div>
+      <div class="stat-lbl">Glycemic index<br>(glucose = 100)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:var(--green)">2</div>
+      <div class="stat-lbl">Insulinemic index<br>(essentially neutral)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:var(--green)">0.2</div>
+      <div class="stat-lbl">kcal/g digestible<br>vs. 4 kcal/g for sugar</div>
+    </div>
+  </div>
+
+  <!-- ABSORPTION AND EXCRETION SVG -->
+  <div class="card cg">
+    <div class="card-title">What Happens After You Eat Erythritol: Absorption and Excretion</div>
+    <div class="card-src">Bornet et al. Regul Toxicol Pharmacol 1996 · Munro et al. pharmacokinetics summary · single oral dose 1g/kg</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 210" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="210" fill="#17171f"/>
+        <defs>
+          <marker id="arr-g" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(78,222,138,0.6)"/>
+          </marker>
+          <marker id="arr-r" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(240,82,82,0.5)"/>
+          </marker>
+        </defs>
+
+        <!-- Ingestion box -->
+        <rect x="10" y="70" width="90" height="40" rx="5" fill="rgba(78,222,138,0.12)" stroke="rgba(78,222,138,0.3)" stroke-width="1"/>
+        <text x="55" y="87" fill="#4ede8a" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Erythritol</text>
+        <text x="55" y="100" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">ingested</text>
+
+        <!-- Arrow to small intestine -->
+        <line x1="100" y1="90" x2="128" y2="90" stroke="rgba(78,222,138,0.5)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+        <!-- Small intestine -->
+        <rect x="130" y="62" width="110" height="56" rx="5" fill="rgba(78,222,138,0.1)" stroke="rgba(78,222,138,0.25)" stroke-width="1"/>
+        <text x="185" y="83" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Small intestine</text>
+        <text x="185" y="96" fill="rgba(78,222,138,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">~90% absorbed</text>
+        <text x="185" y="108" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">not metabolized</text>
+
+        <!-- Arrow to bloodstream -->
+        <line x1="240" y1="90" x2="268" y2="90" stroke="rgba(78,222,138,0.5)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+        <!-- Bloodstream -->
+        <rect x="270" y="62" width="100" height="56" rx="5" fill="rgba(96,165,250,0.1)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+        <text x="320" y="83" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Bloodstream</text>
+        <text x="320" y="96" fill="rgba(96,165,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">passes through</text>
+        <text x="320" y="108" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">unchanged</text>
+
+        <!-- Arrow to kidneys -->
+        <line x1="370" y1="90" x2="398" y2="90" stroke="rgba(96,165,250,0.5)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+        <!-- Kidneys -->
+        <rect x="400" y="62" width="100" height="56" rx="5" fill="rgba(45,212,191,0.1)" stroke="rgba(45,212,191,0.25)" stroke-width="1"/>
+        <text x="450" y="83" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Kidneys</text>
+        <text x="450" y="96" fill="rgba(45,212,191,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">filtered out</text>
+        <text x="450" y="108" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">78% gone in 24hr</text>
+
+        <!-- Arrow down to urine -->
+        <line x1="450" y1="118" x2="450" y2="143" stroke="rgba(45,212,191,0.5)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+        <rect x="400" y="145" width="100" height="30" rx="4" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.2)" stroke-width="1"/>
+        <text x="450" y="164" fill="rgba(45,212,191,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">Excreted in urine</text>
+
+        <!-- Colon branch - the 10% -->
+        <line x1="185" y1="118" x2="185" y2="143" stroke="rgba(240,82,82,0.4)" stroke-width="1.5" marker-end="url(#arr-r)"/>
+        <rect x="130" y="145" width="110" height="30" rx="4" fill="rgba(240,82,82,0.07)" stroke="rgba(240,82,82,0.2)" stroke-width="1"/>
+        <text x="185" y="158" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">~10% reaches colon</text>
+        <text x="185" y="168" fill="rgba(240,82,82,0.4)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">(laxative effect if excess)</text>
+
+        <!-- NO metabolism label -->
+        <rect x="10" y="145" width="100" height="40" rx="4" fill="rgba(78,222,138,0.07)" stroke="rgba(78,222,138,0.15)" stroke-width="1"/>
+        <text x="60" y="161" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle">No glucose spike</text>
+        <text x="60" y="172" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">No insulin response</text>
+        <text x="60" y="183" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">No caloric yield</text>
+
+        <text x="300" y="200" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Bornet et al. 1996 · Munro pharmacokinetics review · plasma glucose and insulin unaffected at all tested doses (20-75g)</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- CPIR SECTION -->
+  <div class="card cg" style="margin-top:0">
+    <div class="card-title">The Cephalic Phase Insulin Response: Does Erythritol Trigger It?</div>
+    <div class="card-src">Pullicin et al. 2021 · Smeets EASD 2019 · Lasschuijt et al. 2017 · CPIR literature review</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="200" fill="#17171f"/>
+
+        <!-- CPIR concept left column -->
+        <text x="16" y="22" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.08em" font-weight="600">WHAT IS THE CEPHALIC PHASE INSULIN RESPONSE (CPIR)?</text>
+
+        <rect x="10" y="30" width="260" height="86" rx="5" fill="rgba(96,165,250,0.07)" stroke="rgba(96,165,250,0.18)" stroke-width="0.5"/>
+        <text x="20" y="48" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">Smelling, seeing, tasting, or even just</text>
+        <text x="20" y="62" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">thinking about food can trigger a small</text>
+        <text x="20" y="76" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">pre-emptive insulin release before any</text>
+        <text x="20" y="90" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">glucose is absorbed.</text>
+        <text x="20" y="108" fill="rgba(96,165,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" font-weight="500">The body primes digestion via sensory cues.</text>
+
+        <!-- Does erythritol trigger it? -->
+        <text x="290" y="22" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.08em" font-weight="600">DOES ERYTHRITOL TRIGGER CPIR?</text>
+
+        <!-- Three triggers that can cause CPIR -->
+        <rect x="290" y="30" width="140" height="28" rx="4" fill="rgba(245,166,35,0.08)" stroke="rgba(245,166,35,0.2)" stroke-width="0.5"/>
+        <text x="360" y="42" fill="rgba(245,166,35,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">Sweet taste (sucrose)</text>
+        <text x="360" y="53" fill="rgba(245,166,35,0.45)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">confirmed CPIR trigger</text>
+
+        <rect x="290" y="66" width="140" height="28" rx="4" fill="rgba(245,166,35,0.06)" stroke="rgba(245,166,35,0.15)" stroke-width="0.5"/>
+        <text x="360" y="78" fill="rgba(245,166,35,0.6)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">Sucralose (subset)</text>
+        <text x="360" y="89" fill="rgba(245,166,35,0.35)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">only in some overweight adults</text>
+
+        <rect x="290" y="102" width="140" height="28" rx="4" fill="rgba(78,222,138,0.08)" stroke="rgba(78,222,138,0.2)" stroke-width="0.5"/>
+        <text x="360" y="114" fill="rgba(78,222,138,0.8)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">Erythritol</text>
+        <text x="360" y="125" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">no CPIR observed</text>
+
+        <!-- Result box -->
+        <rect x="448" y="30" width="142" height="100" rx="5" fill="rgba(78,222,138,0.09)" stroke="rgba(78,222,138,0.25)" stroke-width="1"/>
+        <text x="519" y="52" fill="#4ede8a" font-family="Fraunces,serif" font-size="22" font-weight="900" text-anchor="middle">No</text>
+        <text x="519" y="68" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle">CPIR triggered</text>
+        <text x="519" y="84" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">by erythritol</text>
+        <text x="519" y="100" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">sweetness doesn't</text>
+        <text x="519" y="111" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">trick the pancreas</text>
+        <text x="519" y="122" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">into insulin release</text>
+
+        <!-- Bottom note -->
+        <text x="16" y="150" fill="rgba(237,234,227,0.55)" font-family="DM Sans,sans-serif" font-size="9.5">Erythritol also releases GLP-1, CCK, and PYY (satiety hormones) at levels similar to glucose</text>
+        <text x="16" y="163" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">without raising blood sugar or insulin. Ghrelin (hunger hormone) is also suppressed. This is uniquely favorable.</text>
+
+        <text x="16" y="185" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="6.5">CPIR studies: Pullicin et al. 2021 · Lasschuijt et al. 2017 · Smeets EASD 2019 review · satiety hormones: Nichols et al. · erythritol GLP-1/CCK data</text>
+      </svg>
+    </div>
+    <div class="chart-note">The CPIR concern that follows non-nutritive sweeteners broadly does not apply to erythritol. It produces no cephalic phase insulin response, no blood glucose rise, and no caloric yield, while still triggering satiety hormones. This makes it one of the metabolically cleanest sweeteners that exists.</div>
+  </div>
+</div>
+
+<!-- S2: THE PLASMA SPIKE AND WHAT IT MEANS -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-b">02</div>
+    <div>
+      <div class="sec-title">The 1,000-Fold Plasma Spike: Dramatic Number, Important Context</div>
+      <div class="sec-src">Witkowski et al. Nat Med 2023 · Bornet et al. Regul Toxicol Pharmacol 1996 · Khafagy et al. Diabetes 2024 · pharmacokinetics studies</div>
+    </div>
+  </div>
+  <p class="prose">Erythritol's baseline plasma concentration is very low because your body does not make much of it under normal conditions. When you eat a large dose, the plasma level spikes dramatically in relative terms. This number was central to the scaremongering. What it actually means requires understanding what baseline represents and how quickly the spike resolves.</p>
+
+  <!-- PLASMA KINETICS SVG CHART -->
+  <div class="card cb">
+    <div class="card-title">Plasma Erythritol After a 30g Dose: The Spike and Recovery</div>
+    <div class="card-src">Witkowski et al. 2023 pharmacokinetics data · n=8 healthy volunteers · 30g oral dose in beverage · LC-MS/MS measurement</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="260" fill="#17171f"/>
+
+        <!-- Axes -->
+        <line x1="60" y1="20" x2="60" y2="210" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <line x1="60" y1="210" x2="570" y2="210" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+        <!-- Y axis: 0 to 7000 µmol/L -->
+        <!-- y = 210 - (val/7000)*190 -->
+        <!-- 0 -> 210, 1000->183, 2000->156, 3500->115, 5000->74, 6500->34, 7000->20 -->
+        <line x1="60" y1="175" x2="570" y2="175" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="179" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end">1,000</text>
+
+        <line x1="60" y1="140" x2="570" y2="140" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="144" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end">2,500</text>
+
+        <line x1="60" y1="105" x2="570" y2="105" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="109" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end">4,000</text>
+
+        <line x1="60" y1="70" x2="570" y2="70" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+        <text x="52" y="74" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end">5,500</text>
+
+        <!-- Baseline level line -->
+        <line x1="60" y1="209" x2="570" y2="209" stroke="rgba(78,222,138,0.4)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <text x="565" y="206" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="end">Baseline ~3.75 µmol/L</text>
+
+        <!-- X axis: 0h, 0.5h, 2h, 6h, 12h, 24h, 36h, 48h -->
+        <!-- x = 60 + (t/48)*510 -->
+        <!-- 0->60, 0.5->65, 2->81, 6->124, 12->188, 24->315, 36->443, 48->570 -->
+        <text x="60" y="225" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">0</text>
+        <text x="81" y="225" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">30m</text>
+        <text x="124" y="225" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">6h</text>
+        <text x="188" y="225" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">12h</text>
+        <text x="315" y="225" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">24h</text>
+        <text x="443" y="225" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">36h</text>
+        <text x="570" y="225" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">48h</text>
+        <text x="315" y="242" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Time after ingestion</text>
+
+        <!-- Y axis label -->
+        <text x="10" y="115" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle" transform="rotate(-90,10,115)">Plasma erythritol (µmol/L)</text>
+
+        <!-- PLASMA CURVE: rises steeply to ~6480 at 30min, slow decline -->
+        <!-- Points: (0,3.75), (0.5,6480), (2,5500), (6,4000), (12,2200), (24,400), (36,50), (48,3.75) -->
+        <!-- y = 210 - (val/7000)*190 -->
+        <!-- 3.75->209, 6480->34, 5500->60, 4000->101, 2200->150, 400->199, 50->208, 3.75->209 -->
+        <defs>
+          <linearGradient id="spike-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.4"/>
+            <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.02"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Area under curve -->
+        <path d="M60,209 L81,34 C100,34 110,50 124,101 C145,130 165,148 188,150 C240,158 275,185 315,199 C370,205 407,208 443,208 L570,209 Z"
+          fill="url(#spike-grad)" stroke="none"/>
+
+        <!-- Main curve -->
+        <path d="M60,209 L81,34 C100,34 110,50 124,101 C145,130 165,148 188,150 C240,158 275,185 315,199 C370,205 407,208 443,208 L570,209"
+          fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- Peak annotation -->
+        <circle cx="81" cy="34" r="4" fill="#60a5fa"/>
+        <line x1="81" y1="30" x2="81" y2="14" stroke="rgba(96,165,250,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="84" y="12" fill="#60a5fa" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">~6,480 µmol/L</text>
+        <text x="84" y="22" fill="rgba(96,165,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="7">1,000x baseline</text>
+
+        <!-- 48h annotation -->
+        <circle cx="570" cy="209" r="4" fill="#4ede8a"/>
+        <text x="555" y="198" fill="rgba(78,222,138,0.7)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Back to</text>
+        <text x="555" y="207" fill="rgba(78,222,138,0.7)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">baseline</text>
+
+        <!-- Platelet threshold zone -->
+        <rect x="60" y="162" width="510" height="12" rx="0" fill="rgba(240,82,82,0.08)"/>
+        <text x="66" y="171" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7">Witkowski platelet threshold (45-450 µmol/L) — well below actual peak</text>
+
+        <text x="300" y="256" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Approximated from Witkowski et al. 2023 pharmacokinetics data · 30g dose in 300ml beverage · n=8 healthy volunteers</text>
+      </svg>
+    </div>
+    <div class="chart-legend">
+      <div class="leg"><div class="leg-dot" style="background:#60a5fa"></div>Plasma erythritol (µmol/L)</div>
+      <div class="leg"><div class="leg-dot" style="background:#4ede8a"></div>Baseline / recovered</div>
+    </div>
+    <div class="chart-note">The "1,000-fold" spike sounds alarming but context matters. The baseline is extremely low (~3.75 µmol/L) because you normally have almost no dietary erythritol and only trace endogenous production. The return to baseline within 48 hours reflects efficient renal clearance. The spike from diet is fundamentally different from the persistent elevation seen in metabolically sick patients in the Witkowski observational cohort.</div>
+  </div>
+
+  <div class="callout co-b">
+    <span class="callout-head">Why the Spike Number Doesn't Mean What Headlines Said</span>
+    The platelet reactivity thresholds used in Witkowski's in vitro experiments were 4.5 to 45 µmol/L. The actual plasma level after eating 30g reaches roughly 6,480 µmol/L. So the in vitro platelet studies were done at concentrations roughly 14 to 1,400 times lower than what actually happens in plasma after eating erythritol. The in vitro concentrations were chosen to match fasting levels in their sick cohort, not what happens after dietary ingestion. This is a critical mismatch that goes largely unreported.
+  </div>
+</div>
+
+<!-- S3: THE WITKOWSKI STUDIES DISSECTED -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-r">03</div>
+    <div>
+      <div class="sec-title">The Witkowski Studies: Dissecting the Evidence Chain</div>
+      <div class="sec-src">Witkowski et al. Nat Med 2023 · Witkowski et al. ATVB 2024 · independent critiques · MDPI Nutrients review 2023</div>
+    </div>
+  </div>
+  <p class="prose">The entire erythritol scare comes from one research group at the Cleveland Clinic. Three studies, same team, same hypothesis. Understanding each study's actual design is essential because each one has a different type of weakness, and together they were presented as a convergent line of evidence when they actually share the same foundational flaw.</p>
+
+  <!-- THREE STUDY CRITIQUE SVG -->
+  <div class="card cr">
+    <div class="card-title">The Witkowski Evidence Chain: What Each Study Actually Did</div>
+    <div class="card-src">Study 1: Witkowski Nat Med 2023 · Study 2: Witkowski ATVB 2024 · Study 3: additional platelet mechanistic work · all from same Cleveland Clinic group</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 310" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="310" fill="#17171f"/>
+
+        <!-- Study 1 -->
+        <rect x="10" y="14" width="580" height="80" rx="6" fill="rgba(240,82,82,0.07)" stroke="rgba(240,82,82,0.22)" stroke-width="1"/>
+        <text x="20" y="34" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" letter-spacing="0.08em">STUDY 1 · Witkowski et al. · Nature Medicine 2023</text>
+        <text x="20" y="50" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600">Observational: 4,000+ cardiac risk assessment patients. High fasting erythritol associated with MACE.</text>
+        <text x="20" y="66" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">FLAW: Entire cohort was pre-selected for CVD risk. Fasting plasma erythritol reflects endogenous production, not dietary</text>
+        <text x="20" y="78" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">intake. High endogenous erythritol = marker of metabolic dysfunction via PPP upregulation. Reverse causation.</text>
+        <text x="20" y="88" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5">Design: Observational cohort · No dietary erythritol intake measured · Confounding by indication</text>
+
+        <!-- Study 2 -->
+        <rect x="10" y="106" width="580" height="88" rx="6" fill="rgba(240,82,82,0.06)" stroke="rgba(240,82,82,0.18)" stroke-width="1"/>
+        <text x="20" y="126" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" letter-spacing="0.08em">STUDY 2 · Witkowski et al. · ATVB 2024</text>
+        <text x="20" y="142" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600">Intervention: 10 healthy volunteers given 30g erythritol. Platelet reactivity measured at 30 minutes.</text>
+        <text x="20" y="158" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">FLAWS: n=10 per group (pilot). Single blood draw at 30 minutes only. 30g in one sitting = 3-4 product servings</text>
+        <text x="20" y="170" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">at once. No measurement of return to baseline. Platelet reactivity not equal to actual thrombosis or clots.</text>
+        <text x="20" y="182" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">No chronic exposure data. Mean participant age ~30, with lower baseline platelet reactivity than target demographic.</text>
+        <text x="20" y="188" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5">Design: Acute pilot study · No placebo crossover · Not powered for clinical outcomes</text>
+
+        <!-- In vitro / animal -->
+        <rect x="10" y="206" width="580" height="68" rx="6" fill="rgba(240,82,82,0.05)" stroke="rgba(240,82,82,0.15)" stroke-width="1"/>
+        <text x="20" y="226" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" letter-spacing="0.08em">SUPPORTING MECHANISTIC DATA · In vitro and mouse models</text>
+        <text x="20" y="242" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600">Platelet-rich plasma spiked with erythritol in lab. Mouse arterial injury model with injected erythritol.</text>
+        <text x="20" y="258" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">FLAWS: In vitro concentrations used (4.5-45 µmol/L) were far below actual post-ingestion plasma levels</text>
+        <text x="20" y="270" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="7">(~6,480 µmol/L). Mouse arterial injury via injection does not replicate human oral dietary exposure.</text>
+
+        <!-- SAME LAB note integrated into footer text below -->
+
+        <text x="300" y="296" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">All three studies share a common author team. No independent lab has replicated the platelet findings. Same research group, same hypothesis, same lab.</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-r">The 5-point breakdown (Study 2)</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-top:2px">
+        <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;color:var(--red);flex-shrink:0;padding-top:2px">01</span><span><strong>Tiny sample size.</strong> n=10 per group. No statistical power for clinical conclusions.</span></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;color:var(--red);flex-shrink:0;padding-top:2px">02</span><span><strong>Acute response only.</strong> Single blood draw at 30 minutes. No follow-up to track resolution.</span></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;color:var(--red);flex-shrink:0;padding-top:2px">03</span><span><strong>Unrealistic dose.</strong> 30g in one sitting equals 3-4 product servings consumed at once.</span></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;color:var(--red);flex-shrink:0;padding-top:2px">04</span><span><strong>Platelet reactivity is not thrombosis.</strong> Enhanced reactivity may increase risk theoretically, but is not proven here.</span></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;font-weight:600;color:var(--red);flex-shrink:0;padding-top:2px">05</span><span><strong>Same research group as Study 1.</strong> Same lead authors, same lab, no independent replication.</span></div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="ftag ft-r">The in vitro concentration mismatch</div>
+      The platelet assays in the lab used erythritol concentrations of 4.5 to 45 µmol/L to model the fasting levels in sick patients. But after actually eating 30g of erythritol, plasma reaches ~6,480 µmol/L. <strong>The in vitro experiments modeled a concentration 100 to 1,000 times lower than what happens in real humans who eat erythritol.</strong> If anything, the in vitro platelet effects at those low concentrations are hard to interpret as a dietary risk.
+    </div>
+  </div>
+</div>
+
+<!-- S4: THE FIREFIGHTER FALLACY -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-a">04</div>
+    <div>
+      <div class="sec-title">The Firefighter Fallacy: Reverse Causation and Confounding by Indication</div>
+      <div class="sec-src">Frontiers Nutrition 2022 · Hootman et al. PPP biology · Khafagy et al. Diabetes 2024 · MDPI Nutrients review 2023</div>
+    </div>
+  </div>
+  <p class="prose">This is the core of the debunk. There are formal names for what went wrong in the Witkowski observational study, and they stack on top of each other to explain why the findings were almost guaranteed to show an association even if erythritol is completely harmless.</p>
+
+  <!-- PPP PATHWAY SVG -->
+  <div class="card ca">
+    <div class="card-title">The Pentose Phosphate Pathway: Why Sick People Have High Erythritol</div>
+    <div class="card-src">Frontiers Nutrition 2022 · Hootman et al. · bioRxiv 2022 · PPP biology and erythritol endogenous synthesis</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="240" fill="#17171f"/>
+        <defs>
+          <marker id="arr-a2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(245,166,35,0.6)"/>
+          </marker>
+          <marker id="arr-r2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(240,82,82,0.5)"/>
+          </marker>
+        </defs>
+
+        <!-- LEFT: Normal state -->
+        <text x="130" y="18" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle" letter-spacing="0.08em">HEALTHY PERSON</text>
+        <rect x="60" y="26" width="140" height="30" rx="4" fill="rgba(78,222,138,0.08)" stroke="rgba(78,222,138,0.2)" stroke-width="1"/>
+        <text x="130" y="44" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500" text-anchor="middle">Normal glucose metabolism</text>
+        <text x="130" y="56" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">PPP runs at low baseline</text>
+
+        <line x1="130" y1="56" x2="130" y2="74" stroke="rgba(78,222,138,0.4)" stroke-width="1.5" marker-end="url(#arr-a2)"/>
+
+        <rect x="60" y="76" width="140" height="30" rx="4" fill="rgba(78,222,138,0.06)" stroke="rgba(78,222,138,0.15)" stroke-width="1"/>
+        <text x="130" y="94" fill="rgba(237,234,227,0.65)" font-family="DM Sans,sans-serif" font-size="9.5" text-anchor="middle">Low endogenous erythritol</text>
+        <text x="130" y="106" fill="rgba(78,222,138,0.45)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">~3-4 µmol/L baseline</text>
+
+        <!-- RIGHT: Sick state -->
+        <text x="440" y="18" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle" letter-spacing="0.08em">METABOLICALLY SICK PERSON</text>
+        <rect x="350" y="26" width="180" height="30" rx="4" fill="rgba(240,82,82,0.08)" stroke="rgba(240,82,82,0.2)" stroke-width="1"/>
+        <text x="440" y="40" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500" text-anchor="middle">Hyperglycemia / insulin resistance</text>
+        <text x="440" y="52" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">obesity · diabetes · oxidative stress</text>
+
+        <line x1="440" y1="56" x2="440" y2="74" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arr-r2)"/>
+
+        <rect x="350" y="76" width="180" height="30" rx="4" fill="rgba(240,82,82,0.08)" stroke="rgba(240,82,82,0.2)" stroke-width="1"/>
+        <text x="440" y="94" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">PPP overactivated</text>
+        <text x="440" y="106" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">antioxidant response to oxidative stress</text>
+
+        <line x1="440" y1="106" x2="440" y2="124" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arr-r2)"/>
+
+        <rect x="350" y="126" width="180" height="30" rx="4" fill="rgba(240,82,82,0.1)" stroke="rgba(240,82,82,0.25)" stroke-width="1"/>
+        <text x="440" y="144" fill="#f05252" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">High endogenous erythritol</text>
+        <text x="440" y="156" fill="rgba(240,82,82,0.6)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">marker of metabolic dysfunction</text>
+
+        <!-- BOTH converge to Witkowski measures -->
+        <text x="300" y="178" fill="rgba(245,166,35,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle">WITKOWSKI MEASURES FASTING PLASMA ERYTHRITOL IN A SICK COHORT</text>
+        <rect x="60" y="186" width="480" height="34" rx="5" fill="rgba(245,166,35,0.07)" stroke="rgba(245,166,35,0.22)" stroke-width="1"/>
+        <text x="300" y="200" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">He finds: High erythritol = worse CVD outcomes</text>
+        <text x="300" y="213" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">But the erythritol was made by the body in response to the very disease it's being blamed for causing.</text>
+
+        <text x="300" y="234" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">This is reverse causation · The disease caused the elevated erythritol, not the other way around</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- THREE FALLACIES -->
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-a">Reverse Causation</div>
+      The most precise term for what happened. The metabolic disease caused the elevated erythritol levels, not the other way around. The causal arrow is backwards. This is why Khafagy ran a bidirectional Mendelian randomization specifically designed to test which direction causation runs. The MR found erythritol does not increase CAD risk, but disease processes may increase erythritol.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">Confounding by Indication</div>
+      The clinical epidemiology term for the cohort selection problem. Patients were enrolled because they were undergoing cardiac risk assessment. Their illness drove both the enrollment and the elevated erythritol. Any biomarker you measure in this cohort will look like a CVD risk factor because the cohort was selected for CVD risk. This makes the association almost inevitable regardless of whether erythritol does anything.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">The Firefighter Fallacy</div>
+      The biological version. The PPP upregulates specifically as an antioxidant response to counteract oxidative stress. Erythritol itself may even have antioxidant properties. Blaming erythritol for the damage caused by the metabolic dysfunction that elevated it is like blaming firefighters for the fire because they always show up when there's a fire. The firemen and the fire are correlated. The firemen did not cause the fire.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">The Natural Experiment That Kills the Hypothesis</div>
+      People with inborn errors of pentose phosphate metabolism have chronically elevated erythritol their entire lives. If high erythritol caused thrombosis and CVD, this population would show it clearly. They do not. This is a clean natural experiment and represents the strongest counter-evidence to the Witkowski causal claim.
+    </div>
+  </div>
+</div>
+
+<!-- S5: MENDELIAN RANDOMIZATION -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-b">05</div>
+    <div>
+      <div class="sec-title">Mendelian Randomization: The Closest Thing to a Causal Test</div>
+      <div class="sec-src">Khafagy et al. Diabetes 2024 · Zhang et al. PMC 2025 · JACC Advances 2025 · bidirectional MR design</div>
+    </div>
+  </div>
+  <p class="prose">Mendelian randomization uses genetic variants that naturally predict erythritol levels as a proxy for a randomized experiment, bypassing the lifestyle confounding that plagues observational data. Two MR studies exist. They conflict somewhat, and understanding both is important for an honest account of the evidence.</p>
+
+  <!-- MR FOREST PLOT -->
+  <div class="card cb">
+    <div class="card-title">Mendelian Randomization Results: Erythritol and Cardiometabolic Outcomes</div>
+    <div class="card-src">Khafagy et al. Diabetes 2024 (bidirectional MR, European ancestry) · Zhang et al. 2025 (two-sample MR) · point estimates with 95% CI</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="280" fill="#17171f"/>
+
+        <!-- Null line -->
+        <line x1="270" y1="14" x2="270" y2="248" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <text x="270" y="10" fill="rgba(255,255,255,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">null</text>
+
+        <!-- Axis labels -->
+        <text x="120" y="264" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">0.8</text>
+        <text x="195" y="264" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">0.9</text>
+        <text x="270" y="264" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">1.0</text>
+        <text x="345" y="264" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">1.1</text>
+        <text x="420" y="264" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">1.2</text>
+        <text x="495" y="264" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">1.3</text>
+        <text x="300" y="278" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Odds Ratio (genetic erythritol vs. outcome)</text>
+
+        <!-- Scale: x = 270 + (OR-1.0)*750 -->
+        <!-- 0.8->270-150=120, 0.9->195, 1.0->270, 1.1->345, 1.2->420 -->
+
+        <!-- Benefit / harm labels -->
+        <text x="120" y="26" fill="rgba(78,222,138,0.35)" font-family="IBM Plex Mono,monospace" font-size="7">benefit</text>
+        <text x="420" y="26" fill="rgba(240,82,82,0.35)" font-family="IBM Plex Mono,monospace" font-size="7">harm</text>
+
+        <!-- Grid lines -->
+        <line x1="120" y1="14" x2="120" y2="248" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <line x1="195" y1="14" x2="195" y2="248" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <line x1="345" y1="14" x2="345" y2="248" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <line x1="420" y1="14" x2="420" y2="248" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <line x1="495" y1="14" x2="495" y2="248" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+
+        <!-- Study rows (y spacing ~46px) -->
+        <!-- Row 1: Khafagy CAD: OR 0.97, CI 0.94-1.01 — null, blue -->
+        <text x="5" y="48" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600">Khafagy 2024</text>
+        <text x="5" y="60" fill="rgba(96,165,250,0.55)" font-family="IBM Plex Mono,monospace" font-size="7">CAD · bidirectional MR · European ancestry</text>
+        <line x1="247" y1="52" x2="345" y2="52" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <line x1="247" y1="46" x2="247" y2="58" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <line x1="345" y1="46" x2="345" y2="58" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <polygon points="262,46 271,52 262,58 253,52" fill="#60a5fa" opacity="0.9"/>
+        <text x="352" y="56" fill="#60a5fa" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">OR 0.97 (ns)</text>
+
+        <!-- Row 2: Khafagy BMI -->
+        <text x="5" y="94" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600">Khafagy 2024</text>
+        <text x="5" y="106" fill="rgba(78,222,138,0.55)" font-family="IBM Plex Mono,monospace" font-size="7">BMI · possible reduction · sugar replacement mechanism</text>
+        <line x1="225" y1="98" x2="270" y2="98" stroke="rgba(78,222,138,0.8)" stroke-width="1.5"/>
+        <line x1="225" y1="92" x2="225" y2="104" stroke="rgba(78,222,138,0.8)" stroke-width="1.5"/>
+        <line x1="270" y1="92" x2="270" y2="104" stroke="rgba(78,222,138,0.8)" stroke-width="1.5"/>
+        <polygon points="247,92 256,98 247,104 238,98" fill="#4ede8a" opacity="0.85"/>
+        <circle cx="247" cy="98" r="2" fill="white" opacity="0.6"/>
+        <text x="277" y="102" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">OR 0.96*</text>
+        <text x="277" y="112" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="6.5">BMI may decrease</text>
+
+        <!-- Row 3: Khafagy T2D/CKD -->
+        <text x="5" y="140" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600">Khafagy 2024</text>
+        <text x="5" y="152" fill="rgba(96,165,250,0.55)" font-family="IBM Plex Mono,monospace" font-size="7">T2D, CKD, WHR · no causal associations found</text>
+        <line x1="233" y1="144" x2="308" y2="144" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <line x1="233" y1="138" x2="233" y2="150" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <line x1="308" y1="138" x2="308" y2="150" stroke="rgba(96,165,250,0.8)" stroke-width="1.5"/>
+        <polygon points="265,138 274,144 265,150 256,144" fill="#60a5fa" opacity="0.9"/>
+        <text x="315" y="148" fill="#60a5fa" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">OR 1.00 (ns)</text>
+
+        <!-- Row 4: Zhang 2025 CHD — conflict -->
+        <text x="5" y="192" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600">Zhang 2025</text>
+        <text x="5" y="204" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="7">CHD, MI, stroke · two-sample MR · tiny OR · conflicts with Khafagy</text>
+        <line x1="270" y1="196" x2="287" y2="196" stroke="rgba(245,166,35,0.8)" stroke-width="1.5"/>
+        <line x1="270" y1="190" x2="270" y2="202" stroke="rgba(245,166,35,0.8)" stroke-width="1.5"/>
+        <line x1="287" y1="190" x2="287" y2="202" stroke="rgba(245,166,35,0.8)" stroke-width="1.5"/>
+        <polygon points="278,190 287,196 278,202 269,196" fill="#f5a623" opacity="0.8"/>
+        <text x="295" y="196" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">OR 1.002</text>
+        <text x="295" y="207" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5">suggestive · needs replication</text>
+
+        <!-- Dividers -->
+        <line x1="0" y1="70" x2="600" y2="70" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <line x1="0" y1="116" x2="600" y2="116" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <line x1="0" y1="162" x2="600" y2="162" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <line x1="0" y1="208" x2="600" y2="208" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      </svg>
+    </div>
+    <div class="chart-legend">
+      <div class="leg"><div class="leg-dot" style="background:#60a5fa"></div>Null result (CI crosses 1.0)</div>
+      <div class="leg"><div class="leg-dot" style="background:#4ede8a"></div>Possible benefit (BMI reduction)</div>
+      <div class="leg"><div class="leg-dot" style="background:#f5a623"></div>Suggestive signal (very small, conflicting)</div>
+    </div>
+    <div class="chart-note">The Khafagy 2024 bidirectional MR is the stronger study. Bidirectional design allows testing which direction causation runs. Zhang 2025 found ORs of 1.001 to 1.046 — tiny effects that may reflect instrument pleiotropy. The balance of MR evidence does not support the cardiovascular alarm.</div>
+  </div>
+
+  <div class="callout co-b">
+    <span class="callout-head">The BMI Finding Deserves More Attention</span>
+    The Khafagy MR found that genetically predicted higher erythritol is associated with lower BMI. This is consistent with erythritol's role as a zero-calorie sugar replacement — using it instead of sugar reduces overall caloric intake. If anything, the causal direction appears beneficial for metabolic outcomes, not harmful. This finding has received almost no coverage compared to the platelet story.
+  </div>
+</div>
+
+<!-- S6: THE COUNTER-EVIDENCE -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-g">06</div>
+    <div>
+      <div class="sec-title">What the Counter-Evidence Actually Shows</div>
+      <div class="sec-src">Flint et al. Acta Diabetol 2014 · Hootman et al. 2017 · Livesey et al. · vascular RCTs · inborn errors of metabolism data</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-g">RCT in type 2 diabetics: improved endothelial function</div>
+      Flint et al. gave erythritol daily to patients with type 2 diabetes over 4 weeks and found it <strong>acutely improved small-vessel endothelial function and reduced central aortic stiffness.</strong> This is the population the Witkowski alarm was most directed at. Actual dietary erythritol moved the dials in the beneficial direction.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-g">RCT in obese adults: no worsening of vascular function</div>
+      A separate trial in people with obesity — another high-risk group — found that 5 weeks of erythritol supplementation did not worsen vascular function on any measured parameter. Zero negative vascular signal in the population supposedly most at risk.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-g">Inborn error patients: lifetime high levels, no excess thrombosis</div>
+      People with genetic defects in pentose phosphate metabolism have persistently elevated erythritol throughout their entire lives. If elevated erythritol caused platelet hyperreactivity and thrombosis, this population would be a clean natural experiment showing it. <strong>They show no excess thrombosis or cardiovascular events attributable to erythritol.</strong>
+    </div>
+    <div class="finding">
+      <div class="ftag ft-g">Satiety hormones: surprisingly favorable profile</div>
+      Despite providing zero calories, erythritol triggers GLP-1, CCK, and PYY release at levels similar to glucose and suppresses ghrelin. This means it provides a satiety signal without the glycemic hit. For weight management in metabolically compromised individuals, this profile is genuinely useful and goes completely unreported in the panic coverage.
+    </div>
+  </div>
+</div>
+
+<!-- S7: VERDICT CARDS -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-p">07</div>
+    <div>
+      <div class="sec-title">Claim by Claim: What the Evidence Actually Supports</div>
+    </div>
+  </div>
+
+  <div class="verdict-cards">
+    <div class="vc-card">
+      <div class="vc-card-claim">Erythritol causes blood clots and cardiovascular events</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not causally supported</span></div>
+      <div class="vc-card-evidence">Observational association is real but explained by reverse causation. High plasma erythritol in cardiac patients reflects endogenous PPP upregulation from metabolic dysfunction, not dietary intake. MR finds no causal link to CAD. Inborn error patients with lifetime elevated erythritol show no excess thrombosis.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">The platelet reactivity study proves erythritol is dangerous</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Overreach from a weak study</span></div>
+      <div class="vc-card-evidence">n=10 per group. Single acute measurement at 30 minutes. 30g single-sitting dose. Platelet reactivity does not equal observed thrombosis. Same research group as the original alarm. No independent replication. The in vitro concentrations used were far below actual post-ingestion plasma levels.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Daily erythritol consumption damages your cardiovascular system</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not supported by controlled studies</span></div>
+      <div class="vc-card-evidence">Two RCTs in high-risk populations (T2D and obese adults) found no worsening of vascular function. One found improved endothelial function and reduced aortic stiffness after 4 weeks of daily erythritol in diabetics.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Erythritol raises blood sugar or insulin</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)">False — well established</span></div>
+      <div class="vc-card-evidence">Glycemic index 0. Insulinemic index 2. No change in blood glucose or insulin in studies ranging from 20 to 75g doses. It is not metabolized and passes through the bloodstream unchanged before renal excretion.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Erythritol triggers the cephalic phase insulin response</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)">No — not observed</span></div>
+      <div class="vc-card-evidence">CPIR has been documented for sucrose and in some subsets for sucralose, but not for erythritol. The sweet taste does not appear to trigger a pancreatic insulin pre-release, which is one of erythritol's advantages over other sweeteners.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">High plasma erythritol is a useful biomarker</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)">Yes, but as a marker — not a cause</span></div>
+      <div class="vc-card-evidence">Fasting plasma erythritol does correlate with metabolic dysfunction and CVD risk — because it reflects PPP activity, which increases under oxidative stress. It is a valid marker of metabolic health status. It is not a cause of the conditions it marks, and dietary erythritol does not produce the same persistent elevations as endogenous production.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SYNTHESIS -->
+<div class="synthesis fade-in">
+  <div class="synth-head">Synthesis: What Actually Happened Here</div>
+  <div class="synth-text">
+    The erythritol scare was a case study in how compelling-sounding observational data, combined with supportive in vitro and animal work, can generate alarm that the actual causal evidence doesn't support. The Witkowski group did real science. The methodological problems are not incompetence. They are inherent to the study designs chosen.<br><br>
+    <strong>The observational flaw was structural.</strong> You cannot measure fasting plasma erythritol in people undergoing cardiac risk assessment and conclude that erythritol caused their cardiac risk. Their elevated endogenous erythritol is a predictable consequence of the metabolic dysfunction that brought them to the clinic. This is textbook reverse causation compounded by confounding by indication. The PPP biology explains it completely: overactive PPP under oxidative stress produces erythritol as a byproduct, and erythritol itself may even be part of the antioxidant defense response. You are blaming the firemen for the fire.<br><br>
+    <strong>The intervention study was too small to draw conclusions from.</strong> Ten people per group, single acute measurement, unrealistic dose, same research group. It adds a data point but cannot bear the clinical weight placed on it.<br><br>
+    <strong>The counter-evidence points in a different direction.</strong> RCTs in diabetics and obese adults find no vascular harm and even some improvement. The Mendelian randomization finds no causal CAD link and suggests erythritol may reduce BMI. People born with permanently elevated erythritol do not clot to death. These are not small footnotes. They are the kinds of evidence you would expect to see if something were truly harmful, and they are absent.<br><br>
+    The bottom line on dietary erythritol at normal consumption levels: zero glycemic impact, no insulin response, no CPIR, favorable satiety hormone profile, no evidence of vascular harm in controlled trials, and no causal CVD link in the best available genetic evidence. The fearmongering was built on sick people's endogenous metabolism being misattributed to a sweetener.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics</div>
+  <div class="footer-refs">
+    Witkowski et al. Nature Medicine 2023 · doi:10.1038/s41591-023-02223-9<br>
+    Witkowski et al. ATVB 2024 · doi:10.1161/ATVBAHA.124.321019<br>
+    Khafagy et al. Diabetes 2024 · doi:10.2337/db23-0330<br>
+    Frontiers Nutrition 2022 · PPP erythritol synthesis and oxidative stress<br>
+    MDPI Nutrients 2023 · Elevated erythritol: marker or contributor?<br>
+    Bornet et al. Regul Toxicol Pharmacol 1996 · plasma and urine kinetics<br>
+    Flint et al. Acta Diabetol 2014 · erythritol endothelial function RCT<br>
+    Zhang et al. PMC 2025 · two-sample MR artificial sweeteners and CVD
+  </div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  const c=document.getElementById('particles');
+  ['rgba(78,222,138,0.25)','rgba(96,165,250,0.2)','rgba(245,166,35,0.18)'].forEach(col=>{
+    for(let j=0;j<6;j++){
+      const p=document.createElement('div');p.className='particle';
+      const s=Math.random()*3+2;
+      p.style.cssText=`width:${s}px;height:${s}px;background:${col};left:${Math.random()*100}%;bottom:-10px;animation-duration:${Math.random()*14+10}s;animation-delay:${Math.random()*14}s`;
+      c.appendChild(p);
+    }
+  });
+})();
+
+setTimeout(()=>{
+  ['vb1','vb2','vb3'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.style.width=el.dataset.w+'%';
+  });
+},400);
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('vis');
+    io.unobserve(e.target);
+  });
+},{threshold:0.06});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
