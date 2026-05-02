@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alkaline Water: Scam or Science? - Origin Symmetrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0e;--bg2:#111118;--bg3:#17171f;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --text:#edeae3;--text2:rgba(237,234,227,0.7);--text3:rgba(237,234,227,0.38);
+  --blue:#60a5fa;--blue-dim:rgba(96,165,250,0.1);--blue-b:rgba(96,165,250,0.22);
+  --teal:#2dd4bf;--teal-dim:rgba(45,212,191,0.1);--teal-b:rgba(45,212,191,0.22);
+  --green:#4ede8a;--green-dim:rgba(78,222,138,0.09);--green-b:rgba(78,222,138,0.22);
+  --amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--amber-b:rgba(245,166,35,0.22);
+  --red:#f05252;--red-dim:rgba(240,82,82,0.09);--red-b:rgba(240,82,82,0.22);
+  --purple:#c084fc;--purple-dim:rgba(192,132,252,0.1);--purple-b:rgba(192,132,252,0.22);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);padding:52px 20px 0}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 60% at 75% 20%,rgba(96,165,250,0.07) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 60% at 15% 70%,rgba(45,212,191,0.05) 0%,transparent 60%)}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;animation:pdrift linear infinite;opacity:0}
+@keyframes pdrift{0%{transform:translateY(100%);opacity:0}10%{opacity:1}90%{opacity:.3}100%{transform:translateY(-20px);opacity:0}}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+.hero-tag::before{content:'';display:inline-block;width:20px;height:1px;background:var(--blue)}
+h1{font-family:'Fraunces',serif;font-size:clamp(1.9rem,5.5vw,3.4rem);font-weight:900;line-height:1.05;letter-spacing:-0.025em;margin-bottom:12px}
+h1 em{font-style:italic;color:var(--blue)}
+h1 strong{color:var(--amber)}
+.hero-sub{font-size:0.9rem;color:var(--text2);max-width:620px;margin-bottom:28px;line-height:1.78}
+
+/* WHO BENEFITS STRIP */
+.who-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:rgba(255,255,255,0.05);border-radius:8px 8px 0 0;overflow:hidden}
+.wb-card{background:var(--bg2);padding:14px 14px 16px}
+.wb-label{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:5px}
+.wb-who{font-size:0.82rem;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:3px}
+.wb-stat{font-family:'IBM Plex Mono',monospace;font-size:0.46rem;color:var(--text3);line-height:1.5}
+.wb-bar{height:2px;border-radius:2px;margin-top:10px;background:rgba(255,255,255,0.06);overflow:hidden}
+.wb-fill{height:100%;border-radius:2px;width:0;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)}
+.wbc-g .wb-label{color:var(--green)}.wbc-g .wb-fill{background:var(--green)}
+.wbc-b .wb-label{color:var(--blue)}.wbc-b .wb-fill{background:var(--blue)}
+.wbc-a .wb-label{color:var(--amber)}.wbc-a .wb-fill{background:var(--amber)}
+
+.hero-note{background:var(--bg2);border-top:1px solid var(--border);border-radius:0 0 8px 8px;padding:12px 16px;display:flex;gap:10px}
+.hero-note-icon{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--blue);flex-shrink:0}
+.hero-note-text{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);line-height:1.6;letter-spacing:0.03em}
+.hero-note-text strong{color:var(--text2)}
+
+/* LAYOUT */
+.content{max-width:860px;margin:0 auto;padding:0 20px 80px}
+.sec{margin-top:52px}
+.sec-hdr{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:0.54rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:3px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:3px}
+.sn-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-b)}
+.sn-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)}
+.sn-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
+.sn-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
+.sn-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
+.sn-p{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-b)}
+.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.05rem,2.8vw,1.4rem);font-weight:700;line-height:1.2;margin-bottom:3px}
+.sec-src{font-family:'IBM Plex Mono',monospace;font-size:0.51rem;color:var(--text3);letter-spacing:0.05em;line-height:1.5}
+.prose{font-size:0.87rem;color:var(--text2);line-height:1.78;margin-bottom:14px}
+.prose strong{color:var(--text);font-weight:600}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card.cb::before{background:linear-gradient(90deg,var(--blue),transparent 70%)}
+.card.ct::before{background:linear-gradient(90deg,var(--teal),transparent 70%)}
+.card.cg::before{background:linear-gradient(90deg,var(--green),transparent 70%)}
+.card.ca::before{background:linear-gradient(90deg,var(--amber),transparent 70%)}
+.card.cr::before{background:linear-gradient(90deg,var(--red),transparent 70%)}
+.card.cp::before{background:linear-gradient(90deg,var(--purple),transparent 70%)}
+.card-title{font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.card-src{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);letter-spacing:0.05em;margin-bottom:14px}
+
+/* FTAG - always block */
+.ftag{display:block;width:fit-content;font-family:'IBM Plex Mono',monospace;font-size:0.52rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.08em;margin-bottom:8px}
+.ft-b{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-b)}
+.ft-t{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-b)}
+.ft-g{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
+.ft-a{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
+.ft-r{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
+.ft-p{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-b)}
+
+/* FINDINGS */
+.finding{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px 15px;margin-bottom:8px;font-size:0.82rem;line-height:1.68;color:var(--text2)}
+.finding:last-child{margin-bottom:0}
+.finding strong{color:var(--text);font-weight:600}
+
+/* CALLOUT */
+.callout{border-radius:6px;padding:14px 16px;margin-bottom:12px;font-size:0.84rem;line-height:1.75;color:var(--text)}
+.callout strong{font-weight:600}
+.callout-head{display:block;font-family:'IBM Plex Mono',monospace;font-size:0.53rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:7px;font-weight:600}
+.co-b{background:var(--blue-dim);border-left:3px solid var(--blue)}.co-b .callout-head{color:var(--blue)}
+.co-t{background:var(--teal-dim);border-left:3px solid var(--teal)}.co-t .callout-head{color:var(--teal)}
+.co-g{background:var(--green-dim);border-left:3px solid var(--green)}.co-g .callout-head{color:var(--green)}
+.co-a{background:var(--amber-dim);border-left:3px solid var(--amber)}.co-a .callout-head{color:var(--amber)}
+.co-r{background:var(--red-dim);border-left:3px solid var(--red)}.co-r .callout-head{color:var(--red)}
+
+/* SVG CHARTS */
+.chart-wrap{width:100%;margin-bottom:10px;overflow:hidden;border-radius:6px;background:var(--bg3)}
+.chart-wrap svg{display:block;width:100%;height:auto}
+.chart-note{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);margin-top:6px;line-height:1.6}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.leg{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:0.54rem;color:var(--text2);letter-spacing:0.04em}
+.leg-dot{width:10px;height:3px;border-radius:2px;flex-shrink:0}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+
+/* ANIMATED BARS */
+.bar-chart{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:flex;flex-direction:column;gap:4px}
+.bar-top{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.bar-name{font-size:0.81rem;font-weight:500;color:var(--text);line-height:1.3}
+.bar-sub{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;color:var(--text3);margin-top:1px}
+.bar-val{font-family:'IBM Plex Mono',monospace;font-size:0.67rem;font-weight:600;white-space:nowrap;flex-shrink:0}
+.bar-track{height:22px;background:rgba(255,255,255,0.05);border-radius:3px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;position:absolute;top:0;left:0;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.bar-inner{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 9px;font-family:'IBM Plex Mono',monospace;font-size:0.56rem;color:rgba(255,255,255,0.65)}
+
+/* VERDICT CARDS */
+.verdict-cards{display:flex;flex-direction:column;gap:8px}
+.vc-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px 14px}
+.vc-card-claim{font-size:0.83rem;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3}
+.vc-card-verdict{margin-bottom:8px}
+.vc-card-evidence{font-size:0.78rem;color:var(--text2);line-height:1.6}
+.vb{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.5rem;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:0.05em;white-space:nowrap}
+
+/* SYNTHESIS */
+.synthesis{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:26px 22px;margin-top:40px}
+.synth-head{font-family:'IBM Plex Mono',monospace;font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+.synth-text{font-size:0.88rem;line-height:1.82;color:var(--text2)}
+.synth-text strong{color:var(--text);font-weight:600}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.vis{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding-top:16px;margin-top:28px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.footer-brand{font-family:'Fraunces',serif;font-size:0.82rem;font-weight:700;color:var(--text3)}
+.footer-refs{font-family:'IBM Plex Mono',monospace;font-size:0.48rem;color:var(--text3);line-height:1.8;text-align:right}
+
+@media(max-width:580px){
+  .who-strip{grid-template-columns:1fr 1fr}
+  .who-strip .wb-card:last-child{grid-column:1/-1}
+  .grid-2{grid-template-columns:1fr}
+  .hero{padding:38px 16px 0}
+  .content{padding:0 16px 60px}
+  .footer-refs{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Evidence-Based Nutrition · Origin Symmetrics</div>
+    <h1>Alkaline Water:<br><em>Not a Scam,</em><br><strong>Just Misunderstood</strong></h1>
+    <p class="hero-sub">Everyone online told you alkaline water is snake oil because your stomach acid neutralizes it immediately. That answer is half-right. The buffering system doing the neutralizing has a real cost, and for specific populations, reducing that cost has measurable benefits backed by clinical trials. Here is who actually benefits and why.</p>
+
+    <div class="who-strip">
+      <div class="wb-card wbc-g">
+        <div class="wb-label">Strongest evidence</div>
+        <div class="wb-who">High-intensity anaerobic athletes</div>
+        <div class="wb-stat">ISSN position stand · combat sports RCT · 0.71s Wingate improvement · delayed metabolic acidosis</div>
+        <div class="wb-bar"><div class="wb-fill" id="wb1" data-w="95"></div></div>
+      </div>
+      <div class="wb-card wbc-b">
+        <div class="wb-label">Good evidence</div>
+        <div class="wb-who">GERD and reflux patients</div>
+        <div class="wb-stat">pH 8.8 denatures pepsin permanently · 2023 RCT reduced heartburn · LPR study vs. PPI</div>
+        <div class="wb-bar"><div class="wb-fill" id="wb2" data-w="78"></div></div>
+      </div>
+      <div class="wb-card wbc-a">
+        <div class="wb-label">Likely minimal benefit</div>
+        <div class="wb-who">Healthy non-athlete adults</div>
+        <div class="wb-stat">No disease, adequate fruit and veg intake, no performance demands. Regular water is fine.</div>
+        <div class="wb-bar"><div class="wb-fill" id="wb3" data-w="22"></div></div>
+      </div>
+    </div>
+    <div class="hero-note">
+      <div class="hero-note-icon">◈</div>
+      <div class="hero-note-text"><strong>The real problem:</strong> Alkaline water is sold to everyone for cancer prevention, detox, and longevity. That evidence does not exist. But dismissing every application because the marketing is bad ignores real RCT data in athletes and GERD patients. The truth is audience-specific.</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- S1: THE BUFFERING ARGUMENT -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-b">01</div>
+    <div>
+      <div class="sec-title">The Buffering Argument: Who Is Right and Who Is Missing the Point</div>
+      <div class="sec-src">StatPearls acid-base physiology · BJA Education acid-base review 2022 · AK water acid-base balance RCT · pH range data</div>
+    </div>
+  </div>
+  <p class="prose">The dismissal goes like this: your blood pH is locked at 7.35-7.45, your stomach acid neutralizes alkaline water immediately, and therefore it does nothing. That first part is true. But the argument conflates "your blood pH does not change" with "nothing is happening," which ignores the cost of maintaining that tight range.</p>
+
+  <!-- pH SCALE SVG -->
+  <div class="card cb">
+    <div class="card-title">The pH Scale and Why Blood Range Is Non-Negotiable</div>
+    <div class="card-src">Normal blood pH 7.35-7.45 · stomach pH 1.5-3.5 · urine pH 4.5-8.0 (variable) · alkaline water pH 7.5-9.5</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="180" fill="#17171f"/>
+        <defs>
+          <linearGradient id="ph-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f05252;stop-opacity:0.9"/>
+            <stop offset="35%" style="stop-color:#f5a623;stop-opacity:0.8"/>
+            <stop offset="50%" style="stop-color:#4ede8a;stop-opacity:0.7"/>
+            <stop offset="65%" style="stop-color:#60a5fa;stop-opacity:0.8"/>
+            <stop offset="100%" style="stop-color:#c084fc;stop-opacity:0.9"/>
+          </linearGradient>
+        </defs>
+
+        <!-- pH scale bar -->
+        <rect x="20" y="44" width="560" height="20" rx="4" fill="url(#ph-grad)"/>
+
+        <!-- pH tick labels: 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14 -->
+        <!-- x = 20 + (ph/14)*560 -->
+        <!-- 0->20, 1->60, 2->100, 3->140, 4->180, 5->220, 6->260, 7->300, 8->340, 9->380, 10->420, 11->460, 12->500, 13->540, 14->580 -->
+        <!-- Label every 2: 0,2,4,6,7,8,10,12,14 -->
+        <text x="20"  y="40" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">0</text>
+        <text x="100" y="40" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">2</text>
+        <text x="180" y="40" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">4</text>
+        <text x="260" y="40" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">6</text>
+        <text x="300" y="40" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">7</text>
+        <text x="340" y="40" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">8</text>
+        <text x="420" y="40" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">10</text>
+        <text x="500" y="40" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">12</text>
+        <text x="580" y="40" fill="rgba(237,234,227,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">14</text>
+
+        <!-- Label: Acidic / Neutral / Alkaline -->
+        <text x="120" y="16" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle" letter-spacing="0.06em">ACIDIC</text>
+        <text x="300" y="16" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle" letter-spacing="0.06em">NEUTRAL</text>
+        <text x="480" y="16" fill="rgba(96,165,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle" letter-spacing="0.06em">ALKALINE</text>
+
+        <!-- Annotations below bar -->
+        <!-- Stomach: pH 1.5-3.5 → x 77 to 160 -->
+        <rect x="77" y="70" width="83" height="20" rx="3" fill="rgba(240,82,82,0.25)" stroke="rgba(240,82,82,0.5)" stroke-width="1"/>
+        <text x="118" y="83" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" font-weight="600">Stomach</text>
+        <line x1="118" y1="64" x2="118" y2="70" stroke="rgba(240,82,82,0.4)" stroke-width="1"/>
+        <text x="118" y="102" fill="rgba(240,82,82,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">pH 1.5-3.5</text>
+
+        <!-- Blood: pH 7.35-7.45 → x 294 to 311 (very narrow) -->
+        <rect x="292" y="70" width="20" height="20" rx="3" fill="rgba(78,222,138,0.4)" stroke="rgba(78,222,138,0.7)" stroke-width="1.5"/>
+        <line x1="302" y1="64" x2="302" y2="70" stroke="rgba(78,222,138,0.6)" stroke-width="1"/>
+        <text x="302" y="102" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle" font-weight="600">Blood</text>
+        <text x="302" y="111" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="6" text-anchor="middle">7.35-7.45</text>
+        <text x="302" y="120" fill="rgba(78,222,138,0.4)" font-family="IBM Plex Mono,monospace" font-size="6" text-anchor="middle">non-negotiable</text>
+
+        <!-- Urine: pH 4.5-8.0 → x 193 to 340 -->
+        <rect x="193" y="130" width="147" height="20" rx="3" fill="rgba(245,166,35,0.18)" stroke="rgba(245,166,35,0.4)" stroke-width="1"/>
+        <text x="266" y="143" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" font-weight="600">Urine (variable)</text>
+        <text x="266" y="160" fill="rgba(245,166,35,0.5)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">pH 4.5-8.0 · reflects acid excretion · measurably changes with diet</text>
+
+        <!-- Alkaline water: pH 7.5-9.5 → x 311 to 400 -->
+        <rect x="313" y="70" width="89" height="20" rx="3" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.45)" stroke-width="1"/>
+        <text x="357" y="83" fill="#60a5fa" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" font-weight="600">Alkaline water</text>
+        <line x1="357" y1="64" x2="357" y2="70" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+        <text x="357" y="102" fill="rgba(96,165,250,0.55)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">pH 7.5-9.5</text>
+
+        <text x="300" y="174" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Blood pH range is 0.1 units wide. Even slight deviation causes acidosis or alkalosis. The body defends it at significant metabolic cost.</text>
+      </svg>
+    </div>
+    <div class="chart-note">Blood pH is the most tightly regulated variable in human physiology. Urine pH, by contrast, varies widely and reflects how hard the kidneys are working to offload acid. When you eat an acid-producing diet or exercise intensely, urine pH drops as the kidneys excrete more hydrogen ions. Alkaline water reduces that excretion load.</div>
+  </div>
+
+  <!-- BUFFERING SYSTEM COST SVG -->
+  <div class="card cb" style="margin-top:0">
+    <div class="card-title">How the Buffering System Maintains Blood pH</div>
+    <div class="card-src">StatPearls physiology 2022 · BJA Education acid-base review 2022 · three-system model: chemical buffers, lungs, kidneys</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="190" fill="#17171f"/>
+        <defs>
+          <marker id="arr-b" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(96,165,250,0.6)"/>
+          </marker>
+          <marker id="arr-a2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(245,166,35,0.6)"/>
+          </marker>
+        </defs>
+
+        <!-- Acid source -->
+        <rect x="10" y="70" width="110" height="50" rx="5" fill="rgba(240,82,82,0.1)" stroke="rgba(240,82,82,0.25)" stroke-width="1"/>
+        <text x="65" y="90" fill="#f05252" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Acid Load</text>
+        <text x="65" y="104" fill="rgba(240,82,82,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">exercise / diet / metabolism</text>
+
+        <!-- Arrow right -->
+        <line x1="120" y1="95" x2="150" y2="95" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arr-b)"/>
+
+        <!-- Chemical buffers -->
+        <rect x="152" y="55" width="118" height="80" rx="5" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.22)" stroke-width="1"/>
+        <text x="211" y="78" fill="#60a5fa" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Chemical Buffers</text>
+        <text x="211" y="92" fill="rgba(237,234,227,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Bicarbonate (HCO3-)</text>
+        <text x="211" y="103" fill="rgba(237,234,227,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Phosphate system</text>
+        <text x="211" y="114" fill="rgba(237,234,227,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Hemoglobin / proteins</text>
+        <text x="211" y="126" fill="rgba(96,165,250,0.45)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Seconds to respond</text>
+
+        <!-- Arrow right -->
+        <line x1="270" y1="95" x2="300" y2="95" stroke="rgba(96,165,250,0.5)" stroke-width="1.5" marker-end="url(#arr-b)"/>
+
+        <!-- Lungs -->
+        <rect x="302" y="55" width="106" height="80" rx="5" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.22)" stroke-width="1"/>
+        <text x="355" y="78" fill="#2dd4bf" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Lungs</text>
+        <text x="355" y="93" fill="rgba(237,234,227,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Exhale more CO2</text>
+        <text x="355" y="104" fill="rgba(237,234,227,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">to offload acid</text>
+        <text x="355" y="119" fill="rgba(45,212,191,0.45)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Minutes to respond</text>
+
+        <!-- Arrow right -->
+        <line x1="408" y1="95" x2="438" y2="95" stroke="rgba(45,212,191,0.5)" stroke-width="1.5" marker-end="url(#arr-b)"/>
+
+        <!-- Kidneys -->
+        <rect x="440" y="55" width="148" height="80" rx="5" fill="rgba(245,166,35,0.08)" stroke="rgba(245,166,35,0.22)" stroke-width="1"/>
+        <text x="514" y="78" fill="#f5a623" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Kidneys</text>
+        <text x="514" y="93" fill="rgba(237,234,227,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Excrete H+ in urine</text>
+        <text x="514" y="104" fill="rgba(237,234,227,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Reclaim bicarbonate</text>
+        <text x="514" y="119" fill="rgba(245,166,35,0.45)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Hours to days · highest cost</text>
+
+        <!-- Key insight box bottom -->
+        <rect x="10" y="152" width="580" height="38" rx="4" fill="rgba(96,165,250,0.06)" stroke="rgba(96,165,250,0.15)" stroke-width="0.5"/>
+        <text x="300" y="165" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">The critic's error: saying blood pH doesn't change is correct. Saying "therefore nothing</text>
+        <text x="300" y="177" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">is happening" ignores the three-system cost of keeping it stable.</text>
+        <text x="300" y="185" fill="rgba(96,165,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Alkaline water reduces the acid load these systems must handle, especially the kidneys during prolonged high-intensity exercise.</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="callout co-b">
+    <span class="callout-head">The Nuance the Influencers Skip</span>
+    The critics are right that drinking alkaline water does not meaningfully change your blood pH. That is settled physiology. What they miss is that the buffering system maintaining that pH is not free. During high-intensity anaerobic exercise, the kidneys and chemical buffers are working at maximum capacity to prevent acidosis. Reducing the incoming acid load — even modestly — gives those systems more headroom. That is not snake oil. That is basic buffer chemistry applied to sports physiology.
+  </div>
+</div>
+
+<!-- S2: THE BAKING SODA BRIDGE -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-t">02</div>
+    <div>
+      <div class="sec-title">The Baking Soda Bridge: The Proof of Concept Everyone Ignores</div>
+      <div class="sec-src">Grgic et al. ISSN Position Stand · J Int Soc Sports Nutr 2021 · 18:61 · meta-analysis of 150+ studies</div>
+    </div>
+  </div>
+  <p class="prose">Alkaline water is essentially a low-concentration version of sodium bicarbonate supplementation. If you call alkaline water snake oil but accept that elite cyclists take baking soda before events, you have an inconsistency to explain. The 2021 ISSN position stand on sodium bicarbonate is the best published framework for understanding why the mechanism is real.</p>
+
+  <!-- SODIUM BICARB PERFORMANCE DATA SVG -->
+  <div class="card ct">
+    <div class="card-title">Sodium Bicarbonate and Exercise Performance: ISSN Position Stand Data</div>
+    <div class="card-src">Grgic et al. ISSN Position Stand 2021 · J Int Soc Sports Nutr 18:61 · meta-analysis of 150+ individual study arms</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 292" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="270" fill="#17171f"/>
+
+        <!-- Sport improvement bars (approximate % improvement from ISSN data) -->
+        <!-- Scale: x = 80 + (pct/8)*480, 0->80, 8->560 -->
+        <text x="20" y="22" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.08em" font-weight="600">PERFORMANCE IMPROVEMENTS WITH 0.3 g/kg SODIUM BICARBONATE</text>
+
+        <!-- Row headers -->
+        <text x="20" y="45" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0.06em">EVENT / SPORT</text>
+        <text x="420" y="45" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0.06em">IMPROVEMENT</text>
+
+        <!-- High-intensity cycling 30s-12min: ~3-5% -->
+        <text x="20" y="68" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">High-intensity cycling (30s-12min)</text>
+        <rect x="20" y="72" width="490" height="14" rx="2" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="72" width="294" height="14" rx="2" fill="rgba(45,212,191,0.35)" class="sbar" data-w="294"/>
+        <text x="320" y="82" fill="#2dd4bf" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">3-5%</text>
+
+        <!-- 400m run: ~1.1-2% -->
+        <text x="20" y="100" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">400m run (about 50s)</text>
+        <rect x="20" y="104" width="490" height="14" rx="2" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="104" width="132" height="14" rx="2" fill="rgba(45,212,191,0.28)" class="sbar" data-w="132"/>
+        <text x="158" y="114" fill="#2dd4bf" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">1.1-1.5%</text>
+
+        <!-- 1500m run: ~1-2% -->
+        <text x="20" y="132" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">1500m run (about 4min)</text>
+        <rect x="20" y="136" width="490" height="14" rx="2" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="136" width="96" height="14" rx="2" fill="rgba(45,212,191,0.24)" class="sbar" data-w="96"/>
+        <text x="122" y="146" fill="#2dd4bf" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">~1.1-2%</text>
+
+        <!-- Combat sports: ~significant -->
+        <text x="20" y="164" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">Combat sports (boxing, judo, wrestling)</text>
+        <rect x="20" y="168" width="490" height="14" rx="2" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="168" width="245" height="14" rx="2" fill="rgba(45,212,191,0.32)" class="sbar" data-w="245"/>
+        <text x="271" y="178" fill="#2dd4bf" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">2-4% power output</text>
+
+        <!-- Swimming -->
+        <text x="20" y="196" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="500">Swimming / rowing (1-12min events)</text>
+        <rect x="20" y="200" width="490" height="14" rx="2" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="200" width="180" height="14" rx="2" fill="rgba(45,212,191,0.26)" class="sbar" data-w="180"/>
+        <text x="206" y="210" fill="#2dd4bf" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">1-3%</text>
+
+        <!-- Optimal dose marker -->
+        <line x1="20" y1="228" x2="510" y2="228" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <rect x="20" y="234" width="568" height="38" rx="4" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.15)" stroke-width="0.5"/>
+        <text x="304" y="247" fill="rgba(45,212,191,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle">OPTIMAL PROTOCOL: 0.3 g/kg · 60-180 min pre-exercise · with carbohydrate meal</text>
+        <text x="304" y="258" fill="rgba(45,212,191,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" text-anchor="middle">or multi-day 0.4-0.5 g/kg split across 3-7 days</text>
+        <text x="304" y="268" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Higher doses (0.4-0.5 g/kg single) add no extra benefit and increase GI side effects.</text>
+        <text x="304" y="278" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Combining with creatine or beta-alanine may produce additive effects.</text>
+      </svg>
+    </div>
+    <div class="chart-note">These performance improvements are from the official ISSN position stand, not alkaline water studies specifically. They establish that the bicarbonate mechanism is real and dose-dependent. Alkaline water delivers far less bicarbonate per liter than these supplement doses, but it uses the identical mechanism.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-t">Alkaline water vs. baking soda: the dose gap</div>
+      One liter of alkaline water at pH 9.0 contains roughly 1-2 mmol of bicarbonate. The ISSN ergogenic dose (0.3 g/kg for a 70kg person = 21g of NaHCO3) contains about 250 mmol. So alkaline water is roughly <strong>100-200x lower dose than ergogenic supplementation</strong> per liter. This is why you need 2.5-3 liters daily for the combat sports study to show effects. The mechanism is the same. The dose requires volume.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-t">Why athletes use baking soda, not alkaline water</div>
+      Baking soda is cheaper, more concentrated, and dose-controllable. Alkaline water has a practical advantage in combat sports specifically: athletes often restrict water intake for weight cuts before competition. Switching to alkaline water instead of plain water during the rehydration window adds bicarbonate load without requiring a separate supplement protocol. It combines hydration and buffering in one intervention.
+    </div>
+  </div>
+</div>
+
+<!-- S3: COMBAT SPORTS AND HYDRATION DATA -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-g">03</div>
+    <div>
+      <div class="sec-title">The Combat Sports RCT: The Best Direct Evidence for Alkaline Water</div>
+      <div class="sec-src">Chycki et al. PLoS ONE 2018 · n=16 · double-blind placebo-controlled · 3-week protocol · Wingate test performance</div>
+    </div>
+  </div>
+  <p class="prose">This is the most directly relevant study for your argument. Double-blind, placebo-controlled, real athletes, real performance endpoints. Not a supplement study — alkaline water itself vs. regular water, over three weeks at realistic daily intake volumes.</p>
+
+  <!-- COMBAT SPORTS RESULTS SVG -->
+  <div class="card cg">
+    <div class="card-title">Alkaline Water in Combat Sport Athletes: Acid-Base and Performance Results</div>
+    <div class="card-src">Chycki et al. PLoS ONE 2018 · n=16 well-trained males · 7.6 years combat sport experience · double-blind placebo RCT · 3 weeks · 2.5-3L/day</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 302" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="280" fill="#17171f"/>
+
+        <!-- BEFORE/AFTER comparison: Blood pH, Urine pH, Anaerobic performance, Lactate -->
+        <text x="20" y="22" fill="rgba(237,234,227,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.08em" font-weight="600">ALKALINE WATER GROUP vs. CONTROL GROUP (3 WEEKS)</text>
+
+        <!-- Column headers -->
+        <text x="220" y="42" fill="rgba(96,165,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle" font-weight="600">CONTROL (Regular Water)</text>
+        <text x="430" y="42" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle" font-weight="600">ALKALINE WATER GROUP</text>
+
+        <!-- Row 1: Blood pH -->
+        <text x="20" y="68" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">Blood pH</text>
+        <text x="20" y="80" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="7">post-exercise measurement</text>
+        <!-- Control bar: minimal change -->
+        <rect x="150" y="64" width="140" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(96,165,250,0.2)" stroke-width="0.5"/>
+        <rect x="150" y="64" width="70" height="18" rx="3" fill="rgba(96,165,250,0.2)"/>
+        <text x="286" y="76" fill="rgba(96,165,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" text-anchor="end">No sig. change</text>
+        <!-- AW bar: significant increase -->
+        <rect x="350" y="64" width="140" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(78,222,138,0.2)" stroke-width="0.5"/>
+        <rect x="350" y="64" width="130" height="18" rx="3" fill="rgba(78,222,138,0.35)"/>
+        <text x="486" y="76" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">Significant increase*</text>
+
+        <!-- Row 2: Urine pH -->
+        <line x1="10" y1="94" x2="590" y2="94" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <text x="20" y="112" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">Urine pH</text>
+        <text x="20" y="124" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="7">reflects acid excretion burden</text>
+        <rect x="150" y="108" width="140" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(96,165,250,0.2)" stroke-width="0.5"/>
+        <rect x="150" y="108" width="55" height="18" rx="3" fill="rgba(96,165,250,0.18)"/>
+        <text x="286" y="120" fill="rgba(96,165,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" text-anchor="end">Slightly reduced</text>
+        <rect x="350" y="108" width="140" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(78,222,138,0.2)" stroke-width="0.5"/>
+        <rect x="350" y="108" width="125" height="18" rx="3" fill="rgba(78,222,138,0.32)"/>
+        <text x="486" y="120" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">Significantly higher*</text>
+
+        <!-- Row 3: Anaerobic performance -->
+        <line x1="10" y1="138" x2="590" y2="138" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <text x="20" y="152" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">Anaerobic performance</text>
+        <text x="20" y="163" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="7">double 30s Wingate test · p=0.03</text>
+        <rect x="150" y="168" width="140" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(96,165,250,0.2)" stroke-width="0.5"/>
+        <rect x="150" y="168" width="60" height="18" rx="3" fill="rgba(96,165,250,0.18)"/>
+        <text x="286" y="180" fill="rgba(96,165,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" text-anchor="end">Baseline</text>
+        <rect x="350" y="168" width="140" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(78,222,138,0.2)" stroke-width="0.5"/>
+        <rect x="350" y="168" width="138" height="18" rx="3" fill="rgba(78,222,138,0.38)"/>
+        <text x="492" y="180" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">+0.71s better (p=0.03)*</text>
+
+        <!-- Row 4: Post-exercise lactate -->
+        <line x1="10" y1="196" x2="590" y2="196" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <text x="20" y="214" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600">Post-exercise blood lactate</text>
+        <text x="20" y="226" fill="rgba(237,234,227,0.35)" font-family="IBM Plex Mono,monospace" font-size="7">marker of acidosis severity</text>
+        <rect x="150" y="210" width="140" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(96,165,250,0.2)" stroke-width="0.5"/>
+        <rect x="150" y="210" width="130" height="18" rx="3" fill="rgba(96,165,250,0.22)"/>
+        <text x="286" y="222" fill="rgba(96,165,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" text-anchor="end">Higher (more acidosis)</text>
+        <rect x="350" y="210" width="140" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(78,222,138,0.2)" stroke-width="0.5"/>
+        <rect x="350" y="210" width="75" height="18" rx="3" fill="rgba(78,222,138,0.25)"/>
+        <text x="430" y="222" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600">Lower (buffered)*</text>
+
+        <!-- Protocol note -->
+        <rect x="10" y="244" width="580" height="40" rx="4" fill="rgba(78,222,138,0.05)" stroke="rgba(78,222,138,0.15)" stroke-width="0.5"/>
+        <text x="300" y="258" fill="rgba(237,234,227,0.6)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">Protocol: 2.5-3.0 liters highly alkaline water daily for 3 weeks before the Wingate tests</text>
+        <text x="300" y="272" fill="rgba(78,222,138,0.45)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">* statistically significant · n=16 · limitation: small sample, male only · double-blind placebo-controlled design</text>
+
+        <text x="300" y="288" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Chycki et al. PLoS ONE 2018 · doi:10.1371/journal.pone.0205708</text>
+      </svg>
+    </div>
+    <div class="chart-note">All four key outcomes moved in the expected direction in the alkaline water group. The study was double-blind and placebo-controlled, which is a high bar for a water study. The 0.71-second improvement in Wingate performance is small in absolute terms but meaningful in competitive combat sports where margins are tight.</div>
+  </div>
+
+  <!-- BLOOD VISCOSITY SVG -->
+  <div class="card cg" style="margin-top:0">
+    <div class="card-title">Post-Exercise Rehydration: Blood Viscosity After Alkaline vs. Regular Water</div>
+    <div class="card-src">Weidman et al. J Int Soc Sports Nutr 2016 · n=100 · randomized double-blind · post-exercise dehydration rehydration protocol · p=0.03</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="180" fill="#17171f"/>
+
+        <!-- Two bar comparison: reduction in blood viscosity -->
+        <!-- Regular water: 3.36% reduction, Alkaline: 6.30% reduction -->
+        <!-- Scale: 0-8% → x = 80 + (pct/8)*440 -->
+
+        <text x="300" y="20" fill="rgba(237,234,227,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" letter-spacing="0.08em">REDUCTION IN HIGH-SHEAR BLOOD VISCOSITY AFTER REHYDRATION (n=100)</text>
+
+        <!-- Regular water bar -->
+        <text x="80" y="56" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="10" font-weight="500">Regular water</text>
+        <rect x="80" y="60" width="440" height="30" rx="3" fill="rgba(255,255,255,0.04)"/>
+        <rect x="80" y="60" width="185" height="30" rx="3" fill="rgba(96,165,250,0.3)" class="sbar" data-w="185"/>
+        <text x="275" y="79" fill="#60a5fa" font-family="Fraunces,serif" font-size="16" font-weight="700">3.36%</text>
+        <text x="278" y="90" fill="rgba(96,165,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="7">reduction</text>
+
+        <!-- Alkaline water bar -->
+        <text x="80" y="112" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="10" font-weight="500">Alkaline water (electrolyzed, high-pH)</text>
+        <rect x="80" y="116" width="440" height="30" rx="3" fill="rgba(255,255,255,0.04)"/>
+        <rect x="80" y="116" width="346" height="30" rx="3" fill="rgba(78,222,138,0.35)" class="sbar" data-w="346"/>
+        <text x="436" y="135" fill="#4ede8a" font-family="Fraunces,serif" font-size="16" font-weight="700">6.30%</text>
+        <text x="438" y="146" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="7">reduction · p=0.03</text>
+
+        <text x="300" y="170" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Lower blood viscosity = blood flows more freely = faster oxygen delivery to muscles during recovery. Other biomarkers (plasma osmolality, body mass) showed no significant difference.</text>
+      </svg>
+    </div>
+    <div class="chart-note">This was a 100-person double-blind RCT, the largest controlled study on alkaline water. Plasma osmolality, bioimpedance, and body mass showed no significant difference between groups — so alkaline water did not hydrate "more" in those measures. The blood viscosity finding is the notable signal: faster-flowing blood after exercise could meaningfully impact recovery and next-bout performance.</div>
+  </div>
+</div>
+
+<!-- S4: GERD AND REFLUX -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-a">04</div>
+    <div>
+      <div class="sec-title">GERD and Reflux: The Most Underreported Application</div>
+      <div class="sec-src">Koufman and Johnston Annals Otol Rhinol Laryngol 2012 · Hohenester et al. BMJ Open Gastroenterol 2023 · Zalvan et al. LPR alkaline diet study 2017</div>
+    </div>
+  </div>
+  <p class="prose">For GERD and especially laryngopharyngeal reflux (LPR), the evidence is more developed than most people realize. The mechanism here is not about buffering the buffering system — it is about directly deactivating the enzyme responsible for tissue damage in the esophagus and throat.</p>
+
+  <!-- PEPSIN MECHANISM SVG -->
+  <div class="card ca">
+    <div class="card-title">Why pH 8.8 Alkaline Water Is Different for Reflux Patients</div>
+    <div class="card-src">Koufman and Johnston Annals Otol Rhinol Laryngol 2012 · in vitro pepsin denaturation study · pH 8.8 artesian well water · Hohenester BMJ Open Gastroenterol 2023</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 210" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="210" fill="#17171f"/>
+        <defs>
+          <marker id="arr-a3" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(245,166,35,0.6)"/>
+          </marker>
+          <marker id="arr-g2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(78,222,138,0.6)"/>
+          </marker>
+          <marker id="arr-r2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(240,82,82,0.6)"/>
+          </marker>
+        </defs>
+
+        <!-- What reflux damage actually is -->
+        <text x="16" y="20" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.08em" font-weight="600">REFLUX DAMAGE MECHANISM</text>
+
+        <rect x="10" y="28" width="108" height="44" rx="4" fill="rgba(240,82,82,0.1)" stroke="rgba(240,82,82,0.25)" stroke-width="1"/>
+        <text x="64" y="46" fill="#f05252" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Stomach acid</text>
+        <text x="64" y="60" fill="rgba(240,82,82,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">+ Pepsin enzyme</text>
+
+        <line x1="118" y1="50" x2="148" y2="50" stroke="rgba(240,82,82,0.5)" stroke-width="1.5" marker-end="url(#arr-r2)"/>
+        <text x="133" y="44" fill="rgba(237,234,227,0.3)" font-family="IBM Plex Mono,monospace" font-size="6">reflux</text>
+
+        <rect x="150" y="28" width="130" height="44" rx="4" fill="rgba(240,82,82,0.08)" stroke="rgba(240,82,82,0.2)" stroke-width="1"/>
+        <text x="215" y="44" fill="rgba(237,234,227,0.8)" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">Esophagus / throat</text>
+        <text x="215" y="58" fill="rgba(240,82,82,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Pepsin digests tissue</text>
+        <text x="215" y="68" fill="rgba(240,82,82,0.45)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">even after acid clears</text>
+
+        <!-- Standard treatment -->
+        <line x1="280" y1="50" x2="310" y2="50" stroke="rgba(245,166,35,0.5)" stroke-width="1.5" marker-end="url(#arr-a3)"/>
+        <rect x="312" y="28" width="120" height="44" rx="4" fill="rgba(245,166,35,0.08)" stroke="rgba(245,166,35,0.2)" stroke-width="1"/>
+        <text x="372" y="46" fill="#f5a623" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">PPI drugs</text>
+        <text x="372" y="60" fill="rgba(245,166,35,0.55)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">Reduce acid production</text>
+        <text x="372" y="70" fill="rgba(245,166,35,0.4)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Do not deactivate pepsin</text>
+
+        <!-- Alkaline water advantage -->
+        <line x1="432" y1="50" x2="462" y2="50" stroke="rgba(78,222,138,0.5)" stroke-width="1.5" marker-end="url(#arr-g2)"/>
+        <rect x="464" y="20" width="128" height="60" rx="4" fill="rgba(78,222,138,0.1)" stroke="rgba(78,222,138,0.28)" stroke-width="1"/>
+        <text x="528" y="38" fill="#4ede8a" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" text-anchor="middle">pH 8.8 water</text>
+        <text x="528" y="52" fill="rgba(78,222,138,0.7)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" font-weight="600">Denatures pepsin</text>
+        <text x="528" y="63" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">permanently inactive</text>
+        <text x="528" y="73" fill="rgba(78,222,138,0.4)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Koufman 2012 (in vitro)</text>
+
+        <!-- divider -->
+        <line x1="10" y1="92" x2="590" y2="92" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+
+        <!-- RCT evidence row -->
+        <text x="16" y="110" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="7.5" letter-spacing="0.08em" font-weight="600">2023 RCT: BICARBONATE-RICH WATER vs. REGULAR WATER</text>
+
+        <rect x="10" y="118" width="274" height="54" rx="4" fill="rgba(96,165,250,0.06)" stroke="rgba(96,165,250,0.15)" stroke-width="0.5"/>
+        <text x="147" y="136" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">Regular mineral water (control)</text>
+        <text x="147" y="150" fill="rgba(96,165,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">Heartburn frequency: no significant</text>
+        <text x="147" y="161" fill="rgba(96,165,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">change at 4 weeks</text>
+
+        <rect x="294" y="118" width="296" height="54" rx="4" fill="rgba(78,222,138,0.07)" stroke="rgba(78,222,138,0.18)" stroke-width="0.5"/>
+        <text x="442" y="136" fill="rgba(237,234,227,0.7)" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">Bicarbonate-rich water (alkaline)</text>
+        <text x="442" y="150" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">Reduced heartburn frequency</text>
+        <text x="442" y="161" fill="rgba(78,222,138,0.6)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">and intensity after 4 weeks (p sig.)</text>
+
+        <text x="300" y="196" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Hohenester et al. BMJ Open Gastroenterology 2023 · double-blind RCT · GERD patients</text>
+        <text x="300" y="207" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Koufman and Johnston 2012 · Annals Otol Rhinol Laryngol · in vitro pepsin denaturation at pH 8.8</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-a">LPR: The stronger application</div>
+      Laryngopharyngeal reflux is reflux that reaches the throat, vocal cords, and sinuses. It often occurs without classic heartburn. The Zalvan et al. study found that alkaline water combined with a Mediterranean-style diet achieved symptom control comparable to PPI medication over 6 weeks, avoiding the drug interaction and long-term PPI risks. <strong>For LPR specifically, the pepsin denaturation mechanism is particularly relevant because pepsin survives and stays active in the throat even after acid is gone.</strong>
+    </div>
+    <div class="finding">
+      <div class="ftag ft-a">The important caveat for GERD</div>
+      These studies use <strong>bicarbonate-rich mineral water</strong>, not all alkaline water products. Electrolyzed alkaline water (the kind most brands sell) achieves high pH differently and may not deliver the same mineral content. The pepsin denaturation finding (Koufman 2012) is in vitro only. The 2023 RCT is the most clinically meaningful piece of evidence, and it specifically used bicarbonate-rich water. Brand matters here more than pH alone.
+    </div>
+  </div>
+</div>
+
+<!-- S5: THE KETO ANGLE AND DIET-DRIVEN ALKALINITY -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-p">05</div>
+    <div>
+      <div class="sec-title">Diet Acid Load: Why Fruits, Vegetables, and Keto All Matter Here</div>
+      <div class="sec-src">PRAL (Potential Renal Acid Load) system · dietary acid load research · metabolic acidosis and protein synthesis · Thomas et al. 2023</div>
+    </div>
+  </div>
+  <p class="prose">Your instinct about keto dieters is mechanistically correct and under-discussed. The buffering system cost argument applies most strongly to people whose diet is producing the highest acid load — and the two clearest examples are chronic keto dieters and people who eat very little fruit and vegetables.</p>
+
+  <!-- PRAL CHART SVG -->
+  <div class="card cp">
+    <div class="card-title">Dietary Acid Load by Food Type: Potential Renal Acid Load (PRAL)</div>
+    <div class="card-src">PRAL system (Remer and Manz) · negative PRAL = alkaline-forming · positive PRAL = acid-forming · values per 100g typical serving</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="240" fill="#17171f"/>
+
+        <!-- Axis: 0 in center, negative left (alkaline), positive right (acid) -->
+        <!-- x = 300 + (pral/20)*260 -->
+        <!-- -20 -> 40, -10 -> 170, 0 -> 300, +10 -> 430, +20 -> 560 -->
+        <line x1="300" y1="18" x2="300" y2="220" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <text x="300" y="14" fill="rgba(255,255,255,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">0 (neutral)</text>
+
+        <text x="80" y="14" fill="rgba(78,222,138,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">alkaline-forming</text>
+        <text x="480" y="14" fill="rgba(240,82,82,0.5)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">acid-forming</text>
+
+        <!-- Grid -->
+        <line x1="170" y1="18" x2="170" y2="220" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <line x1="430" y1="18" x2="430" y2="220" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <text x="170" y="230" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">-10</text>
+        <text x="430" y="230" fill="rgba(237,234,227,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" text-anchor="middle">+10</text>
+
+        <!-- Foods: PRAL values -->
+        <!-- Spinach: -14 → x = 300 + (-14/20)*260 = 300-182=118, bar from 118 to 300 -->
+        <text x="298" y="44" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9" text-anchor="end">Spinach</text>
+        <rect x="118" y="34" width="182" height="14" rx="2" fill="rgba(78,222,138,0.35)"/>
+        <text x="113" y="44" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end">-14</text>
+
+        <!-- Banana: -5.5 → x = 300-71.5=228 -->
+        <text x="298" y="62" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9" text-anchor="end">Banana</text>
+        <rect x="228" y="52" width="72" height="14" rx="2" fill="rgba(78,222,138,0.28)"/>
+        <text x="223" y="62" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end">-5.5</text>
+
+        <!-- Potato: -4 → x=252 -->
+        <text x="298" y="80" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9" text-anchor="end">Potato</text>
+        <rect x="248" y="70" width="52" height="14" rx="2" fill="rgba(78,222,138,0.22)"/>
+        <text x="243" y="80" fill="#4ede8a" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="end">-4.0</text>
+
+        <!-- Milk: +1 → x=313 -->
+        <text x="302" y="100" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9" text-anchor="start">Milk</text>
+        <rect x="300" y="90" width="13" height="14" rx="2" fill="rgba(245,166,35,0.2)"/>
+        <text x="320" y="100" fill="rgba(245,166,35,0.6)" font-family="IBM Plex Mono,monospace" font-size="8">+1.0</text>
+
+        <!-- Chicken breast: +8.7 → x=300+113=413, bar 300 to 413 -->
+        <text x="302" y="120" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9" text-anchor="start">Chicken breast</text>
+        <rect x="300" y="110" width="113" height="14" rx="2" fill="rgba(240,82,82,0.28)"/>
+        <text x="420" y="120" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="8">+8.7</text>
+
+        <!-- Parmesan: +34 → capped at 560 -->
+        <text x="302" y="140" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9" text-anchor="start">Hard cheese</text>
+        <rect x="300" y="130" width="240" height="14" rx="2" fill="rgba(240,82,82,0.38)"/>
+        <text x="548" y="140" fill="#f05252" font-family="IBM Plex Mono,monospace" font-size="8">+26+</text>
+
+        <!-- White bread: +3.7 -->
+        <text x="302" y="160" fill="rgba(237,234,227,0.75)" font-family="DM Sans,sans-serif" font-size="9" text-anchor="start">White bread</text>
+        <rect x="300" y="150" width="48" height="14" rx="2" fill="rgba(240,82,82,0.2)"/>
+        <text x="356" y="160" fill="rgba(240,82,82,0.7)" font-family="IBM Plex Mono,monospace" font-size="8">+3.7</text>
+
+        <!-- KETO DIET label -->
+        <rect x="300" y="178" width="260" height="22" rx="3" fill="rgba(192,132,252,0.1)" stroke="rgba(192,132,252,0.25)" stroke-width="1"/>
+        <text x="430" y="193" fill="#c084fc" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" font-weight="600">High-fat / keto diet: very high acid load · kidneys work harder · lower urine pH</text>
+
+        <text x="300" y="222" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">PRAL = Potential Renal Acid Load · Remer and Manz formula · negative = kidney works less · positive = kidney works more</text>
+        <text x="300" y="232" fill="rgba(237,234,227,0.2)" font-family="IBM Plex Mono,monospace" font-size="6.5" text-anchor="middle">Diets high in protein and fat without adequate fruit and vegetable intake create the highest chronic acid load</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="finding">
+      <div class="ftag ft-p">Why keto dieters have different pH balance</div>
+      Ketone bodies (beta-hydroxybutyrate, acetoacetate) are weak acids. Combined with the high protein intake typical of keto, the total renal acid load is higher than most other diets. Long-term keto dieters measurably have lower urine pH because their kidneys are excreting more hydrogen ions. This is not dangerous in healthy people with normal renal function, but it represents exactly the buffering cost scenario where alkaline water would have the most measurable effect.
+    </div>
+    <div class="finding">
+      <div class="ftag ft-p">Diet is the better solution than bottled water</div>
+      Fruits and vegetables have strongly negative PRAL values, meaning they actively reduce the kidney's acid excretion burden. A diet adequate in plant foods essentially does what alkaline water proponents claim for the supplement. This is why your Reddit comment was correct: for healthy non-athletes eating adequate fruit and vegetables, alkaline water adds little because the diet is already reducing acid load. <strong>Baking soda costs pennies and delivers the same bicarbonate at far higher doses.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- S6: VERDICT -->
+<div class="sec fade-in">
+  <div class="sec-hdr">
+    <div class="sec-num sn-t">06</div>
+    <div>
+      <div class="sec-title">Claim by Claim: What the Evidence Actually Supports</div>
+    </div>
+  </div>
+
+  <div class="verdict-cards">
+    <div class="vc-card">
+      <div class="vc-card-claim">Alkaline water is a complete scam</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Overreach</span></div>
+      <div class="vc-card-evidence">There are double-blind RCTs showing benefits in combat sport athletes, post-exercise rehydration, and GERD patients. Calling it a scam ignores real primary literature. The marketing is often scammy. The mechanism is real. Those are different things.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Alkaline water changes your blood pH</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)">Not meaningfully — but that misses the point</span></div>
+      <div class="vc-card-evidence">Blood pH stays within its 7.35-7.45 range due to the buffering system. But the buffering system doing that work has a metabolic cost. Reducing the incoming acid load reduces the cost of maintaining pH, which matters most during high-intensity exercise. Urine pH does measurably change.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">High-intensity anaerobic athletes benefit from alkaline water</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)">Supported by RCT data</span></div>
+      <div class="vc-card-evidence">Chycki et al. 2018 (double-blind, placebo-controlled, n=16 combat sport athletes): improved blood and urine pH, lower post-exercise lactate, +0.71s Wingate improvement (p=0.03) after 3 weeks at 2.5-3L/day. Consistent with the established sodium bicarbonate ergogenic mechanism.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Alkaline water helps with GERD or LPR</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)">Emerging evidence — most promising for LPR</span></div>
+      <div class="vc-card-evidence">pH 8.8 water permanently denatures pepsin in vitro (Koufman 2012). 2023 RCT in GERD patients found reduced heartburn with bicarbonate-rich water vs. regular water. LPR study found alkaline water plus Mediterranean diet achieved symptom control comparable to PPIs. Best evidence is for bicarbonate-rich mineral water specifically.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">Alkaline water prevents cancer, slows aging, or detoxifies</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)">Not supported</span></div>
+      <div class="vc-card-evidence">No clinical evidence supports any of these claims. Blood pH cannot be meaningfully altered by drinking water. In vitro cancer cell studies showing alkaline conditions kill cancer cells do not translate to human physiology. This is where the scam label is deserved.</div>
+    </div>
+    <div class="vc-card">
+      <div class="vc-card-claim">You need to buy alkaline water to get these benefits</div>
+      <div class="vc-card-verdict"><span class="vb" style="background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)">No — cheaper alternatives exist</span></div>
+      <div class="vc-card-evidence">Baking soda (sodium bicarbonate) costs pennies, delivers 100-200x more bicarbonate per dose, and has an ISSN position stand. A diet rich in fruits and vegetables reduces dietary acid load through PRAL. For GERD, bicarbonate-rich mineral water (not necessarily electrolyzed alkaline water) is what the research actually tested.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SYNTHESIS -->
+<div class="synthesis fade-in">
+  <div class="synth-head">Synthesis: Who Should Actually Care About This</div>
+  <div class="synth-text">
+    The alkaline water debate has two equally wrong camps. The marketers oversell it for cancer prevention, longevity, and universal health optimization. Their critics dismiss it entirely based on a correct but incomplete understanding of blood pH regulation. Both sides are making the same mistake: treating it as a binary question when the evidence is clearly population-specific.<br><br>
+    <strong>For high-intensity anaerobic athletes</strong> — especially combat sport athletes, swimmers, rowers, and cyclists doing efforts between 30 seconds and 12 minutes — the bicarbonate mechanism is real, validated by the ISSN, and directly applicable. Alkaline water can serve as a lower-concentration, hydration-combined version of the baking soda supplementation protocol that elite athletes already use. The dosage requirement (2.5-3 liters daily for weeks) is higher than a baking soda pill, but for athletes already tracking hydration, it is practical.<br><br>
+    <strong>For GERD and LPR patients</strong>, the pepsin denaturation mechanism at pH 8.8 is the strongest science-based argument for alkaline water specifically. Pepsin, not just acid, causes tissue damage in reflux, and PPIs do not address it. The 2023 RCT and the LPR study both support bicarbonate-rich water as a meaningful adjunct. This is probably the most actionable application for non-athletes.<br><br>
+    <strong>For the average healthy adult</strong> eating adequate fruits and vegetables, doing moderate exercise, and without significant GERD: the honest answer is that alkaline water will likely do nothing a glass of regular water would not. The diet-driven reduction in acid load from plants does most of what alkaline water proponents claim, and baking soda covers the rest for a fraction of the price.<br><br>
+    The research is expanding. What was fringe is becoming mainstream, particularly in sports science. The scam label belongs on the marketing, not on the mechanism.
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Origin Symmetrics</div>
+  <div class="footer-refs">
+    Grgic et al. ISSN Position Stand · J Int Soc Sports Nutr 2021 · doi:10.1186/s12970-021-00458-w<br>
+    Chycki et al. PLoS ONE 2018 · doi:10.1371/journal.pone.0205708<br>
+    Weidman et al. J Int Soc Sports Nutr 2016 · blood viscosity RCT n=100<br>
+    Koufman and Johnston · Ann Otol Rhinol Laryngol 2012 · pepsin denaturation<br>
+    Hohenester et al. BMJ Open Gastroenterol 2023 · bicarbonate water RCT<br>
+    Zalvan et al. JAMA Otolaryngol 2017 · LPR alkaline water and Mediterranean diet<br>
+    Remer and Manz PRAL system · dietary acid load formula<br>
+    StatPearls Acid-Base Balance 2022 · BJA Education acid-base review 2022
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  const c=document.getElementById('particles');
+  ['rgba(96,165,250,0.25)','rgba(45,212,191,0.2)','rgba(78,222,138,0.18)'].forEach(col=>{
+    for(let j=0;j<6;j++){
+      const p=document.createElement('div');p.className='particle';
+      const s=Math.random()*3+2;
+      p.style.cssText=`width:${s}px;height:${s}px;background:${col};left:${Math.random()*100}%;bottom:-10px;animation-duration:${Math.random()*14+10}s;animation-delay:${Math.random()*14}s`;
+      c.appendChild(p);
+    }
+  });
+})();
+
+setTimeout(()=>{
+  ['wb1','wb2','wb3'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.style.width=el.dataset.w+'%';
+  });
+},400);
+
+// Animate sport bars and comparison bars on scroll
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('vis');
+    e.target.querySelectorAll('.sbar[data-w]').forEach((b,i)=>{
+      setTimeout(()=>{b.style.width=b.dataset.w+'px';},i*120+100);
+    });
+    io.unobserve(e.target);
+  });
+},{threshold:0.06});
+document.querySelectorAll('.fade-in,.sec').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
